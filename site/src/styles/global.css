@@ -1,0 +1,181 @@
+/* === Reset / base === */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #222;
+  background: #FAFAFA;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: #2A4A7F; text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: #1A3158; }
+hr { border: 0; border-top: 1px solid #DDD; margin: 2rem 0; }
+
+/* === Layout primitives === */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+.container--wide { max-width: 980px; }
+
+/* === Header / footer === */
+.site-header {
+  border-bottom: 1px solid #E0E0E0;
+  background: #FFF;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.92);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+.site-title {
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.site-mark {
+  background: #222;
+  color: #FAFAFA;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+.site-header nav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.95rem;
+}
+.site-header nav a {
+  color: #555;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+.site-header nav a[aria-current="page"] {
+  color: #222;
+  border-bottom-color: #222;
+}
+.site-header nav a:hover { color: #222; }
+
+.site-footer {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  background: #F0EEEA;
+  border-top: 1px solid #E0E0E0;
+  color: #555;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+}
+.site-footer p { margin: 0.4rem 0; }
+.footer-disclaimer { color: #777; }
+
+/* === Article body === */
+main { padding: 2rem 0 3rem; }
+.article-hero {
+  padding: 2rem 0 1rem;
+  border-bottom: 1px solid #E0E0E0;
+  margin-bottom: 2rem;
+}
+.article-hero h1 {
+  font-size: 2.4rem;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.015em;
+}
+.article-hero .lede {
+  font-size: 1.15rem;
+  color: #555;
+  margin: 0;
+}
+.article-hero .byline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+article h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  margin: 2.5rem 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+article h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  margin: 1.5rem 0 0.5rem;
+}
+article p { margin: 0 0 1rem; }
+article ul, article ol { padding-left: 1.5rem; margin: 0 0 1rem; }
+article blockquote {
+  margin: 1.5rem 0;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 3px solid #C5B9A3;
+  color: #444;
+  font-style: italic;
+}
+article figure {
+  margin: 2rem 0;
+}
+article figure img {
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+article figcaption {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Pull-quotes for journalistic feel */
+.pullquote {
+  font-size: 1.4rem;
+  line-height: 1.35;
+  font-style: italic;
+  color: #1A3158;
+  border-left: 4px solid #DDD;
+  padding: 0.4rem 0 0.4rem 1.25rem;
+  margin: 2rem 0;
+}
+
+/* === Voter-tool island wrapper === */
+.tool-section {
+  margin: 3rem 0;
+  padding: 2rem 0;
+  background: #FFF;
+  border-top: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .article-hero h1 { font-size: 1.9rem; }
+  .site-header .container { flex-direction: column; align-items: flex-start; }
+  .site-header nav ul { gap: 1rem; flex-wrap: wrap; }
+}

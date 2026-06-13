@@ -1,0 +1,42 @@
+[
+  {
+    "code": "V",
+    "name": "Vänsterpartiet",
+    "color": "#AF0000"
+  },
+  {
+    "code": "S",
+    "name": "Socialdemokraterna",
+    "color": "#E8112D"
+  },
+  {
+    "code": "MP",
+    "name": "Miljöpartiet",
+    "color": "#83CF39"
+  },
+  {
+    "code": "C",
+    "name": "Centerpartiet",
+    "color": "#009933"
+  },
+  {
+    "code": "L",
+    "name": "Liberalerna",
+    "color": "#006AB3"
+  },
+  {
+    "code": "KD",
+    "name": "Kristdemokraterna",
+    "color": "#211F70"
+  },
+  {
+    "code": "M",
+    "name": "Moderaterna",
+    "color": "#52BDEC"
+  },
+  {
+    "code": "SD",
+    "name": "Sverigedemokraterna",
+    "color": "#DDDD00"
+  }
+]

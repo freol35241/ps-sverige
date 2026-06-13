@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VoterTool from '../components/VoterTool.svelte';
+---
+<BaseLayout
+  title="Valkompassen — politisk stilometri"
+  description="Tredimensionell valkompass baserad på riksdagens öppna data."
+>
+  <article class="container container--wide">
+    <header class="article-hero">
+      <p class="byline">Valkompassen · v1 · 8–12 frågor · ca 5 minuter</p>
+      <h1>Valkompassen</h1>
+      <p class="lede">
+        Verktyget ställer frågor som baseras på de mest omtvistade frågorna i
+        riksdagen under mandatperioden. Dina svar matchas mot hur partierna
+        faktiskt röstade, motiverade sig och vilka mekanismer de föreslog.
+      </p>
+    </header>
+
+    <VoterTool client:load />
+
+    <section style="margin-top: 3rem; font-size: 0.95rem; color: #555;">
+      <h2>Hur fungerar det här?</h2>
+      <p>
+        Varje fråga är vald för att skilja partierna åt så mycket som möjligt
+        givet dina tidigare svar. Du läser tre korta argument hämtade direkt
+        ur riksdagens reservationer (anonymiserade) och anger vilket som
+        övertygar dig mest. Resultatet visar match på tre axlar:
+      </p>
+      <ul>
+        <li><strong>Vad</strong> — partiernas faktiska röstmönster.</li>
+        <li><strong>Varför</strong> — partiernas resonemang i text.</li>
+        <li><strong>Hur</strong> — vilka medel partiet föredrar (marknad/reglering, förebyggande/straff, stat/kommun, generellt/riktat).</li>
+      </ul>
+      <p>
+        <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/metod`}>Läs hela metoddokumentet →</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>

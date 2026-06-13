@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Metod — politisk stilometri">
+  <article class="container">
+    <header class="article-hero">
+      <p class="byline">Metoddokument · uppdaterad 2026-06-13</p>
+      <h1>Metod</h1>
+      <p class="lede">
+        Hela analysen bygger på offentliga data från data.riksdagen.se och kan
+        reproduceras av vem som helst.
+      </p>
+    </header>
+
+    <h2>Vilka data ingår?</h2>
+    <ul>
+      <li><strong>Alla individuella röster</strong> från 2 501 omröstningar i kammaren under riksmöten 2022/23–2025/26 (totalt 872 849 enskilda röstposter från 424 ledamöter).</li>
+      <li><strong>54 914 anföranden</strong> från samma period — alla repliker, interpellationssvar och huvudanföranden.</li>
+      <li><strong>10 931 reservationer</strong> från utskotten — partiernas egna motiveringar till varför de röstade som de gjorde, totalt 2,8 miljoner ord text.</li>
+    </ul>
+
+    <h2>Hur räknas matchningen?</h2>
+    <p>
+      <em>Detaljerad metodbeskrivning kommer att fyllas i innan första
+      publicering. Tills dess — se källkoden på GitHub.</em>
+    </p>
+
+    <h3>VAD — röststånd</h3>
+    <p>
+      För varje omröstning räknas partiets ställning som (n_Ja − n_Nej) /
+      (n_Ja + n_Nej + n_Avstår), i intervallet [-1, +1]. Ditt svar på en fråga
+      tolkas på samma skala. Likheten mellan dig och ett parti är genomsnittet
+      av absolutskillnaden över de frågor du svarat på.
+    </p>
+
+    <h3>VARFÖR — resonemangsvektor</h3>
+    <p>
+      Reservationstexter inbäddas med <a href="https://huggingface.co/KBLab/sentence-bert-swedish-cased">KBLab/sentence-bert-swedish-cased</a> (en
+      svensk språkmodell från Kungliga biblioteket). Per parti och ämne
+      räknas medelvektorn fram. Likheten är cosinussimilaritet, centrerad
+      per ämne så att den allmänna kammaresvenskan inte dominerar.
+    </p>
+
+    <h3>HUR — medelpreferens</h3>
+    <p>
+      Två signaler kombineras: vilka partier som samtecknar reservationer i
+      samma ämne (en strukturell signal), och en kuraterad lexikalanalys av
+      anförandetexter över fyra dimensioner — marknad/reglering,
+      förebyggande/straff, stat/kommun, generellt/riktat.
+    </p>
+
+    <h2>Begränsningar</h2>
+    <ul>
+      <li>Ämnesklustringen följer utskottsindelningen — inte väljarnas mentala kategorier.</li>
+      <li>Lexikallistorna för HUR-axeln är valda av forskningsteamet. De är öppna i koden och kan revideras.</li>
+      <li>Regeringspartiernas (M, KD, L) resonemang fångas dåligt av reservationsdata — de skriver inte reservationer mot sina egna förslag. Anförandetexter används som komplement där det går.</li>
+      <li>Riktning för Ja/Nej är inte automatiskt tolkad. Frågorna i valkompassen är manuellt formulerade för att vara entydiga.</li>
+    </ul>
+
+    <h2>Källkod och data</h2>
+    <p>
+      All kod finns på <a href="https://github.com/freol35241/ps-sverige">github.com/freol35241/ps-sverige</a>.
+      Rådata kommer från <a href="https://data.riksdagen.se/">data.riksdagen.se</a> och är öppen.
+    </p>
+  </article>
+</BaseLayout>

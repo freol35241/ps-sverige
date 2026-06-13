@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Om — politisk stilometri">
+  <article class="container">
+    <header class="article-hero">
+      <h1>Om projektet</h1>
+      <p class="lede">
+        Politisk stilometri är ett oberoende dataprojekt utan koppling till
+        något politiskt parti eller någon medieorganisation.
+      </p>
+    </header>
+
+    <h2>Varför?</h2>
+    <p>
+      Den vanliga valkompassen frågar partierna vad de tycker. Det här projektet
+      utgår från vad partierna faktiskt gör — och hur de motiverar det. Den
+      vinkeln saknas i den svenska valkompasstraditionen.
+    </p>
+
+    <h2>Är det här journalistik?</h2>
+    <p>
+      Närmast en analys. Allt baseras på reproducerbar metod över offentliga
+      data. Inga partiintervjuer, inga undersökningar, inga subjektiva
+      bedömningar utöver de som krävs för att klassificera ämnen och
+      ordval (vilka är öppet redovisade i koden).
+    </p>
+
+    <h2>Vad är planen?</h2>
+    <p>
+      Den här versionen (v1) ger ett strukturerat val mellan förformulerade
+      argument. En kommande version (v1.5) kommer att utöka detta med en
+      LLM-driven intervju som låter dig formulera ståndpunkter med egna ord.
+    </p>
+
+    <h2>Vem ligger bakom?</h2>
+    <p>
+      Projektet drivs av en oberoende utvecklare. Eventuella kommentarer eller
+      rättelser tas tacksamt emot via <a href="https://github.com/freol35241/ps-sverige/issues">GitHub-issues</a>.
+    </p>
+
+    <h2>Vad ingår inte?</h2>
+    <ul>
+      <li>Beslut fattade utanför riksdagens kammare (regeringsbeslut, myndighetsbeslut, EU-omröstningar).</li>
+      <li>Kommun- och regionpolitik.</li>
+      <li>Frågor som ännu inte har varit uppe för omröstning under den nuvarande mandatperioden.</li>
+    </ul>
+  </article>
+</BaseLayout>

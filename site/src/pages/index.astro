@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<BaseLayout
+  title="Politisk stilometri — vad partierna gör, säger och hur"
+  description="En datadriven analys av Sveriges riksdag 2022–2026. Och en valkompass som faktiskt mäter rätt sak."
+>
+  <article class="container">
+    <header class="article-hero">
+      <p class="byline">Riksdagen 2022–2026 · En analys i tre delar</p>
+      <h1>Vad partierna gör, säger — och hur de tänker</h1>
+      <p class="lede">
+        Den vanliga valkompassen frågar vad partierna tycker. Det här är ett försök
+        att mäta vad de faktiskt gör i riksdagen, hur de motiverar sina beslut, och
+        vilka medel de föredrar. Tre olika frågor — tre olika svar.
+      </p>
+    </header>
+
+    <p>
+      <em>Den fullständiga texten är under redigering och publiceras inom kort.</em>
+    </p>
+
+    <h2>Den korta sammanfattningen</h2>
+    <p>
+      Sveriges riksdag är ett av världens mest dokumenterade parlament. Varje
+      omröstning, varje anförande, varje reservation finns publicerad som öppna
+      data. Det här projektet behandlar materialet som ett beteendedata: ett
+      sätt att rekonstruera ideologi, koalitionsstruktur och samsyn ur det
+      som faktiskt händer i kammaren — inte ur det som partierna säger i sin
+      egen marknadsföring.
+    </p>
+
+    <h2>Tre frågor som en valkompass borde ställa</h2>
+    <ol>
+      <li><strong>VAD</strong> tycker partiet i sakfrågan?</li>
+      <li><strong>VARFÖR</strong> tycker partiet så — vilka värden hänvisar de till?</li>
+      <li><strong>HUR</strong> vill partiet genomföra det — marknad eller reglering, förebyggande eller straff, stat eller kommun?</li>
+    </ol>
+    <p>
+      De flesta valkompasser bryr sig bara om den första frågan. Det är därför
+      två väljare med helt olika världsbilder kan få samma rekommendation.
+    </p>
+
+    <section class="tool-section">
+      <div class="container">
+        <h2 style="margin-top:0">Hitta ditt parti — tredimensionell match</h2>
+        <p>
+          Verktyget ställer 8–12 frågor baserade på riksdagens egna
+          omröstningar. Det utvärderar sedan din ståndpunkt på tre axlar:
+          vad, varför och hur. Resultatet visar vilket parti som matchar dig
+          bäst — och var matchningen brister.
+        </p>
+        <p style="text-align: center; margin: 2rem 0;">
+          <a href={`${base}/valkompassen`} style="display: inline-block; padding: 0.75rem 1.5rem; background: #2A4A7F; color: white; text-decoration: none; border-radius: 4px; font-family: 'Inter', sans-serif;">
+            Starta valkompassen →
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <h2>Vad analysen visar</h2>
+
+    <h3>Tidöblocket smälte samman under mandatperioden</h3>
+    <p>
+      I riksmötet 2022/23 röstade SD med regeringspartierna (M, KD, L) i 67 % av
+      kammaromröstningarna. I 2025/26 — valåret — är siffran 98 %. Samtidigt
+      kollapsade antalet egna reservationer från SD från 749 till 17 på ett år.
+      SD röstar inte bara med regeringen längre — de skriver inte heller egna
+      alternativ till protokoll.
+    </p>
+
+    <h3>Tre dimensioner gör samma data till tre olika historier</h3>
+    <p>
+      M och SD röstar likadant (98 % samstämmighet) <em>och</em> talar likadant i
+      debatt — men de föreslår olika mekanismer i sina motiveringar. C och S
+      röstar tillsammans 91 % av tiden men resonerar väldigt olika i sina texter.
+      L och KD är hela mandatperioden så samstämmiga i sina reservationer att
+      de bildar en helt egen klunga.
+    </p>
+
+    <p>
+      <a href={`${base}/metod`}>Läs om metoden →</a>
+    </p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Hur röstar Sveriges riksdagsledamöter — och varför? En datadriven förvalkompass." } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const navLinks = [
+  { href: `${base}/`, label: 'Start' },
+  { href: `${base}/valkompassen`, label: 'Valkompassen' },
+  { href: `${base}/metod`, label: 'Metod' },
+  { href: `${base}/om`, label: 'Om' },
+];
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+---
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="site-title" href={`${base}/`}>
+          <span class="site-mark">ps</span>
+          <span>politisk stilometri</span>
+        </a>
+        <nav>
+          <ul>
+            {navLinks.map(link => {
+              const isCurrent = currentPath === link.href.replace(/\/$/, '');
+              return (
+                <li>
+                  <a href={link.href} aria-current={isCurrent ? 'page' : undefined}>{link.label}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          Data: Sveriges riksdag, öppna data. Källkod: <a href="https://github.com/freol35241/ps-sverige">github.com/freol35241/ps-sverige</a>.
+        </p>
+        <p class="footer-disclaimer">
+          Det här är inte ett officiellt verktyg. Det är en analys av offentliga röst- och dokumentdata från riksmöten 2022/23–2025/26.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

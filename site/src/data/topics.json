@@ -1,0 +1,226 @@
+[
+  {
+    "id": 13,
+    "label": "Migration och asylpolitik",
+    "primary_organ": "SfU",
+    "size": 75,
+    "what_spread": 0.35530597136039005,
+    "axes_spread": 0.2460628850154753
+  },
+  {
+    "id": 18,
+    "label": "Klimat och energi",
+    "primary_organ": "MJU",
+    "size": 134,
+    "what_spread": 0.3224790901168507,
+    "axes_spread": 0.23648072118136826
+  },
+  {
+    "id": 7,
+    "label": "Skola och lärare",
+    "primary_organ": "UbU",
+    "size": 104,
+    "what_spread": 0.3204014525532656,
+    "axes_spread": 0.2133569764932758
+  },
+  {
+    "id": 11,
+    "label": "Läkemedel och tandvård",
+    "primary_organ": "SoU",
+    "size": 28,
+    "what_spread": 0.31554546847719894,
+    "axes_spread": 0.22201866266084438
+  },
+  {
+    "id": 9,
+    "label": "Internationellt bistånd",
+    "primary_organ": "UU",
+    "size": 58,
+    "what_spread": 0.3151228745278678,
+    "axes_spread": 0.23247296047364174
+  },
+  {
+    "id": 1,
+    "label": "Kommuner och regioner",
+    "primary_organ": "FiU",
+    "size": 83,
+    "what_spread": 0.2866536898054629,
+    "axes_spread": 0.20678733563077584
+  },
+  {
+    "id": 24,
+    "label": "Funktionsnedsättning och äldreomsorg",
+    "primary_organ": "SoU",
+    "size": 62,
+    "what_spread": 0.28464550664151317,
+    "axes_spread": 0.1933579196311621
+  },
+  {
+    "id": 23,
+    "label": "Hälso- och sjukvård",
+    "primary_organ": "SoU",
+    "size": 89,
+    "what_spread": 0.26980354087293024,
+    "axes_spread": 0.20679373717700564
+  },
+  {
+    "id": 6,
+    "label": "Skatter",
+    "primary_organ": "SkU",
+    "size": 97,
+    "what_spread": 0.26564616888709075,
+    "axes_spread": 0.2481544486781544
+  },
+  {
+    "id": 12,
+    "label": "Socialtjänst, barn och familj",
+    "primary_organ": "SoU",
+    "size": 95,
+    "what_spread": 0.2638189926957649,
+    "axes_spread": 0.2262342122271135
+  },
+  {
+    "id": 8,
+    "label": "Trafik och fordon",
+    "primary_organ": "TU",
+    "size": 100,
+    "what_spread": 0.26267952174375436,
+    "axes_spread": 0.2500139650699612
+  },
+  {
+    "id": 14,
+    "label": "Högre utbildning och studiestöd",
+    "primary_organ": "UbU",
+    "size": 93,
+    "what_spread": 0.25927654313772974,
+    "axes_spread": 0.23012933815147954
+  },
+  {
+    "id": 22,
+    "label": "Fiske och sjöfart",
+    "primary_organ": "MJU",
+    "size": 56,
+    "what_spread": 0.2588782809043683,
+    "axes_spread": 0.28190262359092283
+  },
+  {
+    "id": 2,
+    "label": "Arbetsrätt och arbetslöshetsförsäkring",
+    "primary_organ": "AU",
+    "size": 115,
+    "what_spread": 0.2502107444002233,
+    "axes_spread": 0.26017040425992183
+  },
+  {
+    "id": 5,
+    "label": "Regelförenkling och konsumenträtt",
+    "primary_organ": "CU",
+    "size": 70,
+    "what_spread": 0.2469418108206681,
+    "axes_spread": 0.19875097337869305
+  },
+  {
+    "id": 16,
+    "label": "Näringspolitik och handel",
+    "primary_organ": "NU",
+    "size": 103,
+    "what_spread": 0.24425607116099834,
+    "axes_spread": 0.23384233866598975
+  },
+  {
+    "id": 4,
+    "label": "Försvar och krisberedskap",
+    "primary_organ": "FöU",
+    "size": 113,
+    "what_spread": 0.2420454875470918,
+    "axes_spread": 0.2765211348518112
+  },
+  {
+    "id": 3,
+    "label": "Brott och kriminalvård",
+    "primary_organ": "JuU",
+    "size": 161,
+    "what_spread": 0.23919432780546984,
+    "axes_spread": 0.2522785038475247
+  },
+  {
+    "id": 27,
+    "label": "Diskriminering och minoriteter",
+    "primary_organ": "KU",
+    "size": 101,
+    "what_spread": 0.23762024936986756,
+    "axes_spread": 0.22104114735115785
+  },
+  {
+    "id": 21,
+    "label": "Bostadspolitik",
+    "primary_organ": "CU",
+    "size": 93,
+    "what_spread": 0.23752060609992554,
+    "axes_spread": 0.2346204926767685
+  },
+  {
+    "id": 25,
+    "label": "Idrott, friluftsliv, ANDTS",
+    "primary_organ": "KrU",
+    "size": 47,
+    "what_spread": 0.23410729429132918,
+    "axes_spread": 0.2433455739514341
+  },
+  {
+    "id": 0,
+    "label": "Yttrandefrihet och digitalisering",
+    "primary_organ": "KU",
+    "size": 60,
+    "what_spread": 0.23403275810600377,
+    "axes_spread": 0.25967617286934885
+  },
+  {
+    "id": 15,
+    "label": "Nato och EU-samarbete",
+    "primary_organ": "UU",
+    "size": 85,
+    "what_spread": 0.2306090922565345,
+    "axes_spread": 0.24436501535662078
+  },
+  {
+    "id": 26,
+    "label": "Finansmarknad och ägande",
+    "primary_organ": "FiU",
+    "size": 99,
+    "what_spread": 0.2234938182335362,
+    "axes_spread": 0.24803408620603268
+  },
+  {
+    "id": 19,
+    "label": "Brottsbekämpning och övervakning",
+    "primary_organ": "JuU",
+    "size": 71,
+    "what_spread": 0.22325918273469428,
+    "axes_spread": 0.25205511396966285
+  },
+  {
+    "id": 17,
+    "label": "Kulturpolitik",
+    "primary_organ": "KrU",
+    "size": 53,
+    "what_spread": 0.21460970233948967,
+    "axes_spread": 0.2672916178909123
+  },
+  {
+    "id": 10,
+    "label": "Miljö, jakt och jordbruk",
+    "primary_organ": "MJU",
+    "size": 161,
+    "what_spread": 0.21375173590767788,
+    "axes_spread": 0.25097992065248115
+  },
+  {
+    "id": 20,
+    "label": "Författnings- och valfrågor",
+    "primary_organ": "KU",
+    "size": 74,
+    "what_spread": 0.1953321282249943,
+    "axes_spread": 0.28281789316670375
+  }
+]

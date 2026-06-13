@@ -5,3 +5,8 @@ data/raw/
 data/processed/
 figures/*.png
 .ipynb_checkpoints/
+site/dist/
+site/node_modules/
+site/smoke-test.mjs
+.astro/
+
