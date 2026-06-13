@@ -14,8 +14,9 @@ const {
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const siteUrl = "https://freol35241.github.io" + base;
-const ogImage = `${siteUrl}/figures/${image}`;
+const siteOrigin = "https://freol35241.github.io";
+const ogImage = `${siteOrigin}${base}/figures/${image}`;
+const canonicalUrl = `${siteOrigin}${Astro.url.pathname}`;
 const navLinks = [
   { href: `${base}/`, label: 'Start' },
   { href: `${base}/valkompassen`, label: 'Valkompassen' },
@@ -40,7 +41,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={siteUrl + Astro.url.pathname} />
+    <meta property="og:url" content={canonicalUrl} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
