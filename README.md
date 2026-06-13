@@ -2,9 +2,12 @@
 
 Politisk stilometri: Sverige. Behavioural analysis of the Riksdag using open data.
 
+**Live site:** https://freol35241.github.io/ps-sverige/
+
 Context, motivation, and project options: see `IDEA.md`.
 Working notes per day: see `diary/`.
 Coding guidelines: see `CLAUDE.md`.
+Static site (Swedish, hosted on GitHub Pages): see `site/`.
 
 ## What's here so far
 
