@@ -1,13 +1,20 @@
 """Parse reservation reasoning text from dokumentstatus XML.
 
-The HTML body inside each XML contains reservation sections marked by
-<p class="Reservationsrubrik">N. Title, punkt M (Parties)</p>
-followed by the author line and reasoning paragraphs, until the next
-Reservationsrubrik or the end of the reservations section.
+Each reservation in the HTML body has the structure:
+  <p class="Reservationsrubrik">N. Title, punkt M (Parties)</p>
+  <p ...>av Firstname Lastname (Party).</p>
+  ... "Förslag till riksdagsbeslut" section (procedural — what they propose) ...
+  ... "Ställningstagande" section (the actual reasoning) ...
+
+For the voter tool we want the SUBSTANTIVE argument from Ställningstagande,
+not the procedural intro. We extract both into separate fields so the
+analysis-side embedding can still use the whole text while the site-side
+excerpt picker uses the clean argument.
 
 Output: data/processed/reservations.parquet with one row per reservation:
-    dok_id, rm, beteckning, punkt, partier (sorted, semicolon-joined),
-    rubrik, reasoning_text, n_words
+    dok_id, rm, beteckning, punkt, partier (semicolon-joined),
+    rubrik, reasoning_text (full), stallningstagande_text (substantive only),
+    n_words
 """
 from __future__ import annotations
 
@@ -37,12 +44,30 @@ WS = re.compile(r"\s+")
 HEADING_RE = re.compile(
     r"^\s*(?P<title>.+?),\s*punkt\s*(?P<punkt>\d+)\s*\((?P<parties>[^)]+)\)\s*$",
     re.DOTALL)
+# Strip soft-hyphens that PDF→HTML conversion leaves in mid-word.
+SOFT_HYPHEN_RE = re.compile(r"\s*­\s*")
+# Marker that begins the substantive reasoning inside a reservation.
+STALLNINGS_MARKER = re.compile(
+    r"\bStällningstagande\s+", re.IGNORECASE)
 
 
 def clean(text: str) -> str:
     s = html_mod.unescape(text)
     s = HTML_TAG.sub(" ", s)
+    s = SOFT_HYPHEN_RE.sub("", s)
     return WS.sub(" ", s).strip()
+
+
+def extract_stallningstagande(reasoning_text: str) -> str:
+    """Return the substantive argument text from a reservation body.
+
+    Looks for the 'Ställningstagande' marker and returns everything after it,
+    or an empty string if no marker is present.
+    """
+    m = STALLNINGS_MARKER.search(reasoning_text)
+    if not m:
+        return ""
+    return reasoning_text[m.end():].strip()
 
 
 def extract_html_body(xml_path: Path) -> str | None:
@@ -110,6 +135,7 @@ def parse_one(xml_path: Path) -> list[dict]:
         n_words = len(reasoning.split())
         if n_words < 30:
             continue
+        stallningstagande = extract_stallningstagande(reasoning)
         rows.append({
             "dok_id": dok_id,
             "rm": rm,
@@ -119,7 +145,9 @@ def parse_one(xml_path: Path) -> list[dict]:
             "n_partier": len(partier),
             "rubrik": title,
             "reasoning_text": reasoning,
+            "stallningstagande_text": stallningstagande,
             "n_words": n_words,
+            "n_stallnings_words": len(stallningstagande.split()),
         })
     return rows
 

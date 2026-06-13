@@ -36,39 +36,70 @@ PARTY_FULL_NAME = {
     "M": "Moderaterna", "SD": "Sverigedemokraterna",
 }
 
-# Manually-curated short labels for the 28 topics we cluster. Done so the
-# voter-facing site has readable names rather than TF-IDF term lists.
-# Reviewed against meta.label_terms in topic_meta.parquet.
-TOPIC_LABELS = {
-    0:  "Yttrandefrihet och digitalisering",
-    1:  "Kommuner och regioner",
-    2:  "Arbetsrätt och arbetslöshetsförsäkring",
-    3:  "Brott och kriminalvård",
-    4:  "Försvar och krisberedskap",
-    5:  "Regelförenkling och konsumenträtt",
-    6:  "Skatter",
-    7:  "Skola och lärare",
-    8:  "Trafik och fordon",
-    9:  "Internationellt bistånd",
-    10: "Miljö, jakt och jordbruk",
-    11: "Läkemedel och tandvård",
-    12: "Socialtjänst, barn och familj",
-    13: "Migration och asylpolitik",
-    14: "Högre utbildning och studiestöd",
-    15: "Nato och EU-samarbete",
-    16: "Näringspolitik och handel",
-    17: "Kulturpolitik",
-    18: "Klimat och energi",
-    19: "Brottsbekämpning och övervakning",
-    20: "Författnings- och valfrågor",
-    21: "Bostadspolitik",
-    22: "Fiske och sjöfart",
-    23: "Hälso- och sjukvård",
-    24: "Funktionsnedsättning och äldreomsorg",
-    25: "Idrott, friluftsliv, ANDTS",
-    26: "Finansmarknad och ägande",
-    27: "Diskriminering och minoriteter",
+# Manually-curated short labels and per-topic question framings for the
+# voter tool. The label is the topic name shown above each question; the
+# question is the concrete framing the voter sees. Reviewed against
+# meta.label_terms in topic_meta.parquet.
+TOPIC_INFO = {
+    0:  ("Yttrandefrihet och digitalisering",
+         "Yttrandefrihet och digitalisering — vilket resonemang ligger närmast dig?"),
+    1:  ("Kommuner och regioner",
+         "Förhållandet mellan stat, regioner och kommuner — vilken hållning övertygar dig mest?"),
+    2:  ("Arbetsrätt och arbetslöshetsförsäkring",
+         "Arbetsrätt och arbetslöshetsförsäkring — vilket resonemang ligger närmast dig?"),
+    3:  ("Brott och kriminalvård",
+         "Hur ska Sverige hantera brott och kriminalvård?"),
+    4:  ("Försvar och krisberedskap",
+         "Försvar och samhällets krisberedskap — vilket angreppssätt övertygar dig mest?"),
+    5:  ("Regelförenkling och företagande",
+         "Regler för företagande och näringsliv — vilken hållning övertygar dig mest?"),
+    6:  ("Skatter",
+         "Hur ska skattepolitiken utformas?"),
+    7:  ("Skola och lärare",
+         "Svensk skola — vilket resonemang ligger närmast dig?"),
+    8:  ("Trafik och fordon",
+         "Trafik och vägfrågor — vilket resonemang övertygar dig mest?"),
+    9:  ("Internationellt bistånd",
+         "Internationellt bistånd och utrikespolitik — vilken hållning ligger närmast dig?"),
+    10: ("Miljö, jakt och jordbruk",
+         "Miljö, jakt och jordbruk — vilket resonemang övertygar dig mest?"),
+    11: ("Läkemedel och tandvård",
+         "Läkemedel och tandvård — vilket synsätt övertygar dig mest?"),
+    12: ("Socialtjänst, barn och familj",
+         "Socialtjänst, barn och familj — vilket resonemang ligger närmast dig?"),
+    13: ("Migration och asylpolitik",
+         "Migration och asylpolitik — vilket resonemang övertygar dig mest?"),
+    14: ("Högre utbildning och studiestöd",
+         "Högre utbildning och studiestöd — vilken hållning ligger närmast dig?"),
+    15: ("Nato och EU-samarbete",
+         "Nato och EU-samarbete — vilket resonemang övertygar dig mest?"),
+    16: ("Näringspolitik och handel",
+         "Näringspolitik och internationell handel — vilket synsätt övertygar dig mest?"),
+    17: ("Kulturpolitik",
+         "Kulturpolitik — vilket resonemang ligger närmast dig?"),
+    18: ("Klimat och energi",
+         "Klimat och energi — vilket resonemang övertygar dig mest?"),
+    19: ("Brottsbekämpning och övervakning",
+         "Brottsbekämpning och övervakning — vilken hållning ligger närmast dig?"),
+    20: ("Författnings- och valfrågor",
+         "Författnings- och valfrågor — vilket resonemang övertygar dig mest?"),
+    21: ("Bostadspolitik",
+         "Bostadspolitik — vilket resonemang ligger närmast dig?"),
+    22: ("Fiske och sjöfart",
+         "Fiske och sjöfart — vilket resonemang övertygar dig mest?"),
+    23: ("Hälso- och sjukvård",
+         "Svensk hälso- och sjukvård — vilket resonemang ligger närmast dig?"),
+    24: ("Funktionsnedsättning och äldreomsorg",
+         "Funktionsnedsättning och äldreomsorg — vilket resonemang övertygar dig mest?"),
+    25: ("Idrott, friluftsliv, ANDTS",
+         "Idrott, friluftsliv och alkohol-/drogfrågor — vilket resonemang ligger närmast dig?"),
+    26: ("Finansmarknad och ägande",
+         "Finansmarknad och ägarfrågor — vilket synsätt övertygar dig mest?"),
+    27: ("Diskriminering och minoriteter",
+         "Diskriminering och minoritetsfrågor — vilket resonemang ligger närmast dig?"),
 }
+TOPIC_LABELS = {k: v[0] for k, v in TOPIC_INFO.items()}
+TOPIC_QUESTIONS = {k: v[1] for k, v in TOPIC_INFO.items()}
 
 
 def export_parties() -> None:
@@ -89,6 +120,8 @@ def export_topics() -> None:
         topics.append({
             "id": int(t),
             "label": TOPIC_LABELS.get(int(t), f"Ämne {t}"),
+            "question": TOPIC_QUESTIONS.get(int(t),
+                "Vilket resonemang ligger närmast dig?"),
             "primary_organ": meta.loc[t, "primary_organ"],
             "size": int(meta.loc[t, "size"]),
             "what_spread": float(stats.loc[t, "mean_distinct_what"])
@@ -154,24 +187,42 @@ def export_reasoning() -> None:
         json.dumps(out, ensure_ascii=False, separators=(",", ":")))
 
 
-# Anonymisation patterns for excerpt curation.
+# --- Anonymisation and cleaning ---
+
 ANON_PATTERNS = [
-    # Strip MP names like "av Förnamn Efternamn (P)"
-    (re.compile(r"\bav\s+[A-ZÅÄÖ][a-zåäö]+(?:\s+[A-ZÅÄÖ][a-zåäö]+){0,3}\s*\([A-Z]+\)\s*\.?", re.IGNORECASE), ""),
-    # Strip party abbreviations in parens.
-    (re.compile(r"\((?:V|S|MP|C|L|KD|M|SD)\)"), ""),
-    # Strip party names spelled out.
+    # Soft hyphens left over from PDF→HTML conversion.
+    (re.compile(r"\s*­\s*"), ""),
+    # MP-name + party patterns: "av X Y (P)" or "X Y (P)"
     (re.compile(
-        r"\b(?:Vänsterpartiet|Socialdemokraterna|Miljöpartiet|Centerpartiet|"
-        r"Liberalerna|Kristdemokraterna|Moderaterna|Sverigedemokraterna)\b",
+        r"\b(?:av\s+)?[A-ZÅÄÖ][a-zåäö]+(?:[\s-][A-ZÅÄÖ][a-zåäö]+){0,3}\s*\((?:V|S|MP|C|L|KD|M|SD|-)(?:\s*,\s*(?:V|S|MP|C|L|KD|M|SD|-))*\)",
+        re.IGNORECASE), ""),
+    # Party abbreviations in parens like "(V)" or "(M, KD, L)".
+    (re.compile(r"\(\s*(?:V|S|MP|C|L|KD|M|SD|-)(?:\s*,\s*(?:V|S|MP|C|L|KD|M|SD|-))*\s*\)"), ""),
+    # Party names spelled out — replace with neutral noun.
+    (re.compile(
+        r"\bSverigedemokraterna(?:s)?\b|\bVänsterpartiet(?:s)?\b|"
+        r"\bMiljöpartiet(?:s)?\b|\bCenterpartiet(?:s)?\b|"
+        r"\bLiberalerna(?:s)?\b|\bKristdemokraterna(?:s)?\b|"
+        r"\bModeraterna(?:s)?\b|\bSocialdemokraterna(?:s)?\b",
         re.IGNORECASE), "vårt parti"),
-    # Strip motion citations like "2024/25:1234 yrkande N".
-    (re.compile(r"\b\d{4}/\d{2}:\d+(?:\s*yrkande[t]?\s*\d+)?", re.IGNORECASE), ""),
-    # Strip leading "Förslag till riksdagsbeslut" boilerplate that introduces
-    # the alternative ("we propose…").
-    (re.compile(r"^Förslag till riksdagsbeslut\s*", re.IGNORECASE), ""),
-    # Trim double-spaces.
+    # Motion citations like "2024/25:1234 yrkande N" or "yrkandena 1-3".
+    (re.compile(r"\b\d{4}/\d{2}:\d+(?:[–-]\d+)?", re.IGNORECASE), ""),
+    (re.compile(r"\byrkande(?:na)?\s+\d+(?:\s*[–-]\s*\d+|(?:\s*,\s*\d+)*(?:\s+och\s+\d+)?)", re.IGNORECASE), ""),
+    # References to motion "av X y.fl."
+    (re.compile(r"\bmotion(?:erna)?\s+av\s+[^.]+?(?=\.|\,|$)", re.IGNORECASE), ""),
+    (re.compile(r"\bm\.\s*fl\.", re.IGNORECASE), ""),
+    # Procedural boilerplate.
+    (re.compile(r"\bDärmed (?:bifaller|avslår) riksdagen[^.]*\.", re.IGNORECASE), ""),
+    (re.compile(r"\bRiksdagen (?:bifaller|avslår|antar|godkänner)[^.]*\.", re.IGNORECASE), ""),
+    (re.compile(r"\bsom anförs i reservationen och tillkännager detta för regeringen", re.IGNORECASE), ""),
+    # The two boilerplate intros to opposition reservations.
+    (re.compile(r"^Förslag till riksdagsbeslut\s*\.?\s*", re.IGNORECASE), ""),
+    (re.compile(r"^(?:Vi|Jag) anser att förslaget till riksdagsbeslut under punkt \d+ borde ha följande lydelse\s*:?\s*", re.IGNORECASE), ""),
+    (re.compile(r"^Riksdagen ställer sig bakom det[^.]*\.\s*", re.IGNORECASE), ""),
+    # Trim double-spaces and stray punctuation.
     (re.compile(r"\s{2,}"), " "),
+    (re.compile(r"\s+([.,;:!?])"), r"\1"),
+    (re.compile(r"^[\s.,;:]+"), ""),
 ]
 
 
@@ -182,132 +233,197 @@ def anonymise(text: str) -> str:
     return s.strip()
 
 
-def excerpt_snippet(text: str, max_words: int = 90, min_words: int = 30) -> str | None:
-    """Take the first complete sentence(s) up to max_words, dropping anything
-    shorter than min_words. We don't want to ship 5-paragraph reservations to
-    the voter — they need to be one paragraph each."""
+# Phrases that signal the excerpt is still procedural even after anonymisation.
+JUNK_PHRASES = re.compile(
+    r"\b(?:bifaller riksdagen|avslår riksdagen|antar riksdagen|"
+    r"behandlade dokument|tillkännager för regeringen|"
+    r"yrkandet bör avslås|motionsyrkand|propositionspunkt|"
+    r"borde ha följande lydelse|därmed avslår)",
+    re.IGNORECASE)
+# Cap a single digit count — too many citations = junk.
+DIGIT_GROUP = re.compile(r"\d+")
+
+
+def is_clean(text: str, max_digit_groups: int = 3) -> bool:
+    """Heuristic quality check after anonymisation."""
+    if JUNK_PHRASES.search(text):
+        return False
+    if len(DIGIT_GROUP.findall(text)) > max_digit_groups:
+        return False
+    return True
+
+
+def excerpt_snippet(text: str, max_words: int = 75, min_words: int = 30) -> str | None:
+    """Anonymise + clip to the first complete sentence(s) up to max_words.
+    Returns None if the cleaned result is too short or fails quality check."""
     text = anonymise(text)
-    # Split on sentence boundary (full-stop followed by whitespace + capital).
+    if not text:
+        return None
     sentences = re.split(r"(?<=[\.!?])\s+(?=[A-ZÅÄÖ])", text)
-    out = []
-    n_words = 0
+    out, n_words = [], 0
     for s in sentences:
         w = len(s.split())
         if n_words + w > max_words and out:
             break
         out.append(s)
         n_words += w
-    if n_words < min_words:
+        if n_words >= max_words:
+            break
+    snippet = " ".join(out).strip()
+    if len(snippet.split()) < min_words:
         return None
-    return " ".join(out).strip()
+    if not is_clean(snippet):
+        return None
+    return snippet
 
 
-def export_excerpts(per_topic: int = 6) -> None:
+def export_excerpts(per_topic: int = 5) -> None:
     """For each topic, pick up to `per_topic` excerpts per party.
 
-    Two sources:
-      - For opposition parties (V, S, MP, C, SD): reservation reasoning text.
-      - For cabinet parties (L, KD, M): the betänkande's *forslag* text from
-        vote events where they voted Ja (i.e., the cabinet's own proposals).
-        Without this, cabinet parties never appear as excerpt options, since
-        they barely write reservations.
+    Sources:
+      - Opposition parties (V, S, MP, C, SD): text AFTER 'Ställningstagande'
+        in their reservations (the substantive argument, not the procedural
+        intro). Solo reservations preferred.
+      - Cabinet parties (L, KD, M): 'Utskottets ställningstagande' sections
+        from the betänkanden — the majority opinion equivalent. These speak
+        in third-person ("Utskottet anser …") which we lightly normalise to
+        first-person ("vi") to match the reservation voice.
 
-    All excerpts anonymised the same way.
+    All excerpts go through the same anonymisation + quality filter.
     """
     CABINET = {"L", "KD", "M"}
+    OPP = {"V", "S", "MP", "C", "SD"}
 
     out = {}
 
-    # --- Opposition: from reservation_picks ---
-    picks = pd.read_parquet(IN / "reservation_picks.parquet")
-    picks["solo"] = picks["n_partier"] == 1
-    picks = picks.sort_values(["topic_id", "party", "solo", "n_words"],
-                               ascending=[True, True, False, False])
-    for topic_id, g in picks.groupby("topic_id"):
-        topic_out = out.setdefault(str(int(topic_id)), {})
-        for party, gg in g.groupby("party"):
-            if party in CABINET:
-                continue
-            party_excerpts = []
-            for _, r in gg.iterrows():
-                snippet = excerpt_snippet(r["reasoning_text"])
-                if not snippet:
-                    continue
-                party_excerpts.append({
-                    "text": snippet,
-                    "rubrik": anonymise(str(r["rubrik"])),
-                })
-                if len(party_excerpts) >= per_topic:
-                    break
-            if party_excerpts:
-                topic_out[party] = party_excerpts
-
-    # --- Cabinet: from majority recommendations ---
-    # For each (cabinet party, topic), pick vote events where the cabinet
-    # voted Ja (= they supported the recommendation) and the proposal text
-    # is substantive (>= 25 words). Then for each topic, deduplicate excerpts
-    # so cabinet parties show distinct topical examples.
+    # --- Opposition: ställningstagande_text from reservations ---
+    res = pd.read_parquet(IN / "reservations.parquet")
+    # Need to link reservations to topics via dok_id + punkt → votering_id.
     tex = (pd.read_parquet(IN / "vote_event_texts.parquet")
-             .drop_duplicates("votering_id"))
+             .drop_duplicates(["dok_id", "punkt"])
+             [["dok_id", "punkt", "votering_id"]])
     topics_link = pd.read_parquet(IN / "topics.parquet")
-    party_topic = pd.read_parquet(IN / "party_topic.parquet")
+    res_linked = (res.merge(tex, on=["dok_id", "punkt"], how="left")
+                     .merge(topics_link[["votering_id", "topic_id"]],
+                            on="votering_id", how="left"))
+    res_linked = res_linked[res_linked["topic_id"].notna()]
+    res_linked["topic_id"] = res_linked["topic_id"].astype(int)
 
-    # Cabinet parties vote Ja with mean stance > 0.95 — we want events where
-    # the cabinet voted Ja (n_ja was nearly all of their MPs).
-    cabinet_stance = party_topic[party_topic["parti"].isin(CABINET)]
+    # Expand multi-party reservations to one row per signer.
+    rows = []
+    for _, r in res_linked.iterrows():
+        for p in str(r["partier"]).split(";"):
+            if p in OPP:
+                rows.append({
+                    "party": p,
+                    "topic_id": r["topic_id"],
+                    "rubrik": r["rubrik"],
+                    "text": r["stallningstagande_text"] or "",
+                    "n_partier": r["n_partier"],
+                    "n_stallnings_words": r["n_stallnings_words"],
+                })
+    opp_df = pd.DataFrame(rows)
+    opp_df = opp_df[opp_df["n_stallnings_words"] >= 40]
+    # Prefer solo reservations (n_partier == 1) and longer ställningstagande.
+    opp_df["solo"] = (opp_df["n_partier"] == 1).astype(int)
+    opp_df = opp_df.sort_values(["topic_id", "party", "solo", "n_stallnings_words"],
+                                  ascending=[True, True, False, False])
 
-    # Link vote events to topics
-    tex_topics = tex.merge(topics_link[["votering_id", "topic_id"]],
-                           on="votering_id", how="left")
-    tex_topics["combined_text"] = (tex_topics["bet_titel"].fillna("") + ". " +
-                                    tex_topics["rubrik"].fillna("") + ". " +
-                                    tex_topics["forslag_text"].fillna(""))
-    tex_topics["n_words"] = tex_topics["combined_text"].str.split().str.len()
-    tex_topics = tex_topics[(tex_topics["n_words"] >= 25) &
-                             (tex_topics["n_words"] <= 200) &
-                             tex_topics["topic_id"].notna()]
-    tex_topics = tex_topics.sort_values(["topic_id", "n_words"],
-                                          ascending=[True, False])
-
-    cabinet_text_excerpts: dict[int, list[dict]] = {}
-    for topic_id, g in tex_topics.groupby("topic_id"):
-        cabinet_text_excerpts[int(topic_id)] = []
+    n_opp_cells = 0
+    for (topic_id, party), g in opp_df.groupby(["topic_id", "party"]):
+        topic_out = out.setdefault(str(int(topic_id)), {})
+        party_excerpts = []
         seen_rubriks = set()
         for _, r in g.iterrows():
-            snippet = excerpt_snippet(r["combined_text"], max_words=110, min_words=25)
+            snippet = excerpt_snippet(r["text"])
             if not snippet:
                 continue
-            rubrik_key = (r.get("rubrik") or "")[:30].lower()
+            rubrik_key = (r["rubrik"] or "")[:40].lower().strip()
             if rubrik_key in seen_rubriks:
                 continue
             seen_rubriks.add(rubrik_key)
-            cabinet_text_excerpts[int(topic_id)].append({
+            party_excerpts.append({
                 "text": snippet,
-                "rubrik": anonymise(str(r.get("rubrik") or "")),
+                "rubrik": anonymise(str(r["rubrik"] or "")),
             })
-            if len(cabinet_text_excerpts[int(topic_id)]) >= per_topic:
+            if len(party_excerpts) >= per_topic:
                 break
+        if party_excerpts:
+            topic_out[party] = party_excerpts
+            n_opp_cells += 1
 
-    # Use the SAME pool for all three cabinet parties — they vote together,
-    # so attributing it to one is misleading; we offer them as distinct
-    # options each round.
-    for topic_id, excerpt_list in cabinet_text_excerpts.items():
+    # --- Cabinet: majority_opinions ---
+    maj = pd.read_parquet(IN / "majority_opinions.parquet")
+    # Need topic_id per majority opinion. dok_id maps to multiple vote events
+    # (possibly multiple topics); we attribute to the dominant topic.
+    e2t = topics_link.merge(
+        tex[["dok_id", "votering_id"]], on="votering_id")
+    e2t["dok_id"] = e2t["dok_id"].str.upper()
+    bet_topic = (e2t.groupby("dok_id")["topic_id"]
+                    .agg(lambda s: s.mode().iat[0])
+                    .reset_index())
+    maj["dok_id_u"] = maj["dok_id"].str.upper()
+    maj_linked = maj.merge(bet_topic, left_on="dok_id_u", right_on="dok_id",
+                           how="inner", suffixes=("", "_bet"))
+    maj_linked = maj_linked.sort_values(["topic_id", "n_words"],
+                                          ascending=[True, False])
+
+    # Lightly recast "Utskottet" voice to "vi" so the cabinet excerpts read
+    # like first-person positions, matching the reservation voice.
+    def recast(text: str) -> str:
+        # Order matters — replace longer phrases first.
+        s = re.sub(r"\bUtskottet vill därför\b", "vi vill därför", text)
+        s = re.sub(r"\bUtskottet anser därför\b", "vi anser därför", s)
+        s = re.sub(r"\bUtskottet välkomnar\b", "vi välkomnar", s)
+        s = re.sub(r"\bUtskottet ser\b", "vi ser", s)
+        s = re.sub(r"\bUtskottet anser\b", "vi anser", s)
+        s = re.sub(r"\bUtskottet menar\b", "vi menar", s)
+        s = re.sub(r"\bUtskottet konstaterar\b", "vi konstaterar", s)
+        s = re.sub(r"\bUtskottet bedömer\b", "vi bedömer", s)
+        s = re.sub(r"\bUtskottet vill\b", "vi vill", s)
+        s = re.sub(r"\butskottet[s]?\b", "vi", s, flags=re.IGNORECASE)
+        return s
+
+    n_cab_cells = 0
+    cabinet_excerpts_by_topic = {}
+    for topic_id, g in maj_linked.groupby("topic_id"):
+        per_topic_list = []
+        seen_rubriks = set()
+        for _, r in g.iterrows():
+            text = recast(r["text"])
+            snippet = excerpt_snippet(text)
+            if not snippet:
+                continue
+            rubrik_key = (r["rubrik"] or "")[:40].lower().strip()
+            if rubrik_key in seen_rubriks:
+                continue
+            seen_rubriks.add(rubrik_key)
+            per_topic_list.append({
+                "text": snippet,
+                "rubrik": anonymise(str(r["rubrik"] or "")),
+            })
+            if len(per_topic_list) >= per_topic * 3:  # need pool for all 3 cabinet parties
+                break
+        cabinet_excerpts_by_topic[int(topic_id)] = per_topic_list
+
+    # Round-robin distribute to L/KD/M.
+    for topic_id, excerpt_list in cabinet_excerpts_by_topic.items():
         if not excerpt_list:
             continue
         topic_out = out.setdefault(str(topic_id), {})
-        # Round-robin: party gets a rotating subset of the pool.
         for i, party in enumerate(["L", "KD", "M"]):
-            picks_for_party = excerpt_list[i::3] or excerpt_list
+            picks_for_party = excerpt_list[i::3]
             if picks_for_party:
-                topic_out[party] = picks_for_party
+                topic_out[party] = picks_for_party[:per_topic]
+                n_cab_cells += 1
 
     (OUT / "excerpts.json").write_text(
         json.dumps(out, ensure_ascii=False, separators=(",", ":")))
-    total_excerpts = sum(len(p)
-                         for topic in out.values()
-                         for p in topic.values())
-    print(f"  excerpts: {total_excerpts} across {len(out)} topics, "
-          f"{sum(len(t) for t in out.values())} (topic, party) cells")
+    total = sum(len(p) for topic in out.values() for p in topic.values())
+    n_cells = sum(len(t) for t in out.values())
+    print(f"  excerpts: {total} across {len(out)} topics, "
+          f"{n_cells} (topic, party) cells "
+          f"(opp={n_opp_cells}, cab={n_cab_cells})")
 
 
 def main() -> None:

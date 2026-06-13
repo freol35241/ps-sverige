@@ -2,6 +2,7 @@
   {
     "id": 13,
     "label": "Migration och asylpolitik",
+    "question": "Migration och asylpolitik — vilket resonemang övertygar dig mest?",
     "primary_organ": "SfU",
     "size": 75,
     "what_spread": 0.35530597136039005,
@@ -10,6 +11,7 @@
   {
     "id": 18,
     "label": "Klimat och energi",
+    "question": "Klimat och energi — vilket resonemang övertygar dig mest?",
     "primary_organ": "MJU",
     "size": 134,
     "what_spread": 0.3224790901168507,
@@ -18,6 +20,7 @@
   {
     "id": 7,
     "label": "Skola och lärare",
+    "question": "Svensk skola — vilket resonemang ligger närmast dig?",
     "primary_organ": "UbU",
     "size": 104,
     "what_spread": 0.3204014525532656,
@@ -26,6 +29,7 @@
   {
     "id": 11,
     "label": "Läkemedel och tandvård",
+    "question": "Läkemedel och tandvård — vilket synsätt övertygar dig mest?",
     "primary_organ": "SoU",
     "size": 28,
     "what_spread": 0.31554546847719894,
@@ -34,6 +38,7 @@
   {
     "id": 9,
     "label": "Internationellt bistånd",
+    "question": "Internationellt bistånd och utrikespolitik — vilken hållning ligger närmast dig?",
     "primary_organ": "UU",
     "size": 58,
     "what_spread": 0.3151228745278678,
@@ -42,6 +47,7 @@
   {
     "id": 1,
     "label": "Kommuner och regioner",
+    "question": "Förhållandet mellan stat, regioner och kommuner — vilken hållning övertygar dig mest?",
     "primary_organ": "FiU",
     "size": 83,
     "what_spread": 0.2866536898054629,
@@ -50,6 +56,7 @@
   {
     "id": 24,
     "label": "Funktionsnedsättning och äldreomsorg",
+    "question": "Funktionsnedsättning och äldreomsorg — vilket resonemang övertygar dig mest?",
     "primary_organ": "SoU",
     "size": 62,
     "what_spread": 0.28464550664151317,
@@ -58,6 +65,7 @@
   {
     "id": 23,
     "label": "Hälso- och sjukvård",
+    "question": "Svensk hälso- och sjukvård — vilket resonemang ligger närmast dig?",
     "primary_organ": "SoU",
     "size": 89,
     "what_spread": 0.26980354087293024,
@@ -66,6 +74,7 @@
   {
     "id": 6,
     "label": "Skatter",
+    "question": "Hur ska skattepolitiken utformas?",
     "primary_organ": "SkU",
     "size": 97,
     "what_spread": 0.26564616888709075,
@@ -74,6 +83,7 @@
   {
     "id": 12,
     "label": "Socialtjänst, barn och familj",
+    "question": "Socialtjänst, barn och familj — vilket resonemang ligger närmast dig?",
     "primary_organ": "SoU",
     "size": 95,
     "what_spread": 0.2638189926957649,
@@ -82,6 +92,7 @@
   {
     "id": 8,
     "label": "Trafik och fordon",
+    "question": "Trafik och vägfrågor — vilket resonemang övertygar dig mest?",
     "primary_organ": "TU",
     "size": 100,
     "what_spread": 0.26267952174375436,
@@ -90,6 +101,7 @@
   {
     "id": 14,
     "label": "Högre utbildning och studiestöd",
+    "question": "Högre utbildning och studiestöd — vilken hållning ligger närmast dig?",
     "primary_organ": "UbU",
     "size": 93,
     "what_spread": 0.25927654313772974,
@@ -98,6 +110,7 @@
   {
     "id": 22,
     "label": "Fiske och sjöfart",
+    "question": "Fiske och sjöfart — vilket resonemang övertygar dig mest?",
     "primary_organ": "MJU",
     "size": 56,
     "what_spread": 0.2588782809043683,
@@ -106,6 +119,7 @@
   {
     "id": 2,
     "label": "Arbetsrätt och arbetslöshetsförsäkring",
+    "question": "Arbetsrätt och arbetslöshetsförsäkring — vilket resonemang ligger närmast dig?",
     "primary_organ": "AU",
     "size": 115,
     "what_spread": 0.2502107444002233,
@@ -113,7 +127,8 @@
   },
   {
     "id": 5,
-    "label": "Regelförenkling och konsumenträtt",
+    "label": "Regelförenkling och företagande",
+    "question": "Regler för företagande och näringsliv — vilken hållning övertygar dig mest?",
     "primary_organ": "CU",
     "size": 70,
     "what_spread": 0.2469418108206681,
@@ -122,6 +137,7 @@
   {
     "id": 16,
     "label": "Näringspolitik och handel",
+    "question": "Näringspolitik och internationell handel — vilket synsätt övertygar dig mest?",
     "primary_organ": "NU",
     "size": 103,
     "what_spread": 0.24425607116099834,
@@ -130,6 +146,7 @@
   {
     "id": 4,
     "label": "Försvar och krisberedskap",
+    "question": "Försvar och samhällets krisberedskap — vilket angreppssätt övertygar dig mest?",
     "primary_organ": "FöU",
     "size": 113,
     "what_spread": 0.2420454875470918,
@@ -138,6 +155,7 @@
   {
     "id": 3,
     "label": "Brott och kriminalvård",
+    "question": "Hur ska Sverige hantera brott och kriminalvård?",
     "primary_organ": "JuU",
     "size": 161,
     "what_spread": 0.23919432780546984,
@@ -146,6 +164,7 @@
   {
     "id": 27,
     "label": "Diskriminering och minoriteter",
+    "question": "Diskriminering och minoritetsfrågor — vilket resonemang ligger närmast dig?",
     "primary_organ": "KU",
     "size": 101,
     "what_spread": 0.23762024936986756,
@@ -154,6 +173,7 @@
   {
     "id": 21,
     "label": "Bostadspolitik",
+    "question": "Bostadspolitik — vilket resonemang ligger närmast dig?",
     "primary_organ": "CU",
     "size": 93,
     "what_spread": 0.23752060609992554,
@@ -162,6 +182,7 @@
   {
     "id": 25,
     "label": "Idrott, friluftsliv, ANDTS",
+    "question": "Idrott, friluftsliv och alkohol-/drogfrågor — vilket resonemang ligger närmast dig?",
     "primary_organ": "KrU",
     "size": 47,
     "what_spread": 0.23410729429132918,
@@ -170,6 +191,7 @@
   {
     "id": 0,
     "label": "Yttrandefrihet och digitalisering",
+    "question": "Yttrandefrihet och digitalisering — vilket resonemang ligger närmast dig?",
     "primary_organ": "KU",
     "size": 60,
     "what_spread": 0.23403275810600377,
@@ -178,6 +200,7 @@
   {
     "id": 15,
     "label": "Nato och EU-samarbete",
+    "question": "Nato och EU-samarbete — vilket resonemang övertygar dig mest?",
     "primary_organ": "UU",
     "size": 85,
     "what_spread": 0.2306090922565345,
@@ -186,6 +209,7 @@
   {
     "id": 26,
     "label": "Finansmarknad och ägande",
+    "question": "Finansmarknad och ägarfrågor — vilket synsätt övertygar dig mest?",
     "primary_organ": "FiU",
     "size": 99,
     "what_spread": 0.2234938182335362,
@@ -194,6 +218,7 @@
   {
     "id": 19,
     "label": "Brottsbekämpning och övervakning",
+    "question": "Brottsbekämpning och övervakning — vilken hållning ligger närmast dig?",
     "primary_organ": "JuU",
     "size": 71,
     "what_spread": 0.22325918273469428,
@@ -202,6 +227,7 @@
   {
     "id": 17,
     "label": "Kulturpolitik",
+    "question": "Kulturpolitik — vilket resonemang ligger närmast dig?",
     "primary_organ": "KrU",
     "size": 53,
     "what_spread": 0.21460970233948967,
@@ -210,6 +236,7 @@
   {
     "id": 10,
     "label": "Miljö, jakt och jordbruk",
+    "question": "Miljö, jakt och jordbruk — vilket resonemang övertygar dig mest?",
     "primary_organ": "MJU",
     "size": 161,
     "what_spread": 0.21375173590767788,
@@ -218,6 +245,7 @@
   {
     "id": 20,
     "label": "Författnings- och valfrågor",
+    "question": "Författnings- och valfrågor — vilket resonemang övertygar dig mest?",
     "primary_organ": "KU",
     "size": 74,
     "what_spread": 0.1953321282249943,

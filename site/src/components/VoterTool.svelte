@@ -134,20 +134,20 @@
   {:else if phase === 'q' && currentTopic && currentOptions.length}
     <div class="card">
       <p class="progress">Fråga {answers.length + 1} av {TOTAL_QUESTIONS}</p>
-      <p class="topic-label">{currentTopic.label}</p>
-      <h3>Vilket av följande resonemang stämmer bäst med din ståndpunkt?</h3>
+      <h3>{currentTopic.question || `${currentTopic.label} — vilket resonemang ligger närmast dig?`}</h3>
+      <p class="instruction">
+        Texterna nedan är hämtade från reservationer och betänkanden i riksdagen.
+        Partinamnen är dolda — välj det resonemang som övertygar dig mest.
+      </p>
       <div class="options">
         {#each currentOptions as opt, i}
           <button class="option" onclick={() => chooseOption(i)}>
             <span class="opt-text">{opt.text}</span>
-            {#if opt.rubrik}
-              <span class="opt-source">ur en reservation om: {opt.rubrik.toLowerCase()}</span>
-            {/if}
           </button>
         {/each}
       </div>
       <p class="meta-row">
-        <button onclick={skipQuestion} class="link">Inget passar — hoppa</button>
+        <button onclick={skipQuestion} class="link">Inget passar — hoppa över</button>
         <button onclick={reset} class="link">Börja om</button>
       </p>
     </div>
@@ -264,11 +264,13 @@
     color: #888;
     margin: 0;
   }
-  .topic-label {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: #2A4A7F;
-    margin: 0.5rem 0 0;
+  .instruction {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0 0 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #DDD;
   }
   .options {
     display: flex;
