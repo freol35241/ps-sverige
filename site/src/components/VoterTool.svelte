@@ -134,6 +134,7 @@
   {:else if phase === 'q' && currentTopic && currentOptions.length}
     <div class="card">
       <p class="progress">Fråga {answers.length + 1} av {TOTAL_QUESTIONS}</p>
+      <p class="topic-label">{currentTopic.label}</p>
       <h3>{currentTopic.question || `${currentTopic.label} — vilket resonemang ligger närmast dig?`}</h3>
       <p class="instruction">
         Texterna nedan är hämtade från reservationer och betänkanden i riksdagen.
@@ -193,11 +194,28 @@
           </div>
         {/each}
       </div>
-      <p class="note">
-        Att olika partier dyker upp på olika axlar betyder inte att du är
-        förvirrad. Det betyder att de flesta partier är inkonsekventa över de
-        här tre dimensionerna — och att en vanlig valkompass döljer det.
-      </p>
+      {#if new Set([result.what.top.party, result.why.top.party, result.how.top.party]).size === 1}
+        <p class="note">
+          Du fick samma parti på alla tre axlarna. Det är ovanligt — de
+          flesta partier är inkonsekventa över de här dimensionerna, och de
+          flesta väljare matchar tre olika partier i sin tur. Det här
+          partiet ligger nära dig i både vad det gör, hur det resonerar och
+          vilka medel det föredrar.
+        </p>
+      {:else if new Set([result.what.top.party, result.why.top.party, result.how.top.party]).size === 2}
+        <p class="note">
+          Två olika partier dyker upp på dina tre axlar. Det är inte ett fel
+          — det är en mer ärlig bild av var du faktiskt står än en
+          procentsiffra mot ett parti.
+        </p>
+      {:else}
+        <p class="note">
+          Att tre olika partier dyker upp på dina tre axlar betyder inte att
+          du är förvirrad. Det betyder att de flesta partier är
+          inkonsekventa över de här dimensionerna — och att en vanlig
+          valkompass döljer det.
+        </p>
+      {/if}
 
       <details class="all-scores">
         <summary>Visa alla partier per axel</summary>
@@ -276,6 +294,14 @@
     text-transform: uppercase;
     color: #888;
     margin: 0;
+  }
+  .topic-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2A4A7F;
+    font-weight: 700;
+    margin: 0.5rem 0 0;
   }
   .instruction {
     font-size: 0.9rem;
