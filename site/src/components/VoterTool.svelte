@@ -216,6 +216,26 @@
         </div>
       </details>
 
+      <details class="all-scores">
+        <summary>Visa dina svar ({answers.length} st)</summary>
+        <ol class="answer-review">
+          {#each answers as a, i}
+            {@const t = topicsRaw.find(t => t.id === a.topicId)}
+            <li>
+              <span class="ans-topic">{t?.label || `Ämne ${a.topicId}`}</span>
+              <span class="ans-arrow">→</span>
+              <span class="ans-party" style:background={PARTY_INFO[a.party].color}>
+                {a.party}
+              </span>
+            </li>
+          {/each}
+        </ol>
+        <p class="meta" style="margin-top:1rem">
+          Du visste inte vilka partier som stod bakom argumenten när du
+          valde — det här är vad du valde att hålla med om i efterhand.
+        </p>
+      </details>
+
       <button onclick={reset} class="btn-secondary">Börja om</button>
     </div>
 
@@ -438,6 +458,39 @@
     text-align: center;
   }
   .score-val { color: #444; font-weight: 500; }
+
+  .answer-review {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: ans;
+  }
+  .answer-review li {
+    counter-increment: ans;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #EEE;
+    font-size: 0.9rem;
+  }
+  .answer-review li::before {
+    content: counter(ans) ".";
+    color: #888;
+    min-width: 24px;
+    font-weight: 600;
+  }
+  .ans-topic { flex: 1; color: #333; }
+  .ans-arrow { color: #888; }
+  .ans-party {
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    min-width: 36px;
+    text-align: center;
+  }
 
   @media (max-width: 540px) {
     .card { padding: 1.25rem; }
