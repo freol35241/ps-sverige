@@ -19,69 +19,278 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </header>
 
     <p>
-      <em>Den fullständiga texten är under redigering och publiceras inom kort.</em>
+      Under riksmötet 2022/23 röstade Sverigedemokraterna med regeringspartierna
+      M, KD och L i 67 procent av kammarens omröstningar. I 2025/26 — valåret —
+      är siffran 98 procent. Samtidigt har antalet egna reservationer från SD
+      kollapsat från 749 till 17 på ett enda år. SD röstar inte längre bara med
+      regeringen — de skriver inte heller egna alternativ till protokoll.
     </p>
 
-    <h2>Den korta sammanfattningen</h2>
     <p>
-      Sveriges riksdag är ett av världens mest dokumenterade parlament. Varje
-      omröstning, varje anförande, varje reservation finns publicerad som öppna
-      data. Det här projektet behandlar materialet som ett beteendedata: ett
-      sätt att rekonstruera ideologi, koalitionsstruktur och samsyn ur det
-      som faktiskt händer i kammaren — inte ur det som partierna säger i sin
-      egen marknadsföring.
+      Det är en av flera bilder som framträder när man behandlar riksdagens
+      öppna data som ett <em>beteendedata</em>: ett sätt att rekonstruera
+      ideologi, koalitionsstruktur och samsyn ur det som faktiskt händer i
+      kammaren — inte ur det som partierna säger i sina egna utskick.
     </p>
 
-    <h2>Tre frågor som en valkompass borde ställa</h2>
+    <p class="pullquote">
+      SD röstar inte längre bara med regeringen — de skriver inte heller
+      egna alternativ till protokoll.
+    </p>
+
+    <h2>Tre frågor en valkompass borde ställa</h2>
+    <p>
+      Två väljare kan svara likadant på "ska vi höja koldioxidskatten" av rakt
+      motsatta skäl. Den ena för att klimatet är existentiellt; den andra för
+      att hen ogillar dem som skulle förvalta intäkterna. När båda matchas
+      mot samma parti är åtminstone en av dem garanterad att bli besviken
+      när partiet sedan regerar.
+    </p>
+    <p>
+      Det är därför den här valkompassen är uppdelad i tre dimensioner i
+      stället för en:
+    </p>
     <ol>
-      <li><strong>VAD</strong> tycker partiet i sakfrågan?</li>
-      <li><strong>VARFÖR</strong> tycker partiet så — vilka värden hänvisar de till?</li>
-      <li><strong>HUR</strong> vill partiet genomföra det — marknad eller reglering, förebyggande eller straff, stat eller kommun?</li>
+      <li><strong>VAD</strong> — partiets faktiska position i sakfrågan, mätt genom hur deras ledamöter har röstat.</li>
+      <li><strong>VARFÖR</strong> — partiets värdegrund, mätt genom hur de motiverar sina beslut i reservationer och betänkanden.</li>
+      <li><strong>HUR</strong> — partiets föredragna medel: marknad eller reglering, förebyggande eller straff, stat eller kommun, generellt eller riktat.</li>
     </ol>
     <p>
-      De flesta valkompasser bryr sig bara om den första frågan. Det är därför
-      två väljare med helt olika världsbilder kan få samma rekommendation.
+      De tre dimensionerna pekar ibland åt samma håll. Men oftare gör de det
+      inte — och det är just där den vanliga valkompassen blir missvisande.
     </p>
 
     <section class="tool-section">
       <div class="container">
-        <h2 style="margin-top:0">Hitta ditt parti — tredimensionell match</h2>
+        <h2 style="margin-top:0">Vill du testa själv?</h2>
         <p>
-          Verktyget ställer 8–12 frågor baserade på riksdagens egna
-          omröstningar. Det utvärderar sedan din ståndpunkt på tre axlar:
-          vad, varför och hur. Resultatet visar vilket parti som matchar dig
-          bäst — och var matchningen brister.
+          Verktyget ställer ungefär tio frågor och redovisar matchningen
+          på alla tre axlarna. Allt sker i din webbläsare — inga svar lämnar
+          din enhet.
         </p>
         <p style="text-align: center; margin: 2rem 0;">
-          <a href={`${base}/valkompassen`} style="display: inline-block; padding: 0.75rem 1.5rem; background: #2A4A7F; color: white; text-decoration: none; border-radius: 4px; font-family: 'Inter', sans-serif;">
+          <a href={`${base}/valkompassen`} style="display: inline-block; padding: 0.85rem 1.75rem; background: #2A4A7F; color: white; text-decoration: none; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 1.05rem;">
             Starta valkompassen →
           </a>
         </p>
       </div>
     </section>
 
-    <h2>Vad analysen visar</h2>
-
-    <h3>Tidöblocket smälte samman under mandatperioden</h3>
+    <h2>Del 1 — Vad partierna gör</h2>
     <p>
-      I riksmötet 2022/23 röstade SD med regeringspartierna (M, KD, L) i 67 % av
-      kammaromröstningarna. I 2025/26 — valåret — är siffran 98 %. Samtidigt
-      kollapsade antalet egna reservationer från SD från 749 till 17 på ett år.
-      SD röstar inte bara med regeringen längre — de skriver inte heller egna
-      alternativ till protokoll.
+      Sveriges riksdag är ett av världens mest dokumenterade parlament. Varje
+      kammaromröstning publiceras som öppna data, ledamot för ledamot. Under
+      mandatperioden 2022–2026 har det rört sig om 2 501 omröstningar och
+      872 849 enskilda röstposter. Om man ställer upp matrisen — 349 platser
+      gånger drygt 2 500 omröstningar — och låter en standardalgoritm leta
+      efter dolda mönster (PCA), framträder en bild som inte är slumpmässig.
     </p>
 
-    <h3>Tre dimensioner gör samma data till tre olika historier</h3>
+    <figure>
+      <img src={`${base}/figures/01_behavioural_map.png`} alt="Karta över Sveriges riksdag baserad på röstmönster, 2022–2026" loading="lazy" />
+      <figcaption>
+        Riksdagen 2022–2026, projicerad i två dimensioner med PCA på röstmatrisen.
+        Den första axeln (PC1, 46 % av variansen) skiljer regeringsblocket
+        från oppositionen. Den andra (PC2, 13,5 %) splittrar oppositionen i
+        en S-arm och en V/MP/C-arm. Centerpartiet sitter mitt i den första
+        axeln men nere i den andra — geografiskt en centerposition, men
+        beteendemässigt vid sidan av S.
+      </figcaption>
+    </figure>
+
     <p>
-      M och SD röstar likadant (98 % samstämmighet) <em>och</em> talar likadant i
-      debatt — men de föreslår olika mekanismer i sina motiveringar. C och S
-      röstar tillsammans 91 % av tiden men resonerar väldigt olika i sina texter.
-      L och KD är hela mandatperioden så samstämmiga i sina reservationer att
-      de bildar en helt egen klunga.
+      Mönstret är välkänt från amerikansk röstforskning men har inte
+      visualiserats lika tydligt för svenska förhållanden. Det är värt att
+      notera vad <em>som inte</em> syns: någon "ny politisk mitt", någon
+      koalition utanför blocken, någon Centerns omsvängning. Det som syns
+      är två block — och en bakgrundsstruktur där V, MP och C ligger tätt
+      sammanpressade trots att de officiellt representerar olika ideologiska
+      traditioner.
+    </p>
+
+    <h3>Tidöblocket har smält samman — men inte på det sätt man tror</h3>
+    <p>
+      Den intressantaste rörelsen under mandatperioden går inte att se i den
+      statiska kartan ovan. Den syns först om man kör samma analys år för år.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/07_tido_collapse.png`} alt="Tidöblockets sammandragning 2022/23 till 2025/26" loading="lazy" />
+      <figcaption>
+        Regeringspartierna M, KD och L plus SD, projicerade per riksmöte.
+        Den genomsnittliga avståndet mellan deras partiscentroider faller
+        från 9,08 (2022/23) till 0,43 (2025/26). De fyra punkterna ligger
+        i 2025/26 ovanpå varandra.
+      </figcaption>
+    </figure>
+
+    <p>
+      Den tekniska tolkningen är att blockets partier röstar allt mer
+      identiskt. Den enklare tolkningen — eftersom kabinettet (M+KD+L) alltid
+      har röstat som en enhet — är att <em>SD har anpassat sig till
+      kabinettets positioner</em>, inte tvärtom. Och rörelsen har accelererat.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/08_agreement_trend.png`} alt="Tidöblockets röstsamsyn över mandatperioden" loading="lazy" />
+      <figcaption>
+        <strong>Vänster panel</strong>: andel kammaromröstningar där hela
+        Tidöblocket röstat lika. Den hoppade från 73 procent (2024/25) till
+        98 procent (2025/26) i samband med valårets början.
+        <strong>Höger panel</strong>: utvecklingen drivs helt av SD som
+        anpassat sig till kabinettets positioner.
+      </figcaption>
+    </figure>
+
+    <p>
+      67 procent → 98 procent kan låta torrt. Men det betyder att av
+      mandatperiodens 687 kammaromröstningar under valåret har SD avvikit
+      från regeringen på 11 av dem. Och samtidigt har antalet egna
+      reservationer från SD fallit från 574 (i 2024/25) till 17 (i 2025/26).
+      När oppositionspartiernas reservationer i samma period ökar med
+      40–70 procent.
     </p>
 
     <p>
-      <a href={`${base}/metod`}>Läs om metoden →</a>
+      Det är en av flera siffror som inte borde behöva publiceras precis
+      inför ett val.
+    </p>
+
+    <h2>Del 2 — Vad partierna säger</h2>
+    <p>
+      Röster är en sak. Texten är en annan. Tillsammans med 10 931
+      reservationer (totalt 2,8 miljoner ord text) och 54 914 anföranden
+      ger riksdagens dokumentation oss både handling och motivering.
+      Vi har använt en svensk språkmodell — <a href="https://huggingface.co/KBLab/sentence-bert-swedish-cased">KBLab/sentence-bert-swedish-cased</a> från
+      Kungliga biblioteket — för att översätta de här texterna till
+      jämförbara vektorer.
+    </p>
+
+    <p>
+      Den typiska frågan blir då: när två partier röstar likadant, talar de
+      då likadant också? Och tvärtom: när de röstar olika, kan de ändå
+      argumentera från samma värdegrund?
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/15_pair_what_vs_why.png`} alt="Partipar — röstöverensstämmelse vs resonemangsöverensstämmelse" loading="lazy" />
+      <figcaption>
+        Varje punkt är ett partipar. X-axeln visar deras
+        röstöverensstämmelse, y-axeln deras resonemangsöverensstämmelse
+        (cosinusavstånd mellan ämnescentrerade textvektorer). Trendlinjen
+        visar förväntat förhållande. Par över linjen argumenterar mer lika
+        än de röstar; par under röstar tillsammans men argumenterar olika.
+      </figcaption>
+    </figure>
+
+    <h3>Tre mönster värda att lägga märke till</h3>
+    <p>
+      <strong>S och C röstar tillsammans 91 procent av tiden — men
+      argumenterar separat.</strong> Det är inget värdebaserat förbund. De
+      är två partier som råkar hamna på samma sida i opposition mot
+      regeringen, men inte talar samma språk i sina reservationer. Den som
+      gillar Centerns resonemang men matchar Socialdemokraterna i
+      röstmönstret bör veta det.
+    </p>
+
+    <p>
+      <strong>M och SD röstar likadant (83 procent) och argumenterar
+      likadant.</strong> Det här är det enda partiparet som ligger över
+      trendlinjen och har positiv resonemangs­överensstämmelse. Förklaringen
+      är inte att M säger samma sak som SD om vad de röstar för — det är
+      att M:s textregister har närmat sig SD:s. Det är en svagare
+      sammansmältning än SD–regerings­anpassningen, men den går åt motsatt
+      håll.
+    </p>
+
+    <p>
+      <strong>V och MP är ett genuint vänsterblock.</strong> De röstar
+      tillsammans 93 procent av tiden, och de argumenterar med samma
+      värdegrund. Det är värt att veta för att den vänsterväljare som
+      tvekar mellan dem inte tvekar mellan ideologi och annan ideologi —
+      utan mellan två varianter av samma.
+    </p>
+
+    <h2>Del 3 — Hur partierna föreslår</h2>
+    <p>
+      Den tredje axeln är teorin om förändring: <em>hur</em> ska samhället
+      förändras? Marknad eller reglering? Förebyggande eller straff? Statlig
+      styrning eller kommunal? Generell välfärd eller behovsprövad? Det här
+      är inte sakfrågor — det är preferenser för medel.
+    </p>
+
+    <p>
+      Vi har kombinerat två signaler. Den ena är vilka partier som
+      <em>samtecknar</em> reservationer — när två partier sätter sina namn
+      under samma alternativa förslag delar de en konkret teori om hur det
+      ska göras. Den andra är en ordvalsanalys av deras anförandetexter
+      över de fyra dimensionerna ovan.
+    </p>
+
+    <p>
+      Resultatet ger fler överraskningar än de två första axlarna.
+      Sverigedemokraterna har 0 reservationer samtecknade med något annat
+      parti — inte ens med KD som de röstar identiskt med. Centerpartiet
+      driver 910 helt egna reservationer, fler än något annat parti.
+      Och socialdemokraterna och kristdemokraterna landar med
+      anmärkningsvärt höga likhetsvärden på "hur"-axeln — trots att de
+      tillhör motsatt block. Båda är "etablerade förvaltningspartier".
+      De talar med samma vokabulär om hur staten ska sköta sina åtaganden,
+      även när de inte håller med varandra om vad åtagandena ska vara.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/16_three_axis.png`} alt="VAD × VARFÖR × HUR — partipar över tre axlar" loading="lazy" />
+      <figcaption>
+        Sammanfattning av de tre axlarna. Varje rad representerar ett
+        partipar. Grön linje: paret är överens på alla tre axlarna
+        (kabinettet, V–MP). Orange: hög oenighet mellan axlarna (S–L,
+        M–SD, S–C — där "vad" och "varför" inte säger samma sak).
+        Lila: motsatser på alla tre (V–L).
+      </figcaption>
+    </figure>
+
+    <h2>Vad det betyder för en valkompass</h2>
+    <p>
+      Den standardvalkompass som de flesta svenska väljare har provat
+      reducerar din ståndpunkt till en siffra: "du är 87 procent
+      Centerpartist". Det är en konstruerad siffra. Den döljer att du
+      kanske håller med Centern om vad de röstar för, men inte om hur de
+      motiverar det, eller inte alls om de medel de föreslår.
+    </p>
+
+    <p>
+      Den tredimensionella varianten redovisar i stället tre siffror,
+      gärna olika. Det betyder inte att du är förvirrad. Det betyder att
+      de flesta partier är inkonsekventa över de här dimensionerna — och
+      att en vanlig valkompass har varit konstruerad för att gömma det.
+    </p>
+
+    <p>
+      Tre partier kan komma ut på topp på olika axlar för samma väljare.
+      Det är inte ett fel. Det är en mer ärlig beskrivning av vad väljaren
+      faktiskt vet — och vet inte — om sin egen position.
+    </p>
+
+    <section class="tool-section">
+      <div class="container">
+        <p style="text-align: center; margin: 2rem 0;">
+          <a href={`${base}/valkompassen`} style="display: inline-block; padding: 0.85rem 1.75rem; background: #2A4A7F; color: white; text-decoration: none; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 1.05rem;">
+            Starta valkompassen →
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <hr />
+
+    <p style="font-size: 0.9rem; color: #666;">
+      All analys baseras på reproducerbara metoder över offentliga data
+      från <a href="https://data.riksdagen.se">data.riksdagen.se</a>. Källkod
+      och full metodbeskrivning finns på <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
+      Inga partiintervjuer, inga undersökningar, inga subjektiva bedömningar
+      utöver de som krävs för att klassificera ämnen och ordval — och de är
+      öppet redovisade i koden.
     </p>
   </article>
 </BaseLayout>
