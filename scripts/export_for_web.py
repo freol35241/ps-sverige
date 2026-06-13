@@ -101,6 +101,49 @@ TOPIC_INFO = {
 TOPIC_LABELS = {k: v[0] for k, v in TOPIC_INFO.items()}
 TOPIC_QUESTIONS = {k: v[1] for k, v in TOPIC_INFO.items()}
 
+# Per-topic vocabulary used as a *content* filter on excerpts. An excerpt
+# is kept only if it contains at least one of these terms (stems suffice).
+# Catches the case where a misclustered vote event drags an off-topic
+# reservation into the wrong cluster.
+TOPIC_KEYWORDS = {
+    0: ["yttrande", "tryck", "digital", "internet", "media", "press", "upphovsrätt", "data", "integritet"],
+    1: ["kommun", "region", "landsting"],
+    2: ["arbetslös", "arbetsrätt", "arbetsmiljö", "anställ", "facklig", "arbetsförmedling", "lön"],
+    3: ["brott", "straff", "påföljd", "kriminal", "polis", "fängels", "narkotika", "vål"],
+    4: ["försvar", "krisberedskap", "totalförsvar", "militär", "civilt försvar", "säkerhet"],
+    5: ["regelförenkl", "konsument", "företag", "näringsförbud", "marknad"],
+    6: ["skatt", "punktskatt", "moms", "mervärdesskatt", "avdrag"],
+    7: ["skola", "lärare", "elev", "förskola", "klassrum", "läromedel", "skolpeng", "betyg", "läroplan"],
+    8: ["trafik", "fordon", "bil", "cykel", "väg", "körkort", "taxi", "kollektivtrafik"],
+    9: ["bistånd", "internationella", "utveckling", "fn", "afrika", "ukraina", "humanitär"],
+    10: ["miljö", "djur", "skog", "natur", "jakt", "viltvård", "rovdjur", "klimat"],
+    11: ["läkemedel", "tandvård", "apotek", "vaccin"],
+    12: ["socialtjänst", "barn", "familj", "föräldra", "vårdnad", "famil"],
+    13: ["migration", "asyl", "uppehållstillstånd", "medborgarskap", "invandring", "flykt", "anhörig"],
+    14: ["högskola", "universitet", "studiestöd", "csn", "gymnasium", "vuxenutbildning"],
+    15: ["nato", "eu", "europeisk", "utrik", "säkerhetspolitik", "försvarsallians"],
+    16: ["näring", "handel", "export", "import", "industri", "innovation", "tillväxt"],
+    17: ["kultur", "konst", "musik", "litteratur", "bibliotek", "museum", "språk"],
+    18: ["klimat", "energi", "el", "kärnkraft", "vindkraft", "fossil", "utsläpp", "koldioxid"],
+    19: ["brottsbekämp", "övervakning", "spaning", "tvångsmedel", "polis", "cyber", "terror"],
+    20: ["författning", "val", "riksdag", "grundlag", "lobby", "partifinansiering"],
+    21: ["bostad", "hyresrätt", "byggande", "hyra", "bostadsförsörj"],
+    22: ["fiske", "sjöfart", "hav", "fartyg", "trål"],
+    23: ["sjukvård", "vård", "hälso", "patient", "primärvård", "sjukhus", "folkhälsa"],
+    24: ["funktionsneds", "äldre", "äldreomsorg", "assistans", "anhörig", "hemtjänst"],
+    25: ["idrott", "friluftsliv", "alkohol", "narkotika", "tobak", "spel", "andts", "sport"],
+    26: ["finansmarknad", "ägande", "aktie", "bank", "pension", "kapital", "börs"],
+    27: ["diskriminering", "minorit", "jämställd", "rasism", "etnisk", "hbtq", "religion"],
+}
+
+
+def matches_topic(text: str, topic_id: int) -> bool:
+    keywords = TOPIC_KEYWORDS.get(topic_id, [])
+    if not keywords:
+        return True
+    lower = text.lower()
+    return any(k in lower for k in keywords)
+
 
 def export_parties() -> None:
     parties = [{
@@ -192,6 +235,14 @@ def export_reasoning() -> None:
 ANON_PATTERNS = [
     # Soft hyphens left over from PDF→HTML conversion.
     (re.compile(r"\s*­\s*"), ""),
+    # Common stray-space-inside-word artefacts after PDF conversion:
+    # "U tskottet" → "Utskottet", "R egeringen" → "Regeringen". Only fix
+    # capital-letter cases since lowercase single-letter words exist in
+    # Swedish ("i", "å") and naive merging breaks them.
+    (re.compile(r"\b([A-ZÅÄÖ])\s+([a-zåäö]{3,})\b"), r"\1\2"),
+    # Mid-word hyphen-with-spaces: "samhälls­-­ekonomi" (after soft-hyphen
+    # stripping this becomes "samhälls - ekonomi").
+    (re.compile(r"([a-zåäö])\s+-\s+([a-zåäö])"), r"\1\2"),
     # MP-name + party patterns: "av X Y (P)" or "X Y (P)"
     (re.compile(
         r"\b(?:av\s+)?[A-ZÅÄÖ][a-zåäö]+(?:[\s-][A-ZÅÄÖ][a-zåäö]+){0,3}\s*\((?:V|S|MP|C|L|KD|M|SD|-)(?:\s*,\s*(?:V|S|MP|C|L|KD|M|SD|-))*\)",
@@ -285,11 +336,13 @@ def export_excerpts(per_topic: int = 5) -> None:
         in their reservations (the substantive argument, not the procedural
         intro). Solo reservations preferred.
       - Cabinet parties (L, KD, M): 'Utskottets ställningstagande' sections
-        from the betänkanden — the majority opinion equivalent. These speak
-        in third-person ("Utskottet anser …") which we lightly normalise to
-        first-person ("vi") to match the reservation voice.
+        from the betänkanden — the majority opinion equivalent.
 
-    All excerpts go through the same anonymisation + quality filter.
+    Topic alignment: we filter excerpts by the source vote event's
+    dist_to_centroid (its fit to the KMeans cluster) AND by a small keyword
+    check against the topic's expected vocabulary. Misclustered events
+    (e.g., a crime reservation tagged as Migration) are dropped before
+    they reach the voter.
     """
     CABINET = {"L", "KD", "M"}
     OPP = {"V", "S", "MP", "C", "SD"}
@@ -298,16 +351,23 @@ def export_excerpts(per_topic: int = 5) -> None:
 
     # --- Opposition: ställningstagande_text from reservations ---
     res = pd.read_parquet(IN / "reservations.parquet")
-    # Need to link reservations to topics via dok_id + punkt → votering_id.
     tex = (pd.read_parquet(IN / "vote_event_texts.parquet")
              .drop_duplicates(["dok_id", "punkt"])
              [["dok_id", "punkt", "votering_id"]])
     topics_link = pd.read_parquet(IN / "topics.parquet")
+    # Include dist_to_centroid for topic-fit filtering.
     res_linked = (res.merge(tex, on=["dok_id", "punkt"], how="left")
-                     .merge(topics_link[["votering_id", "topic_id"]],
+                     .merge(topics_link[["votering_id", "topic_id",
+                                          "dist_to_centroid"]],
                             on="votering_id", how="left"))
     res_linked = res_linked[res_linked["topic_id"].notna()]
     res_linked["topic_id"] = res_linked["topic_id"].astype(int)
+    # Drop the worst-fitting members of each cluster (likely misclassified).
+    thresholds = res_linked.groupby("topic_id")["dist_to_centroid"].quantile(0.85)
+    res_linked = res_linked[
+        res_linked.apply(
+            lambda r: r["dist_to_centroid"] <= thresholds[r["topic_id"]], axis=1)
+    ]
 
     # Expand multi-party reservations to one row per signer.
     rows = []
@@ -330,6 +390,7 @@ def export_excerpts(per_topic: int = 5) -> None:
                                   ascending=[True, True, False, False])
 
     n_opp_cells = 0
+    n_dropped_misclass = 0
     for (topic_id, party), g in opp_df.groupby(["topic_id", "party"]):
         topic_out = out.setdefault(str(int(topic_id)), {})
         party_excerpts = []
@@ -337,6 +398,11 @@ def export_excerpts(per_topic: int = 5) -> None:
         for _, r in g.iterrows():
             snippet = excerpt_snippet(r["text"])
             if not snippet:
+                continue
+            # Drop excerpts whose content doesn't match the topic's vocabulary
+            # (catches misclustered events).
+            if not matches_topic(snippet + " " + (r["rubrik"] or ""), int(topic_id)):
+                n_dropped_misclass += 1
                 continue
             rubrik_key = (r["rubrik"] or "")[:40].lower().strip()
             if rubrik_key in seen_rubriks:
@@ -394,6 +460,9 @@ def export_excerpts(per_topic: int = 5) -> None:
             snippet = excerpt_snippet(text)
             if not snippet:
                 continue
+            if not matches_topic(snippet + " " + (r["rubrik"] or ""), int(topic_id)):
+                n_dropped_misclass += 1
+                continue
             rubrik_key = (r["rubrik"] or "")[:40].lower().strip()
             if rubrik_key in seen_rubriks:
                 continue
@@ -402,7 +471,7 @@ def export_excerpts(per_topic: int = 5) -> None:
                 "text": snippet,
                 "rubrik": anonymise(str(r["rubrik"] or "")),
             })
-            if len(per_topic_list) >= per_topic * 3:  # need pool for all 3 cabinet parties
+            if len(per_topic_list) >= per_topic * 3:
                 break
         cabinet_excerpts_by_topic[int(topic_id)] = per_topic_list
 
@@ -423,7 +492,8 @@ def export_excerpts(per_topic: int = 5) -> None:
     n_cells = sum(len(t) for t in out.values())
     print(f"  excerpts: {total} across {len(out)} topics, "
           f"{n_cells} (topic, party) cells "
-          f"(opp={n_opp_cells}, cab={n_cab_cells})")
+          f"(opp={n_opp_cells}, cab={n_cab_cells}, "
+          f"misclass dropped={n_dropped_misclass})")
 
 
 def main() -> None:

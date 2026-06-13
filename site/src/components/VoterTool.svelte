@@ -46,7 +46,7 @@
     while (tries < 28) {
       topicId = pickNextTopic(topicsRaw, vectorsRaw, asked, posterior);
       if (topicId == null) break;
-      const opts = pickExcerptsForTopic(topicId, vectorsRaw, excerptsRaw);
+      const opts = pickExcerptsForTopic(topicId, vectorsRaw, excerptsRaw, posterior);
       if (opts.length >= 2) {
         currentTopic = topicsRaw.find(t => t.id === topicId);
         currentOptions = opts;
@@ -96,7 +96,7 @@
       phase = 'intro';
       return;
     }
-    result = computeMatch(answers, vectorsRaw, reasoning || {});
+    result = computeMatch(answers, vectorsRaw, reasoning || {}, topicsRaw);
     phase = 'done';
   }
 
@@ -160,45 +160,38 @@
         baserat på dina {answers.length} svar.
       </p>
       <div class="three-axis">
-        <div class="axis-row" style:--accent={PARTY_INFO[result.what.top.party].color}>
-          <div class="axis-meta">
-            <span class="axis-label">VAD</span>
-            <span class="axis-explain">vad partiet faktiskt gör i kammaren</span>
+        {#each [
+          { key: 'what', label: 'VAD', explain: 'vad partiet faktiskt gör i kammaren' },
+          { key: 'why',  label: 'VARFÖR', explain: 'vilka värden partiet hänvisar till' },
+          { key: 'how',  label: 'HUR', explain: 'vilka medel partiet föredrar — marknad, reglering, prevention, straff' },
+        ] as axis}
+          {@const top = result[axis.key].top}
+          {@const partyInfo = PARTY_INFO[top.party]}
+          {@const evidence = result[axis.key].evidence[top.party] || []}
+          <div class="axis-row" style:--accent={partyInfo.color}>
+            <div class="axis-meta">
+              <span class="axis-label">{axis.label}</span>
+              <span class="axis-explain">{axis.explain}</span>
+            </div>
+            <div class="axis-result">
+              <span class="axis-party" style:background={partyInfo.color}>
+                {top.party}
+              </span>
+              <span class="axis-party-name">{partyInfo.name}</span>
+              <span class="axis-sim">{formatPct(top.sim)}</span>
+            </div>
+            {#if evidence.length}
+              <div class="axis-evidence">
+                <span class="evidence-label">närmst dig på:</span>
+                <span class="evidence-topics">
+                  {#each evidence.slice(0, 3) as ev, i}
+                    <span>{ev.label}</span>{i < Math.min(evidence.length, 3) - 1 ? ' · ' : ''}
+                  {/each}
+                </span>
+              </div>
+            {/if}
           </div>
-          <div class="axis-result">
-            <span class="axis-party" style:background={PARTY_INFO[result.what.top.party].color}>
-              {result.what.top.party}
-            </span>
-            <span class="axis-party-name">{PARTY_INFO[result.what.top.party].name}</span>
-            <span class="axis-sim">{formatPct(result.what.top.sim)}</span>
-          </div>
-        </div>
-        <div class="axis-row" style:--accent={PARTY_INFO[result.why.top.party].color}>
-          <div class="axis-meta">
-            <span class="axis-label">VARFÖR</span>
-            <span class="axis-explain">vilka värden partiet hänvisar till</span>
-          </div>
-          <div class="axis-result">
-            <span class="axis-party" style:background={PARTY_INFO[result.why.top.party].color}>
-              {result.why.top.party}
-            </span>
-            <span class="axis-party-name">{PARTY_INFO[result.why.top.party].name}</span>
-            <span class="axis-sim">{formatPct(result.why.top.sim)}</span>
-          </div>
-        </div>
-        <div class="axis-row" style:--accent={PARTY_INFO[result.how.top.party].color}>
-          <div class="axis-meta">
-            <span class="axis-label">HUR</span>
-            <span class="axis-explain">vilka medel partiet föredrar (marknad, reglering, prevention, straff …)</span>
-          </div>
-          <div class="axis-result">
-            <span class="axis-party" style:background={PARTY_INFO[result.how.top.party].color}>
-              {result.how.top.party}
-            </span>
-            <span class="axis-party-name">{PARTY_INFO[result.how.top.party].name}</span>
-            <span class="axis-sim">{formatPct(result.how.top.sim)}</span>
-          </div>
-        </div>
+        {/each}
       </div>
       <p class="note">
         Att olika partier dyker upp på olika axlar betyder inte att du är
@@ -352,13 +345,30 @@
     --accent: #2A4A7F;
     display: grid;
     grid-template-columns: minmax(180px, 1.5fr) 2fr;
+    grid-template-areas:
+      "meta result"
+      "evidence evidence";
     align-items: stretch;
-    gap: 1rem;
+    gap: 0.75rem 1rem;
     padding: 1.25rem;
     background: #F5F5F2;
     border-left: 4px solid var(--accent);
     border-radius: 6px;
   }
+  .axis-meta { grid-area: meta; }
+  .axis-result { grid-area: result; }
+  .axis-evidence {
+    grid-area: evidence;
+    padding-top: 0.5rem;
+    border-top: 1px dashed #DDD;
+    font-size: 0.85rem;
+    color: #555;
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .evidence-label { font-weight: 600; color: #777; }
+  .evidence-topics span { color: #2A4A7F; }
   .axis-meta { display: flex; flex-direction: column; gap: 0.25rem; }
   .axis-label {
     font-size: 0.78rem;
