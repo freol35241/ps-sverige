@@ -61,7 +61,7 @@ def _save(fig: plt.Figure, name: str) -> Path:
     WEB.mkdir(parents=True, exist_ok=True)
     SITE.mkdir(parents=True, exist_ok=True)
     out = WEB / name
-    fig.savefig(out, dpi=100, bbox_inches="tight", facecolor=BG)
+    fig.savefig(out, dpi=200, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     shutil.copyfile(out, SITE / name)
     return out

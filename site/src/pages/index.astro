@@ -69,10 +69,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <p>
       Manifestos are not interchangeable documents. SD's 21,000-word
       manifesto registers meaningful content in 19 of the 28 policy
-      topics. Kristdemokraternas's 1,600-word manifesto covers one. The
-      asymmetry is structural: any cross-party manifesto comparison
-      will be sensitive to which topics each party chose to cover. The
-      stated-vs-revealed analysis later will note where this matters.
+      topics. Kristdemokraterna's 1,600-word manifesto covers one. The
+      asymmetry is structural. Any cross-party manifesto comparison
+      will be sensitive to which topics each party chose to write
+      about, and we will return to this when we compare what parties
+      stated in their manifestos to what they revealed in their
+      parliamentary record.
     </p>
 
     <h2>The shape of the chamber</h2>
@@ -80,7 +82,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <p>
       Before the four questions, a single orienting picture. Every
       chamber vote in the mandate, member by member, projected into two
-      dimensions by PCA on the 349-by-2,501 vote matrix.
+      dimensions by PCA on the 424-by-2,501 vote matrix (424 MPs
+      across the mandate, 2,501 votes).
     </p>
 
     <figure>
@@ -107,9 +110,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </p>
 
     <p>
-      The map collapses every vote in the mandate to one point per party.
-      It is structure, not substance. To see where the disagreement actually
-      lives, the same matrix split by topic:
+      To see where the disagreement actually lives, the same matrix
+      split by topic:
     </p>
 
     <figure>
@@ -123,25 +125,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      The most polarising topics in the 2022-2026 mandate are migration,
-      international aid, pharmaceuticals and dental care, climate, schools
-      and municipal services. Migration is the single most differentiating
-      topic by some distance. Both the size of the cross-party gap and the
-      cluster pattern (V, MP and C on one side; M, KD, L, SD on the other,
-      with S in between) repeats with minor variations across these top
-      issues. Health, climate and migration draw the same coalition
-      structure that the PCA showed in two dimensions; the per-topic view
-      simply shows that this structure is consistent across substantively
-      different questions.
+      Migration is the single most differentiating topic by some
+      distance, followed by international aid, pharmaceuticals and
+      dental care, climate, and schools. The cluster pattern that the
+      PCA showed in two dimensions (V, MP and C on one side; M, KD, L,
+      SD on the other; S in between) repeats across substantively
+      different topics with minor variations.
     </p>
 
     <p>
-      One more orienting picture before the four questions. Voting
-      together is not the same as reasoning together. For every party
-      pair, we have a vote-stance similarity (from the chamber record)
-      and a reasoning similarity (topic-centred cosine between
-      reservation reasoning vectors). The two correlate, but not
-      tightly.
+      One more orienting picture. Voting together is not the same as
+      reasoning together. For every party pair, we have a vote-stance
+      similarity from the chamber record and a reasoning similarity
+      from the topic-centred cosine between reservation reasoning
+      vectors. The two correlate at roughly r = 0.55, but the
+      residuals are where the interesting pairs live.
     </p>
 
     <figure>
@@ -240,11 +238,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      One pattern worth flagging: SD's diagnostic vocabulary is closer
-      to M's than M's is to L's. The two cabinet allies of M (KD and L)
-      diverge from each other on what they say is wrong, while SD and M
-      converge. We will return to this when we look at parliamentary
-      behaviour.
+      One pattern worth flagging: SD and M describe Sweden's problems
+      in more similar language than M and L do, even though M and L
+      share a cabinet. We will return to this when we look at
+      parliamentary behaviour.
     </p>
 
     <h2>2. What should Sweden be?</h2>
@@ -335,20 +332,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <p>
       The asymmetry continues in parliament. Across the entire mandate
-      SD has filed <strong>zero</strong> co-signed reservations with
-      any cabinet party. They vote with the cabinet on 98 % of chamber
-      votes but they do not put their name to any joint alternative
-      proposal. The cabinet parties co-sign more than a hundred
-      reservations among themselves. SD votes alongside; it does not
-      co-author.
+      SD has co-signed exactly three reservations with a cabinet party
+      (all KD-SD), out of nearly eleven thousand reservations filed.
+      They vote with the cabinet on 78 % of chamber votes across the
+      mandate, rising to 98 % in the election year, but they do not
+      put their name to joint alternative proposals. SD votes
+      alongside; it does not co-author.
     </p>
 
     <figure>
       <img src={`${base}/figures/30_temporal_coauthorship.png`} alt="Reservation co-authorship over the mandate" loading="lazy" />
       <figcaption>
         <strong>Left.</strong> Opposition parties co-sign reservations
-        with each other continuously, with V-MP the tightest pair (0.30
-        to 0.38). All three pairs tick up in 2025/26, the election year,
+        with each other continuously, with V-MP the tightest pair (0.26
+        to 0.37). All three pairs tick up in 2025/26, the election year,
         as opposition activity intensifies.
         <strong>Right.</strong> SD with the three cabinet parties:
         co-authorship is structurally zero for the first three years.
@@ -681,8 +678,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <p>
       Of the 687 chamber votes in 2025/26, SD deviated from the
-      cabinet in eleven. In the same year SD's filed reservations fell
-      from 574 (2024/25) to 17.
+      cabinet in eleven.
+    </p>
+
+    <p class="pullquote">
+      SD's filed reservations fell from 574 in 2024/25 to 17 in
+      2025/26. The party of opposition stopped opposing on the record,
+      one year before the election.
     </p>
 
     <figure>
@@ -696,105 +698,60 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      A reservation is the written record of a party's alternative
-      position. In a single year SD went from producing more such
-      records than the rest of the opposition combined to producing
-      essentially none. The party of opposition stopped opposing on
-      the record, one year before an election.
+      M and SD voted alike during the mandate, and M's reservation
+      register drifted measurably toward SD's. The boundary between
+      cabinet and support party has thinned from both sides: SD moving
+      into the cabinet's positions, M moving into SD's vocabulary. By
+      the election year they are, on the parliamentary record, one
+      entity.
+    </p>
+
+    <h3>The same story, at the individual level</h3>
+
+    <p>
+      Party averages can hide individual behaviour. Compute, for each
+      MP, the ratio of their distance to their own party's centroid
+      against their distance to the nearest other party. A ratio
+      above 1 means the MP votes more like another party than their
+      own.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/31_defectors.png`} alt="Top behavioural defectors over the mandate" loading="lazy" />
+      <figcaption>
+        The 12 MPs with the highest distance-to-own-party /
+        distance-to-nearest-other-party ratio, on a log scale. The
+        dashed line marks equidistance. A ratio of 5x means the MP is
+        five times further from their own party's centroid than from
+        another party's.
+      </figcaption>
+    </figure>
+
+    <p>
+      Eight of the top twelve are Liberalerna MPs whose voting record
+      sits closer to KD or M than to L. The collapse seen at
+      party-mean level is also a collapse at the MP level: the L
+      caucus is structurally inside the Christian-Democratic and
+      Moderate clusters. The party fusion is not just a colour change
+      on the map.
     </p>
 
     <p>
-      The mechanism comparison from the manifesto section returns
-      here. M and SD voted alike during the mandate, and M's
-      reservation-text register drifted measurably toward SD's across
-      the same period. The boundary between cabinet and support party
-      has thinned from both sides: SD moving into the cabinet's
-      positions, M moving into SD's vocabulary. By the election year
-      they are, on the parliamentary record, one entity.
-    </p>
-
-    <h3>The collapse against the wider picture</h3>
-
-    <p>
-      The Tidö story is dramatic but it is not the only movement in the
-      mandate. The same Procrustes-aligned PCA, run year by year, traces
-      where every party drifted.
+      The full Procrustes-aligned trajectory of all eight parties
+      across the four years is included below for reference.
+      Beyond the Tidö story, MP drifted up PC2, V drifted further
+      from the centre on PC1, and S barely moved at all.
     </p>
 
     <figure>
       <img src={`${base}/figures/28_centroid_trajectories.png`} alt="Each party's voting centroid drift across four parliamentary years" loading="lazy" />
       <figcaption>
         Each party's voting centroid across the four parliamentary
-        years of the mandate. Dot size grows with year. Lines show the
-        trajectory; the arrow on the last segment points to where the
-        party landed in the election year.
+        years. Dot size grows with year. The arrow on the last
+        segment points to where the party landed in the election
+        year.
       </figcaption>
     </figure>
-
-    <p>
-      Three movements stand out beyond the Tidö collapse:
-    </p>
-
-    <ul>
-      <li>
-        <strong>Miljöpartiet moved up on PC2 the most</strong>, from
-        below the axis to well above it. The within-bloc structure
-        captured by PC2 changed meaning for MP across the mandate. By
-        2025/26 they sit closer to the C-MP axis than to V.
-      </li>
-      <li>
-        <strong>Vänsterpartiet moved toward the centre on PC1</strong>,
-        from -8 in 2022/23 to roughly -2 in 2025/26. Their position
-        opposite the cabinet softened on the vote axis even as their
-        reservation activity stayed high.
-      </li>
-      <li>
-        <strong>Socialdemokraterna barely moved at all.</strong> The
-        largest opposition party is the most stationary point on the
-        map.
-      </li>
-    </ul>
-
-    <p>
-      The bloc fusion shows up at the individual level too. Compute, for
-      each MP, the ratio of their distance to their own party's centroid
-      against their distance to the nearest other party. A ratio above 1
-      means the MP votes more like another party than their own.
-    </p>
-
-    <figure>
-      <img src={`${base}/figures/31_defectors.png`} alt="Top behavioural defectors over the mandate" loading="lazy" />
-      <figcaption>
-        The 12 MPs with the highest distance-to-own-party / distance-to-nearest-other-party
-        ratio, on a log scale. The dashed line marks equidistance. A
-        ratio of 5x means the MP is five times further from their own
-        party's centroid than from another party's.
-      </figcaption>
-    </figure>
-
-    <p>
-      Eight of the top twelve defectors are Liberalerna MPs whose
-      voting record sits closer to KD or M than to L. The party of
-      Bengt Westerberg is structurally split at the individual level:
-      a substantial share of the L caucus is behaviourally inside the
-      Christian-Democratic or Moderate clusters. The collapse seen at
-      party-mean level is not just the cabinet's three colours blending
-      into a single centroid. It is also the L party itself thinning
-      from within.
-    </p>
-
-    <p>
-      The defector chart shows the tails. The middle of the
-      distribution holds an independent finding. Compute the mean
-      distance from MPs to their party centroid in the 4D PCA space,
-      per party. Kristdemokraterna's caucus is the most disciplined of
-      the eight (mean distance 2.51), followed by Moderaterna (5.20).
-      Miljöpartiet's is the most spread (8.48), Vänsterpartiet's
-      almost as spread (7.52). The opposition with the loudest
-      ideological coherence in its manifesto language has the most
-      heterogeneous caucus in chamber voting. The cabinet's largest
-      party, despite 78 MPs, votes as a unit.
-    </p>
 
     <hr />
 

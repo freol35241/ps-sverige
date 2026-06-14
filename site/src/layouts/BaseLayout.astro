@@ -83,5 +83,55 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
         </p>
       </div>
     </footer>
+
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Zoomed figure" hidden>
+      <button id="lightbox-close" class="lightbox-close" aria-label="Close">&times;</button>
+      <img id="lightbox-image" src="" alt="" />
+    </div>
+
+    <script is:inline>
+      (function () {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-image');
+        const closeBtn = document.getElementById('lightbox-close');
+        if (!lightbox || !lightboxImg || !closeBtn) return;
+
+        function open(src, alt) {
+          lightboxImg.src = src;
+          lightboxImg.alt = alt || '';
+          lightbox.hidden = false;
+          document.body.style.overflow = 'hidden';
+        }
+        function close() {
+          lightbox.hidden = true;
+          lightboxImg.src = '';
+          document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('figure img').forEach(function (img) {
+          img.classList.add('zoomable');
+          img.setAttribute('tabindex', '0');
+          img.setAttribute('role', 'button');
+          img.setAttribute('aria-label', 'Zoom figure');
+          img.addEventListener('click', function () {
+            open(img.currentSrc || img.src, img.alt);
+          });
+          img.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              open(img.currentSrc || img.src, img.alt);
+            }
+          });
+        });
+
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox || e.target === lightboxImg) close();
+        });
+        closeBtn.addEventListener('click', close);
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !lightbox.hidden) close();
+        });
+      })();
+    </script>
   </body>
 </html>

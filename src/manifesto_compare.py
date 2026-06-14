@@ -92,7 +92,7 @@ def value_heatmap() -> None:
     fig.tight_layout()
     out = FIG / "web" / "22_manifesto_values.png"
     out.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out, dpi=120, bbox_inches="tight", facecolor=BG)
+    fig.savefig(out, dpi=200, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
 
     site_out = ROOT / "site" / "public" / "figures" / out.name
@@ -164,7 +164,7 @@ def element_similarity() -> None:
         fig.tight_layout()
 
         out = FIG / "web" / f"23_manifesto_sim_{element}.png"
-        fig.savefig(out, dpi=120, bbox_inches="tight", facecolor=BG)
+        fig.savefig(out, dpi=200, bbox_inches="tight", facecolor=BG)
         plt.close(fig)
         import shutil
         shutil.copyfile(out, ROOT / "site" / "public" / "figures" / out.name)
