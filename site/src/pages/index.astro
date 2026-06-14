@@ -4,312 +4,273 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <BaseLayout
-  title="Politisk stilometri – vad partierna gör, säger och hur"
-  description="En datadriven analys av Sveriges riksdag 2022–2026. Och en valkompass som faktiskt mäter rätt sak."
+  title="Political stylometry — what parties do, say, and how they think"
+  description="A data-driven analysis of the Swedish parliament 2022–2026, treating roll-call votes, reservations and speeches as behavioural data."
 >
   <article class="container">
     <header class="article-hero">
-      <p class="byline">Riksdagen 2022–2026 · En analys i tre delar</p>
-      <h1>Vad partierna gör, säger – och hur de tänker</h1>
+      <p class="byline">Sveriges riksdag 2022–2026 · A data-driven analysis</p>
+      <h1>What parties do, say, and how they think</h1>
       <p class="lede">
-        Den vanliga valkompassen frågar vad partierna tycker. Det här är ett försök
-        att mäta vad de faktiskt gör i riksdagen, hur de motiverar sina beslut, och
-        vilka medel de föredrar. Tre olika frågor – tre olika svar.
+        Politics is usually described in slogans. This is an attempt to
+        describe it in data. Two and a half thousand chamber votes, eleven
+        thousand written dissents, and fifty thousand speeches — read as
+        behaviour, not rhetoric.
       </p>
     </header>
 
     <p>
-      Under riksmötet 2022/23 röstade Sverigedemokraterna med regeringspartierna
-      M, KD och L i 67 procent av kammarens omröstningar. I 2025/26 – valåret –
-      är siffran 98 procent. Samtidigt har antalet egna reservationer från SD
-      kollapsat från 749 till 17 på ett enda år. SD röstar inte längre bara med
-      regeringen – de skriver inte heller egna alternativa förslag till protokollet.
+      In the parliamentary year 2022/23 the Sweden Democrats voted with the
+      governing parties (Moderates, Christian Democrats, Liberals) on 67 % of
+      chamber votes. By 2025/26, the election year, that figure was 98 %. In
+      the same year the number of dissenting opinions ("reservationer") filed
+      by SD collapsed from 749 to 17. The party that runs against the
+      establishment had effectively merged with it on the record, one year
+      before the election.
     </p>
 
     <p>
-      Det är en av flera bilder som framträder när man behandlar riksdagens
-      öppna data som <em>beteendedata</em>: ett sätt att rekonstruera
-      ideologi, koalitionsstruktur och samsyn ur det som faktiskt händer i
-      kammaren – inte ur det som partierna säger i sina egna utskick.
+      That is one of several patterns that surface when you treat the
+      Riksdag's open data as behavioural data — a way of reconstructing
+      ideology, coalition structure and consensus from what actually happens
+      in the chamber, not from what parties say in their own materials.
     </p>
 
     <p class="pullquote">
-      SD röstar inte längre bara med regeringen – de skriver inte heller
-      egna alternativa förslag till protokollet.
+      SD is no longer just voting with the government — they have stopped
+      filing their own alternative positions on the record.
     </p>
 
-    <h2>Tre frågor en valkompass borde ställa</h2>
+    <h2>Three questions a voter compass should ask</h2>
     <p>
-      Två väljare kan svara likadant på "ska vi höja koldioxidskatten" av rakt
-      motsatta skäl. Den ena för att klimatet är existentiellt, den andra för
-      att hen ogillar dem som skulle förvalta intäkterna. När båda matchas
-      mot samma parti är åtminstone en av dem garanterad att bli besviken
-      när partiet sedan regerar.
+      Two voters can give the same answer to "should we raise the carbon
+      tax?" for opposite reasons. One because climate change is existential,
+      the other because they distrust whoever would spend the revenue.
+      Matched to the same party, at least one of them will be disappointed
+      when that party governs.
     </p>
     <p>
-      Det är därför den här valkompassen är uppdelad i tre dimensioner i
-      stället för en:
+      A more honest framing separates three questions a party can be asked,
+      each of which can be answered differently:
     </p>
     <ol class="axis-list">
       <li class="axis-list--vad">
-        <span class="axis-tag">VAD</span>
-        partiets faktiska position i sakfrågan, mätt genom hur deras ledamöter har röstat.
+        <span class="axis-tag">WHAT</span>
+        the party's actual position on the issue, measured by how its
+        members have voted.
       </li>
       <li class="axis-list--varfor">
-        <span class="axis-tag">VARFÖR</span>
-        partiets värdegrund, mätt genom hur de motiverar sina beslut i reservationer och betänkanden.
+        <span class="axis-tag">WHY</span>
+        the party's value framing, measured by how it justifies its
+        positions in reservations and committee reports.
       </li>
       <li class="axis-list--hur">
-        <span class="axis-tag">HUR</span>
-        partiets föredragna medel: marknad eller reglering, förebyggande eller straff, stat eller kommun, generellt eller riktat.
+        <span class="axis-tag">HOW</span>
+        the party's preferred mechanisms: market or regulation, prevention
+        or punishment, central or local, universal or targeted.
       </li>
     </ol>
     <p>
-      De tre dimensionerna pekar ibland åt samma håll. Men oftare gör de det
-      inte – och det är just där den vanliga valkompassen blir missvisande.
+      Sometimes these three point the same way. More often they don't — and
+      that is precisely where a one-number "you are 87 % Centerpartist"
+      compass becomes misleading.
     </p>
 
-    <section class="tool-section">
-      <div class="container">
-        <h2 style="margin-top:0">Vill du testa själv?</h2>
-        <p>
-          Verktyget ställer ungefär tio frågor och redovisar matchningen
-          på alla tre axlarna. Allt sker i din webbläsare – inga svar lämnar
-          din enhet.
-        </p>
-        <p style="text-align: center; margin: 2rem 0;">
-          <a href={`${base}/valkompassen`} class="cta-button">
-            Starta valkompassen →
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <h2>Del 1 – Vad partierna gör</h2>
+    <h2>Part 1 — What parties do</h2>
     <p>
-      Sveriges riksdag är ett av världens mest dokumenterade parlament. Varje
-      kammaromröstning publiceras som öppna data, ledamot för ledamot. Under
-      mandatperioden 2022–2026 har det rört sig om 2 501 omröstningar och
-      872 849 enskilda röstposter. Om man ställer upp matrisen – 349 platser
-      gånger drygt 2 500 omröstningar – och låter en standardalgoritm leta
-      efter dolda mönster (PCA), framträder en bild som inte är slumpmässig.
+      The Swedish parliament is one of the world's most extensively
+      documented. Every chamber vote is published as open data, member by
+      member. Across the 2022–2026 mandate that comes to 2,501 votes and
+      872,849 individual roll-call entries. Project the matrix — 349 seats
+      by ~2,500 votes — and let a standard algorithm look for hidden
+      structure (PCA), and a non-random picture emerges.
     </p>
 
     <figure>
-      <img src={`${base}/figures/01_behavioural_map.png`} alt="Karta över Sveriges riksdag baserad på röstmönster, 2022–2026" loading="lazy" />
+      <img src={`${base}/figures/01_behavioural_map.png`} alt="Behavioural map of the Riksdag based on voting patterns, 2022–2026" loading="lazy" />
       <figcaption>
-        Riksdagen 2022–2026, projicerad i två dimensioner med PCA på röstmatrisen.
-        Den första axeln (PC1, 46 % av variansen) skiljer regeringsblocket
-        från oppositionen. Den andra (PC2, 13,5 %) splittrar oppositionen i
-        en S-arm och en V/MP/C-arm. Centerpartiet sitter mitt i den första
-        axeln men nere i den andra – geografiskt en centerposition, men
-        beteendemässigt vid sidan av S.
+        The Riksdag 2022–2026, projected into two dimensions via PCA on the
+        voting matrix. The first axis (PC1, 46 % of variance) separates the
+        Tidö government bloc from the opposition. The second (PC2, 13.5 %)
+        splits the opposition into an S arm and a V/MP/C arm. Centerpartiet
+        sits at the centre of the first axis but well down on the second:
+        geographically centrist, behaviourally close to the soft left.
       </figcaption>
     </figure>
 
     <p>
-      Mönstret är välkänt från amerikansk röstforskning men har inte
-      visualiserats lika tydligt för svenska förhållanden. Det är värt att
-      notera vad som <em>inte</em> syns: någon "ny politisk mitt", någon
-      koalition utanför blocken, någon Centerns omsvängning. Det som syns
-      är två block – och en bakgrundsstruktur där V, MP och C ligger tätt
-      sammanpressade trots att de officiellt representerar olika ideologiska
-      traditioner.
+      The pattern itself is familiar from American roll-call research but
+      hasn't been visualised this directly for Swedish conditions. What is
+      worth noting is what's <em>not</em> there: no "new political centre",
+      no coalition cutting across blocs, no realignment from Centerpartiet.
+      What there is, is two blocs — and a background structure in which V,
+      MP and C sit tightly packed even though they officially represent
+      different ideological traditions.
     </p>
 
-    <h3>Tidöblocket har smält samman – men inte på det sätt man tror</h3>
+    <h3>The Tidö bloc converged — but not in the direction most assumed</h3>
     <p>
-      Den intressantaste rörelsen under mandatperioden går inte att se i den
-      statiska kartan ovan. Den syns först om man kör samma analys år för år.
+      The most interesting movement in the mandate is invisible in the
+      static map above. It only appears when the same analysis is run year
+      by year.
     </p>
 
     <figure>
-      <img src={`${base}/figures/07_tido_collapse.png`} alt="Tidöblockets sammandragning 2022/23 till 2025/26" loading="lazy" />
+      <img src={`${base}/figures/07_tido_collapse.png`} alt="The Tidö bloc collapsing into a single cluster, 2022/23 to 2025/26" loading="lazy" />
       <figcaption>
-        Regeringspartierna M, KD och L plus SD, projicerade per riksmöte.
-        Det genomsnittliga avståndet mellan deras particentroider faller
-        från 9,08 (2022/23) till 0,43 (2025/26). De fyra punkterna ligger
-        i 2025/26 ovanpå varandra.
+        The four parties of the Tidö bloc (M, KD, L plus SD as a support
+        party), per parliamentary year. The mean pairwise distance between
+        their centroids falls from 9.08 (2022/23) to 0.43 (2025/26). By
+        2025/26 the four points sit on top of one another.
       </figcaption>
     </figure>
 
     <p>
-      Den tekniska tolkningen är att blockets partier röstar allt mer
-      identiskt. Den enklare tolkningen – eftersom kabinettet (M+KD+L) alltid
-      har röstat som en enhet – är att <em>SD har anpassat sig till
-      kabinettets positioner</em>, inte tvärtom. Och rörelsen har accelererat.
+      The technical reading: the bloc's parties vote increasingly alike.
+      The simpler reading — because the cabinet (M, KD, L) has always
+      voted as a unit by definition — is that <em>SD has moved towards
+      the cabinet's positions</em>, not the other way around. And the
+      movement has accelerated.
     </p>
 
     <figure>
-      <img src={`${base}/figures/08_agreement_trend.png`} alt="Tidöblockets röstsamsyn över mandatperioden" loading="lazy" />
+      <img src={`${base}/figures/08_agreement_trend.png`} alt="Tidö bloc vote agreement over the mandate" loading="lazy" />
       <figcaption>
-        <strong>Vänster panel</strong>: andel kammaromröstningar där hela
-        Tidöblocket röstat lika. Andelen steg från 73 procent (2024/25)
-        till 98 procent (2025/26) i samband med valårets början.
-        <strong>Höger panel</strong>: utvecklingen drivs helt av SD som
-        anpassat sig till kabinettets positioner.
+        <strong>Left panel</strong>: share of chamber votes where the
+        entire Tidö bloc voted unanimously. The share rose from 73 % in
+        2024/25 to 98 % in 2025/26, in step with the start of the
+        election year.
+        <strong>Right panel</strong>: the rise is entirely driven by SD
+        aligning with the cabinet's positions.
       </figcaption>
     </figure>
 
     <p>
-      67 procent → 98 procent kan låta torrt. Men det betyder att av
-      mandatperiodens 687 kammaromröstningar under valåret har SD avvikit
-      från regeringen i 11 av dem. Samtidigt har antalet egna
-      reservationer från SD fallit från 574 (2024/25) till 17 (2025/26)
-      – medan oppositionspartiernas reservationer under samma period
-      ökade med 40–70 procent.
+      67 % → 98 % can sound dry. What it actually means: in the 687
+      chamber votes of the election year, SD deviated from the government
+      in 11 of them. In the same year SD's own dissenting opinions fell
+      from 574 (2024/25) to 17 (2025/26), while the four opposition
+      parties' reservations rose by 40–70 %.
     </p>
 
     <figure>
-      <img src={`${base}/figures/21_sd_reservation_collapse.png`} alt="SD:s reservationer per riksmöte, kollapsen i valåret" loading="lazy" />
+      <img src={`${base}/figures/21_sd_reservation_collapse.png`} alt="SD reservations by parliamentary year — the election-year collapse" loading="lazy" />
       <figcaption>
-        Antal reservationer per parti och riksmöte. SD:s tjocka gula linje
-        kollapsar i valåret. Oppositionspartiernas linjer rör sig uppåt eller
-        står stilla. Regeringspartierna (M, KD, L) är inte med – de skriver
-        nästan inga reservationer eftersom de är majoriteten.
+        Reservations filed per party and parliamentary year. The thick
+        yellow line is SD: 749 → 402 → 574 → 17. The opposition parties
+        rise or hold steady. The cabinet parties (M, KD, L) are excluded
+        — as the majority, they hardly file any.
       </figcaption>
     </figure>
 
     <p>
-      Det är en av flera siffror som inte borde behöva publiceras precis
-      inför ett val.
+      It is one of several figures that probably should not have to be
+      published one year before an election.
     </p>
 
-    <h2>Del 2 – Vad partierna säger</h2>
+    <h2>Part 2 — What parties say</h2>
     <p>
-      Röster är en sak. Texten är en annan. Tillsammans med 10 931
-      reservationer (totalt 2,8 miljoner ord text) och 54 914 anföranden
-      ger riksdagens dokumentation oss både handling och motivering.
-      Vi har använt en svensk språkmodell – <a href="https://huggingface.co/KBLab/sentence-bert-swedish-cased">KBLab/sentence-bert-swedish-cased</a> från
-      Kungliga biblioteket – för att översätta de här texterna till
-      jämförbara vektorer.
+      Votes are one thing. Text is another. Together with 10,931
+      reservations (2.8 million words in total) and 54,914 chamber
+      speeches, the Riksdag's record gives us both action and
+      justification. We used a Swedish language model —
+      <a href="https://huggingface.co/KBLab/sentence-bert-swedish-cased">KBLab/sentence-bert-swedish-cased</a>
+      from the National Library — to translate these texts into
+      comparable vectors.
     </p>
 
     <p>
-      Den typiska frågan blir då: när två partier röstar likadant, talar de
-      då likadant också? Och tvärtom: när de röstar olika, kan de ändå
-      argumentera från samma värdegrund?
+      The natural question becomes: when two parties vote alike, do they
+      also speak alike? And conversely, when they vote differently, can
+      they still argue from the same values?
     </p>
 
     <figure>
-      <img src={`${base}/figures/15_pair_what_vs_why.png`} alt="Partipar – röstöverensstämmelse vs resonemangsöverensstämmelse" loading="lazy" />
+      <img src={`${base}/figures/15_pair_what_vs_why.png`} alt="Party pairs — vote agreement vs reasoning agreement" loading="lazy" />
       <figcaption>
-        Varje punkt är ett partipar. X-axeln visar deras
-        röstöverensstämmelse, y-axeln deras resonemangsöverensstämmelse
-        (cosinusavstånd mellan ämnescentrerade textvektorer). Trendlinjen
-        visar förväntat förhållande. Par över linjen argumenterar mer lika
-        än de röstar; par under röstar tillsammans men argumenterar olika.
+        Each point is a pair of parties. X axis: how similarly they vote;
+        Y axis: how similarly they reason (cosine distance between
+        topic-centred text vectors). The trend line is the expected
+        relationship. Pairs above the line argue more alike than they
+        vote; pairs below vote together but argue differently.
       </figcaption>
     </figure>
 
-    <h3>Tre mönster värda att lägga märke till</h3>
+    <h3>Three patterns worth noting</h3>
     <p>
-      <strong>S och C röstar tillsammans 91 procent av tiden – men
-      argumenterar separat.</strong> Det är inget värdebaserat förbund. De
-      är två partier som råkar hamna på samma sida i opposition mot
-      regeringen, men inte talar samma språk i sina reservationer. Den som
-      gillar Centerns resonemang men matchar Socialdemokraterna i
-      röstmönstret bör veta det.
+      <strong>S and C vote together 91 % of the time — but argue
+      separately.</strong> This is not a values-based alliance. They are
+      two parties that happen to end up on the same side opposing the
+      government, but don't speak the same language in their reservations.
+      A voter who likes C's reasoning but votes-matches S should know
+      that.
     </p>
 
     <p>
-      <strong>M och SD röstar likadant (83 procent) och argumenterar
-      likadant.</strong> Det här är det enda partiparet som ligger över
-      trendlinjen och har positiv resonemangs­överensstämmelse. Förklaringen
-      är inte att M säger samma sak som SD om vad de röstar för – det är
-      att M:s textregister har närmat sig SD:s. Det är en svagare
-      sammansmältning än SD–regerings­anpassningen, men den går åt motsatt
-      håll.
+      <strong>M and SD vote alike (83 %) and argue alike.</strong> This
+      is the only party pair above the trend line with positive reasoning
+      similarity. The explanation isn't that M says what SD says about
+      what they vote for — it's that M's textual register has moved
+      towards SD's. A weaker convergence than the SD-towards-government
+      one, but in the opposite direction.
     </p>
 
     <p>
-      <strong>V och MP är ett genuint vänsterblock.</strong> De röstar
-      tillsammans 93 procent av tiden, och de argumenterar med samma
-      värdegrund. Det är värt att veta för att den vänsterväljare som
-      tvekar mellan dem inte tvekar mellan ideologi och annan ideologi –
-      utan mellan två varianter av samma.
+      <strong>V and MP are a genuine left bloc.</strong> They vote
+      together 93 % of the time and they argue from the same values. The
+      left-leaning voter hesitating between them isn't choosing between
+      different ideologies but between two variants of the same one.
     </p>
 
-    <h2>Del 3 – Hur partierna föreslår</h2>
+    <h2>Part 3 — How parties propose</h2>
     <p>
-      Den tredje axeln är teorin om förändring: <em>hur</em> ska samhället
-      förändras? Marknad eller reglering? Förebyggande eller straff? Statlig
-      styrning eller kommunal? Generell välfärd eller behovsprövad? Det här
-      är inte sakfrågor – det är preferenser för medel.
-    </p>
-
-    <p>
-      Vi har kombinerat två signaler. Den ena är vilka partier som
-      <em>samtecknar</em> reservationer – när två partier sätter sina namn
-      under samma alternativa förslag delar de en konkret teori om hur det
-      ska göras. Den andra är en ordvalsanalys av deras anförandetexter
-      över de fyra dimensionerna ovan.
+      The third axis is the theory of change: <em>how</em> should society
+      be changed? Market or regulation? Prevention or punishment? National
+      or local? Universal or targeted welfare? These are not policy
+      positions; they are preferences for mechanism.
     </p>
 
     <p>
-      Resultatet ger fler överraskningar än de två första axlarna.
-      Sverigedemokraterna har inga reservationer samtecknade med något
-      annat parti – inte ens med KD som de röstar identiskt med.
-      Centerpartiet driver 910 helt egna reservationer, fler än något annat
-      parti. Och Socialdemokraterna och Kristdemokraterna landar med
-      anmärkningsvärt höga likhetsvärden på "hur"-axeln – trots att de
-      tillhör motsatt block. Båda är "etablerade förvaltningspartier".
-      De talar med samma vokabulär om hur staten ska sköta sina åtaganden,
-      även när de inte håller med varandra om vad åtagandena ska vara.
+      We combine two signals. One is which parties <em>co-sign</em>
+      reservations — when two parties put their names on the same
+      alternative proposal, they share a concrete theory of how it should
+      be done. The other is a lexical analysis of their speech texts
+      across the four dimensions above.
+    </p>
+
+    <p>
+      The result produces more surprises than the first two axes. The
+      Sweden Democrats have zero co-signed reservations with any other
+      party — not even with KD, with whom they vote identically.
+      Centerpartiet files 910 entirely solo reservations, more than any
+      other party. And Socialdemokraterna and Kristdemokraterna land
+      with strikingly high "how" similarity — despite being on opposite
+      blocs. Both are "established administrative parties". They speak
+      with the same vocabulary about how the state should manage its
+      tasks, even when they disagree on what those tasks should be.
     </p>
 
     <figure>
-      <img src={`${base}/figures/16_three_axis.png`} alt="VAD × VARFÖR × HUR – partipar över tre axlar" loading="lazy" />
+      <img src={`${base}/figures/16_three_axis.png`} alt="WHAT × WHY × HOW — party pairs across three axes" loading="lazy" />
       <figcaption>
-        Sammanfattning av de tre axlarna. Varje rad representerar ett
-        partipar. Grön linje: paret är överens på alla tre axlarna
-        (kabinettet, V–MP). Orange: hög oenighet mellan axlarna (S–L,
-        M–SD, S–C – där "vad" och "varför" inte säger samma sak).
-        Lila: motsatser på alla tre (V–L).
+        Summary of the three axes. Each line is a party pair. Green:
+        consistent across all three axes (cabinet trio, V–MP). Orange:
+        high disagreement between axes (S–L, M–SD, S–C — pairs where
+        "what" and "why" don't say the same thing). Purple: opposed on
+        all three (V–L).
       </figcaption>
     </figure>
-
-    <h2>Vad det betyder för en valkompass</h2>
-    <p>
-      Den standardvalkompass som de flesta svenska väljare har provat
-      reducerar din ståndpunkt till en siffra: "du är 87 procent
-      Centerpartist". Det är en konstruerad siffra. Den döljer att du
-      kanske håller med Centern om vad de röstar för, men inte om hur de
-      motiverar det, eller inte alls om de medel de föreslår.
-    </p>
-
-    <p>
-      Den tredimensionella varianten redovisar i stället tre siffror,
-      ofta olika. Det betyder inte att du är förvirrad. Det betyder att
-      de flesta partier är inkonsekventa över de här dimensionerna – och
-      att en vanlig valkompass har varit konstruerad för att gömma det.
-    </p>
-
-    <p>
-      Tre partier kan komma ut på topp på olika axlar för samma väljare.
-      Det är inte ett fel. Det är en mer ärlig beskrivning av vad väljaren
-      faktiskt vet – och vet inte – om sin egen position.
-    </p>
-
-    <section class="tool-section">
-      <div class="container">
-        <p style="text-align: center; margin: 2rem 0;">
-          <a href={`${base}/valkompassen`} class="cta-button">
-            Starta valkompassen →
-          </a>
-        </p>
-      </div>
-    </section>
 
     <hr />
 
-    <p style="font-size: 0.9rem; color: #666;">
-      All analys baseras på reproducerbara metoder över offentliga data
-      från <a href="https://data.riksdagen.se">data.riksdagen.se</a>. Källkod
-      och full metodbeskrivning finns publikt på <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
-      Inga partiintervjuer, inga undersökningar, inga subjektiva bedömningar
-      utöver de som krävs för att klassificera ämnen och ordval – och de är
-      öppet redovisade i koden.
+    <p style="font-size: 0.92rem; color: var(--ink-muted);">
+      All analysis is based on reproducible methods over public data
+      from <a href="https://data.riksdagen.se">data.riksdagen.se</a>.
+      Source code and full method writeup at
+      <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
+      No party interviews, no surveys, no subjective judgments beyond
+      those required to classify topics and word choices — and those
+      are openly documented in the code.
     </p>
   </article>
 </BaseLayout>

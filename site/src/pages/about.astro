@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="About — political stylometry">
+  <article class="container">
+    <header class="article-hero">
+      <h1>About this project</h1>
+      <p class="lede">
+        An independent data analysis with no connection to any political
+        party or media organisation.
+      </p>
+    </header>
+
+    <h2>Why?</h2>
+    <p>
+      The standard election compass asks parties what they think. This
+      project starts from what parties actually do — and how they
+      justify it. That angle has been missing from the Swedish
+      election-compass tradition.
+    </p>
+
+    <h2>Is this journalism?</h2>
+    <p>
+      Closer to analysis. Everything is based on reproducible methods
+      over public data. No party interviews, no surveys, no subjective
+      judgments beyond those required to classify topics and word
+      choices — and those are openly documented in the code.
+    </p>
+
+    <h2>Who's behind it?</h2>
+    <p>
+      An independent developer. Comments and corrections are welcome
+      via
+      <a href="https://github.com/freol35241/ps-sverige/issues">GitHub issues</a>.
+    </p>
+
+    <h2>What's not included?</h2>
+    <ul>
+      <li>Decisions taken outside the Riksdag chamber (government,
+      agencies, EU votes).</li>
+      <li>Municipal and regional politics.</li>
+      <li>Questions that haven't yet been voted on during the current
+      mandate.</li>
+    </ul>
+  </article>
+</BaseLayout>

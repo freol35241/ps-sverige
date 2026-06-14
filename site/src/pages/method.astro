@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Method — political stylometry">
+  <article class="container">
+    <header class="article-hero">
+      <p class="byline">Method · updated 2026-06-14</p>
+      <h1>Method</h1>
+      <p class="lede">
+        Everything below is reproducible from public data at
+        data.riksdagen.se. Source code is on
+        <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
+      </p>
+    </header>
+
+    <h2>Data sources</h2>
+    <ul>
+      <li><strong>2,501 chamber votes</strong> from parliamentary years
+      2022/23–2025/26, fetched as bulk dumps from
+      <code>data.riksdagen.se/dataset/votering/</code>. 872,849 individual
+      roll-call entries from 424 members.</li>
+      <li><strong>54,914 chamber speeches</strong> from the same period
+      — all replies, interpellation answers and main speeches — fetched
+      as bulk dumps from
+      <code>data.riksdagen.se/dataset/anforande/</code>.</li>
+      <li><strong>10,931 dissenting opinions (reservationer)</strong>
+      extracted from 858 committee reports, fetched via
+      <code>data.riksdagen.se/utskottsforslag/</code> and
+      <code>data.riksdagen.se/dokumentstatus/</code>. 2.8 million words
+      of text in total.</li>
+      <li><strong>3,211 majority-opinion sections</strong> ("Utskottets
+      ställningstagande") from the same reports. The majority's
+      equivalent of a reservation.</li>
+    </ul>
+
+    <h2>Topic clustering</h2>
+    <p>
+      All 2,480 contested decision points are embedded with a Swedish
+      language model
+      (<a href="https://huggingface.co/KBLab/sentence-bert-swedish-cased">KBLab/sentence-bert-swedish-cased</a>,
+      a 768-dim model trained on Swedish text by the National Library's
+      KB Lab). We use each committee report's title plus the point's
+      heading as input — not the proposal text itself, which is
+      dominated by procedural formulae.
+    </p>
+    <p>
+      KMeans clustering into 28 groups yields a topic structure that
+      tracks committee jurisdictions reasonably well. Migration,
+      climate, schools and health care are among the cleanest. Manual
+      inspection of top terms per cluster confirms the grouping is
+      meaningful.
+    </p>
+
+    <h2>WHAT — vote stance</h2>
+    <p>
+      For each vote and party, the stance is
+    </p>
+    <p style="text-align: center; font-family: var(--mono); padding: 1rem; background: var(--rule-soft); border-radius: 4px;">
+      stance<sub>p,v</sub> = (n_Yes − n_No) / (n_Yes + n_No + n_Abstain)
+    </p>
+    <p>
+      in the interval −1 to +1. Absences are not counted: they are not
+      positions, they are the absence of one. Per (party, topic) we
+      take the mean across all votes in that topic.
+    </p>
+
+    <h3>A caveat on how the cabinet votes</h3>
+    <p>
+      Because the government always votes for its own proposals in the
+      chamber, M, KD and L have an average stance near +1 on
+      essentially every topic. The interesting difference between them
+      isn't what they vote for — it's how they justify it.
+    </p>
+
+    <h2>WHY — reasoning vector</h2>
+    <p>
+      Reservation texts are segmented to their "Ställningstagande"
+      sections — where the substantive argument lives, not in the
+      procedural intro. Per (party, topic) we take up to 20 of the
+      longest reservations; each text is embedded into a 768-dim
+      vector and the mean is stored.
+    </p>
+    <p>
+      For the governing parties (M, KD, L), almost no reservations
+      exist because they are the majority. We instead use the
+      "Utskottets ställningstagande" sections from the committee
+      reports — where the majority explains its choice. The text is
+      lightly recast from third person to first person so it reads in
+      the same voice as opposition reservations.
+    </p>
+    <p>
+      Similarity between two parties' reasoning is the cosine
+      similarity between their mean vectors. We centre per topic so
+      the shared register of parliamentary Swedish does not dominate
+      — what we measure is how each party <em>deviates</em> from the
+      topic average way of talking about it.
+    </p>
+
+    <h2>HOW — theory of change</h2>
+    <p>
+      Two complementary signals combine into the HOW axis.
+    </p>
+
+    <h3>Reservation co-signing</h3>
+    <p>
+      When two parties put their names on the same reservation, they
+      share a concrete alternative proposal. This is direct structural
+      evidence of shared mechanism preferences. We compute pairwise
+      cosine similarity in reservation-signing space.
+    </p>
+
+    <h3>Lexical analysis of speech text</h3>
+    <p>
+      Four dimensions, each with a short word list for either side:
+    </p>
+    <ul>
+      <li><strong>Market ↔ regulation</strong></li>
+      <li><strong>Prevention ↔ punishment</strong></li>
+      <li><strong>State ↔ local</strong></li>
+      <li><strong>Universal ↔ targeted</strong></li>
+    </ul>
+    <p>
+      Each speech is scored on each dimension as
+      (<code>left_hits − right_hits</code>) / (total hits), in
+      [−1, +1]. Per (party, topic) the counts are aggregated and a
+      relative score is derived. Because all parties for instance talk
+      more about "alla" than "behovsprövad", the dimensions are
+      z-normalised across parties before similarity is computed.
+    </p>
+    <p>
+      The word lists are deliberately short. They are open in the code
+      and can be revised. The dimensions chosen have long traditions
+      in political science; they are not exhaustive.
+    </p>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li>
+        <strong>Topic clustering follows committee jurisdiction</strong>,
+        not voter mental categories.
+      </li>
+      <li>
+        <strong>Reasoning vectors include ministers reading
+        government-drafted statements.</strong> Not always the
+        individual member's own voice. For the cabinet, this is a
+        structural inevitability.
+      </li>
+      <li>
+        <strong>The HOW axis word lists are loaded.</strong> We chose
+        what counts as "market" or "regulation". Those are subjective
+        choices, open in the code so a different researcher can
+        revise them.
+      </li>
+      <li>
+        <strong>Decisions taken outside the chamber are not in the
+        data.</strong> Government decisions, agency decisions, EU
+        votes and delegated decisions are invisible to a chamber-vote
+        based analysis.
+      </li>
+      <li>
+        <strong>Questions not yet voted on are absent entirely.</strong>
+        Only what has been processed since September 2022.
+      </li>
+    </ul>
+
+    <h2>Reproducibility</h2>
+    <p>
+      All data fetching, processing, analysis and site generation is
+      written in Python and JavaScript and openly available on
+      <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
+      Raw data is loaded directly from
+      <code>data.riksdagen.se</code> — we don't redistribute it. The
+      analysis can be re-run from scratch on an ordinary machine in
+      about an hour, including text embedding. Results in this
+      article are based on data available through June 2026.
+    </p>
+  </article>
+</BaseLayout>

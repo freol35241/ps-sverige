@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = "Hur röstar Sveriges riksdagsledamöter – och varför? En tredimensionell datadriven valkompass.",
+  description = "How does the Swedish parliament actually vote and reason? A data-driven analysis of the 2022–2026 mandate.",
   image = "01_behavioural_map.png",
 } = Astro.props;
 
@@ -18,15 +18,14 @@ const siteOrigin = "https://freol35241.github.io";
 const ogImage = `${siteOrigin}${base}/figures/${image}`;
 const canonicalUrl = `${siteOrigin}${Astro.url.pathname}`;
 const navLinks = [
-  { href: `${base}/`, label: 'Start' },
-  { href: `${base}/valkompassen`, label: 'Valkompassen' },
-  { href: `${base}/metod`, label: 'Metod' },
-  { href: `${base}/om`, label: 'Om' },
+  { href: `${base}/`, label: 'Home' },
+  { href: `${base}/method`, label: 'Method' },
+  { href: `${base}/about`, label: 'About' },
 ];
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
 ---
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,8 +35,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:locale" content="sv_SE" />
-    <meta property="og:site_name" content="politisk stilometri" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="political stylometry" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -55,7 +54,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
       <div class="container">
         <a class="site-title" href={`${base}/`}>
           <span class="site-mark">ps</span>
-          <span>politisk stilometri</span>
+          <span>political stylometry</span>
         </a>
         <nav>
           <ul>
@@ -77,10 +76,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
     <footer class="site-footer">
       <div class="container">
         <p>
-          Data: Sveriges riksdag, öppna data. Källkod: <a href="https://github.com/freol35241/ps-sverige">github.com/freol35241/ps-sverige</a>.
+          Source data: Sveriges riksdag, open data. Code: <a href="https://github.com/freol35241/ps-sverige">github.com/freol35241/ps-sverige</a>.
         </p>
         <p class="footer-disclaimer">
-          Det här är inte ett officiellt verktyg. Det är en analys av offentliga röst- och dokumentdata från riksmöten 2022/23–2025/26.
+          This is not an official tool. It is an analysis of public voting and document data from the Swedish parliament, mandate 2022/23–2025/26.
         </p>
       </div>
     </footer>
