@@ -1003,5 +1003,500 @@ CURATED[23] = {
 }
 
 
+# ============================================================================
+# Topic 15 — Nato och utrikespolitik
+# ============================================================================
+CURATED[15] = {
+    "V": [
+        {
+            "text": "Vi var emot att Sverige gick med i Nato, men medlemskapet "
+                    "är nu en verklighet. Sveriges egen försvarsförmåga ska "
+                    "fortfarande stå i centrum — och vi ska vara en aktiv "
+                    "samarbetspartner i Norden och Östersjöområdet. Inte "
+                    "operationer långt borta, utan vårt eget närområde.",
+            "source": "HC01UFöU2",
+        },
+        {
+            "text": "Sverige ska aldrig vara med och planera, förbereda eller "
+                    "öva på att använda kärnvapen. Att stå bakom Natos "
+                    "kärnvapenpolicy är ett åtagande som vi inte borde ha "
+                    "gjort. Sverige skulle ha varit tydlig från början med "
+                    "att kärnvapen inte ska tillåtas på svenskt territorium.",
+            "source": "HC01UFöU1, HD01UFöU2",
+        },
+    ],
+    "S": [
+        {
+            "text": "Finlands och Sveriges Natomedlemskap stärker hela "
+                    "alliansen. Med båda länderna i Nato är EU- och nordiska "
+                    "länder kring Östersjön bundna av samma försvarsgaranti. "
+                    "Vår vision är att de nordiska och baltiska länderna nu "
+                    "tillsammans tar ansvar för försvaret av vår del av "
+                    "Europa.",
+            "source": "HC01UFöU1",
+        },
+        {
+            "text": "Det nordiska försvars- och säkerhetspolitiska arbetet "
+                    "behöver samordnas effektivt. Vi har redan krigsplanläggning "
+                    "med Finland och tätt samarbete med övriga nordiska länder "
+                    "— nu bör en nordisk försvars- och säkerhetspolitisk "
+                    "kommission tillsättas, med förankring i samtliga nordiska "
+                    "parlament.",
+            "source": "HB01UU4, HD01UU4",
+        },
+    ],
+    "MP": [
+        {
+            "text": "Vi röstade emot Natoansökan men respekterar nu riksdagens "
+                    "beslut. När Sverige väl är medlem är det viktigt att vi "
+                    "driver en självständig utrikespolitik och står upp för "
+                    "demokrati och mänskliga rättigheter — både inom Nato och "
+                    "i förhållande till alliansens andra länder.",
+            "source": "HC01UFöU1, HC01UU19",
+        },
+        {
+            "text": "Solidaritet med människor i hela världen är en av våra "
+                    "grundstenar. Det är beklagligt att Sverige tar emot färre "
+                    "asylsökande och skär ner biståndet. Vi har ett "
+                    "grundläggande medmänskligt ansvar att vara en fristad — "
+                    "särskilt för dem som förföljs av totalitära regimer för "
+                    "sin kamp för fri- och rättigheter.",
+            "source": "HC01UU14",
+        },
+    ],
+    "C": [
+        {
+            "text": "Sverige har under många år deltagit i internationella "
+                    "insatser under FN-, Nato- och EU-flagg — alltid med "
+                    "FN-mandat. De insatser vi deltar i gör skillnad. Den "
+                    "nationella försvarsplaneringen måste säkra att vi också "
+                    "kan ta vårt internationella ansvar, inte minst efter "
+                    "Nato-anslutningen.",
+            "source": "HC01UFöU1",
+        },
+        {
+            "text": "Erfarenheterna av covid-19 visar att den nordiska "
+                    "krisberedskapen behöver stärkas. När gränser stängdes "
+                    "oberoende av varandra ledde det till förvirring som "
+                    "förvärrade krisen. En genomarbetad plan för hur Norden "
+                    "ska hantera framtida kriser, utan att den fria rörligheten "
+                    "förloras, behövs.",
+            "source": "HC01UU14, HA01UU5",
+        },
+    ],
+    "L": [
+        {
+            "text": "Samarbetet mellan de nordiska länderna är ett av världens "
+                    "äldsta och mest omfattande regionala samarbeten. Den "
+                    "nordiska modellen bygger på hög samhällelig tillit, "
+                    "starka demokrati- och folkrörelsetraditioner och djup "
+                    "respekt för rättsstat, jämställdhet och mänskliga "
+                    "rättigheter.",
+            "source": "HA01UU5",
+        },
+        {
+            "text": "Den svenska tillståndsprövningen av vapenexport bygger på "
+                    "en helhetsbedömning utifrån regeringens riktlinjer och "
+                    "etablerad praxis. ISP prövar ansökningar självständigt. "
+                    "EU:s gemensamma ståndpunkt och FN:s vapenhandelsfördrag "
+                    "beaktas. Det är ett ordnat, restriktivt system.",
+            "source": "HC01UU9",
+        },
+    ],
+    "KD": [
+        {
+            "text": "Samarbetet mellan de nordiska länderna är ett av världens "
+                    "äldsta och mest omfattande regionala samarbeten. Den "
+                    "nordiska modellen bygger på hög samhällelig tillit, "
+                    "starka demokrati- och folkrörelsetraditioner och djup "
+                    "respekt för rättsstat, jämställdhet och mänskliga "
+                    "rättigheter.",
+            "source": "HA01UU5",
+        },
+        {
+            "text": "Den svenska tillståndsprövningen av vapenexport bygger på "
+                    "en helhetsbedömning utifrån regeringens riktlinjer och "
+                    "etablerad praxis. ISP prövar ansökningar självständigt. "
+                    "EU:s gemensamma ståndpunkt och FN:s vapenhandelsfördrag "
+                    "beaktas. Det är ett ordnat, restriktivt system.",
+            "source": "HC01UU9",
+        },
+    ],
+    "M": [
+        {
+            "text": "Samarbetet mellan de nordiska länderna är ett av världens "
+                    "äldsta och mest omfattande regionala samarbeten. Den "
+                    "nordiska modellen bygger på hög samhällelig tillit, "
+                    "starka demokrati- och folkrörelsetraditioner och djup "
+                    "respekt för rättsstat, jämställdhet och mänskliga "
+                    "rättigheter.",
+            "source": "HA01UU5",
+        },
+        {
+            "text": "Den svenska tillståndsprövningen av vapenexport bygger på "
+                    "en helhetsbedömning utifrån regeringens riktlinjer och "
+                    "etablerad praxis. ISP prövar ansökningar självständigt. "
+                    "EU:s gemensamma ståndpunkt och FN:s vapenhandelsfördrag "
+                    "beaktas. Det är ett ordnat, restriktivt system.",
+            "source": "HC01UU9",
+        },
+    ],
+    "SD": [
+        {
+            "text": "En starkare och mer samordnad nordisk röst i EU är allt "
+                    "viktigare i takt med att makt koncentreras till unionen "
+                    "på bekostnad av självständiga nationalstater. Eftersom "
+                    "våra nordiska länder delar både samhällssystem, "
+                    "värderingar och landsgränser har vi mycket att vinna på "
+                    "att samordna oss — på EU-nivå och i lagstiftningsprocessen.",
+            "source": "HA01UU5",
+        },
+        {
+            "text": "Sverige ska vara en aktiv medlem i Nato och tydligt driva "
+                    "de intressen som ökar alliansens — och därmed Sveriges — "
+                    "säkerhet. Alla våra nordiska grannländer är nu Nato-"
+                    "medlemmar. Det är en unik historisk möjlighet att "
+                    "stärka vår säkerhet i samförstånd och driva offensiv "
+                    "politik som möter hot i tid, inte efter att de inträffat.",
+            "source": "HC01UFöU1",
+        },
+    ],
+}
+
+
+# ============================================================================
+# Topic 9 — Internationellt bistånd
+# ============================================================================
+CURATED[9] = {
+    "V": [
+        {
+            "text": "I stället för att strypa biståndet bör Sverige öka stödet "
+                    "till Palestina för att rädda liv. Regeringens beslut att "
+                    "dra in stödet till rättighetsorganisationer i Palestina "
+                    "och Israel — inklusive det ekumeniska "
+                    "följeslagarprogrammet — motverkar en demokratisk och "
+                    "fredlig utveckling. Civilsamhället ska stärkas, inte "
+                    "försvagas.",
+            "source": "HC01UU15",
+        },
+        {
+            "text": "Kärnstöden är de viktigaste stöd Sverige kan ge till "
+                    "FN-organisationerna. Det är kärnstödet som ger FN möjlighet "
+                    "att vara på plats där behoven är störst och snabbt "
+                    "prioritera om i akuta lägen. Regeringens ökade öronmärkning "
+                    "underminerar arbetet — UN Women, UNFPA och UNAIDS har "
+                    "redan drabbats.",
+            "source": "HC01UU11, HA01UU3",
+        },
+    ],
+    "S": [
+        {
+            "text": "Ett fredsavtal i Israel-Palestina måste bygga på en "
+                    "tvåstatslösning där Israel och Palestina existerar sida "
+                    "vid sida som två internationellt erkända stater. "
+                    "Regeringen har valt att inte ha en särskild "
+                    "Palestinastrategi och har sagt upp alla biståndsavtal "
+                    "med civilsamhällesorganisationer. Vi vill att Palestina "
+                    "fortsatt ska få stöd.",
+            "source": "HC01UU15",
+        },
+        {
+            "text": "I kampen om en ny världsordning är det avgörande att "
+                    "Sverige och EU verkar för demokrati, mänskliga "
+                    "rättigheter och hållbar utveckling — och samtidigt möter "
+                    "klimatutmaningen. Vi beklagar att regeringen valt att "
+                    "dra sig undan från den globala scenen. Svensk "
+                    "utrikespolitik har blivit passiv.",
+            "source": "HC01UU7",
+        },
+    ],
+    "MP": [
+        {
+            "text": "Svenskt humanitärt bistånd till Palestina måste stärkas "
+                    "för att möta de enorma behov konflikten skapat. Sverige "
+                    "måste kräva att Israel som ockupationsmakt följer sina "
+                    "skyldigheter. Det palestinska civilsamhället, "
+                    "människorättsorganisationer och fria medier är de "
+                    "aktörer som kan bygga förtroendet för en tvåstatslösning.",
+            "source": "HC01UU15",
+        },
+        {
+            "text": "Regeringen har dragit ned stödet till flera viktiga "
+                    "FN-organ — strypt allt stöd till UNAIDS, minskat "
+                    "finansieringen av UN Women, FN:s fredsbyggande fond, "
+                    "UNFPA och UNDP. Kärnstöd är nödvändigt för att snabbt "
+                    "kunna agera mot akuta kriser. Sverige har historiskt "
+                    "varit ett av få länder som tagit ansvar — det är en "
+                    "tradition vi inte ska överge.",
+            "source": "HC01UU11",
+        },
+    ],
+    "C": [
+        {
+            "text": "Kriget i Gaza har skapat ett katastrofalt mänskligt "
+                    "lidande. En hållbar vapenvila är av största vikt för "
+                    "att kunna leverera förnödenheter, och alla parter måste "
+                    "följa folkrätten. Sverige ska fortsätta och utveckla "
+                    "biståndet till Palestina, inklusive stöd till UNRWA, "
+                    "som en del i det långsiktiga arbetet för en tvåstatslösning.",
+            "source": "HC01UU15",
+        },
+        {
+            "text": "När Sverige väljer att samarbeta med ett FN-organ ska "
+                    "det göras utifrån en tydlig bild av att det är det mest "
+                    "effektiva sättet att uppnå hållbara resultat. Det "
+                    "svenska bidraget ska riktas till de FN-organ vi bedömer "
+                    "fungerar väl, eller arbetar med frågor som är särskilt "
+                    "viktiga för oss.",
+            "source": "HA01UU3",
+        },
+    ],
+    "L": [
+        {
+            "text": "Mot bakgrund av kriget i Europa ger regeringen närområdet "
+                    "och stödet till Ukraina högsta prioritet i utrikes- och "
+                    "säkerhetspolitiken. Den transatlantiska relationen är "
+                    "fortsatt av stor vikt för Sverige och Europa — också när "
+                    "den nya amerikanska administrationen skapar frågetecken "
+                    "kring USA:s engagemang.",
+            "source": "HC01UU7",
+        },
+        {
+            "text": "En enad och långsiktig strategisk EU-politik gentemot "
+                    "Kina är avgörande för att säkerställa svenska intressen. "
+                    "Kinas snabba utveckling och stärkta roll får allt större "
+                    "betydelse för svensk utrikes- och säkerhetspolitik. De "
+                    "nationella svenska säkerhetsintressena ska prioriteras.",
+            "source": "HC01UU7",
+        },
+    ],
+    "KD": [
+        {
+            "text": "Mot bakgrund av kriget i Europa ger regeringen närområdet "
+                    "och stödet till Ukraina högsta prioritet i utrikes- och "
+                    "säkerhetspolitiken. Den transatlantiska relationen är "
+                    "fortsatt av stor vikt för Sverige och Europa — också när "
+                    "den nya amerikanska administrationen skapar frågetecken "
+                    "kring USA:s engagemang.",
+            "source": "HC01UU7",
+        },
+        {
+            "text": "En enad och långsiktig strategisk EU-politik gentemot "
+                    "Kina är avgörande för att säkerställa svenska intressen. "
+                    "Kinas snabba utveckling och stärkta roll får allt större "
+                    "betydelse för svensk utrikes- och säkerhetspolitik. De "
+                    "nationella svenska säkerhetsintressena ska prioriteras.",
+            "source": "HC01UU7",
+        },
+    ],
+    "M": [
+        {
+            "text": "Mot bakgrund av kriget i Europa ger regeringen närområdet "
+                    "och stödet till Ukraina högsta prioritet i utrikes- och "
+                    "säkerhetspolitiken. Den transatlantiska relationen är "
+                    "fortsatt av stor vikt för Sverige och Europa — också när "
+                    "den nya amerikanska administrationen skapar frågetecken "
+                    "kring USA:s engagemang.",
+            "source": "HC01UU7",
+        },
+        {
+            "text": "En enad och långsiktig strategisk EU-politik gentemot "
+                    "Kina är avgörande för att säkerställa svenska intressen. "
+                    "Kinas snabba utveckling och stärkta roll får allt större "
+                    "betydelse för svensk utrikes- och säkerhetspolitik. De "
+                    "nationella svenska säkerhetsintressena ska prioriteras.",
+            "source": "HC01UU7",
+        },
+    ],
+    "SD": [
+        {
+            "text": "FN har bidragit till utveckling och katastrofhjälp men "
+                    "dras med stora problem: för många organisationer, för "
+                    "höga overheadkostnader och återkommande "
+                    "korruptionsindikationer i ekonomi, tjänstetilldelning "
+                    "och landsstöd. Sverige bör verka för sammanslagningar av "
+                    "FN-organ för att minska dubbelarbete och öka "
+                    "kostnadseffektiviteten.",
+            "source": "HA01UU3",
+        },
+        {
+            "text": "Palestinska myndigheten visar stora brister när det gäller "
+                    "korruption, yttrandefrihet, rättssäkerhet och "
+                    "diskriminering av kvinnor. EU har sedan 1994 skänkt över "
+                    "50 miljarder kronor till Palestina, men resultaten är "
+                    "begränsade. Svenskt bistånd ska vara villkorat med "
+                    "tydliga krav på reform och uppföljning.",
+            "source": "HB01UU15",
+        },
+    ],
+}
+
+
+# ============================================================================
+# Topic 11 — Läkemedel och tandvård
+# ============================================================================
+CURATED[11] = {
+    "V": [
+        {
+            "text": "Tandvården behöver reformeras med ett verkligt "
+                    "högkostnadsskydd. Kostnader över referenspriserna bör "
+                    "den behandlande tandläkaren stå för, och referenspriserna "
+                    "ses över för att motsvara verklig kostnad. Tandvården "
+                    "är i dag en av de tydligaste klasskillnaderna i Sverige.",
+            "source": "HD01SoU14",
+        },
+        {
+            "text": "Dagens kostnadsmodeller för dyra och specialdesignade "
+                    "läkemedel fungerar inte för långvariga behandlingar mot "
+                    "små patientgrupper. Människor med svår, allvarlig sjukdom "
+                    "riskerar att bli utan behandling eftersom den inte anses "
+                    "kostnadseffektiv. Staten behöver ta ett särskilt ansvar "
+                    "för dessa fall.",
+            "source": "HC01SoU14",
+        },
+    ],
+    "S": [
+        {
+            "text": "Ett viktigt sätt att öka tillgängligheten till god tandvård "
+                    "är att sänka de ekonomiska trösklarna. Den tidigare "
+                    "regeringen tillsatte en tandvårdsutredning som föreslog "
+                    "en modell för nytt högkostnadsskydd. Vi anser att de "
+                    "förslagen ska tas vidare — i stället för att se över "
+                    "tandvårdens skydd för att efterlikna övrig vård.",
+            "source": "HD01SoU14, HA01SoU15",
+        },
+        {
+            "text": "Allas rätt till en jämlik och bra sjukvård är central. "
+                    "Den grundläggande principen ska vara att vården ges "
+                    "utifrån behov. För dyra läkemedel där få drabbas behöver "
+                    "staten ta större ansvar — annars blir tillgång till "
+                    "behandling beroende av vilken region man bor i.",
+            "source": "HC01SoU14",
+        },
+    ],
+    "MP": [
+        {
+            "text": "Det svenska läkemedelssystemet är inte anpassat till den "
+                    "snabba utvecklingen av nya behandlingar. Hittills "
+                    "gjorda utredningar har haft otillräckliga förutsättningar — "
+                    "de har inte fått vara kostnadsdrivande. Det måste "
+                    "ändras om vi vill att människor med sällsynta diagnoser "
+                    "ska få den vård som existerar.",
+            "source": "HD01SoU14",
+        },
+        {
+            "text": "Allas rätt till en jämlik och bra sjukvård är viktig. "
+                    "Vården ska ges utifrån behov. Staten bör ha ett särskilt "
+                    "stöd till regionerna för behandlingsmetoder och "
+                    "mediciner som är extra kostsamma — så att människor med "
+                    "allvarlig sjukdom inte hamnar mellan stolarna.",
+            "source": "HC01SoU14",
+        },
+    ],
+    "C": [
+        {
+            "text": "Utvecklingen av nya läkemedel går snabbare än någonsin — "
+                    "men det räcker inte att de utvecklas, de måste också nå "
+                    "patienterna. Det svenska systemet är inte anpassat till "
+                    "en situation där det finns behandling mot tillstånd som "
+                    "tidigare helt saknat möjligheter. Systemet behöver ses "
+                    "över.",
+            "source": "HC01SoU14",
+        },
+        {
+            "text": "Den globala läkemedelsbristen och bristen på farmaceuter "
+                    "i Sverige motiverar handling. Regeringen bör ta fram en "
+                    "strategi för stärkt tillgång till läkemedel i hela "
+                    "landet. Särläkemedel måste bli snabbt och enkelt "
+                    "tillgängliga för de patienter som behöver dem.",
+            "source": "HB01SoU12",
+        },
+    ],
+    "L": [
+        {
+            "text": "Att förebygga bristsituationer för läkemedel är en "
+                    "angelägen fråga. Läkemedelsverket har fått ett uppdrag "
+                    "att se över hur rest- och bristsituationer kan "
+                    "förebyggas, och kan numera besluta om sanktionsavgifter "
+                    "när företag inte uppfyller meddelandeplikten — det är "
+                    "verktyg vi redan har och som ska användas.",
+            "source": "HB01SoU12",
+        },
+        {
+            "text": "Frågan om läkares förskrivningsrätt utreds. Patientsäker"
+                    "hetslagens bestämmelser om återkallelse av legitimation "
+                    "och begränsning av förskrivningsrätt finns redan — "
+                    "regeringen utreder nu ytterligare frågor om "
+                    "dokumentation, begränsningar och tillsyn av "
+                    "läkemedelsförskrivning, vilket vi avvaktar.",
+            "source": "HC01SoU14",
+        },
+    ],
+    "KD": [
+        {
+            "text": "Att förebygga bristsituationer för läkemedel är en "
+                    "angelägen fråga. Läkemedelsverket har fått ett uppdrag "
+                    "att se över hur rest- och bristsituationer kan "
+                    "förebyggas, och kan numera besluta om sanktionsavgifter "
+                    "när företag inte uppfyller meddelandeplikten — det är "
+                    "verktyg vi redan har och som ska användas.",
+            "source": "HB01SoU12",
+        },
+        {
+            "text": "Frågan om läkares förskrivningsrätt utreds. Patientsäker"
+                    "hetslagens bestämmelser om återkallelse av legitimation "
+                    "och begränsning av förskrivningsrätt finns redan — "
+                    "regeringen utreder nu ytterligare frågor om "
+                    "dokumentation, begränsningar och tillsyn av "
+                    "läkemedelsförskrivning, vilket vi avvaktar.",
+            "source": "HC01SoU14",
+        },
+    ],
+    "M": [
+        {
+            "text": "Att förebygga bristsituationer för läkemedel är en "
+                    "angelägen fråga. Läkemedelsverket har fått ett uppdrag "
+                    "att se över hur rest- och bristsituationer kan "
+                    "förebyggas, och kan numera besluta om sanktionsavgifter "
+                    "när företag inte uppfyller meddelandeplikten — det är "
+                    "verktyg vi redan har och som ska användas.",
+            "source": "HB01SoU12",
+        },
+        {
+            "text": "Frågan om läkares förskrivningsrätt utreds. Patientsäker"
+                    "hetslagens bestämmelser om återkallelse av legitimation "
+                    "och begränsning av förskrivningsrätt finns redan — "
+                    "regeringen utreder nu ytterligare frågor om "
+                    "dokumentation, begränsningar och tillsyn av "
+                    "läkemedelsförskrivning, vilket vi avvaktar.",
+            "source": "HC01SoU14",
+        },
+    ],
+    "SD": [
+        {
+            "text": "Det är allvarligt att allt fler diabetiker inte hittar "
+                    "sin medicin på apoteket. Ozempic säljs i dag utanför "
+                    "förmånssystemet, vilket innebär att läkemedlet inte "
+                    "primärt går till dem som mest behöver det. Regeringen "
+                    "bör skyndsamt se till att diabetesmedicin inte säljs "
+                    "utanför förmånssystemet.",
+            "source": "HB01SoU12",
+        },
+        {
+            "text": "Förebyggande tandvård spelar en avgörande roll. "
+                    "Regelbundna kontroller och munhälsoundervisning är inte "
+                    "tillräckligt utbredda — många söker vård först när "
+                    "problemen blivit allvarliga, vilket gör behandlingen "
+                    "dyrare och mer komplicerad. Allmänhetens kunskaper om "
+                    "munhygien behöver stärkas.",
+            "source": "HC01SoU14",
+        },
+    ],
+}
+
+
+
+
+
 
 

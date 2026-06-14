@@ -487,7 +487,7 @@ def fig_sd_reservation_collapse() -> Path:
 
     # Background band for election year.
     ax.axvspan(2.5, 3.5, color="#FFE9C7", alpha=0.55, zorder=0)
-    ax.text(3, 1080, "election year", ha="center", fontsize=11,
+    ax.text(3, 1080, "valåret", ha="center", fontsize=11,
             color="#A04C0A", style="italic")
 
     # Draw non-SD parties in muted party colors first.
@@ -525,20 +525,20 @@ def fig_sd_reservation_collapse() -> Path:
                 arrowprops=dict(arrowstyle="->", lw=2.4, color="#8A7E00"),
                 zorder=6)
     ax.text(2.42, 60,
-            "SD stops writing\nreservations\nin the election year",
+            "SD slutar skriva\nreservationer\ni valåret",
             ha="right", va="center", fontsize=12,
             color="#8A7E00", fontweight="bold",
             bbox=dict(boxstyle="round,pad=0.4", fc="white",
                       ec="#E8DD9A", lw=1))
 
     ax.set_xticks(x); ax.set_xticklabels(RIKSMOTEN)
-    ax.set_ylabel("Reservations signed by party")
+    ax.set_ylabel("Antal reservationer per parti")
     ax.set_ylim(-30, 1150)
-    ax.set_title("SD's reservations vanish in the election year", loc="left",
+    ax.set_title("SD:s reservationer försvinner i valåret", loc="left",
                  pad=28)
     ax.text(0.0, 1.02,
-            "Reservations are formal dissents attached to a committee report. "
-            "Cabinet parties (M, KD, L) write almost none.",
+            "Reservationer är formella avvikelser från utskottets förslag. "
+            "Regeringspartierna (M, KD, L) skriver nästan inga.",
             transform=ax.transAxes, ha="left", va="bottom",
             fontsize=11, color=MUTED)
 
