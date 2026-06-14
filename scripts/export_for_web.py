@@ -145,6 +145,20 @@ def matches_topic(text: str, topic_id: int) -> bool:
     return any(k in lower for k in keywords)
 
 
+# Manually distilled position statements per (topic, party). When present for
+# a (topic_id, party) cell, these override the algorithmically extracted
+# excerpts. See scripts/curated_excerpts.py for the data and convention.
+try:
+    from scripts.curated_excerpts import CURATED as CURATED_EXCERPTS
+except ImportError:
+    try:
+        import sys
+        sys.path.insert(0, str(ROOT))
+        from scripts.curated_excerpts import CURATED as CURATED_EXCERPTS
+    except ImportError:
+        CURATED_EXCERPTS = {}
+
+
 def export_parties() -> None:
     parties = [{
         "code": p,
@@ -349,6 +363,20 @@ def export_excerpts(per_topic: int = 5) -> None:
 
     out = {}
 
+    # --- Curated distillations override algorithmic excerpts ---
+    n_curated_cells = 0
+    for topic_id, party_dict in CURATED_EXCERPTS.items():
+        topic_out = out.setdefault(str(int(topic_id)), {})
+        for party, statements in party_dict.items():
+            if not statements:
+                continue
+            topic_out[party] = [
+                {"text": s["text"], "rubrik": "", "source": s.get("source", "")}
+                for s in statements
+            ]
+            n_curated_cells += 1
+    print(f"  curated cells loaded: {n_curated_cells}")
+
     # --- Opposition: ställningstagande_text from reservations ---
     res = pd.read_parquet(IN / "reservations.parquet")
     tex = (pd.read_parquet(IN / "vote_event_texts.parquet")
@@ -393,6 +421,9 @@ def export_excerpts(per_topic: int = 5) -> None:
     n_dropped_misclass = 0
     for (topic_id, party), g in opp_df.groupby(["topic_id", "party"]):
         topic_out = out.setdefault(str(int(topic_id)), {})
+        # Skip cells already covered by curated distillations.
+        if party in topic_out:
+            continue
         party_excerpts = []
         seen_rubriks = set()
         for _, r in g.iterrows():
@@ -475,12 +506,14 @@ def export_excerpts(per_topic: int = 5) -> None:
                 break
         cabinet_excerpts_by_topic[int(topic_id)] = per_topic_list
 
-    # Round-robin distribute to L/KD/M.
+    # Round-robin distribute to L/KD/M. Skip parties already covered by curated.
     for topic_id, excerpt_list in cabinet_excerpts_by_topic.items():
         if not excerpt_list:
             continue
         topic_out = out.setdefault(str(topic_id), {})
         for i, party in enumerate(["L", "KD", "M"]):
+            if party in topic_out:
+                continue
             picks_for_party = excerpt_list[i::3]
             if picks_for_party:
                 topic_out[party] = picks_for_party[:per_topic]
