@@ -1495,6 +1495,504 @@ CURATED[11] = {
 }
 
 
+# ============================================================================
+# Topic 21 — Bostadspolitik
+# ============================================================================
+CURATED[21] = {
+    "V": [
+        {
+            "text": "Bostaden är en grundläggande rättighet. Sverige behöver "
+                    "en hållbar, långsiktig bostadspolitik som möter "
+                    "hemlöshet, bostadssegregation och klimatomställning. En "
+                    "bostad kan aldrig jämföras med andra handelsvaror. Vi "
+                    "behöver återskapa en statlig bostadspolitik enligt "
+                    "principen om generell välfärd.",
+            "source": "HC01CU1, HB01CU1",
+        },
+        {
+            "text": "Allmännyttan är en avgörande del av en social "
+                    "bostadspolitik. Vid utgången av 2022 fanns 834 000 "
+                    "bostäder i det allmännyttiga beståndet — 41 procent av "
+                    "hyresrättsbeståndet. När Allbolagen infördes 2011 "
+                    "förändrades förutsättningarna; lagen behöver ses över "
+                    "för att stärka allmännyttans samhällsuppdrag.",
+            "source": "HC01CU13",
+        },
+    ],
+    "S": [
+        {
+            "text": "Utmaningarna på bostadsmarknaden behöver lösas av stat "
+                    "och kommun i samverkan. En ny bostadsförsörjningslag "
+                    "som tydliggör det gemensamma ansvaret behövs. Staten "
+                    "måste ta tydligare ledning och i inledningen av varje "
+                    "mandatperiod redogöra inför riksdagen för planerade "
+                    "åtgärder på bostadsmarknaden.",
+            "source": "HA01CU10",
+        },
+        {
+            "text": "Byggandet av bostäder har tvärnitat — för "
+                    "träbyggnadsindustrin är läget akut. Staten måste "
+                    "skyndsamt bidra med aktiva åtgärder. Vi har föreslagit "
+                    "statlig byggstimulans och statliga byggkrediter, och "
+                    "anser att formerna för fler aktiva statliga åtgärder "
+                    "inom bostadspolitiken behöver utredas.",
+            "source": "HD01CU18",
+        },
+    ],
+    "MP": [
+        {
+            "text": "Bostadsförsörjningslagen bör göras tvingande så att "
+                    "fler kommuner lever upp till lagens krav. Att inte kunna "
+                    "flytta dit man vill begränsar möjligheten att forma sitt "
+                    "eget liv — och påverkar samhällsutvecklingen negativt om "
+                    "människor inte kan flytta dit jobben eller utbildningen "
+                    "finns.",
+            "source": "HA01CU10",
+        },
+        {
+            "text": "Hyrorna i särskilda boenden är ofta påtagligt höga, och "
+                    "få äldre orkar driva en hyresnämndsprocess. Regeringen "
+                    "bör se över hur ett system för rimliga hyror i "
+                    "specialboenden kan utformas. Det är en viktig fråga för "
+                    "att ge äldre människor förutsättningar att leva sina liv "
+                    "som de vill.",
+            "source": "HB01CU17",
+        },
+    ],
+    "C": [
+        {
+            "text": "Allbolagen från 2011 har två bärande men motsägelsefulla "
+                    "principer: allmännyttan ska både ta samhällsansvar och "
+                    "vara affärsmässig. Tolkningen över tid har lett till "
+                    "ökad tyngd på affärsmässigheten på bekostnad av "
+                    "samhällsansvaret. Det behöver justeras tillbaka.",
+            "source": "HC01CU13",
+        },
+        {
+            "text": "På svaga marknader är det svårt att få lönsamhet i "
+                    "nyproduktion. Statliga kreditgarantier behövs, men "
+                    "regelverket behöver tydligare riktas mot "
+                    "landsbygdskommuner. Generella investeringsstöd "
+                    "snedvrider konkurrensen — i stället bör stöd för att "
+                    "exempelvis få fram bostäder i hela landet utredas.",
+            "source": "HD01CU18",
+        },
+    ],
+    "L": [
+        {
+            "text": "Det finns ett stort behov av bostäder i landet. En väl "
+                    "fungerande bostadsmarknad där konsumenternas efterfrågan "
+                    "möter ett bostadsutbud är central för människors trygghet "
+                    "och livskvalitet. Bostadsförsörjningslagen har redan "
+                    "ändrats för att stärka det kommunala ansvaret.",
+            "source": "HC01CU13",
+        },
+        {
+            "text": "Planläggning av mark- och vattenområden är en kommunal "
+                    "angelägenhet — det är ett uttryck för den kommunala "
+                    "självstyrelsen som ska värnas. Samtidigt finns ett behov "
+                    "av att reglerna inte i onödan försvårar planeringen. "
+                    "Reformer i plan- och bygglagen ska underlätta effektiva "
+                    "processer.",
+            "source": "HA01CU12",
+        },
+    ],
+    "KD": [
+        {
+            "text": "Det finns ett stort behov av bostäder i landet. En väl "
+                    "fungerande bostadsmarknad där konsumenternas efterfrågan "
+                    "möter ett bostadsutbud är central för människors trygghet "
+                    "och livskvalitet. Bostadsförsörjningslagen har redan "
+                    "ändrats för att stärka det kommunala ansvaret.",
+            "source": "HC01CU13",
+        },
+        {
+            "text": "Planläggning av mark- och vattenområden är en kommunal "
+                    "angelägenhet — det är ett uttryck för den kommunala "
+                    "självstyrelsen som ska värnas. Samtidigt finns ett behov "
+                    "av att reglerna inte i onödan försvårar planeringen. "
+                    "Reformer i plan- och bygglagen ska underlätta effektiva "
+                    "processer.",
+            "source": "HA01CU12",
+        },
+    ],
+    "M": [
+        {
+            "text": "Det finns ett stort behov av bostäder i landet. En väl "
+                    "fungerande bostadsmarknad där konsumenternas efterfrågan "
+                    "möter ett bostadsutbud är central för människors trygghet "
+                    "och livskvalitet. Bostadsförsörjningslagen har redan "
+                    "ändrats för att stärka det kommunala ansvaret.",
+            "source": "HC01CU13",
+        },
+        {
+            "text": "Planläggning av mark- och vattenområden är en kommunal "
+                    "angelägenhet — det är ett uttryck för den kommunala "
+                    "självstyrelsen som ska värnas. Samtidigt finns ett behov "
+                    "av att reglerna inte i onödan försvårar planeringen. "
+                    "Reformer i plan- och bygglagen ska underlätta effektiva "
+                    "processer.",
+            "source": "HA01CU12",
+        },
+    ],
+    "SD": [
+        {
+            "text": "Otryggheten och brottsligheten ökar i utsatta "
+                    "bostadsområden. Den fysiska miljöns utformning har stor "
+                    "betydelse för polisens möjligheter att bedriva effektivt "
+                    "arbete. Miljonprogramsområdena är utformade så att det "
+                    "är svårt för polisen att närvara utan att samtidigt "
+                    "utsättas för risker — stadsplanering behöver skapa "
+                    "säkrare närvaro.",
+            "source": "HA01CU10",
+        },
+        {
+            "text": "Fastighetsägare behöver utökade möjligheter att säga upp "
+                    "hyresgäster som begår brott. Utredningen om tryggare "
+                    "bostadsområden överlämnade sitt betänkande hösten 2023 — "
+                    "regeringen har gått vidare med lagrådsremiss, och de "
+                    "skarpa lagförslagen behöver införas så snart som möjligt.",
+            "source": "HB01CU17",
+        },
+    ],
+}
+
+
+# ============================================================================
+# Topic 24 — Funktionsnedsättning och äldreomsorg
+# ============================================================================
+CURATED[24] = {
+    "V": [
+        {
+            "text": "Var tionde person på Arbetsförmedlingen får vänta över tre "
+                    "år på att få sin funktionsnedsättning identifierad. "
+                    "Många som har den identifierad saknar insatser eller "
+                    "aktiviteter. Granskningen visar på en försämring över "
+                    "tid. Att ha arbete och egen försörjning stärker "
+                    "individens makt — staten har här svikit.",
+            "source": "HD01AU6",
+        },
+        {
+            "text": "Schablonbeloppet för assistansersättning har under lång tid "
+                    "halkat efter kostnadsutvecklingen. Det innebär i praktiken "
+                    "att kommunerna får ta en allt större del av kostnaden — "
+                    "och att assistansberättigade riskerar att få sämre "
+                    "assistans. Beloppet behöver räknas upp i takt med verklig "
+                    "kostnadsutveckling.",
+            "source": "HA01SoU21",
+        },
+    ],
+    "S": [
+        {
+            "text": "Människor med svag ställning på arbetsmarknaden — inte "
+                    "minst personer med funktionsnedsättningar — behöver ett "
+                    "starkare och mer individanpassat stöd. Arbetsförmedlingen "
+                    "ska ha sammanhållande roll, och samverkan med kommuner, "
+                    "utbildningssamordnare, socialtjänst och sjukvård behöver "
+                    "förbättras. Ingen ska hamna mellan stolarna.",
+            "source": "HD01AU6",
+        },
+        {
+            "text": "Hälso- och sjukvården inom äldreomsorgen behöver stärkas. "
+                    "Med en åldrande befolkning ökar behoven av en samordnad "
+                    "vård och omsorg. Staten behöver ta ett tydligare ansvar "
+                    "för att säkerställa likvärdig kvalitet i hela landet — "
+                    "och säkerställa att personalen har förutsättningar att "
+                    "ge god vård.",
+            "source": "HA01SoU22",
+        },
+    ],
+    "MP": [
+        {
+            "text": "Tillgången till personlig assistans har försämrats — "
+                    "regeringen behöver skyndsamt vidta åtgärder. Flyktingar "
+                    "och skyddsbehövande ska inte diskrimineras när det gäller "
+                    "möjligheten till personlig assistans. Det här är "
+                    "rättighetsfrågor som inte ska bero på medborgarstatus.",
+            "source": "HB01SoU13",
+        },
+        {
+            "text": "Vid sjukhusvistelse förlorar assistansberättigade i "
+                    "praktiken ofta sin ersättning, vilket kan leda till att "
+                    "personliga assistenter sägs upp. Det är en orimlig effekt "
+                    "av regelverket — människor som redan är i en svår "
+                    "situation drabbas ytterligare. Reglerna behöver ses över.",
+            "source": "HC01SoU15",
+        },
+    ],
+    "C": [
+        {
+            "text": "Den som har rätt till personlig assistans ska också få "
+                    "förutsättningar att delta på lika villkor i skola och "
+                    "daglig verksamhet. Dagens krav på 'särskilda skäl' för "
+                    "att assistansersättning ska lämnas i dessa miljöer "
+                    "begränsar valmöjligheter och försämrar inlärning. "
+                    "Kravet bör ses över.",
+            "source": "HB01SoU13",
+        },
+        {
+            "text": "Vid sjukhusvistelse förlorar assistansberättigade ofta "
+                    "möjligheten till ersättning, även vid korta vistelser. "
+                    "Det kan tvinga arbetsgivare att säga upp assistenter och "
+                    "drabbar både brukare och anställda. Regelverket behöver "
+                    "ses över så att kontinuitet kan upprätthållas.",
+            "source": "HC01SoU15",
+        },
+    ],
+    "L": [
+        {
+            "text": "Sjukförsäkringens syfte är att ge ersättning för "
+                    "inkomstbortfall vid sjukdom — och stöd till individen "
+                    "för återgång i arbete. Försäkringen ska både skänka "
+                    "trygghet till den som inte kan arbeta och bidra till "
+                    "rehabilitering. Den balansen är central för "
+                    "trygghetssystemets legitimitet.",
+            "source": "HC01SfU1, HA01SfU1",
+        },
+        {
+            "text": "Regeringen arbetar för att stärka funktionshinderspolitiken "
+                    "och äldreomsorgen inom existerande budgetramar. "
+                    "Utgiftsområde 10 — ekonomisk trygghet vid sjukdom och "
+                    "funktionsnedsättning — uppgår till cirka 123 miljarder "
+                    "kronor. Nivåerna är avvägda mot Sveriges samlade "
+                    "ekonomiska situation.",
+            "source": "HC01SfU1",
+        },
+    ],
+    "KD": [
+        {
+            "text": "Sjukförsäkringens syfte är att ge ersättning för "
+                    "inkomstbortfall vid sjukdom — och stöd till individen "
+                    "för återgång i arbete. Försäkringen ska både skänka "
+                    "trygghet till den som inte kan arbeta och bidra till "
+                    "rehabilitering. Den balansen är central för "
+                    "trygghetssystemets legitimitet.",
+            "source": "HC01SfU1, HA01SfU1",
+        },
+        {
+            "text": "Regeringen arbetar för att stärka funktionshinderspolitiken "
+                    "och äldreomsorgen inom existerande budgetramar. "
+                    "Utgiftsområde 10 — ekonomisk trygghet vid sjukdom och "
+                    "funktionsnedsättning — uppgår till cirka 123 miljarder "
+                    "kronor. Nivåerna är avvägda mot Sveriges samlade "
+                    "ekonomiska situation.",
+            "source": "HC01SfU1",
+        },
+    ],
+    "M": [
+        {
+            "text": "Sjukförsäkringens syfte är att ge ersättning för "
+                    "inkomstbortfall vid sjukdom — och stöd till individen "
+                    "för återgång i arbete. Försäkringen ska både skänka "
+                    "trygghet till den som inte kan arbeta och bidra till "
+                    "rehabilitering. Den balansen är central för "
+                    "trygghetssystemets legitimitet.",
+            "source": "HC01SfU1, HA01SfU1",
+        },
+        {
+            "text": "Regeringen arbetar för att stärka funktionshinderspolitiken "
+                    "och äldreomsorgen inom existerande budgetramar. "
+                    "Utgiftsområde 10 — ekonomisk trygghet vid sjukdom och "
+                    "funktionsnedsättning — uppgår till cirka 123 miljarder "
+                    "kronor. Nivåerna är avvägda mot Sveriges samlade "
+                    "ekonomiska situation.",
+            "source": "HC01SfU1",
+        },
+    ],
+    "SD": [
+        {
+            "text": "Att assistansberättigade inte beviljas assistansersättning "
+                    "vid sjukhusvistelse kan få betydande konsekvenser — både "
+                    "för den enskilde och för arbetsgivaren som kan tvingas "
+                    "säga upp assistenter. Vi vill att assistansersättning ska "
+                    "kunna utgå även vid längre sjukhusvistelser, så att "
+                    "kontinuiteten upprätthålls.",
+            "source": "HC01SoU15",
+        },
+        {
+            "text": "Arbetsförmedlingens stöd till personer med "
+                    "funktionsnedsättning fungerar inte. Riksrevisionen har "
+                    "visat på allvarliga effektivitetsbrister. För människor "
+                    "med funktionsnedsättning krävs ett samlat, "
+                    "individanpassat stöd som faktiskt leder till arbete — "
+                    "inte den nuvarande situationen där många blir kvar i "
+                    "väntrum.",
+            "source": "HD01AU6",
+        },
+    ],
+}
+
+
+# ============================================================================
+# Topic 2 — Arbetsrätt och arbetslöshet
+# ============================================================================
+CURATED[2] = {
+    "V": [
+        {
+            "text": "De senaste årens förändringar inom Arbetsförmedlingen — "
+                    "digitaliseringen, nedskärningarna och reformeringen — "
+                    "har påverkat arbetssökande med funktionsnedsättning "
+                    "negativt. När den huvudsakliga kontaktvägen är digital "
+                    "stängs människor som inte klarar den ute. "
+                    "Arbetsförmedlingens fysiska närvaro behöver återställas.",
+            "source": "HB01AU3",
+        },
+        {
+            "text": "Anställningar inom vård, omsorg och välfärd ska vara "
+                    "trygga och självklart heltidsanställda. Otrygga "
+                    "anställningsformer, allmän visstid och staplade "
+                    "tidsbegränsade jobb urholkar både den enskildes ekonomi "
+                    "och välfärdens kvalitet. Den svenska modellen kräver "
+                    "starka, jämbördiga parter.",
+            "source": "HA01AU9",
+        },
+    ],
+    "S": [
+        {
+            "text": "Arbetsförmedlingen är statens arbetsmarknadspolitiska "
+                    "expertmyndighet och bör ges större handlingsfrihet att "
+                    "välja individanpassade insatser. Den fysiska närvaron i "
+                    "hela landet är viktig — också för att den aktiva "
+                    "arbetsmarknadspolitiken ska finnas och fungera där "
+                    "människor faktiskt bor och söker jobb.",
+            "source": "HA01AU9",
+        },
+        {
+            "text": "Den svenska modellen — där arbetsmarknadens parter "
+                    "ansvarar för lönebildning och omställning — har gett "
+                    "Sverige reallöneökningar och få konfliktdagar. Den ska "
+                    "värnas. Det kräver att parterna ges utrymme att förhandla "
+                    "fram lösningar, och att lagstiftaren inte tar över deras "
+                    "uppgifter.",
+            "source": "HB01AU3",
+        },
+    ],
+    "MP": [
+        {
+            "text": "Arbetsförmedlingens internkostnader och medelsbehov för "
+                    "att kunna ge personaltäta insatser åt långtidsarbetslösa "
+                    "behöver utredas ordentligt. Det Statskontorets uppdrag "
+                    "om förvaltningsmedel inte fullt ut kan ge svar på är: "
+                    "vad krävs egentligen för att hjälpa dem som står längst "
+                    "från arbetsmarknaden tillbaka in?",
+            "source": "HB01AU3",
+        },
+        {
+            "text": "Arbetsmarknadspolitiska insatser behöver vara "
+                    "individanpassade. Det räcker inte med att Arbets"
+                    "förmedlingen hänvisar människor till digitala lösningar. "
+                    "För personer med långa vägar tillbaka in på "
+                    "arbetsmarknaden krävs faktisk personalkontakt, faktisk "
+                    "kompetens och faktisk tid.",
+            "source": "HB01AU3",
+        },
+    ],
+    "C": [
+        {
+            "text": "Det är av största vikt att bryta tudelningen på "
+                    "arbetsmarknaden, motverka långtidsarbetslösheten och se "
+                    "till att alla som kommer till Sverige verkligen kommer "
+                    "in i samhället. Det kräver effektivt stöd och matchning. "
+                    "Arbetsförmedlingens reformering behöver fortsätta — "
+                    "myndigheten har inte klarat sitt ensamuppdrag.",
+            "source": "HB01AU3",
+        },
+        {
+            "text": "Den aktiva arbetsmarknadspolitiken behöver fler aktörer "
+                    "och fler vägar in. Privata leverantörer, utbildnings"
+                    "samordnare, socialtjänst och regionerna ska tillsammans "
+                    "med Arbetsförmedlingen erbjuda individanpassade insatser. "
+                    "Det viktiga är att människor får jobb — inte vilken "
+                    "huvudman som står för insatsen.",
+            "source": "HA01AU9",
+        },
+    ],
+    "L": [
+        {
+            "text": "Den svenska modellens grundpelare är en arbetsmarknad "
+                    "som underlättar omställning. Det förutsätter starka och "
+                    "jämbördiga parter som samordnar lönebildning och "
+                    "omställning. Parternas kompromissinriktade arbete har "
+                    "gett Sverige både reallöneökningar och unikt få "
+                    "konfliktdagar — det är en modell som ska värnas.",
+            "source": "HB01AU3",
+        },
+        {
+            "text": "Reformeringen av Arbetsförmedlingen fortsätter. "
+                    "Myndigheten ska utvecklas mot en effektivare "
+                    "matchningsroll, med fler privata leverantörer som "
+                    "utför insatser. Riksdagen behöver inte gå in i detaljer "
+                    "om varje insatsform — det ska Arbetsförmedlingen kunna "
+                    "anpassa till behoven.",
+            "source": "HB01AU8",
+        },
+    ],
+    "KD": [
+        {
+            "text": "Den svenska modellens grundpelare är en arbetsmarknad "
+                    "som underlättar omställning. Det förutsätter starka och "
+                    "jämbördiga parter som samordnar lönebildning och "
+                    "omställning. Parternas kompromissinriktade arbete har "
+                    "gett Sverige både reallöneökningar och unikt få "
+                    "konfliktdagar — det är en modell som ska värnas.",
+            "source": "HB01AU3",
+        },
+        {
+            "text": "Reformeringen av Arbetsförmedlingen fortsätter. "
+                    "Myndigheten ska utvecklas mot en effektivare "
+                    "matchningsroll, med fler privata leverantörer som "
+                    "utför insatser. Riksdagen behöver inte gå in i detaljer "
+                    "om varje insatsform — det ska Arbetsförmedlingen kunna "
+                    "anpassa till behoven.",
+            "source": "HB01AU8",
+        },
+    ],
+    "M": [
+        {
+            "text": "Den svenska modellens grundpelare är en arbetsmarknad "
+                    "som underlättar omställning. Det förutsätter starka och "
+                    "jämbördiga parter som samordnar lönebildning och "
+                    "omställning. Parternas kompromissinriktade arbete har "
+                    "gett Sverige både reallöneökningar och unikt få "
+                    "konfliktdagar — det är en modell som ska värnas.",
+            "source": "HB01AU3",
+        },
+        {
+            "text": "Reformeringen av Arbetsförmedlingen fortsätter. "
+                    "Myndigheten ska utvecklas mot en effektivare "
+                    "matchningsroll, med fler privata leverantörer som "
+                    "utför insatser. Riksdagen behöver inte gå in i detaljer "
+                    "om varje insatsform — det ska Arbetsförmedlingen kunna "
+                    "anpassa till behoven.",
+            "source": "HB01AU8",
+        },
+    ],
+    "SD": [
+        {
+            "text": "I stället för subventionerade arbeten där individen "
+                    "lämnar arbetsplatsen samma dag som subventionen upphör "
+                    "vill vi se fler arbetsplatsnära utbildningsplatser — "
+                    "användbar arbetslivserfarenhet kombinerat med teoretiska "
+                    "studier. Parterna ska tillsammans utforma en svensk "
+                    "modell för ett lärlingssystem.",
+            "source": "HC01AU6",
+        },
+        {
+            "text": "Subventionerade anställningar ska leda till varaktiga "
+                    "jobb — inte till en svängdörr där människor slussas "
+                    "vidare så snart stödet upphör. Ett svenskt "
+                    "lärlingssystem byggt på parternas överenskommelser "
+                    "skulle kunna ge fler vägar in på arbetsmarknaden med "
+                    "långsiktig effekt.",
+            "source": "HA01AU9",
+        },
+    ],
+}
+
+
+
+
+
 
 
 
