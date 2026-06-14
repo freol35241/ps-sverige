@@ -74,7 +74,7 @@
   {
     "id": 6,
     "label": "Skatter",
-    "question": "Hur ska skatterna se ut?",
+    "question": "Hur ska skattesystemet utformas?",
     "primary_organ": "SkU",
     "size": 97,
     "what_spread": 0.26564616888709075,
@@ -155,7 +155,7 @@
   {
     "id": 3,
     "label": "Brott och kriminalvård",
-    "question": "Hur ska Sverige hantera brott och kriminalvård?",
+    "question": "Hur ska brottslighet och kriminalvård hanteras?",
     "primary_organ": "JuU",
     "size": 161,
     "what_spread": 0.23919432780546984,
@@ -181,7 +181,7 @@
   },
   {
     "id": 25,
-    "label": "Idrott, friluftsliv, alkohol och narkotika",
+    "label": "Idrott, friluftsliv, alkohol- och narkotikapolitik",
     "question": "Idrott, friluftsliv, alkohol- och narkotikapolitik",
     "primary_organ": "KrU",
     "size": 47,
@@ -227,7 +227,7 @@
   {
     "id": 17,
     "label": "Kulturpolitik",
-    "question": "Hur ska kulturpolitiken se ut?",
+    "question": "Vilken inriktning ska kulturpolitiken ha?",
     "primary_organ": "KrU",
     "size": 53,
     "what_spread": 0.21460970233948967,
@@ -245,7 +245,7 @@
   {
     "id": 20,
     "label": "Författnings- och valfrågor",
-    "question": "Författningsfrågor och hur valet ska gå till",
+    "question": "Författningsfrågor och hur val ska genomföras",
     "primary_organ": "KU",
     "size": 74,
     "what_spread": 0.1953321282249943,

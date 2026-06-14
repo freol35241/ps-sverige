@@ -183,7 +183,7 @@
             </div>
             {#if evidence.length}
               <div class="axis-evidence">
-                <span class="evidence-label">närmst dig på:</span>
+                <span class="evidence-label">närmast dig på:</span>
                 <span class="evidence-topics">
                   {#each evidence.slice(0, 3) as ev, i}
                     <span>{ev.label}</span>{i < Math.min(evidence.length, 3) - 1 ? ' · ' : ''}
@@ -198,9 +198,9 @@
         <p class="note">
           Du fick samma parti på alla tre axlarna. Det är ovanligt — de
           flesta partier är inkonsekventa över de här dimensionerna, och de
-          flesta väljare matchar tre olika partier i sin tur. Det här
-          partiet ligger nära dig i både vad det gör, hur det resonerar och
-          vilka medel det föredrar.
+          flesta väljare matchar tre olika partier. Det här partiet ligger
+          nära dig i både vad det gör, hur det resonerar och vilka medel
+          det föredrar.
         </p>
       {:else if new Set([result.what.top.party, result.why.top.party, result.how.top.party]).size === 2}
         <p class="note">
@@ -216,6 +216,8 @@
           valkompass döljer det.
         </p>
       {/if}
+
+
 
       <details class="all-scores">
         <summary>Visa alla partier per axel</summary>

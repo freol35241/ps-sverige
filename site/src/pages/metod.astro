@@ -40,7 +40,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       valkompassen.
     </p>
 
-    <h2>VAD — röststånd</h2>
+    <h2>VAD — röstposition</h2>
     <p>
       För varje omröstning och parti räknas ställningen som
     </p>
@@ -48,15 +48,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       stance<sub>p,v</sub> = (n_Ja − n_Nej) / (n_Ja + n_Nej + n_Avstår)
     </p>
     <p>
-      i intervallet [-1, +1]. Frånvaro räknas inte — det är inte en position,
-      det är en avsaknad av sådan. Per (parti, ämne) tas medelvärdet över
-      alla röster i ämnet.
+      i intervallet −1 till +1. Frånvaro räknas inte — det är inte en
+      position, det är en avsaknad av sådan. Per (parti, ämne) tas
+      medelvärdet över alla röster i ämnet.
     </p>
     <p>
       När du svarar på valkompassens frågor läses ditt val som ett
       ställningstagande för det partiets ståndpunkt på det ämnet. Likheten
       mellan dig och ett parti räknas som genomsnittlig absolutskillnad
-      omräknat till en likhetsskala mellan 0 och 100 procent.
+      omräknad till en likhetsskala mellan 0 och 100 procent.
     </p>
 
     <h3>En viktig nyans om hur kabinettet röstar</h3>
@@ -82,8 +82,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       eftersom de är majoriteten. Vi använder i stället "Utskottets
       ställningstagande"-avsnitten ur betänkandena — där majoriteten
       förklarar sitt val. Texten skrivs lätt om från tredje person ("Utskottet
-      anser") till första person ("vi anser") så den läses i samma röstläge
-      som reservationerna.
+      anser") till första person ("vi anser") så att den läses i samma
+      röstläge som reservationerna.
     </p>
     <p>
       Likheten mellan dina valda resonemang och ett partis räknas som
@@ -102,9 +102,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p>
       När två partier sätter sina namn under samma reservation delar de en
       konkret alternativ lösning. Det är direkt strukturell evidens för
-      delade preferenser av medel. Vi räknar pairwise cosinussimilaritet i
-      reservationssigneringsrymden — antalet gemensamt signerade reservationer
-      normaliserat mot varje partis totala signerande.
+      delade preferenser av medel. Vi räknar parvis cosinuslikhet i
+      signeringsrymden för reservationer — antalet gemensamt signerade
+      reservationer normaliserat mot varje partis totala antal signeringar.
     </p>
 
     <h3>Lexikal analys av anförandetexter</h3>
@@ -169,11 +169,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2>Reproducerbarhet</h2>
     <p>
       All datahämtning, bearbetning, analys och webbgenerering är skriven i
-      Python och JavaScript och finns publik på <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
+      Python och JavaScript och finns öppen som källkod på <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
       Rådata laddas direkt från <code>data.riksdagen.se</code> — vi
       vidarepublicerar den inte. Analysen kan köras om från noll på en
       vanlig dator (tar ungefär en timme inklusive textbäddning).
-      Resultaten i den här texten är baserade på data tillgänglig till
+      Resultaten i den här texten är baserade på data tillgängliga till
       och med juni 2026.
     </p>
   </article>
