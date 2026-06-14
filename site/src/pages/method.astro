@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Method — political stylometry">
+<BaseLayout title="Method, political stylometry">
   <article class="container">
     <header class="article-hero">
       <p class="byline">Method · updated 2026-06-14</p>
       <h1>Method</h1>
       <p class="lede">
         Everything below is reproducible from public data at
-        data.riksdagen.se. Source code is on
+        data.riksdagen.se plus the eight 2022 party manifestos. Source
+        code is on
         <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
       </p>
     </header>
@@ -16,12 +17,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2>Data sources</h2>
     <ul>
       <li><strong>2,501 chamber votes</strong> from parliamentary years
-      2022/23–2025/26, fetched as bulk dumps from
+      2022/23 to 2025/26, fetched as bulk dumps from
       <code>data.riksdagen.se/dataset/votering/</code>. 872,849 individual
       roll-call entries from 424 members.</li>
       <li><strong>54,914 chamber speeches</strong> from the same period
-      — all replies, interpellation answers and main speeches — fetched
-      as bulk dumps from
+      (replies, interpellation answers and main speeches) fetched as
+      bulk dumps from
       <code>data.riksdagen.se/dataset/anforande/</code>.</li>
       <li><strong>10,931 dissenting opinions (reservationer)</strong>
       extracted from 858 committee reports, fetched via
@@ -31,7 +32,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <li><strong>3,211 majority-opinion sections</strong> ("Utskottets
       ställningstagande") from the same reports. The majority's
       equivalent of a reservation.</li>
+      <li><strong>3,696 manifesto sentences</strong> across the eight
+      2022 party manifestos from the SND "Vi vill" archive (public
+      domain). Manifesto length varies from 1.6k words (KD) to 21k
+      words (SD).</li>
     </ul>
+
+    <h2>The behavioural map</h2>
+    <p>
+      A 349-by-2,501 member-by-vote matrix is built from the chamber
+      record (Yes = +1, No = -1, Abstain or Absent = 0). PCA on this
+      matrix yields the two-dimensional projection shown in the main
+      article. PC1 (46 % of variance) separates the Tidö bloc from the
+      opposition. PC2 (13.5 %) splits the opposition into an S arm and
+      a V/MP/C arm.
+    </p>
+    <p>
+      To track movement over the mandate, the same projection is run
+      per parliamentary year. The bloc collapse and Tidö agreement
+      trend (figures 07 and 08) come from year-by-year PCAs aligned
+      through Procrustes rotation so the axes are comparable across
+      time.
+    </p>
 
     <h2>Topic clustering</h2>
     <p>
@@ -40,7 +62,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       (<a href="https://huggingface.co/KBLab/sentence-bert-swedish-cased">KBLab/sentence-bert-swedish-cased</a>,
       a 768-dim model trained on Swedish text by the National Library's
       KB Lab). We use each committee report's title plus the point's
-      heading as input — not the proposal text itself, which is
+      heading as input, not the proposal text itself, which is
       dominated by procedural formulae.
     </p>
     <p>
@@ -48,90 +70,93 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       tracks committee jurisdictions reasonably well. Migration,
       climate, schools and health care are among the cleanest. Manual
       inspection of top terms per cluster confirms the grouping is
-      meaningful.
+      meaningful. The same 28 topics are used downstream for reasoning
+      vectors and for stated-vs-revealed matching.
     </p>
 
-    <h2>WHAT — vote stance</h2>
+    <h2>Manifesto element classification</h2>
     <p>
-      For each vote and party, the stance is
+      Each manifesto is split into sentences with abbreviation handling.
+      Each sentence is scored against three curated regex pools:
     </p>
-    <p style="text-align: center; font-family: var(--mono); padding: 1rem; background: var(--rule-soft); border-radius: 4px;">
-      stance<sub>p,v</sub> = (n_Yes − n_No) / (n_Yes + n_No + n_Abstain)
+    <ul>
+      <li><strong>Diagnosis</strong>: language describing the current
+      problematic state. Negative-framed observations and present-state
+      critique.</li>
+      <li><strong>End state</strong>: aspirational future-state
+      statements ("vi vill se", "Sverige ska vara", "ett land där").</li>
+      <li><strong>Mechanism</strong>: concrete policy proposals using
+      action verbs in future or proposal tense ("höja", "skärpa",
+      "reformera", "införa").</li>
+    </ul>
+    <p>
+      A sentence gets the element with the highest score, or "other"
+      if no pool matched. In ties, end-state takes precedence as the
+      rarest and most diagnostic of the three. A separate value
+      vocabulary of 20 terms is matched in parallel, with per-party
+      frequencies normalised per 1000 words and z-scored across the
+      eight parties.
     </p>
     <p>
-      in the interval −1 to +1. Absences are not counted: they are not
-      positions, they are the absence of one. Per (party, topic) we
-      take the mean across all votes in that topic.
+      The classifier is keyword-based by design: fast, transparent,
+      easy to audit. The regex pools are open in the code and can be
+      revised. Differences in classifier sensitivity affect absolute
+      shares but not the cross-party comparisons that drive the main
+      findings.
     </p>
 
-    <h3>A caveat on how the cabinet votes</h3>
-    <p>
-      Because the government always votes for its own proposals in the
-      chamber, M, KD and L have an average stance near +1 on
-      essentially every topic. The interesting difference between them
-      isn't what they vote for — it's how they justify it.
-    </p>
-
-    <h2>WHY — reasoning vector</h2>
+    <h2>Reasoning vectors</h2>
     <p>
       Reservation texts are segmented to their "Ställningstagande"
-      sections — where the substantive argument lives, not in the
-      procedural intro. Per (party, topic) we take up to 20 of the
-      longest reservations; each text is embedded into a 768-dim
-      vector and the mean is stored.
+      sections, where the substantive argument lives. Per (party,
+      topic) we take up to 20 of the longest reservations; each text
+      is embedded into a 768-dim vector and the mean is stored.
     </p>
     <p>
       For the governing parties (M, KD, L), almost no reservations
       exist because they are the majority. We instead use the
       "Utskottets ställningstagande" sections from the committee
-      reports — where the majority explains its choice. The text is
+      reports, where the majority explains its choice. The text is
       lightly recast from third person to first person so it reads in
       the same voice as opposition reservations.
     </p>
+
+    <h2>Stated vs revealed (topic-matched)</h2>
     <p>
-      Similarity between two parties' reasoning is the cosine
-      similarity between their mean vectors. We centre per topic so
-      the shared register of parliamentary Swedish does not dominate
-      — what we measure is how each party <em>deviates</em> from the
-      topic average way of talking about it.
+      The most direct manifesto-vs-parliament comparison would be
+      cosine similarity between each party's mean manifesto vector
+      and its mean reservation vector. This is misleading because it
+      conflates topical content with register. Cabinet parties write
+      polished committee formulations on different topics than the
+      opposition writes detailed reservations about.
+    </p>
+    <p>
+      We instead compute the comparison within (party, topic) cells.
+      Each manifesto sentence is assigned to its nearest of the 28
+      topic centroids by SBERT cosine, with a minimum similarity
+      threshold of 0.30 to drop off-topic sentences. Cells with fewer
+      than five on-topic manifesto sentences are dropped. The
+      remaining 75 cells across eight parties form the matrix of
+      figure 27.
     </p>
 
-    <h2>HOW — theory of change</h2>
+    <h2>Coalition and behavioural signals</h2>
     <p>
-      Two complementary signals combine into the HOW axis.
-    </p>
-
-    <h3>Reservation co-signing</h3>
-    <p>
-      When two parties put their names on the same reservation, they
-      share a concrete alternative proposal. This is direct structural
-      evidence of shared mechanism preferences. We compute pairwise
-      cosine similarity in reservation-signing space.
-    </p>
-
-    <h3>Lexical analysis of speech text</h3>
-    <p>
-      Four dimensions, each with a short word list for either side:
+      Beyond the vote-matrix PCA, two additional behavioural signals
+      surface in the article:
     </p>
     <ul>
-      <li><strong>Market ↔ regulation</strong></li>
-      <li><strong>Prevention ↔ punishment</strong></li>
-      <li><strong>State ↔ local</strong></li>
-      <li><strong>Universal ↔ targeted</strong></li>
+      <li><strong>Reservation co-signing.</strong> When two parties
+      put their names on the same reservation they share a concrete
+      alternative proposal. Co-signing counts are direct structural
+      evidence of mechanism alignment. SD has zero co-signed
+      reservations with any cabinet party across the entire mandate.</li>
+      <li><strong>Tidö collapse and SD reservation drop.</strong> The
+      mean pairwise centroid distance between the four Tidö parties,
+      and the count of reservations filed per party per year, are
+      computed directly from the chamber record without further
+      modelling.</li>
     </ul>
-    <p>
-      Each speech is scored on each dimension as
-      (<code>left_hits − right_hits</code>) / (total hits), in
-      [−1, +1]. Per (party, topic) the counts are aggregated and a
-      relative score is derived. Because all parties for instance talk
-      more about "alla" than "behovsprövad", the dimensions are
-      z-normalised across parties before similarity is computed.
-    </p>
-    <p>
-      The word lists are deliberately short. They are open in the code
-      and can be revised. The dimensions chosen have long traditions
-      in political science; they are not exhaustive.
-    </p>
 
     <h2>Limitations</h2>
     <ul>
@@ -146,10 +171,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         structural inevitability.
       </li>
       <li>
-        <strong>The HOW axis word lists are loaded.</strong> We chose
-        what counts as "market" or "regulation". Those are subjective
-        choices, open in the code so a different researcher can
-        revise them.
+        <strong>The element classifier is keyword-based.</strong> A
+        sentence that argues end-state ideas in mechanism language
+        will be misclassified. The regex pools are open in the code
+        for revision.
+      </li>
+      <li>
+        <strong>KD and MP have thin manifestos.</strong> KD's 1.6k-word
+        manifesto yields only one topic with sufficient on-topic
+        material; MP yields three. Their stated-vs-revealed bars are
+        shown but should not be over-interpreted.
       </li>
       <li>
         <strong>Decisions taken outside the chamber are not in the
@@ -166,13 +197,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2>Reproducibility</h2>
     <p>
       All data fetching, processing, analysis and site generation is
-      written in Python and JavaScript and openly available on
+      written in Python and openly available on
       <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
       Raw data is loaded directly from
-      <code>data.riksdagen.se</code> — we don't redistribute it. The
-      analysis can be re-run from scratch on an ordinary machine in
-      about an hour, including text embedding. Results in this
-      article are based on data available through June 2026.
+      <code>data.riksdagen.se</code> and the SND archive; we do not
+      redistribute it. The analysis can be re-run from scratch on an
+      ordinary machine in about an hour, including text embedding.
+      Results in this article are based on data available through
+      June 2026.
     </p>
   </article>
 </BaseLayout>
