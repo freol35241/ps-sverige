@@ -84,7 +84,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </p>
 
     <p>
-      That is the behavioural map. Now the four questions, one at a time.
+      The map collapses every vote in the mandate to one point per party.
+      It is structure, not substance. To see where the disagreement actually
+      lives, the same matrix split by topic:
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/33_per_topic_stance.png`} alt="Vote stance per party per topic, top 20 by cross-party variance" loading="lazy" />
+      <figcaption>
+        Mean vote stance per (party, topic). +1 = the party consistently
+        voted Yes on points classified into that topic, -1 = consistently
+        No, 0 = mixed. Topics are sorted left-to-right by cross-party
+        variance, so the most polarising appear first.
+      </figcaption>
+    </figure>
+
+    <p>
+      The most polarising topics in the 2022-2026 mandate are migration,
+      international aid, pharmaceuticals and dental care, climate, schools
+      and municipal services. Migration is the single most differentiating
+      topic by some distance. Both the size of the cross-party gap and the
+      cluster pattern (V, MP and C on one side; M, KD, L, SD on the other,
+      with S in between) repeats with minor variations across these top
+      issues. Health, climate and migration draw the same coalition
+      structure that the PCA showed in two dimensions; the per-topic view
+      simply shows that this structure is consistent across substantively
+      different questions.
+    </p>
+
+    <p>
+      With the orienting picture in place: the four questions, one at a
+      time.
     </p>
 
     <h2>1. What is wrong with Sweden?</h2>
@@ -243,6 +273,72 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       co-author.
     </p>
 
+    <figure>
+      <img src={`${base}/figures/30_temporal_coauthorship.png`} alt="Reservation co-authorship over the mandate" loading="lazy" />
+      <figcaption>
+        <strong>Left.</strong> Opposition parties co-sign reservations
+        with each other continuously, with V-MP the tightest pair (0.30
+        to 0.38). All three pairs tick up in 2025/26, the election year,
+        as opposition activity intensifies.
+        <strong>Right.</strong> SD with the three cabinet parties:
+        co-authorship is structurally zero for the first three years.
+        In the election year a single uptick: KD-SD rises to 0.24,
+        while M-SD and L-SD remain flat. The first co-signed
+        reservations between SD and a cabinet party appear only when
+        the election is six months away.
+      </figcaption>
+    </figure>
+
+    <p>
+      Mechanism preferences are not only about who signs with whom. They
+      are also about the vocabulary used to describe what should be done.
+      Four mechanism dimensions, each with a short curated word list:
+      market versus regulation, prevention versus punishment, central
+      state versus local, universal versus targeted welfare. Each chamber
+      speech is scored on each axis from the relative frequency of the
+      two vocabularies.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/29_temporal_how_lexicon.png`} alt="Mechanism vocabulary per party over four parliamentary years" loading="lazy" />
+      <figcaption>
+        Four mechanism axes, per party, per parliamentary year. Each
+        line is one party's relative frequency of the two vocabularies
+        on that axis.
+      </figcaption>
+    </figure>
+
+    <p>
+      Two patterns stand out:
+    </p>
+
+    <ul>
+      <li>
+        <strong>The prevention-punishment axis swung sharply.</strong>
+        Centerpartiet and Miljöpartiet both moved 0.28 to 0.30 units
+        toward punishment vocabulary across the mandate. These are the
+        two parties one might least expect to shift in this direction.
+        The Tidö parties, who already used more punishment vocabulary
+        at the start, moved much less. The opposition adopted the
+        framing.
+      </li>
+      <li>
+        <strong>Moderaterna's market vocabulary grew (+0.16) while
+        Liberalerna's shrank (-0.11).</strong> The cabinet's two
+        ostensibly market-friendly parties moved in opposite
+        directions on the market-regulation axis. M's market register
+        rose; L's fell as L's chamber speech took on more
+        administrative vocabulary.
+      </li>
+    </ul>
+
+    <p>
+      The four mechanism dimensions are deliberately small and explicit;
+      the word lists are open in the code. The point is not the
+      individual word counts but the directional drift across the
+      mandate.
+    </p>
+
     <h2>4. The values behind the answers</h2>
 
     <p>
@@ -377,6 +473,48 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       procurement vocabulary), and migration.
     </p>
 
+    <h3>Two registers inside parliament</h3>
+
+    <p>
+      Manifesto is one register. Parliament has two of its own: the
+      chamber speech, oral and often delivered without notes, and the
+      written reservation, drafted by party staff and polished. If a
+      party speaks the same way in both, its parliamentary register is
+      internally consistent. If the two diverge, the chamber persona and
+      the committee persona differ.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/32_speech_vs_reservation.png`} alt="Per-party speech vs reservation cosine similarity" loading="lazy" />
+      <figcaption>
+        Per-party mean speech reasoning vector against mean reservation
+        reasoning vector, restricted to (party, topic) cells covered by
+        both. Higher = the party uses the same vocabulary in chamber
+        speeches as in written reservations.
+      </figcaption>
+    </figure>
+
+    <p>
+      The four opposition parties and Sverigedemokraterna all land in a
+      tight 0.87 to 0.89 band. Inside parliament, each of these five
+      parties speaks the same way regardless of register. The cabinet
+      bars are hatched because the cabinet writes almost no reservations:
+      L has reservation material in only 8 topic cells, KD in 11, M in
+      8. The bars are technically computable but the sample is too small
+      to read as a finding.
+    </p>
+
+    <p>
+      What is striking is the opposition's internal consistency. The
+      earlier finding (Vänsterpartiet had the largest
+      manifesto-versus-reservation gap) is not because V is
+      register-inconsistent inside parliament: it is because V's
+      manifesto reads in a different register than V's parliamentary
+      work, while V's parliamentary work is internally consistent across
+      speech and writing. The drift is between manifesto and parliament,
+      not within parliament.
+    </p>
+
     <h2>The bloc collapse</h2>
 
     <p>
@@ -449,6 +587,76 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       has thinned from both sides: SD moving into the cabinet's
       positions, M moving into SD's vocabulary. By the election year
       they are, on the parliamentary record, one entity.
+    </p>
+
+    <h3>The collapse against the wider picture</h3>
+
+    <p>
+      The Tidö story is dramatic but it is not the only movement in the
+      mandate. The same Procrustes-aligned PCA, run year by year, traces
+      where every party drifted.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/28_centroid_trajectories.png`} alt="Each party's voting centroid drift across four parliamentary years" loading="lazy" />
+      <figcaption>
+        Each party's voting centroid across the four parliamentary
+        years of the mandate. Dot size grows with year. Lines show the
+        trajectory; the arrow on the last segment points to where the
+        party landed in the election year.
+      </figcaption>
+    </figure>
+
+    <p>
+      Three movements stand out beyond the Tidö collapse:
+    </p>
+
+    <ul>
+      <li>
+        <strong>Miljöpartiet moved up on PC2 the most</strong>, from
+        below the axis to well above it. The within-bloc structure
+        captured by PC2 changed meaning for MP across the mandate. By
+        2025/26 they sit closer to the C-MP axis than to V.
+      </li>
+      <li>
+        <strong>Vänsterpartiet moved toward the centre on PC1</strong>,
+        from -8 in 2022/23 to roughly -2 in 2025/26. Their position
+        opposite the cabinet softened on the vote axis even as their
+        reservation activity stayed high.
+      </li>
+      <li>
+        <strong>Socialdemokraterna barely moved at all.</strong> The
+        largest opposition party is the most stationary point on the
+        map.
+      </li>
+    </ul>
+
+    <p>
+      The bloc fusion shows up at the individual level too. Compute, for
+      each MP, the ratio of their distance to their own party's centroid
+      against their distance to the nearest other party. A ratio above 1
+      means the MP votes more like another party than their own.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/31_defectors.png`} alt="Top behavioural defectors over the mandate" loading="lazy" />
+      <figcaption>
+        The 12 MPs with the highest distance-to-own-party / distance-to-nearest-other-party
+        ratio, on a log scale. The dashed line marks equidistance. A
+        ratio of 5x means the MP is five times further from their own
+        party's centroid than from another party's.
+      </figcaption>
+    </figure>
+
+    <p>
+      Eight of the top twelve defectors are Liberalerna MPs whose
+      voting record sits closer to KD or M than to L. The party of
+      Bengt Westerberg is structurally split at the individual level:
+      a substantial share of the L caucus is behaviourally inside the
+      Christian-Democratic or Moderate clusters. The collapse seen at
+      party-mean level is not just the cabinet's three colours blending
+      into a single centroid. It is also the L party itself thinning
+      from within.
     </p>
 
     <hr />
