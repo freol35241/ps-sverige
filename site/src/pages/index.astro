@@ -49,7 +49,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <p>
       We have eight 2022 manifestos and the full record of the
       2022-2026 mandate. We can read both as text and as behaviour, and
-      hold them against one another.
+      hold them against one another. A caveat that will matter as we
+      compare manifestos: they are not the same shape.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/36_manifesto_coverage.png`} alt="Manifesto topical coverage per party" loading="lazy" />
+      <figcaption>
+        <strong>Left.</strong> Sentence count per (party, topic) for the
+        eight 2022 manifestos, after assigning each sentence to its
+        nearest of 28 policy topics. Topics are ordered left to right by
+        total coverage across parties.
+        <strong>Right.</strong> Number of topics where the party has at
+        least five on-topic manifesto sentences. SD covers 19 of 28
+        topics; KD covers 1.
+      </figcaption>
+    </figure>
+
+    <p>
+      Manifestos are not interchangeable documents. SD's 21,000-word
+      manifesto registers meaningful content in 19 of the 28 policy
+      topics. Kristdemokraternas's 1,600-word manifesto covers one. The
+      asymmetry is structural: any cross-party manifesto comparison
+      will be sensitive to which topics each party chose to cover. The
+      stated-vs-revealed analysis later will note where this matters.
     </p>
 
     <h2>The shape of the chamber</h2>
@@ -113,8 +136,55 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </p>
 
     <p>
-      With the orienting picture in place: the four questions, one at a
-      time.
+      One more orienting picture before the four questions. Voting
+      together is not the same as reasoning together. For every party
+      pair, we have a vote-stance similarity (from the chamber record)
+      and a reasoning similarity (topic-centred cosine between
+      reservation reasoning vectors). The two correlate, but not
+      tightly.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/34_vote_vs_reasoning.png`} alt="Party pair vote similarity vs reasoning similarity" loading="lazy" />
+      <figcaption>
+        Each point is one of the 28 party pairs. X axis: similarity of
+        how the two parties voted across all 2,501 chamber votes.
+        Y axis: similarity of how the two parties reasoned in their
+        reservations and majority opinions, with the parliamentary
+        average per topic subtracted. The dashed line is the cross-pair
+        trend. Pairs above the line argue more alike than they vote.
+        Pairs below vote together but reason apart.
+      </figcaption>
+    </figure>
+
+    <p>
+      Three pairs are worth naming:
+    </p>
+
+    <ul>
+      <li>
+        <strong>S and C: vote alike, argue apart.</strong> S and C
+        vote together 91 % of the time, more than any other
+        non-cabinet pair, but they sit substantially below the
+        reasoning trend. They share the role of opposition arithmetic
+        without sharing the underlying values vocabulary. A marriage
+        of convenience.
+      </li>
+      <li>
+        <strong>M and SD: vote alike and argue alike.</strong> Vote
+        similarity 0.83, reasoning similarity above the trend line.
+        Not just SD voting with the cabinet but M's reasoning
+        register having shifted toward SD's.
+      </li>
+      <li>
+        <strong>V and MP: vote alike and argue alike.</strong> The
+        only above-trend pair in the opposition. A genuine bloc, not
+        a coalition of convenience.
+      </li>
+    </ul>
+
+    <p>
+      With these maps in place: the four questions, one at a time.
     </p>
 
     <h2>1. What is wrong with Sweden?</h2>
@@ -399,6 +469,60 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       manifesto reads as mechanism-first, value-second.
     </p>
 
+    <h2>Do the four answers hang together?</h2>
+
+    <p>
+      So far we have treated diagnosis, end state, mechanism and values
+      as separate questions. A natural test follows: does each party's
+      diagnostic vocabulary actually resemble its end-state vocabulary?
+      Does its mechanism vocabulary resemble its values vocabulary? Or
+      are these four pieces assembled rather than coherent?
+    </p>
+
+    <p>
+      For each party, embed every diagnosis sentence, every end-state
+      sentence and every mechanism sentence into the same SBERT vector
+      space, average per element, and compute cosine similarity between
+      each pair.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/38_party_coherence.png`} alt="Within-party cosine between element vectors" loading="lazy" />
+      <figcaption>
+        For each party, pairwise cosine between the mean embedding of
+        their diagnosis sentences, end-state sentences, and mechanism
+        sentences. Higher means the three element vocabularies look
+        more alike. KD is excluded for having too few end-state
+        sentences (n=4).
+      </figcaption>
+    </figure>
+
+    <p>
+      Two patterns appear in this otherwise tight figure.
+    </p>
+
+    <ul>
+      <li>
+        <strong>End-state and mechanism are always closer to each
+        other than either is to diagnosis.</strong> For every party,
+        the green bar is taller than the orange. The language of
+        "what we want" and the language of "what we will do" share
+        vocabulary in a way that the language of "what is wrong"
+        does not. This is a structural fact about Swedish political
+        writing, not about any one party.
+      </li>
+      <li>
+        <strong>SD has the highest internal coherence (mean 0.86);
+        MP has the lowest (0.78).</strong> SD's long, technical
+        manifesto reads as one document about one thing. MP's
+        manifesto sits across more vocabularies (climate language,
+        rights language, mechanism language) that overlap less. The
+        cross-party spread is small but consistent: parties with
+        longer, single-author manifestos read as more internally
+        coherent than those that read like compilations.
+      </li>
+    </ul>
+
     <h2>Stated and revealed: manifestos against the record</h2>
 
     <p>
@@ -657,6 +781,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       party-mean level is not just the cabinet's three colours blending
       into a single centroid. It is also the L party itself thinning
       from within.
+    </p>
+
+    <p>
+      The defector chart shows the tails. The middle of the
+      distribution holds an independent finding. Compute the mean
+      distance from MPs to their party centroid in the 4D PCA space,
+      per party. Kristdemokraterna's caucus is the most disciplined of
+      the eight (mean distance 2.51), followed by Moderaterna (5.20).
+      Miljöpartiet's is the most spread (8.48), Vänsterpartiet's
+      almost as spread (7.52). The opposition with the loudest
+      ideological coherence in its manifesto language has the most
+      heterogeneous caucus in chamber voting. The cabinet's largest
+      party, despite 78 MPs, votes as a unit.
     </p>
 
     <hr />

@@ -370,13 +370,404 @@ def fig_per_topic_stance() -> Path:
 
 
 # ---------------------------------------------------------------------------
+# 34. Pair vote vs reasoning scatter
+# ---------------------------------------------------------------------------
+def fig_pair_vote_vs_reasoning() -> Path:
+    """For each unordered party pair compute:
+    - vote similarity: 1 - mean |stance_a - stance_b| / 2 across the 28 topics
+    - reasoning similarity: mean topic-centred cosine across topics that
+      both parties have a reasoning vector for
+    Plot as scatter with trend line, highlight three named pairs."""
+    pt = pd.read_parquet(IN / "party_topic.parquet")
+    pivot = pt.pivot(index="parti", columns="topic_id",
+                     values="score").loc[PARTIES]
+    X = pivot.to_numpy()
+    n = len(PARTIES)
+    vote = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n):
+            vote[i, j] = 1 - np.nanmean(np.abs(X[i] - X[j])) / 2.0
+
+    rv = np.load(IN / "reasoning_vectors.npz", allow_pickle=True)
+    V, N = rv["V"], rv["N"]
+    V_c = V.copy()
+    for t in range(V.shape[1]):
+        present = N[:, t] > 0
+        if present.sum() >= 2:
+            V_c[present, t] -= V_c[present, t].mean(axis=0, keepdims=True)
+    reasoning = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                reasoning[i, j] = 1.0
+                continue
+            sims = []
+            for t in range(V.shape[1]):
+                if N[i, t] == 0 or N[j, t] == 0:
+                    continue
+                vi, vj = V_c[i, t], V_c[j, t]
+                ni = np.linalg.norm(vi); nj = np.linalg.norm(vj)
+                if ni and nj:
+                    sims.append(float(vi @ vj / (ni * nj)))
+            reasoning[i, j] = np.mean(sims) if sims else np.nan
+
+    pairs = []
+    for i in range(n):
+        for j in range(i + 1, n):
+            pairs.append({"a": PARTIES[i], "b": PARTIES[j],
+                          "pair": f"{PARTIES[i]}-{PARTIES[j]}",
+                          "vote": vote[i, j], "reasoning": reasoning[i, j]})
+    df = pd.DataFrame(pairs)
+
+    xs, ys = df["vote"].to_numpy(), df["reasoning"].to_numpy()
+    a_fit, b_fit = np.polyfit(xs, ys, 1)
+
+    NAMED = {
+        ("S", "C"):  ("marriage of convenience: vote alike, argue apart", "below"),
+        ("M", "SD"): ("vote alike and argue alike", "above"),
+        ("V", "MP"): ("vote alike and argue alike", "above"),
+    }
+
+    fig, ax = plt.subplots(figsize=(13, 8))
+    xline = np.linspace(xs.min() - 0.02, xs.max() + 0.02, 50)
+    ax.plot(xline, a_fit * xline + b_fit, "--", color="#BBB", lw=1.4,
+            label="trend (vote predicts reasoning)", zorder=1)
+
+    for _, r in df.iterrows():
+        key = (r["a"], r["b"]) if (r["a"], r["b"]) in NAMED else \
+              ((r["b"], r["a"]) if (r["b"], r["a"]) in NAMED else None)
+        if key is not None:
+            colour = "#1B9E77" if NAMED[key][1] == "above" else "#D95F02"
+            ax.scatter(r["vote"], r["reasoning"], s=280, alpha=0.95,
+                       edgecolor=colour, linewidth=2.6, c="white", zorder=5)
+            ax.annotate(r["pair"], (r["vote"], r["reasoning"]),
+                        fontsize=13, fontweight="bold", color=colour,
+                        xytext=(12, 10), textcoords="offset points",
+                        zorder=6)
+        else:
+            ax.scatter(r["vote"], r["reasoning"], s=120, alpha=0.55,
+                       edgecolor="#555", linewidth=0.5, c="#9CB7D4",
+                       zorder=3)
+            ax.annotate(r["pair"], (r["vote"], r["reasoning"]),
+                        fontsize=9, color="#777",
+                        xytext=(6, 4), textcoords="offset points",
+                        zorder=4)
+
+    ax.text(0.99, 0.04,
+            "above trend: closer in reasoning than in votes\n"
+            "below trend: closer in votes than in reasoning",
+            transform=ax.transAxes, ha="right", va="bottom",
+            fontsize=10.5, color="#444",
+            bbox=dict(boxstyle="round,pad=0.5", fc="white",
+                      ec="#DDD", lw=0.8))
+
+    ax.set_xlabel("Vote-stance similarity")
+    ax.set_ylabel("Reasoning similarity (topic-centred cosine)")
+    ax.set_title("Do parties that vote together also reason together?\n"
+                 "Each point is one party pair. The dashed line is the cross-pair trend.",
+                 loc="left", fontsize=13, pad=14)
+    ax.grid(alpha=0.3, color=GRID)
+    ax.tick_params(length=0)
+    fig.tight_layout()
+    return _save(fig, "34_vote_vs_reasoning.png")
+
+
+# ---------------------------------------------------------------------------
+# 35. Intra-party cohesion
+# ---------------------------------------------------------------------------
+def fig_intra_party_cohesion() -> Path:
+    """For each party, mean distance from MPs to party centroid in the
+    4D PCA space used for the fit. Lower = more unified caucus."""
+    emb = pd.read_parquet(IN / "mp_embedding.parquet")
+    fit = emb[emb["in_fit"]].copy()
+    pc_cols = ["PC1", "PC2", "PC3", "PC4"]
+
+    rows = []
+    for party, g in fit.groupby("party_modal"):
+        if party not in PARTIES or len(g) < 3:
+            continue
+        cent = g[pc_cols].mean().to_numpy()
+        dists = np.linalg.norm(g[pc_cols].to_numpy() - cent, axis=1)
+        rows.append({"party": party,
+                     "n_mps": len(g),
+                     "mean_dist": float(dists.mean()),
+                     "median_dist": float(np.median(dists)),
+                     "p90_dist": float(np.percentile(dists, 90))})
+    df = pd.DataFrame(rows).set_index("party").loc[
+        [p for p in PARTIES if p in [r["party"] for r in rows]]]
+    df = df.sort_values("mean_dist")
+
+    fig, ax = plt.subplots(figsize=(12, 5.8))
+    y = np.arange(len(df))
+    ax.barh(y, df["mean_dist"],
+            color=[PARTY_COLOR[p] for p in df.index],
+            edgecolor="white", linewidth=1.2)
+    for yi, (p, row) in zip(y, df.iterrows()):
+        ax.text(row["mean_dist"] + 0.04, yi,
+                f"{row['mean_dist']:.2f}  ({row['n_mps']} MPs)",
+                va="center", fontsize=10, color="#333")
+    ax.set_yticks(y); ax.set_yticklabels(df.index, fontsize=12, fontweight="bold")
+    ax.set_xlabel("Mean MP distance to party centroid (4D PCA space)")
+    ax.set_title("Which party caucuses are the most unified?\n"
+                 "Lower = MPs cluster more tightly around their party's mean voting position.",
+                 loc="left", fontsize=13, pad=14)
+    ax.grid(axis="x", alpha=0.3)
+    ax.tick_params(length=0)
+    ax.invert_yaxis()
+    fig.tight_layout()
+    return _save(fig, "35_intra_party_cohesion.png")
+
+
+# ---------------------------------------------------------------------------
+# 36. Manifesto coverage
+# ---------------------------------------------------------------------------
+def fig_manifesto_coverage() -> Path:
+    """For each (party, topic), count manifesto sentences classified to that
+    topic with topic_sim >= 0.30. Show as heatmap, parties as rows."""
+    ma = pd.read_parquet(IN / "manifesto_topic_assignment.parquet")
+    meta = pd.read_parquet(IN / "topic_meta.parquet")
+
+    SIM = 0.30
+    keep = ma[ma["topic_sim"] >= SIM]
+
+    pivot = (keep.groupby(["party", "topic_id"])
+                 .size().unstack(fill_value=0))
+    pivot = pivot.reindex([p.lower() for p in PARTIES])
+    pivot.index = [p.upper() for p in pivot.index]
+
+    def clean_label(row):
+        terms = (row.get("label_terms") or "").split(",")
+        terms = [t.strip() for t in terms if t.strip()]
+        return ", ".join(terms[:2]) if terms else f"t{row['topic_id']}"
+
+    meta = meta.copy()
+    meta["label"] = meta.apply(clean_label, axis=1)
+    label_map = dict(zip(meta["topic_id"], meta["label"]))
+
+    coverage = (pivot >= 5).sum(axis=1)
+    total_sents = pivot.sum(axis=1)
+
+    fig, axes = plt.subplots(1, 2, figsize=(15, 6),
+                             gridspec_kw={"width_ratios": [3, 1]})
+
+    ax = axes[0]
+    topic_order = pivot.sum(axis=0).sort_values(ascending=False).index.tolist()
+    display = pivot[topic_order]
+    im = ax.imshow(np.log1p(display.to_numpy()), cmap="Greens",
+                   aspect="auto", vmin=0, vmax=np.log1p(50))
+    ax.set_yticks(range(len(display.index)))
+    ax.set_yticklabels(display.index, fontsize=11, fontweight="bold")
+    ax.set_xticks(range(len(topic_order)))
+    ax.set_xticklabels([label_map.get(t, f"t{t}") for t in topic_order],
+                       rotation=45, ha="right", fontsize=8.5)
+    for i in range(display.shape[0]):
+        for j in range(display.shape[1]):
+            v = display.iloc[i, j]
+            if v == 0:
+                continue
+            colour = "white" if v > 20 else "#222"
+            ax.text(j, i, f"{int(v)}", ha="center", va="center",
+                    fontsize=7.5, color=colour)
+    ax.set_title("Manifesto sentence count per (party, topic)",
+                 loc="left", fontsize=12)
+    ax.tick_params(length=0)
+
+    ax = axes[1]
+    cov = coverage.sort_values()
+    y = np.arange(len(cov))
+    ax.barh(y, cov.values,
+            color=[PARTY_COLOR[p] for p in cov.index],
+            edgecolor="white", linewidth=1.0)
+    for yi, p in zip(y, cov.index):
+        ax.text(cov[p] + 0.4, yi,
+                f"{cov[p]} of 28\n({int(total_sents[p])} sentences)",
+                va="center", fontsize=9, color="#333")
+    ax.set_yticks(y); ax.set_yticklabels(cov.index, fontsize=11, fontweight="bold")
+    ax.set_xlabel("Topics with >=5 on-topic sentences")
+    ax.set_xlim(0, max(cov.max() + 6, 28))
+    ax.set_title("Manifesto topical coverage", loc="left", fontsize=12)
+    ax.grid(axis="x", alpha=0.3)
+    ax.tick_params(length=0)
+
+    fig.suptitle("How much of policy space does each manifesto address?",
+                 x=0.02, ha="left", y=1.00, fontsize=15, fontweight="bold")
+    fig.tight_layout(rect=(0, 0, 1, 0.96))
+    return _save(fig, "36_manifesto_coverage.png")
+
+
+# ---------------------------------------------------------------------------
+# 37. Temporal reasoning drift (SBERT)
+# ---------------------------------------------------------------------------
+def fig_temporal_reasoning_drift() -> Path:
+    """Per (party, parliamentary year) compute the mean SBERT embedding of
+    that party's reasoning speeches. Plot year-over-year cosine drift."""
+    from sentence_transformers import SentenceTransformer
+
+    rs = pd.read_parquet(IN / "reasoning_speeches.parquet")
+    rs["rm"] = rs["dok_datum"].apply(_riksmote_from_date)
+    rs = rs[rs["parti"].isin(PARTIES) & rs["rm"].isin(RIKSMOTEN)].reset_index(drop=True)
+
+    print(f"embedding {len(rs)} speeches ...")
+    model = SentenceTransformer("KBLab/sentence-bert-swedish-cased")
+    embs = model.encode(rs["text"].tolist(),
+                         batch_size=32, show_progress_bar=True,
+                         normalize_embeddings=True)
+
+    rows = []
+    for (party, rm), g in rs.groupby(["parti", "rm"]):
+        positions = g.index.to_numpy()
+        mean_vec = embs[positions].mean(axis=0)
+        rows.append({"party": party, "rm": rm, "n": len(g),
+                     "vec": mean_vec})
+    yearly = pd.DataFrame(rows)
+
+    drift_rows = []
+    for party, g in yearly.groupby("party"):
+        g = g.set_index("rm").reindex(RIKSMOTEN)
+        for i, rm in enumerate(RIKSMOTEN):
+            if i == 0:
+                drift_rows.append({"party": party, "rm": rm,
+                                    "cos_to_first": 1.0})
+                continue
+            a = g.loc[RIKSMOTEN[0]]["vec"]
+            b = g.loc[rm]["vec"]
+            if a is None or b is None or (hasattr(a, "__len__") is False) \
+               or (hasattr(b, "__len__") is False):
+                continue
+            try:
+                a = np.asarray(a); b = np.asarray(b)
+                if a.size and b.size:
+                    cos = float(a @ b / (np.linalg.norm(a) * np.linalg.norm(b)))
+                    drift_rows.append({"party": party, "rm": rm,
+                                        "cos_to_first": cos})
+            except Exception:
+                continue
+    drift = pd.DataFrame(drift_rows)
+
+    fig, ax = plt.subplots(figsize=(12, 6.5))
+    x = np.arange(len(RIKSMOTEN))
+    for p in PARTIES:
+        sub = (drift[drift["party"] == p].set_index("rm").reindex(RIKSMOTEN))
+        if sub["cos_to_first"].notna().sum() < 2:
+            continue
+        ax.plot(x, sub["cos_to_first"], "-o",
+                color=PARTY_COLOR[p], lw=2.2, markersize=8, alpha=0.95)
+        ax.annotate(p, (x[-1], sub["cos_to_first"].iloc[-1]),
+                    xytext=(8, 0), textcoords="offset points",
+                    fontsize=11, fontweight="bold",
+                    color=PARTY_COLOR[p], va="center")
+    ax.set_xticks(x); ax.set_xticklabels(RIKSMOTEN, fontsize=10)
+    ax.set_ylabel("Cosine to 2022/23 baseline")
+    ax.set_title("How far each party's chamber rhetoric drifted from year one\n"
+                 "Per-party mean SBERT embedding of reasoning speeches per parliamentary year.",
+                 loc="left", fontsize=13, pad=14)
+    ax.grid(alpha=0.3, color=GRID)
+    ax.tick_params(length=0)
+    fig.tight_layout()
+    return _save(fig, "37_temporal_reasoning_drift.png")
+
+
+def _riksmote_from_date(d) -> str:
+    """Date to riksmöte string. Riksmöte starts mid-September."""
+    if pd.isna(d):
+        return ""
+    y, m = d.year, d.month
+    if m >= 9:
+        return f"{y}/{str(y+1)[-2:]}"
+    return f"{y-1}/{str(y)[-2:]}"
+
+
+# ---------------------------------------------------------------------------
+# 38. Cross-cutting party coherence between four questions (SBERT)
+# ---------------------------------------------------------------------------
+def fig_party_coherence() -> Path:
+    """Per party, embed all sentences labelled diagnosis, end_state, and
+    mechanism in the manifesto. Take per-element mean. Compute pairwise
+    cosine within each party between the three element vectors.
+
+    High pairwise cosine = internally coherent worldview (diagnosis, vision
+    and mechanism use the same vocabulary).
+    """
+    from sentence_transformers import SentenceTransformer
+
+    ann = pd.read_parquet(IN / "manifesto_sentences.parquet")
+    ann = ann[ann["element"] != "other"]
+
+    model = SentenceTransformer("KBLab/sentence-bert-swedish-cased")
+    el_vec = {}
+    el_n = {}
+    for (party, element), g in ann.groupby(["party", "element"]):
+        if len(g) < 5:
+            continue
+        embs = model.encode(g["sentence"].tolist(),
+                             batch_size=32, show_progress_bar=False,
+                             normalize_embeddings=True)
+        el_vec[(party, element)] = embs.mean(axis=0)
+        el_n[(party, element)] = len(g)
+
+    rows = []
+    for party in [p.lower() for p in PARTIES]:
+        keys = [k for k in el_vec.keys() if k[0] == party]
+        elements_have = [k[1] for k in keys]
+        if not all(e in elements_have for e in ("diagnosis", "end_state", "mechanism")):
+            continue
+        d = el_vec[(party, "diagnosis")]
+        e = el_vec[(party, "end_state")]
+        m = el_vec[(party, "mechanism")]
+        def cos(a, b):
+            return float(a @ b / (np.linalg.norm(a) * np.linalg.norm(b)))
+        rows.append({"party": party.upper(),
+                     "d_e": cos(d, e),
+                     "d_m": cos(d, m),
+                     "e_m": cos(e, m),
+                     "mean": (cos(d, e) + cos(d, m) + cos(e, m)) / 3,
+                     "n_d": el_n[(party, "diagnosis")],
+                     "n_e": el_n[(party, "end_state")],
+                     "n_m": el_n[(party, "mechanism")]})
+    df = pd.DataFrame(rows).set_index("party")
+    df = df.loc[[p for p in PARTIES if p in df.index]]
+    df = df.sort_values("mean", ascending=False)
+    print(df)
+
+    fig, ax = plt.subplots(figsize=(13, 6.5))
+    x = np.arange(len(df))
+    width = 0.27
+    ax.bar(x - width, df["d_e"], width, label="diagnosis vs end state",
+           color="#3B7DD8", edgecolor="white")
+    ax.bar(x, df["d_m"], width, label="diagnosis vs mechanism",
+           color="#D8693B", edgecolor="white")
+    ax.bar(x + width, df["e_m"], width, label="end state vs mechanism",
+           color="#3BD89B", edgecolor="white")
+    for i, p in enumerate(df.index):
+        ax.text(i, df.loc[p, "mean"] + 0.012, f"mean: {df.loc[p, 'mean']:.2f}",
+                ha="center", va="bottom",
+                fontsize=10, fontweight="bold", color="#222")
+    ax.set_xticks(x); ax.set_xticklabels(df.index, fontsize=12, fontweight="bold")
+    ax.set_ylabel("Cosine between element vectors")
+    ax.set_ylim(0, max(df[["d_e", "d_m", "e_m"]].to_numpy().max() + 0.10, 1.0))
+    ax.set_title("Do parties present internally coherent worldviews?\n"
+                 "Within-party cosine between each pair of element vectors (diagnosis, end state, mechanism).",
+                 loc="left", fontsize=13, pad=14)
+    ax.legend(loc="upper right", framealpha=0.95)
+    ax.grid(axis="y", alpha=0.3)
+    ax.tick_params(length=0)
+    fig.tight_layout()
+    return _save(fig, "38_party_coherence.png")
+
+
+# ---------------------------------------------------------------------------
 def main() -> None:
     for f in (fig_centroid_trajectories,
               fig_temporal_how_lexicon,
               fig_temporal_coauthorship,
               fig_defectors,
               fig_speech_vs_reservation,
-              fig_per_topic_stance):
+              fig_per_topic_stance,
+              fig_pair_vote_vs_reasoning,
+              fig_intra_party_cohesion,
+              fig_manifesto_coverage,
+              fig_temporal_reasoning_drift,
+              fig_party_coherence):
         p = f()
         print(f"wrote {p}")
 
