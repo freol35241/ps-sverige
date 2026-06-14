@@ -10,3 +10,4 @@ site/node_modules/
 site/smoke-test.mjs
 .astro/
 
+data/manifestos/
