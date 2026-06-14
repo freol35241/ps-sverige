@@ -1,33 +1,64 @@
 <script>
   import { onMount } from 'svelte';
   import {
-    pickNextTopic, pickExcerptsForTopic, updatePosterior,
-    computeMatch, initialPosterior, PARTIES,
+    matchWhat, matchWhy, matchHow, pickNextQuestion, PARTIES, DIMS,
   } from './matching.js';
 
-  import topicsRaw from '../data/topics.json';
-  import vectorsRaw from '../data/vectors.json';
-  import excerptsRaw from '../data/excerpts.json';
   import partiesRaw from '../data/parties.json';
+  import vectorsRaw from '../data/vectors.json';
+  import topicsRaw from '../data/topics.json';
+  import questionsRaw from '../data/questions.json';
 
   const PARTY_INFO = Object.fromEntries(partiesRaw.map(p => [p.code, p]));
+  const TOPIC_INFO = Object.fromEntries(topicsRaw.map(t => [t.id, t]));
 
-  // Use up to TOTAL_QUESTIONS, keep going until we run out of topics with
-  // at least 2 parties of excerpts.
-  const TOTAL_QUESTIONS = 10;
+  // Number of questions per round.
+  const ROUNDS = [
+    {
+      key: 'what',
+      label: 'VAD',
+      title: 'Vad bör politiken faktiskt göra?',
+      intro: 'Sju påståenden om konkret politik. Ange om du instämmer eller inte.',
+      target: 7,
+      pool: questionsRaw.what,
+    },
+    {
+      key: 'why',
+      label: 'VARFÖR',
+      title: 'Vilka värden vägleder dig?',
+      intro: 'Fem påståenden om vad som är viktigt i grunden.',
+      target: 5,
+      pool: questionsRaw.why,
+    },
+    {
+      key: 'how',
+      label: 'HUR',
+      title: 'Vilka medel föredrar du?',
+      intro: 'Fem påståenden om vägen dit – inte vad utan hur.',
+      target: 5,
+      pool: questionsRaw.how,
+    },
+  ];
+
+  const DIM_LABELS = {
+    market_vs_regulation: { left: 'marknad', right: 'reglering' },
+    prevention_vs_punishment: { left: 'förebyggande', right: 'straff' },
+    state_vs_local: { left: 'stat', right: 'lokalt' },
+    universal_vs_targeted: { left: 'generellt', right: 'riktat' },
+  };
 
   let reasoning = $state(null);
   let dataReady = $state(false);
-  let phase = $state(/** @type {'intro' | 'q' | 'done'} */ ('intro'));
-  let asked = $state(new Set());
-  let answers = $state([]);
-  let posterior = $state(initialPosterior());
-  let currentTopic = $state(null);
-  let currentOptions = $state([]);
+
+  /** @type {'intro' | 'q' | 'transition' | 'done'} */
+  let phase = $state('intro');
+  let roundIdx = $state(0);
+  let answersPerAxis = $state({ what: [], why: [], how: [] });
+  let asked = $state({ what: new Set(), why: new Set(), how: new Set() });
+  let currentQuestion = $state(null);
   let result = $state(null);
 
   onMount(async () => {
-    // Lazy-load the heavy reasoning vectors only when the user enters the tool.
     const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     try {
       const resp = await fetch(`${base}/data/reasoning.json`);
@@ -39,77 +70,83 @@
     dataReady = true;
   });
 
-  function nextQuestion() {
-    // Pick a topic with at least 2 parties with excerpts.
-    let topicId = null;
-    let tries = 0;
-    while (tries < 28) {
-      topicId = pickNextTopic(topicsRaw, vectorsRaw, asked, posterior);
-      if (topicId == null) break;
-      const opts = pickExcerptsForTopic(topicId, vectorsRaw, excerptsRaw, posterior);
-      if (opts.length >= 2) {
-        currentTopic = topicsRaw.find(t => t.id === topicId);
-        currentOptions = opts;
-        return;
-      }
-      asked.add(topicId);
-      asked = new Set(asked);
-      tries++;
+  function pickNext() {
+    const round = ROUNDS[roundIdx];
+    const pool = round.pool.filter(q => !asked[round.key].has(q.id));
+    if (pool.length === 0 || answersPerAxis[round.key].length >= round.target) {
+      advanceRound();
+      return;
     }
-    finalize();
+    const q = pickNextQuestion(pool, answersPerAxis[round.key], round.key,
+                                vectorsRaw, reasoning || {});
+    currentQuestion = q;
   }
 
   function start() {
     phase = 'q';
-    asked = new Set();
-    answers = [];
-    posterior = initialPosterior();
+    roundIdx = 0;
+    answersPerAxis = { what: [], why: [], how: [] };
+    asked = { what: new Set(), why: new Set(), how: new Set() };
     result = null;
-    nextQuestion();
+    pickNext();
   }
 
-  function chooseOption(optionIdx) {
-    const chosen = currentOptions[optionIdx];
-    answers = [...answers, { topicId: currentTopic.id, party: chosen.party }];
-    asked.add(currentTopic.id);
-    asked = new Set(asked);
-    posterior = updatePosterior(posterior, chosen.party, currentOptions);
-    if (answers.length >= TOTAL_QUESTIONS) {
-      finalize();
+  /** @param {-1 | 0 | 1} value */
+  function answer(value) {
+    const round = ROUNDS[roundIdx];
+    answersPerAxis[round.key].push({ question: currentQuestion, value });
+    answersPerAxis = { ...answersPerAxis };
+    asked[round.key].add(currentQuestion.id);
+    asked = { ...asked, [round.key]: new Set(asked[round.key]) };
+    pickNext();
+  }
+
+  function advanceRound() {
+    if (roundIdx + 1 < ROUNDS.length) {
+      roundIdx += 1;
+      phase = 'transition';
     } else {
-      nextQuestion();
+      finalize();
     }
   }
 
-  function skipQuestion() {
-    asked.add(currentTopic.id);
-    asked = new Set(asked);
-    if (answers.length >= TOTAL_QUESTIONS) {
-      finalize();
-    } else {
-      nextQuestion();
-    }
+  function continueAfterTransition() {
+    phase = 'q';
+    pickNext();
   }
 
   function finalize() {
-    if (!answers.length) {
-      phase = 'intro';
-      return;
-    }
-    result = computeMatch(answers, vectorsRaw, reasoning || {}, topicsRaw);
+    const what = matchWhat(answersPerAxis.what, vectorsRaw);
+    const why = matchWhy(answersPerAxis.why, reasoning || {});
+    const how = matchHow(answersPerAxis.how, vectorsRaw);
+    result = { what, why, how };
     phase = 'done';
   }
 
   function reset() {
     phase = 'intro';
-    asked = new Set();
-    answers = [];
-    posterior = initialPosterior();
+    roundIdx = 0;
+    answersPerAxis = { what: [], why: [], how: [] };
+    asked = { what: new Set(), why: new Set(), how: new Set() };
+    currentQuestion = null;
     result = null;
   }
 
   function formatPct(x) {
     return Math.round(Math.max(0, Math.min(1, x)) * 100) + ' %';
+  }
+
+  function totalAnswered() {
+    return answersPerAxis.what.length + answersPerAxis.why.length + answersPerAxis.how.length;
+  }
+  function totalQuestions() {
+    return ROUNDS.reduce((s, r) => s + r.target, 0);
+  }
+  function currentRound() {
+    return ROUNDS[roundIdx];
+  }
+  function currentRoundProgress() {
+    return answersPerAxis[currentRound().key].length;
   }
 </script>
 
@@ -118,37 +155,66 @@
     <div class="card">
       <h2>Tredimensionell valkompass</h2>
       <p>
-        Du får läsa korta avsnitt baserade på riksdagens reservationer.
-        Texterna är anonymiserade — du vet inte vilket parti som står bakom
-        förrän i slutet. Välj det resonemang som övertygar dig mest.
+        Tre rundor – en per axel. I varje runda får du några påståenden att
+        ta ställning till. När du är klar visar verktyget vilket parti som
+        ligger närmast dig på respektive axel.
       </p>
+      <ul class="axis-list">
+        <li><strong>VAD</strong> – vilken politik du vill se</li>
+        <li><strong>VARFÖR</strong> – vilka värden som vägleder dig</li>
+        <li><strong>HUR</strong> – vilka medel och mekanismer du föredrar</li>
+      </ul>
       <p class="meta">
-        Cirka {TOTAL_QUESTIONS} frågor, 5 minuter. Allt sker i din webbläsare —
-        inga svar lämnar din enhet.
+        Cirka 17 frågor, 5 minuter. Allt sker i din webbläsare –
+        ingenting lämnar din enhet.
       </p>
       <button onclick={start} class="btn-primary" disabled={!dataReady}>
         {dataReady ? 'Starta →' : 'Laddar …'}
       </button>
     </div>
 
-  {:else if phase === 'q' && currentTopic && currentOptions.length}
+  {:else if phase === 'transition'}
+    {@const round = currentRound()}
     <div class="card">
-      <p class="progress">Fråga {answers.length + 1} av {TOTAL_QUESTIONS}</p>
-      <p class="topic-label">{currentTopic.label}</p>
-      <h3>{currentTopic.question || `${currentTopic.label} — vilket resonemang ligger närmast dig?`}</h3>
-      <p class="instruction">
-        Texterna nedan är hämtade från reservationer och betänkanden i riksdagen.
-        Partinamnen är dolda — välj det resonemang som övertygar dig mest.
-      </p>
-      <div class="options">
-        {#each currentOptions as opt, i}
-          <button class="option" onclick={() => chooseOption(i)}>
-            <span class="opt-text">{opt.text}</span>
-          </button>
-        {/each}
+      <p class="round-marker">Runda {roundIdx + 1} av 3 · {round.label}</p>
+      <h2>{round.title}</h2>
+      <p class="round-intro">{round.intro}</p>
+      <button onclick={continueAfterTransition} class="btn-primary">
+        Fortsätt →
+      </button>
+    </div>
+
+  {:else if phase === 'q' && currentQuestion}
+    {@const round = currentRound()}
+    <div class="card">
+      <div class="progress-bar">
+        <div class="progress-fill" style:width={`${(totalAnswered() / totalQuestions()) * 100}%`}></div>
       </div>
+      <p class="round-marker">
+        Runda {roundIdx + 1} av 3 ·
+        <strong>{round.label}</strong>
+        ·
+        fråga {currentRoundProgress() + 1} av {round.target}
+      </p>
+
+      <h3 class="statement">{currentQuestion.text}</h3>
+
+      <div class="answer-row">
+        <button class="ans ans-agree" onclick={() => answer(+1)}>
+          <span class="ans-icon">✓</span>
+          <span>Instämmer</span>
+        </button>
+        <button class="ans ans-neutral" onclick={() => answer(0)}>
+          <span class="ans-icon">~</span>
+          <span>Vet ej / hoppa</span>
+        </button>
+        <button class="ans ans-disagree" onclick={() => answer(-1)}>
+          <span class="ans-icon">✗</span>
+          <span>Instämmer inte</span>
+        </button>
+      </div>
+
       <p class="meta-row">
-        <button onclick={skipQuestion} class="link">Inget passar — hoppa över</button>
         <button onclick={reset} class="link">Börja om</button>
       </p>
     </div>
@@ -157,78 +223,47 @@
     <div class="card result-card">
       <h2>Din matchning</h2>
       <p class="lede-result">
-        Här är vilka partier som ligger närmast dig på de tre axlarna,
-        baserat på dina {answers.length} svar.
+        Tre axlar, tre resultat. Att olika partier dyker upp betyder inte
+        att du är förvirrad – det betyder att de flesta partier inte är
+        konsekventa över alla tre dimensioner.
       </p>
+
       <div class="three-axis">
-        {#each [
-          { key: 'what', label: 'VAD', explain: 'vad partiet faktiskt gör i kammaren' },
-          { key: 'why',  label: 'VARFÖR', explain: 'vilka värden partiet hänvisar till' },
-          { key: 'how',  label: 'HUR', explain: 'vilka medel partiet föredrar — marknad, reglering, prevention, straff' },
-        ] as axis}
-          {@const top = result[axis.key].top}
-          {@const partyInfo = PARTY_INFO[top.party]}
-          {@const evidence = result[axis.key].evidence[top.party] || []}
-          <div class="axis-row" style:--accent={partyInfo.color}>
-            <div class="axis-meta">
-              <span class="axis-label">{axis.label}</span>
-              <span class="axis-explain">{axis.explain}</span>
+        {#each ['what', 'why', 'how'] as axisKey}
+          {@const r = result[axisKey]}
+          {@const partyInfo = PARTY_INFO[r.top.party]}
+          {@const axisCfg = ROUNDS.find(rr => rr.key === axisKey)}
+          <div class="axis-row" data-axis={axisKey} style:--accent={partyInfo.color}>
+            <div class="axis-header">
+              <span class="axis-label">{axisCfg.label}</span>
+              <span class="axis-explain">
+                {axisKey === 'what' ? 'vilken politik partiet faktiskt drivit' :
+                 axisKey === 'why'  ? 'vilka värden partiet hänvisar till' :
+                                      'vilka medel partiet föredrar'}
+              </span>
             </div>
             <div class="axis-result">
-              <span class="axis-party" style:background={partyInfo.color}>
-                {top.party}
+              <span class="party-pill" style:background={partyInfo.color}>
+                {r.top.party}
               </span>
-              <span class="axis-party-name">{partyInfo.name}</span>
-              <span class="axis-sim">{formatPct(top.sim)}</span>
+              <span class="party-name">{partyInfo.name}</span>
+              <span class="party-sim">{formatPct(r.top.sim)}</span>
             </div>
-            {#if evidence.length}
-              <div class="axis-evidence">
-                <span class="evidence-label">närmast dig på:</span>
-                <span class="evidence-topics">
-                  {#each evidence.slice(0, 3) as ev, i}
-                    <span>{ev.label}</span>{i < Math.min(evidence.length, 3) - 1 ? ' · ' : ''}
-                  {/each}
-                </span>
-              </div>
-            {/if}
           </div>
         {/each}
       </div>
-      {#if new Set([result.what.top.party, result.why.top.party, result.how.top.party]).size === 1}
-        <p class="note">
-          Du fick samma parti på alla tre axlarna. Det är ovanligt — de
-          flesta partier är inkonsekventa över de här dimensionerna, och de
-          flesta väljare matchar tre olika partier. Det här partiet ligger
-          nära dig i både vad det gör, hur det resonerar och vilka medel
-          det föredrar.
-        </p>
-      {:else if new Set([result.what.top.party, result.why.top.party, result.how.top.party]).size === 2}
-        <p class="note">
-          Två olika partier dyker upp på dina tre axlar. Det är inte ett fel
-          — det är en mer ärlig bild av var du faktiskt står än en
-          procentsiffra mot ett parti.
-        </p>
-      {:else}
-        <p class="note">
-          Att tre olika partier dyker upp på dina tre axlar betyder inte att
-          du är förvirrad. Det betyder att de flesta partier är
-          inkonsekventa över de här dimensionerna — och att en vanlig
-          valkompass döljer det.
-        </p>
-      {/if}
-
-
 
       <details class="all-scores">
         <summary>Visa alla partier per axel</summary>
         <div class="scores-grid">
-          {#each ['what', 'why', 'how'] as axis}
+          {#each ['what', 'why', 'how'] as axisKey}
+            {@const axisCfg = ROUNDS.find(rr => rr.key === axisKey)}
             <div class="scores-col">
-              <h4>{axis.toUpperCase()}</h4>
-              {#each PARTIES.toSorted((a,b) => result[axis].all[b] - result[axis].all[a]) as p}
+              <h4>{axisCfg.label}</h4>
+              {#each PARTIES.toSorted((a,b) => result[axisKey].all[b] - result[axisKey].all[a]) as p}
                 <div class="score-row">
                   <span class="score-mark" style:background={PARTY_INFO[p].color}>{p}</span>
-                  <span class="score-val">{formatPct(result[axis].all[p])}</span>
+                  <span class="score-val">{formatPct(result[axisKey].all[p])}</span>
                 </div>
               {/each}
             </div>
@@ -237,23 +272,25 @@
       </details>
 
       <details class="all-scores">
-        <summary>Visa dina svar ({answers.length} st)</summary>
-        <ol class="answer-review">
-          {#each answers as a, i}
-            {@const t = topicsRaw.find(t => t.id === a.topicId)}
-            <li>
-              <span class="ans-topic">{t?.label || `Ämne ${a.topicId}`}</span>
-              <span class="ans-arrow">→</span>
-              <span class="ans-party" style:background={PARTY_INFO[a.party].color}>
-                {a.party}
-              </span>
-            </li>
+        <summary>Visa dina svar</summary>
+        <div class="answer-review">
+          {#each ['what', 'why', 'how'] as axisKey}
+            {@const axisCfg = ROUNDS.find(rr => rr.key === axisKey)}
+            <div class="review-section">
+              <h4>{axisCfg.label}</h4>
+              <ol>
+                {#each answersPerAxis[axisKey] as a}
+                  <li>
+                    <span class="ans-text">{a.question.text}</span>
+                    <span class={`ans-tag ans-tag-${a.value === 1 ? 'agree' : a.value === -1 ? 'disagree' : 'neutral'}`}>
+                      {a.value === 1 ? 'instämmer' : a.value === -1 ? 'instämmer inte' : 'vet ej'}
+                    </span>
+                  </li>
+                {/each}
+              </ol>
+            </div>
           {/each}
-        </ol>
-        <p class="meta" style="margin-top:1rem">
-          Du visste inte vilka partier som stod bakom argumenten när du
-          valde — det här är vad du valde att hålla med om i efterhand.
-        </p>
+        </div>
       </details>
 
       <button onclick={reset} class="btn-secondary">Börja om</button>
@@ -280,72 +317,88 @@
     margin: 0 auto;
   }
   .card h2 { margin-top: 0; font-size: 1.5rem; }
-  .card h3 { font-size: 1.2rem; line-height: 1.4; margin: 1rem 0 1.5rem; }
-  .meta { font-size: 0.85rem; color: #666; }
-  .meta-row {
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    color: #666;
-    margin: 0;
+  .axis-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
   }
-  .progress {
-    font-size: 0.8rem;
+  .axis-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed #DDD;
+  }
+  .meta { font-size: 0.85rem; color: #666; }
+
+  .progress-bar {
+    background: #F0EEEA;
+    border-radius: 4px;
+    height: 6px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .progress-fill {
+    background: #2A4A7F;
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+  .round-marker {
+    font-size: 0.78rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #888;
-    margin: 0;
+    margin: 0 0 0.5rem;
   }
-  .topic-label {
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  .round-marker strong {
     color: #2A4A7F;
     font-weight: 700;
-    margin: 0.5rem 0 0;
   }
-  .instruction {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.5;
-    margin: 0 0 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px dashed #DDD;
+  .round-intro {
+    font-size: 1.05rem;
+    color: #444;
+    margin: 1rem 0 2rem;
   }
-  .options {
-    display: flex;
-    flex-direction: column;
+  .statement {
+    font-size: 1.35rem;
+    line-height: 1.4;
+    color: #222;
+    margin: 0.5rem 0 2rem;
+    font-weight: 500;
+  }
+  .answer-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     gap: 0.75rem;
-    margin: 1.5rem 0;
+    margin: 1.5rem 0 1rem;
   }
-  .option {
+  .ans {
     background: #F5F5F2;
     border: 1px solid #DDD;
     border-radius: 6px;
-    padding: 1rem 1.25rem;
-    text-align: left;
-    font-size: 1rem;
-    line-height: 1.5;
+    padding: 1.25rem 0.75rem;
     cursor: pointer;
-    transition: border-color 0.15s, background 0.15s, transform 0.05s;
     font-family: inherit;
     color: inherit;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: border-color 0.15s, background 0.15s, transform 0.05s;
   }
-  .option:hover {
-    border-color: #2A4A7F;
-    background: #FFF;
+  .ans:hover { background: #FFF; }
+  .ans:active { transform: translateY(1px); }
+  .ans-agree:hover { border-color: #1B9E77; }
+  .ans-disagree:hover { border-color: #D95F02; }
+  .ans-neutral:hover { border-color: #999; }
+  .ans-icon {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
   }
-  .option:active { transform: translateY(1px); }
-  .opt-text { font-size: 1rem; line-height: 1.5; }
-  .opt-source {
-    font-size: 0.78rem;
-    color: #888;
-    font-style: italic;
-  }
+  .ans-agree .ans-icon { color: #1B9E77; }
+  .ans-disagree .ans-icon { color: #D95F02; }
+  .ans-neutral .ans-icon { color: #888; }
+
   .btn-primary {
     background: #2A4A7F;
     color: white;
@@ -378,7 +431,14 @@
     cursor: pointer;
     font: inherit;
     padding: 0;
-    font-family: inherit;
+  }
+  .meta-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #666;
+    margin: 1rem 0 0;
   }
 
   /* Result */
@@ -391,65 +451,47 @@
   }
   .axis-row {
     --accent: #2A4A7F;
-    display: grid;
-    grid-template-columns: minmax(180px, 1.5fr) 2fr;
-    grid-template-areas:
-      "meta result"
-      "evidence evidence";
-    align-items: stretch;
-    gap: 0.75rem 1rem;
-    padding: 1.25rem;
-    background: #F5F5F2;
+    --axis-bg: #F5F5F2;
+    padding: 1.5rem 1.25rem;
+    background: var(--axis-bg);
     border-left: 4px solid var(--accent);
     border-radius: 6px;
   }
-  .axis-meta { grid-area: meta; }
-  .axis-result { grid-area: result; }
-  .axis-evidence {
-    grid-area: evidence;
-    padding-top: 0.5rem;
-    border-top: 1px dashed #DDD;
-    font-size: 0.85rem;
-    color: #555;
+  .axis-row[data-axis="what"]    { --axis-bg: var(--vad-soft); }
+  .axis-row[data-axis="why"]     { --axis-bg: var(--varfor-soft); }
+  .axis-row[data-axis="how"]     { --axis-bg: var(--hur-soft); }
+  .axis-row[data-axis="what"] .axis-label    { color: var(--vad); }
+  .axis-row[data-axis="why"] .axis-label     { color: var(--varfor); }
+  .axis-row[data-axis="how"] .axis-label     { color: var(--hur); }
+  .axis-header {
     display: flex;
-    gap: 0.6rem;
     flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: baseline;
+    margin-bottom: 0.75rem;
   }
-  .evidence-label { font-weight: 600; color: #777; }
-  .evidence-topics span { color: #2A4A7F; }
-  .axis-meta { display: flex; flex-direction: column; gap: 0.25rem; }
   .axis-label {
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     letter-spacing: 0.12em;
     color: #444;
     font-weight: 700;
   }
-  .axis-explain { font-size: 0.85rem; color: #666; line-height: 1.4; }
+  .axis-explain { font-size: 0.9rem; color: #666; }
   .axis-result {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
   }
-  .axis-party {
+  .party-pill {
     color: white;
     padding: 0.3rem 0.75rem;
     border-radius: 4px;
     font-weight: 700;
     font-size: 1.05rem;
-    letter-spacing: 0.03em;
   }
-  .axis-party-name { flex: 1; font-size: 0.95rem; color: #222; }
-  .axis-sim { font-weight: 600; font-size: 1.05rem; color: #444; }
-  .note {
-    font-size: 0.9rem;
-    color: #555;
-    background: #FAF6E8;
-    border-left: 3px solid #C5B9A3;
-    padding: 1rem;
-    margin: 1.5rem 0;
-    line-height: 1.5;
-  }
+  .party-name { flex: 1; font-size: 0.95rem; color: #222; }
+  .party-sim { font-weight: 600; font-size: 1.05rem; color: #444; }
 
   .all-scores { margin: 1.5rem 0; }
   .all-scores summary {
@@ -466,7 +508,7 @@
   }
   .scores-col h4 {
     margin: 0 0 0.5rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 0.1em;
     color: #666;
   }
@@ -487,42 +529,49 @@
   }
   .score-val { color: #444; font-weight: 500; }
 
-  .answer-review {
-    margin: 1rem 0 0;
+  .answer-review { margin-top: 1rem; }
+  .review-section { margin-bottom: 1.5rem; }
+  .review-section h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: #666;
+  }
+  .review-section ol {
+    margin: 0;
     padding: 0;
     list-style: none;
-    counter-reset: ans;
   }
-  .answer-review li {
-    counter-increment: ans;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+  .review-section li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #EEE;
     font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: baseline;
   }
-  .answer-review li::before {
-    content: counter(ans) ".";
-    color: #888;
-    min-width: 24px;
-    font-weight: 600;
-  }
-  .ans-topic { flex: 1; color: #333; }
-  .ans-arrow { color: #888; }
-  .ans-party {
-    color: white;
-    padding: 0.2rem 0.5rem;
+  .ans-text { flex: 1; }
+  .ans-tag {
+    padding: 0.15rem 0.5rem;
     border-radius: 3px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    min-width: 36px;
-    text-align: center;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
   }
+  .ans-tag-agree { background: #D4E8DC; color: #1B6E48; }
+  .ans-tag-disagree { background: #F5DAC2; color: #A04A0A; }
+  .ans-tag-neutral { background: #E8E8E8; color: #666; }
 
   @media (max-width: 540px) {
     .card { padding: 1.25rem; }
-    .axis-row { grid-template-columns: 1fr; }
-    .scores-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .answer-row {
+      grid-template-columns: 1fr;
+    }
+    .scores-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
   }
 </style>

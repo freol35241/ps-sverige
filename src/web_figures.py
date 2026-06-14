@@ -32,7 +32,7 @@ INK = "#222222"
 MUTED = "#888888"
 GRID = "#DDDDDD"
 
-# Global rcParams — bigger fonts, sans-serif, light grid.
+# Global rcParams – bigger fonts, sans-serif, light grid.
 mpl.rcParams.update({
     "font.family": "sans-serif",
     "font.sans-serif": ["Inter", "Helvetica Neue", "Helvetica", "Arial",
@@ -88,7 +88,7 @@ def fig_behavioural_map() -> Path:
                    alpha=0.85, zorder=3)
 
     cents = fit.groupby("party_modal")[["PC1", "PC2"]].mean()
-    # KD and M nearly coincide — nudge KD label down so both badges are visible.
+    # KD and M nearly coincide – nudge KD label down so both badges are visible.
     label_offset = {"KD": (0, -3.2), "M": (0, 1.5)}
     for party, row in cents.iterrows():
         if party == "-":
@@ -110,13 +110,13 @@ def fig_behavioural_map() -> Path:
 
     ax.axhline(0, color=GRID, lw=0.8, zorder=1)
     ax.axvline(0, color=GRID, lw=0.8, zorder=1)
-    ax.set_xlabel(f"PC1 — government vs opposition  ({var[0]:.0%} of variance)")
-    ax.set_ylabel(f"PC2 — within-bloc structure  ({var[1]:.0%} of variance)")
-    ax.set_title("The behavioural map of the Riksdag, 2022–2026",
+    ax.set_xlabel(f"PC1 – regering mot opposition  ({var[0]:.0%} av variansen)")
+    ax.set_ylabel(f"PC2 – struktur inom blocken  ({var[1]:.0%} av variansen)")
+    ax.set_title("Riksdagens beteendekarta, 2022–2026",
                  loc="left")
 
-    # Subtle directional hints, no legend needed — party badges are the legend.
-    ax.annotate("Tidö bloc", xy=(0.985, 0.03), xycoords="axes fraction",
+    # Subtle directional hints, no legend needed – party badges are the legend.
+    ax.annotate("Tidöblocket", xy=(0.985, 0.03), xycoords="axes fraction",
                 ha="right", va="bottom", fontsize=11, color=MUTED, style="italic")
     ax.annotate("opposition", xy=(0.015, 0.03), xycoords="axes fraction",
                 ha="left", va="bottom", fontsize=11, color=MUTED, style="italic")
@@ -127,7 +127,7 @@ def fig_behavioural_map() -> Path:
 
 
 # ---------------------------------------------------------------------------
-# 7. Tidö collapse — four small multiples
+# 7. Tidö collapse – four small multiples
 # ---------------------------------------------------------------------------
 def fig_tido_collapse() -> Path:
     long = pd.read_parquet(IN / "embedding_yearly.parquet")
@@ -183,17 +183,17 @@ def fig_tido_collapse() -> Path:
     for ax in axes:
         ax.set_xlabel("PC1")
 
-    fig.suptitle("The Tidö bloc collapses into one cluster",
+    fig.suptitle("Tidöblocket smälter samman",
                  x=0.02, ha="left", y=1.02, fontsize=15, fontweight="bold")
     fig.text(0.02, 0.96,
-             "Mean pairwise centroid distance (d) within M, KD, L, SD",
+             "Genomsnittligt parvis avstånd (d) mellan M, KD, L, SD",
              ha="left", fontsize=11, color=MUTED)
     fig.tight_layout(rect=(0, 0, 1, 0.93))
     return _save(fig, "07_tido_collapse.png")
 
 
 # ---------------------------------------------------------------------------
-# 8. Agreement trend — two-panel line chart
+# 8. Agreement trend – two-panel line chart
 # ---------------------------------------------------------------------------
 def _majority_excl_absent(s: pd.Series):
     s = s[s != "Frånvarande"]
@@ -242,21 +242,21 @@ def fig_agreement_trend() -> Path:
     ax = axes[0]
     ax.axvspan(2.5, 3.5, color="#FFE9C7", alpha=0.55, zorder=0)
     ax.plot(x, tido * 100, "-o", lw=3, color="#DD6E0F",
-            label="Tidö bloc (M+KD+L+SD)", markersize=10, zorder=4)
+            label="Tidöblocket (M+KD+L+SD)", markersize=10, zorder=4)
     ax.plot(x, cabinet * 100, "--s", lw=1.8, color="#A04C0A", alpha=0.85,
-            label="Cabinet only (M+KD+L)", markersize=7, zorder=3)
+            label="Endast kabinettet (M+KD+L)", markersize=7, zorder=3)
     ax.plot(x, opp * 100, "-o", lw=2.2, color="#666",
-            label="Opposition (S+V+MP+C)", markersize=8, zorder=3)
+            label="Oppositionen (S+V+MP+C)", markersize=8, zorder=3)
     for xi, v in zip(x, tido):
         ax.annotate(f"{v:.0%}", (xi, v * 100), textcoords="offset points",
                     xytext=(0, 12), ha="center", fontsize=11,
                     color="#A04C0A", fontweight="bold")
     ax.set_xticks(x); ax.set_xticklabels(RIKSMOTEN)
-    ax.set_ylabel("Share of votes with unanimous majority")
+    ax.set_ylabel("Andel omröstningar med enad majoritet")
     ax.set_ylim(0, 110)
     ax.set_yticks([0, 25, 50, 75, 100])
     ax.set_yticklabels(["0%", "25%", "50%", "75%", "100%"])
-    ax.set_title("Block-level unanimity", loc="left")
+    ax.set_title("Blocksamsyn", loc="left")
     ax.grid(axis="y", alpha=0.3, color=GRID)
     ax.legend(loc="lower left", framealpha=0.95)
     ax.text(3, 6, "election year", ha="center", fontsize=10,
@@ -270,24 +270,24 @@ def fig_agreement_trend() -> Path:
             markeredgecolor="#666", markeredgewidth=1.2,
             label="SD ↔ M (cabinet)", markersize=10, zorder=4)
     ax.plot(x, v_mp * 100, "-^", lw=2.0, color="#7A7A7A",
-            label="V ↔ MP (opposition pair)", markersize=8, zorder=3)
+            label="V ↔ MP (oppositionspar)", markersize=8, zorder=3)
     ax.plot(x, s_v * 100, "-s", lw=2.0, color="#AAAAAA",
-            label="S ↔ V (opposition pair)", markersize=8, zorder=3)
+            label="S ↔ V (oppositionspar)", markersize=8, zorder=3)
     for xi, v in zip(x, sd_m):
         ax.annotate(f"{v:.0%}", (xi, v * 100), textcoords="offset points",
                     xytext=(0, 12), ha="center", fontsize=11,
                     color="#8A7E00", fontweight="bold")
     ax.set_xticks(x); ax.set_xticklabels(RIKSMOTEN)
-    ax.set_ylabel("Pairwise vote agreement")
+    ax.set_ylabel("Parvis röstöverensstämmelse")
     ax.set_ylim(0, 110)
     ax.set_yticks([0, 25, 50, 75, 100])
     ax.set_yticklabels(["0%", "25%", "50%", "75%", "100%"])
-    ax.set_title("SD jumps; opposition pairs do not", loc="left")
+    ax.set_title("SD hoppar, oppositionsparen gör det inte", loc="left")
     ax.grid(axis="y", alpha=0.3, color=GRID)
     ax.legend(loc="lower left", framealpha=0.95)
     ax.tick_params(length=0)
 
-    fig.suptitle("How the Tidö bloc converged on a single voting line",
+    fig.suptitle("Hur Tidöblocket samlades på en gemensam röstlinje",
                  x=0.02, ha="left", y=1.01, fontsize=15, fontweight="bold")
     fig.tight_layout()
     return _save(fig, "08_agreement_trend.png")
@@ -382,7 +382,7 @@ def fig_pair_what_vs_why() -> Path:
             ax.scatter(r["what_sim"], r["why_sim"], s=110, alpha=0.55,
                        edgecolor="#555", linewidth=0.5, c="#9CB7D4",
                        zorder=3)
-            # Light labels for the remaining pairs — small + grey.
+            # Light labels for the remaining pairs – small + grey.
             ax.annotate(f"{r['a']}–{r['b']}",
                         (r["what_sim"], r["why_sim"]),
                         fontsize=9, color="#777",
@@ -391,16 +391,16 @@ def fig_pair_what_vs_why() -> Path:
 
     # Inline annotation boxes for the three story pairs.
     ax.text(0.985, 0.04,
-            "Above trend (green): closer in rhetoric than in votes — shared values, different policies\n"
-            "Below trend (orange): closer in votes than in rhetoric — marriage of convenience",
+            "Över trendlinjen (grön): närmare i retorik än i röster, delade värden men olika politik\n"
+            "Under trendlinjen (orange): närmare i röster än i retorik, ett bekvämlighetsförbund",
             transform=ax.transAxes, ha="right", va="bottom", fontsize=10,
             color="#444",
             bbox=dict(boxstyle="round,pad=0.5", fc="white",
                       ec="#DDD", lw=0.8))
 
-    ax.set_xlabel("WHAT — vote-stance similarity")
-    ax.set_ylabel("WHY — speech-reasoning similarity")
-    ax.set_title("What parties do vs. how they justify it", loc="left")
+    ax.set_xlabel("WHAT – vote-stance similarity")
+    ax.set_ylabel("WHY – speech-reasoning similarity")
+    ax.set_title("Vad partierna gör mot hur de motiverar det", loc="left")
     ax.grid(alpha=0.3, color=GRID)
     ax.tick_params(length=0)
     fig.tight_layout()
@@ -447,13 +447,13 @@ def fig_three_axis() -> Path:
     ax.set_xticks(x)
     ax.set_xticklabels(["WHAT\nvote stance", "WHY\nspeech reasoning",
                         "HOW\nco-authorship + lexicon"], fontsize=12)
-    ax.set_ylabel("Pair similarity (rank-normalised)")
+    ax.set_ylabel("Parlikhet (rangnormaliserad)")
     ax.set_ylim(-0.06, 1.10)
     ax.set_xlim(-0.15, 2.55)
     ax.grid(axis="y", alpha=0.3, color=GRID)
     ax.tick_params(length=0)
 
-    ax.set_title("Three axes of alignment: 28 party pairs", loc="left")
+    ax.set_title("Tre axlar av samsyn, 28 partipar", loc="left")
 
     handles = [plt.Line2D([0], [0], color=cat_color[c], lw=2.6, marker="o",
                           label=lbl)
@@ -469,7 +469,7 @@ def fig_three_axis() -> Path:
 
 
 # ---------------------------------------------------------------------------
-# 21. NEW — SD reservation collapse
+# 21. NEW – SD reservation collapse
 # ---------------------------------------------------------------------------
 def fig_sd_reservation_collapse() -> Path:
     r = pd.read_parquet(IN / "reservations.parquet")

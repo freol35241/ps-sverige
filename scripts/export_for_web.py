@@ -1,14 +1,14 @@
 """Export precomputed data for the static site.
 
 Emits JSON files into site/src/data/. Vectors are 768-dim and we have at most
-~10kB per topic — well under any reasonable static-site budget.
+~10kB per topic – well under any reasonable static-site budget.
 
 Outputs:
-  parties.json        — display order, official party colours
-  topics.json         — topic_id → label, examples, ordering
-  vectors.json        — per (party, topic) stance + lexicon scalars
-  reasoning.json      — per (party, topic) reasoning vector (rounded to fp16)
-  excerpts.json       — curated anonymised reservation excerpts per topic
+  parties.json        – display order, official party colours
+  topics.json         – topic_id → label, examples, ordering
+  vectors.json        – per (party, topic) stance + lexicon scalars
+  reasoning.json      – per (party, topic) reasoning vector (rounded to fp16)
+  excerpts.json       – curated anonymised reservation excerpts per topic
 """
 from __future__ import annotations
 
@@ -44,7 +44,7 @@ TOPIC_INFO = {
     0:  ("Yttrandefrihet och digitalisering",
          "Yttrandefrihet och digital integritet"),
     1:  ("Kommuner och regioner",
-         "Stat, regioner och kommuner — vem ska bestämma vad?"),
+         "Stat, regioner och kommuner – vem ska bestämma vad?"),
     2:  ("Arbetsrätt och arbetslöshet",
          "Arbetsrätt och arbetslöshetsförsäkring"),
     3:  ("Brott och kriminalvård",
@@ -58,7 +58,7 @@ TOPIC_INFO = {
     7:  ("Skola och lärare",
          "Hur ska den svenska skolan styras och finansieras?"),
     8:  ("Trafik och fordon",
-         "Trafik och fordon — vilken inriktning ska politiken ha?"),
+         "Trafik och fordon – vilken inriktning ska politiken ha?"),
     9:  ("Internationellt bistånd",
          "Sveriges internationella bistånd"),
     10: ("Miljö, jakt och jordbruk",
@@ -78,7 +78,7 @@ TOPIC_INFO = {
     17: ("Kulturpolitik",
          "Vilken inriktning ska kulturpolitiken ha?"),
     18: ("Klimat och energi",
-         "Klimat och energi — hur ska omställningen göras?"),
+         "Klimat och energi – hur ska omställningen göras?"),
     19: ("Brottsbekämpning och övervakning",
          "Brottsbekämpning och övervakning"),
     20: ("Författnings- och valfrågor",
@@ -263,7 +263,7 @@ ANON_PATTERNS = [
         re.IGNORECASE), ""),
     # Party abbreviations in parens like "(V)" or "(M, KD, L)".
     (re.compile(r"\(\s*(?:V|S|MP|C|L|KD|M|SD|-)(?:\s*,\s*(?:V|S|MP|C|L|KD|M|SD|-))*\s*\)"), ""),
-    # Party names spelled out — replace with neutral noun.
+    # Party names spelled out – replace with neutral noun.
     (re.compile(
         r"\bSverigedemokraterna(?:s)?\b|\bVänsterpartiet(?:s)?\b|"
         r"\bMiljöpartiet(?:s)?\b|\bCenterpartiet(?:s)?\b|"
@@ -305,7 +305,7 @@ JUNK_PHRASES = re.compile(
     r"yrkandet bör avslås|motionsyrkand|propositionspunkt|"
     r"borde ha följande lydelse|därmed avslår)",
     re.IGNORECASE)
-# Cap a single digit count — too many citations = junk.
+# Cap a single digit count – too many citations = junk.
 DIGIT_GROUP = re.compile(r"\d+")
 
 
@@ -350,7 +350,7 @@ def export_excerpts(per_topic: int = 5) -> None:
         in their reservations (the substantive argument, not the procedural
         intro). Solo reservations preferred.
       - Cabinet parties (L, KD, M): 'Utskottets ställningstagande' sections
-        from the betänkanden — the majority opinion equivalent.
+        from the betänkanden – the majority opinion equivalent.
 
     Topic alignment: we filter excerpts by the source vote event's
     dist_to_centroid (its fit to the KMeans cluster) AND by a small keyword
@@ -468,7 +468,7 @@ def export_excerpts(per_topic: int = 5) -> None:
     # Lightly recast "Utskottet" voice to "vi" so the cabinet excerpts read
     # like first-person positions, matching the reservation voice.
     def recast(text: str) -> str:
-        # Order matters — replace longer phrases first.
+        # Order matters – replace longer phrases first.
         s = re.sub(r"\bUtskottet vill därför\b", "vi vill därför", text)
         s = re.sub(r"\bUtskottet anser därför\b", "vi anser därför", s)
         s = re.sub(r"\bUtskottet välkomnar\b", "vi välkomnar", s)
@@ -529,6 +529,43 @@ def export_excerpts(per_topic: int = 5) -> None:
           f"misclass dropped={n_dropped_misclass})")
 
 
+def export_questions() -> None:
+    """Pack the three voter-tool question pools into questions.json.
+    WHY statements are SBERT-embedded so the voter tool can match in
+    reasoning-vector space without needing the model in the browser.
+    """
+    try:
+        from scripts.voter_questions import WHAT_POOL, WHY_POOL, HOW_POOL
+    except ImportError:
+        import sys
+        sys.path.insert(0, str(ROOT))
+        from scripts.voter_questions import WHAT_POOL, WHY_POOL, HOW_POOL
+
+    # Embed WHY statements with the same SBERT model used elsewhere.
+    print("  loading SBERT model for WHY embedding ...")
+    from sentence_transformers import SentenceTransformer
+    model = SentenceTransformer("KBLab/sentence-bert-swedish-cased")
+    texts = [q["text"] for q in WHY_POOL]
+    embs = model.encode(texts, batch_size=8, show_progress_bar=False,
+                        normalize_embeddings=True).astype(np.float32)
+
+    why_out = []
+    for q, emb in zip(WHY_POOL, embs):
+        why_out.append({
+            "id": q["id"],
+            "text": q["text"],
+            "embedding": emb.round(4).tolist(),
+        })
+
+    payload = {
+        "what": WHAT_POOL,
+        "why": why_out,
+        "how": HOW_POOL,
+    }
+    (OUT / "questions.json").write_text(
+        json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     public_data = ROOT / "site" / "public" / "data"
@@ -539,6 +576,7 @@ def main() -> None:
     export_vectors();    print(f"  vectors.json")
     export_reasoning();  print(f"  public/data/reasoning.json")
     export_excerpts()
+    export_questions();  print(f"  questions.json (with SBERT-embedded WHY)")
     print("\nfile sizes (bundled into JS island):")
     for p in sorted(OUT.glob("*.json")):
         print(f"  src/data/{p.name:<18s}: {p.stat().st_size / 1024:>7.1f} KB")

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Metod — politisk stilometri">
+<BaseLayout title="Metod – politisk stilometri">
   <article class="container">
     <header class="article-hero">
       <p class="byline">Metoddokument · uppdaterad 2026-06-13</p>
@@ -15,9 +15,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2>Datakällor</h2>
     <ul>
       <li><strong>2 501 kammaromröstningar</strong> från riksmöten 2022/23–2025/26, hämtade som bulkdumpar från <code>data.riksdagen.se/dataset/votering/</code>. Totalt 872 849 enskilda röstposter från 424 ledamöter.</li>
-      <li><strong>54 914 anföranden</strong> från samma period — alla repliker, interpellationssvar och huvudanföranden, hämtade som bulkdumpar från <code>data.riksdagen.se/dataset/anforande/</code>.</li>
+      <li><strong>54 914 anföranden</strong> från samma period – alla repliker, interpellationssvar och huvudanföranden, hämtade som bulkdumpar från <code>data.riksdagen.se/dataset/anforande/</code>.</li>
       <li><strong>10 931 reservationer</strong> extraherade ur 858 betänkanden, hämtade via <code>data.riksdagen.se/utskottsforslag/</code> och <code>data.riksdagen.se/dokumentstatus/</code>. Totalt 2,8 miljoner ord text.</li>
-      <li><strong>3 211 "Utskottets ställningstagande"-avsnitt</strong> ur samma betänkanden. Det här är majoritetens motsvarighet till en reservation — där utskottets flertal förklarar varför det rekommenderar som det gör.</li>
+      <li><strong>3 211 "Utskottets ställningstagande"-avsnitt</strong> ur samma betänkanden. Det här är majoritetens motsvarighet till en reservation – där utskottets flertal förklarar varför det rekommenderar som det gör.</li>
     </ul>
 
     <h2>Ämnesindelning</h2>
@@ -26,7 +26,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       (<a href="https://huggingface.co/KBLab/sentence-bert-swedish-cased">KBLab/sentence-bert-swedish-cased</a>, en 768-dimensionell modell tränad på
       svensk text av Kungliga bibliotekets KB Lab). Vi använder
       betänkandets titel kombinerad med förslagspunktens rubrik som indata
-      — inte själva förslagstexten, eftersom den domineras av procedurell
+      – inte själva förslagstexten, eftersom den domineras av procedurell
       formulering ("Riksdagen avslår motion …").
     </p>
     <p>
@@ -35,12 +35,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       skola och hälso- och sjukvård är några av de tydligaste klustren.
       Manuell granskning av topptermerna per kluster validerar att
       grupperingen är meningsfull. För att minska felklassificering filtreras
-      varje excerpt mot en kuraterad nyckelordslista per ämne — utdragna
+      varje excerpt mot en kuraterad nyckelordslista per ämne – utdragna
       texter som inte innehåller ämnets vokabulär utesluts från
       valkompassen.
     </p>
 
-    <h2>VAD — röstposition</h2>
+    <h2>VAD – röstposition</h2>
     <p>
       För varje omröstning och parti räknas ställningen som
     </p>
@@ -48,7 +48,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       stance<sub>p,v</sub> = (n_Ja − n_Nej) / (n_Ja + n_Nej + n_Avstår)
     </p>
     <p>
-      i intervallet −1 till +1. Frånvaro räknas inte — det är inte en
+      i intervallet −1 till +1. Frånvaro räknas inte – det är inte en
       position, det är en avsaknad av sådan. Per (parti, ämne) tas
       medelvärdet över alla röster i ämnet.
     </p>
@@ -64,14 +64,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       Eftersom regeringen alltid röstar för sina egna förslag i kammaren
       har M, KD och L ett <em>genomsnittligt</em> röststånd nära +1 på
       i princip alla ämnen. Skillnaden mellan dem är inte vad de röstar
-      för — det är hur de motiverar det. Därför bygger vår "tre olika
+      för – det är hur de motiverar det. Därför bygger vår "tre olika
       svar" på de andra två axlarna när VAD-axeln visar oavgjort.
     </p>
 
-    <h2>VARFÖR — resonemangsvektor</h2>
+    <h2>VARFÖR – resonemangsvektor</h2>
     <p>
       Reservationstexterna fragmenteras till ett "Ställningstagande"-avsnitt
-      per reservation — det är där den substantiella argumentationen
+      per reservation – det är där den substantiella argumentationen
       finns, inte i det procedurella inledningsavsnittet ("Jag anser att
       förslaget under punkt N borde ha följande lydelse …"). Per (parti, ämne)
       tas upp till 20 längsta reservationer; varje text inbäddas till en
@@ -80,7 +80,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p>
       För regeringspartierna (M, KD, L) finns nästan inga reservationer
       eftersom de är majoriteten. Vi använder i stället "Utskottets
-      ställningstagande"-avsnitten ur betänkandena — där majoriteten
+      ställningstagande"-avsnitten ur betänkandena – där majoriteten
       förklarar sitt val. Texten skrivs lätt om från tredje person ("Utskottet
       anser") till första person ("vi anser") så att den läses i samma
       röstläge som reservationerna.
@@ -88,12 +88,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p>
       Likheten mellan dina valda resonemang och ett partis räknas som
       cosinussimilaritet mellan respektive medelvektor. Vektorerna centreras
-      per ämne så att de allmänna svenska kammartermerna inte dominerar —
+      per ämne så att de allmänna svenska kammartermerna inte dominerar –
       det vi mäter är hur ett parti <em>avviker</em> från det
       ämnesgenomsnittliga sättet att tala om saken.
     </p>
 
-    <h2>HUR — teorin om förändring</h2>
+    <h2>HUR – teorin om förändring</h2>
     <p>
       Två kompletterande signaler kombineras till HUR-axeln.
     </p>
@@ -103,7 +103,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       När två partier sätter sina namn under samma reservation delar de en
       konkret alternativ lösning. Det är direkt strukturell evidens för
       delade preferenser av medel. Vi räknar parvis cosinuslikhet i
-      signeringsrymden för reservationer — antalet gemensamt signerade
+      signeringsrymden för reservationer – antalet gemensamt signerade
       reservationer normaliserat mot varje partis totala antal signeringar.
     </p>
 
@@ -123,7 +123,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       i intervallet [-1, +1]. Per (parti, ämne) summeras träffarna och
       ett relativvärde räknas fram. Eftersom alla partier till exempel
       talar mer om "alla" (generellt) än om "behovsprövad" (riktat)
-      z-normaliseras dimensionerna över partier innan likheten räknas —
+      z-normaliseras dimensionerna över partier innan likheten räknas –
       det vi mäter är hur partierna <em>skiljer sig från varandra</em>,
       inte deras absoluta nivå.
     </p>
@@ -133,7 +133,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       forskningstradition i statsvetenskap; de är inte uttömmande.
     </p>
 
-    <h2>Begränsningar — vad analysen inte säger</h2>
+    <h2>Begränsningar – vad analysen inte säger</h2>
     <ul>
       <li>
         <strong>Ämnesklustringen följer utskottsindelningen</strong>, inte
@@ -145,7 +145,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <strong>Resonemangsvektorerna inkluderar statsråd som läser upp
         regeringskansliets skrivningar.</strong> Det är inte alltid
         ledamotens egen röst. För kabinettsidan är det här en strukturell
-        oundviklighet — majoritetens uppfattningar formuleras av utskotten,
+        oundviklighet – majoritetens uppfattningar formuleras av utskotten,
         inte av enskilda ledamöter.
       </li>
       <li>
@@ -161,7 +161,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </li>
       <li>
         <strong>Frågor som inte har varit uppe för omröstning under
-        mandatperioden saknas helt</strong> — verktyget kan bara mäta sådant
+        mandatperioden saknas helt</strong> – verktyget kan bara mäta sådant
         som faktiskt har behandlats sedan september 2022.
       </li>
     </ul>
@@ -170,7 +170,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p>
       All datahämtning, bearbetning, analys och webbgenerering är skriven i
       Python och JavaScript och finns öppen som källkod på <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
-      Rådata laddas direkt från <code>data.riksdagen.se</code> — vi
+      Rådata laddas direkt från <code>data.riksdagen.se</code> – vi
       vidarepublicerar den inte. Analysen kan köras om från noll på en
       vanlig dator (tar ungefär en timme inklusive textbäddning).
       Resultaten i den här texten är baserade på data tillgängliga till

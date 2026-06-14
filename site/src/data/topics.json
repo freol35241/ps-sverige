@@ -11,7 +11,7 @@
   {
     "id": 18,
     "label": "Klimat och energi",
-    "question": "Klimat och energi — hur ska omställningen göras?",
+    "question": "Klimat och energi – hur ska omställningen göras?",
     "primary_organ": "MJU",
     "size": 134,
     "what_spread": 0.3224790901168507,
@@ -47,7 +47,7 @@
   {
     "id": 1,
     "label": "Kommuner och regioner",
-    "question": "Stat, regioner och kommuner — vem ska bestämma vad?",
+    "question": "Stat, regioner och kommuner – vem ska bestämma vad?",
     "primary_organ": "FiU",
     "size": 83,
     "what_spread": 0.2866536898054629,
@@ -92,7 +92,7 @@
   {
     "id": 8,
     "label": "Trafik och fordon",
-    "question": "Trafik och fordon — vilken inriktning ska politiken ha?",
+    "question": "Trafik och fordon – vilken inriktning ska politiken ha?",
     "primary_organ": "TU",
     "size": 100,
     "what_spread": 0.26267952174375436,

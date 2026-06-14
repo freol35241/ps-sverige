@@ -15,7 +15,7 @@ excerpts where available.
 Voice convention:
   - Opposition (V, S, MP, C, SD): first person plural "vi" or "vårt parti"
   - Cabinet (L, KD, M): all three get the same distillations since they
-    vote and reserve as one — they share majority-opinion content.
+    vote and reserve as one – they share majority-opinion content.
 """
 
 # Format:
@@ -29,13 +29,13 @@ CURATED: dict[int, dict[str, list[dict]]] = {}
 
 
 # ============================================================================
-# Topic 13 — Migration och asylpolitik
+# Topic 13 – Migration och asylpolitik
 # ============================================================================
 CURATED[13] = {
     "V": [
         {
             "text": "Den tillfälliga utlänningslagen har inte gjort asylsystemet "
-                    "mer hållbart eller mänskligt — tvärtom. Vi vill återgå till "
+                    "mer hållbart eller mänskligt – tvärtom. Vi vill återgå till "
                     "utlänningslagen som den såg ut innan, så att asylrätten "
                     "och de konventioner Sverige har bundit sig vid återigen "
                     "respekteras. Det är en rättighetsfråga, inte en "
@@ -64,7 +64,7 @@ CURATED[13] = {
         {
             "text": "Arbetet med återvändande av personer med avlägsnandebeslut "
                     "behöver intensifieras. Den förra regeringen införde "
-                    "konkreta målsättningar för återvändandet — sedan dess har "
+                    "konkreta målsättningar för återvändandet – sedan dess har "
                     "myndigheterna saknat tydlig riktning. Vi vill återinföra "
                     "mål och stärka samarbetena med tredjeländer för att få "
                     "fler beslut att verkställas.",
@@ -74,7 +74,7 @@ CURATED[13] = {
     "MP": [
         {
             "text": "Asylrätten är grundläggande och måste värnas. Barn ska inte "
-                    "tas i förvar — det är inhumant. Sverige bör införa lagliga "
+                    "tas i förvar – det är inhumant. Sverige bör införa lagliga "
                     "vägar för att söka asyl, exempelvis genom viseringar för "
                     "personer som har för avsikt att ansöka i EU. "
                     "Barnkonventionen måste få fullt genomslag i utlänningslagen.",
@@ -83,7 +83,7 @@ CURATED[13] = {
         {
             "text": "Personer som arbetat för utländska styrkor i Afghanistan "
                     "förföljs nu av talibanerna. Cirka 50 personer som uppfyller "
-                    "kraven blev inte vidarebosatta — regeringen bör snarast "
+                    "kraven blev inte vidarebosatta – regeringen bör snarast "
                     "fatta de beslut som krävs för att ge dem och deras familjer "
                     "skydd i Sverige.",
             "source": "HC01SfU18",
@@ -93,7 +93,7 @@ CURATED[13] = {
         {
             "text": "Regleringen av arbetskraftsinvandring bör utgå från "
                     "företagens faktiska kompetensbehov. Arbetslivskriminalitet "
-                    "ska bekämpas genom effektiva riktade kontroller — inte "
+                    "ska bekämpas genom effektiva riktade kontroller – inte "
                     "genom generella lönegolv som stänger ute hela yrkesgrupper. "
                     "Arbetskraftsinvandringen är värdefull för Sveriges ekonomi.",
             "source": "HD01SfU12",
@@ -102,7 +102,7 @@ CURATED[13] = {
             "text": "Personer som söker uppehållstillstånd på grund av "
                     "anknytning ska informeras om referenspersonens tidigare "
                     "våldsbrott i de fall det finns en risk för att de utnyttjas. "
-                    "Det handlar om att skydda människor — främst kvinnor — som "
+                    "Det handlar om att skydda människor – främst kvinnor – som "
                     "kommer till Sverige i utsatt position.",
             "source": "HA01SfU15",
         },
@@ -127,7 +127,7 @@ CURATED[13] = {
         },
     ],
     "KD": [
-        # Cabinet shares the same distillations — they vote identically and the
+        # Cabinet shares the same distillations – they vote identically and the
         # majority opinion is collective. We register them per party so the
         # export still has cells filled, but the content is the same.
         {
@@ -141,7 +141,7 @@ CURATED[13] = {
         },
         {
             "text": "Sverige har under senare år haft en omfattande "
-                    "arbetskraftsinvandring till lågkvalificerade yrken — ofta "
+                    "arbetskraftsinvandring till lågkvalificerade yrken – ofta "
                     "till arbeten som kan utföras av personer som redan bor "
                     "här. Missbruket av regelverket är omfattande. En "
                     "omställning med skärpta regler är nödvändig.",
@@ -151,7 +151,7 @@ CURATED[13] = {
     "M": [
         {
             "text": "Sverige har under senare år haft en omfattande "
-                    "arbetskraftsinvandring till lågkvalificerade yrken — ofta "
+                    "arbetskraftsinvandring till lågkvalificerade yrken – ofta "
                     "till arbeten som kan utföras av personer som redan bor "
                     "här. Missbruket av regelverket är omfattande. En "
                     "omställning med skärpta regler är nödvändig.",
@@ -169,7 +169,7 @@ CURATED[13] = {
     ],
     "SD": [
         {
-            "text": "Människor på flykt ska få skydd — men de ska söka asyl i "
+            "text": "Människor på flykt ska få skydd – men de ska söka asyl i "
                     "det första säkra land de kan nå. Sverige ska i "
                     "normalfallet ta emot asylsökande enbart i en situation där "
                     "ett krig eller en djupare kris har brutit ut i något av "
@@ -180,7 +180,7 @@ CURATED[13] = {
         {
             "text": "Anhöriginvandring till särskilt utsatta områden bör "
                     "förbjudas. Allt fler stadsdelar präglas av utanförskap, "
-                    "segregation, hög arbetslöshet och kriminalitet — det är "
+                    "segregation, hög arbetslöshet och kriminalitet – det är "
                     "inte rimligt att fortsätta öka belastningen på de mest "
                     "ansträngda områdena.",
             "source": "HA01SfU15",
@@ -190,7 +190,7 @@ CURATED[13] = {
 
 
 # ============================================================================
-# Topic 18 — Klimat och energi
+# Topic 18 – Klimat och energi
 # ============================================================================
 CURATED[18] = {
     "V": [
@@ -198,7 +198,7 @@ CURATED[18] = {
             "text": "Klimatkrisen är akut och kräver ett systemskifte. Stora "
                     "delar av samhället måste elektrifieras, vilket innebär den "
                     "största utbyggnaden av elproduktion och eldistribution i "
-                    "modern tid. Det kräver långsiktiga, välgrundade beslut — "
+                    "modern tid. Det kräver långsiktiga, välgrundade beslut – "
                     "och samtidigt energieffektivisering, eftersom Sverige inte "
                     "kan bygga sig ur problemet med bara mer el.",
             "source": "HD01NU13",
@@ -215,7 +215,7 @@ CURATED[18] = {
     ],
     "S": [
         {
-            "text": "Klimatklivet — som vi införde 2015 — har med över 10 "
+            "text": "Klimatklivet – som vi införde 2015 – har med över 10 "
                     "miljarder kronor stöttat 4 500 lokala klimatåtgärder och "
                     "minskat utsläppen med 2,4 miljoner ton om året. Stödet "
                     "ska fortsätta utvecklas, men med en tydligare inriktning "
@@ -226,7 +226,7 @@ CURATED[18] = {
             "text": "Energisystemet är centralt för Sveriges utveckling. En "
                     "framgångsrik elektrifiering är avgörande för att nå "
                     "nettonollutsläpp 2045 och samtidigt skapa tillväxt. Billig "
-                    "el är en konkurrensfördel för svenska företag — och en "
+                    "el är en konkurrensfördel för svenska företag – och en "
                     "förutsättning för att hushållens ekonomi inte ska gröpas "
                     "ur.",
             "source": "HD01NU13",
@@ -238,7 +238,7 @@ CURATED[18] = {
                     "resurseffektivt och bygga på ansvarsfullt tillvaratagande "
                     "av jordens tillgångar. Cirkulär ekonomi är ett centralt "
                     "verktyg. Att fortsätta bränna fossila energitillgångar "
-                    "går definitivt inte ihop med detta tankesätt — vi behöver "
+                    "går definitivt inte ihop med detta tankesätt – vi behöver "
                     "stora satsningar på förnybar produktion.",
             "source": "HD01NU13",
         },
@@ -247,7 +247,7 @@ CURATED[18] = {
                     "fordonsflottan ställs om till el. Den ger en kraftig och "
                     "förutsägbar sänkning av klimatpåverkan från befintliga "
                     "fordon. Den föreslagna nivån på 10 procent är "
-                    "otillräcklig — flera tunga remissinstanser har varnat för "
+                    "otillräcklig – flera tunga remissinstanser har varnat för "
                     "att klimatmålen inte nås.",
             "source": "HC01MJU17",
         },
@@ -255,7 +255,7 @@ CURATED[18] = {
     "C": [
         {
             "text": "Klimatomställningen är vår tids största globala utmaning. "
-                    "Beroendet av fossil energi måste brytas en gång för alla — "
+                    "Beroendet av fossil energi måste brytas en gång för alla – "
                     "inte minst eftersom importen ofta sker från diktaturer. "
                     "Hoten mot klimatet ska mötas med snabb elektrifiering "
                     "baserad på gröna, hållbara energilösningar.",
@@ -266,7 +266,7 @@ CURATED[18] = {
                     "vassa kontrollmekanismer så att skattepengar går till "
                     "klimateffektiva projekt. Teknikneutralitet ska vägleda, "
                     "och satsningarna bör breddas till exempelvis vätgas och "
-                    "CCU — tekniker som möjliggör återanvändning av infångad "
+                    "CCU – tekniker som möjliggör återanvändning av infångad "
                     "koldioxid.",
             "source": "HA01MJU16",
         },
@@ -276,7 +276,7 @@ CURATED[18] = {
             "text": "Sveriges konkurrenskraft och välfärd bygger på tillgång "
                     "till fossilfri energi till konkurrenskraftiga priser. "
                     "Omställningen till fossilfri energi är central för "
-                    "klimatomställningen — och kräver en bred energimix där "
+                    "klimatomställningen – och kräver en bred energimix där "
                     "kärnkraften har en nyckelroll.",
             "source": "HB01MJU15",
         },
@@ -294,7 +294,7 @@ CURATED[18] = {
             "text": "Sveriges konkurrenskraft och välfärd bygger på tillgång "
                     "till fossilfri energi till konkurrenskraftiga priser. "
                     "Omställningen till fossilfri energi är central för "
-                    "klimatomställningen — och kräver en bred energimix där "
+                    "klimatomställningen – och kräver en bred energimix där "
                     "kärnkraften har en nyckelroll.",
             "source": "HB01MJU15",
         },
@@ -303,7 +303,7 @@ CURATED[18] = {
                     "stora delar av svenskt näringsliv. Sverige måste fortsätta "
                     "vara en ledande kunskapsnation. Vi behöver fler människor "
                     "med gedigna kunskaper inom naturvetenskap, teknik och "
-                    "matematik — och en STEM-strategi som spänner över hela "
+                    "matematik – och en STEM-strategi som spänner över hela "
                     "utbildningssystemet.",
             "source": "HB01MJU15",
         },
@@ -313,7 +313,7 @@ CURATED[18] = {
             "text": "Sveriges konkurrenskraft och välfärd bygger på tillgång "
                     "till fossilfri energi till konkurrenskraftiga priser. "
                     "Omställningen till fossilfri energi är central för "
-                    "klimatomställningen — och kräver en bred energimix där "
+                    "klimatomställningen – och kräver en bred energimix där "
                     "kärnkraften har en nyckelroll.",
             "source": "HB01MJU15",
         },
@@ -350,13 +350,13 @@ CURATED[18] = {
 
 
 # ============================================================================
-# Topic 7 — Skola och lärare
+# Topic 7 – Skola och lärare
 # ============================================================================
 CURATED[7] = {
     "V": [
         {
             "text": "Demokratiskt fattade beslut och behovsbedömning ska vara "
-                    "grunden för nyetablering av skolor — så att skattemedel "
+                    "grunden för nyetablering av skolor – så att skattemedel "
                     "inte slösas bort på överetablering. Skolkoncerner kan i "
                     "dag enkelt föra pengar till andra bolag i koncernen eller "
                     "ut till närstående bolag genom att fakturera för diverse "
@@ -368,7 +368,7 @@ CURATED[7] = {
                     "lärarlegitimation eftersom de undervisar på engelska. "
                     "Skolinspektionen har visat att bristen på behörig "
                     "personal gör att skolorna misslyckas med läroplanens "
-                    "krav på kvalitet. Det måste förändras — undantagen bör "
+                    "krav på kvalitet. Det måste förändras – undantagen bör "
                     "tas bort.",
             "source": "HB01UbU11",
         },
@@ -379,7 +379,7 @@ CURATED[7] = {
                     "lett till ökad vinstjakt och minskad demokratisk kontroll "
                     "över skolan. Skolmarknaden domineras av stora koncerner "
                     "med starka juridiska resurser. När barnkullarna nu krymper "
-                    "förvärras problemen — staten måste dra i nödbromsen.",
+                    "förvärras problemen – staten måste dra i nödbromsen.",
             "source": "HC01UbU9",
         },
         {
@@ -418,7 +418,7 @@ CURATED[7] = {
                     "stödinsatser och anpassningar. Insatserna ska bygga på "
                     "evidens och utgå från regelbundna kartläggningar av "
                     "elevernas kunskaper. När mindre insatser inte räcker ska "
-                    "mer omfattande sättas in — som intensivundervisning under "
+                    "mer omfattande sättas in – som intensivundervisning under "
                     "helger och lov.",
             "source": "HD01UbU7",
         },
@@ -442,8 +442,8 @@ CURATED[7] = {
             "source": "HB01UbU6",
         },
         {
-            "text": "Skolinspektionens uppdrag är att se till att skolhuvudmän — "
-                    "kommunala eller fristående — sköter sin verksamhet enligt "
+            "text": "Skolinspektionens uppdrag är att se till att skolhuvudmän – "
+                    "kommunala eller fristående – sköter sin verksamhet enligt "
                     "lag. Inspektionen ställer krav och bidrar till att "
                     "huvudmännen följer skollagen. Det är denna ordnings "
                     "logik vi avvaktar och stärker, snarare än att lägga om "
@@ -461,8 +461,8 @@ CURATED[7] = {
             "source": "HB01UbU6",
         },
         {
-            "text": "Skolinspektionens uppdrag är att se till att skolhuvudmän — "
-                    "kommunala eller fristående — sköter sin verksamhet enligt "
+            "text": "Skolinspektionens uppdrag är att se till att skolhuvudmän – "
+                    "kommunala eller fristående – sköter sin verksamhet enligt "
                     "lag. Inspektionen ställer krav och bidrar till att "
                     "huvudmännen följer skollagen. Det är denna ordnings "
                     "logik vi avvaktar och stärker, snarare än att lägga om "
@@ -480,8 +480,8 @@ CURATED[7] = {
             "source": "HB01UbU6",
         },
         {
-            "text": "Skolinspektionens uppdrag är att se till att skolhuvudmän — "
-                    "kommunala eller fristående — sköter sin verksamhet enligt "
+            "text": "Skolinspektionens uppdrag är att se till att skolhuvudmän – "
+                    "kommunala eller fristående – sköter sin verksamhet enligt "
                     "lag. Inspektionen ställer krav och bidrar till att "
                     "huvudmännen följer skollagen. Det är denna ordnings "
                     "logik vi avvaktar och stärker, snarare än att lägga om "
@@ -512,13 +512,13 @@ CURATED[7] = {
 
 
 # ============================================================================
-# Topic 3 — Brott och kriminalvård
+# Topic 3 – Brott och kriminalvård
 # ============================================================================
 CURATED[3] = {
     "V": [
         {
-            "text": "Polisens brottsförebyggande arbete är eftersatt — både i "
-                    "metoder och resurser — trots att det är ett centralt "
+            "text": "Polisens brottsförebyggande arbete är eftersatt – både i "
+                    "metoder och resurser – trots att det är ett centralt "
                     "område. Bristerna gäller beprövade metoder, dokumentation "
                     "och utvärdering. Polisens trygghets- och kontaktskapande "
                     "arbete behöver ett kraftigt resurstillskott och en "
@@ -531,7 +531,7 @@ CURATED[3] = {
                     "Huvudkontoret har fått växa obehindrat på bekostnad av "
                     "anstalterna; arbetsmiljön har stora brister; fackförbund "
                     "har larmat om tystnadskultur. Det handlar inte bara om "
-                    "platsbrist — det handlar om en verksamhet under stark "
+                    "platsbrist – det handlar om en verksamhet under stark "
                     "press.",
             "source": "HB01JuU17",
         },
@@ -539,7 +539,7 @@ CURATED[3] = {
     "S": [
         {
             "text": "Tekniska framsteg gör det möjligt att klara upp brott även "
-                    "efter lång tid — preskriptionstiderna behöver därför "
+                    "efter lång tid – preskriptionstiderna behöver därför "
                     "ändras. Preskriptionsutredningen har lagt förslag som "
                     "behöver behandlas. Vi vill att regeringen skyndsamt "
                     "återkommer till riksdagen med lagförslag om förändrade "
@@ -549,7 +549,7 @@ CURATED[3] = {
         {
             "text": "Återfallsförebyggande behandling är central för att bryta "
                     "kriminalitet. Riksrevisionen visar att en låg andel av de "
-                    "intagna som behöver det får tillgång till program — och "
+                    "intagna som behöver det får tillgång till program – och "
                     "att överbeläggningar gör det svårt att upprätthålla en "
                     "stödjande miljö. Platsbristen kommer att förvärras och "
                     "det krävs handling.",
@@ -558,7 +558,7 @@ CURATED[3] = {
     ],
     "MP": [
         {
-            "text": "Beslut enligt inhämtningslagen bör hanteras av domstol — "
+            "text": "Beslut enligt inhämtningslagen bör hanteras av domstol – "
                     "inte av Åklagarmyndigheten, som inte uppfyller det krav "
                     "på oberoende som EU-domstolen ställer upp. Både JO och "
                     "JK har efterfrågat en djupare analys av förslagets "
@@ -570,7 +570,7 @@ CURATED[3] = {
             "text": "Situationen på fängelserna är allvarlig. Utan adekvat "
                     "rehabilitering riskerar en fängelsevistelse att leda till "
                     "fortsatt marginalisering och kriminalitet. Kriminalvårdens "
-                    "uppdrag att erbjuda behandling är inte bara önskvärt — "
+                    "uppdrag att erbjuda behandling är inte bara önskvärt – "
                     "det är centralt för att minska återfallen i brott.",
             "source": "HC01JuU19",
         },
@@ -587,7 +587,7 @@ CURATED[3] = {
         },
         {
             "text": "Sverige saknar nationell beredskap när personuppgifter "
-                    "läcker. Tusentals människor lever med skyddad identitet — "
+                    "läcker. Tusentals människor lever med skyddad identitet – "
                     "kvinnor som flytt våld, vittnen, hotade människor. För "
                     "dem är skyddet bokstavligen en fråga om liv eller död. "
                     "Vid de stora läckorna det senaste året har stödet varit "
@@ -600,8 +600,8 @@ CURATED[3] = {
             "text": "Våld och förtryck har ingen plats i vårt samhälle. Mäns "
                     "våld mot kvinnor och våld i nära relationer ska "
                     "förebyggas, motverkas och bekämpas på bred front. Våldet "
-                    "kan ta sig många uttryck — fysiskt, psykiskt, ekonomiskt, "
-                    "sexuellt — och alla ska ha samma rätt att bestämma över "
+                    "kan ta sig många uttryck – fysiskt, psykiskt, ekonomiskt, "
+                    "sexuellt – och alla ska ha samma rätt att bestämma över "
                     "sitt liv, sin kropp och sin partner.",
             "source": "HC01AU9",
         },
@@ -610,7 +610,7 @@ CURATED[3] = {
                     "fordon polisen ska använda, hur uniformerna ska se ut och "
                     "hur vapenanvändningen ska regleras. Det befintliga "
                     "regelverket för polisens nödvärnsrätt är ändamålsenligt "
-                    "utformat — det ska inte göras om utifrån enstaka motioner.",
+                    "utformat – det ska inte göras om utifrån enstaka motioner.",
             "source": "HA01JuU10",
         },
     ],
@@ -619,8 +619,8 @@ CURATED[3] = {
             "text": "Våld och förtryck har ingen plats i vårt samhälle. Mäns "
                     "våld mot kvinnor och våld i nära relationer ska "
                     "förebyggas, motverkas och bekämpas på bred front. Våldet "
-                    "kan ta sig många uttryck — fysiskt, psykiskt, ekonomiskt, "
-                    "sexuellt — och alla ska ha samma rätt att bestämma över "
+                    "kan ta sig många uttryck – fysiskt, psykiskt, ekonomiskt, "
+                    "sexuellt – och alla ska ha samma rätt att bestämma över "
                     "sitt liv, sin kropp och sin partner.",
             "source": "HC01AU9",
         },
@@ -629,7 +629,7 @@ CURATED[3] = {
                     "fordon polisen ska använda, hur uniformerna ska se ut och "
                     "hur vapenanvändningen ska regleras. Det befintliga "
                     "regelverket för polisens nödvärnsrätt är ändamålsenligt "
-                    "utformat — det ska inte göras om utifrån enstaka motioner.",
+                    "utformat – det ska inte göras om utifrån enstaka motioner.",
             "source": "HA01JuU10",
         },
     ],
@@ -638,8 +638,8 @@ CURATED[3] = {
             "text": "Våld och förtryck har ingen plats i vårt samhälle. Mäns "
                     "våld mot kvinnor och våld i nära relationer ska "
                     "förebyggas, motverkas och bekämpas på bred front. Våldet "
-                    "kan ta sig många uttryck — fysiskt, psykiskt, ekonomiskt, "
-                    "sexuellt — och alla ska ha samma rätt att bestämma över "
+                    "kan ta sig många uttryck – fysiskt, psykiskt, ekonomiskt, "
+                    "sexuellt – och alla ska ha samma rätt att bestämma över "
                     "sitt liv, sin kropp och sin partner.",
             "source": "HC01AU9",
         },
@@ -648,7 +648,7 @@ CURATED[3] = {
                     "fordon polisen ska använda, hur uniformerna ska se ut och "
                     "hur vapenanvändningen ska regleras. Det befintliga "
                     "regelverket för polisens nödvärnsrätt är ändamålsenligt "
-                    "utformat — det ska inte göras om utifrån enstaka motioner.",
+                    "utformat – det ska inte göras om utifrån enstaka motioner.",
             "source": "HA01JuU10",
         },
     ],
@@ -658,7 +658,7 @@ CURATED[3] = {
                     "men det förekommer att livstidsstraff omvandlas till "
                     "tidsbestämda. Det innebär att påföljden blir betydligt "
                     "skonsammare än ett verkligt livstidsstraff. Vi vill "
-                    "införa livstids fängelse utan möjlighet till omvandling — "
+                    "införa livstids fängelse utan möjlighet till omvandling – "
                     "för brott som i dag kan ge livstid.",
             "source": "HA01JuU11",
         },
@@ -666,7 +666,7 @@ CURATED[3] = {
             "text": "Rörelseinskränkande föreskrifter ska kunna kombineras med "
                     "helghemarrest för ungdomar som dömts till "
                     "ungdomsövervakning. Dagens lagstiftning täcker inte det "
-                    "behov av övervakning och kontroll som kan finnas — "
+                    "behov av övervakning och kontroll som kan finnas – "
                     "särskilt på helgdagar då riskmiljöer förekommer. "
                     "Lagstiftningen behöver revideras.",
             "source": "HA01JuU15",
@@ -676,13 +676,13 @@ CURATED[3] = {
 
 
 # ============================================================================
-# Topic 6 — Skatter
+# Topic 6 – Skatter
 # ============================================================================
 CURATED[6] = {
     "V": [
         {
             "text": "Drivmedelsskatt är ett viktigt klimatpolitiskt verktyg men "
-                    "trubbigt — det skiljer inte mellan en höginkomsttagare i "
+                    "trubbigt – det skiljer inte mellan en höginkomsttagare i "
                     "staden och en låginkomsttagare i glesbygden utan "
                     "kollektivtrafikalternativ. Styrmedel måste utformas så att "
                     "klyftorna mellan stad och landsbygd inte växer, och "
@@ -694,7 +694,7 @@ CURATED[6] = {
             "text": "Försvarsupprustningen ska bäras av dem som har bäst "
                     "ekonomiska förutsättningar. Vi vill därför utreda en ny "
                     "beredskapsskatt. Det krisläge som Putins krig i Ukraina "
-                    "skapar kräver ökade försvarsanslag — men finansieringen "
+                    "skapar kräver ökade försvarsanslag – men finansieringen "
                     "ska inte tas från välfärden.",
             "source": "HA01SkU12",
         },
@@ -710,7 +710,7 @@ CURATED[6] = {
             "source": "HB01SkU11",
         },
         {
-            "text": "Organiserade momsbedrägerier — karusellhandeln — kostar "
+            "text": "Organiserade momsbedrägerier – karusellhandeln – kostar "
                     "staten miljarder varje år och hotar både skattesystemets "
                     "legitimitet och seriösa företags konkurrensvillkor. "
                     "Regeringen har sedan maj 2024 haft en färdig utredning "
@@ -721,7 +721,7 @@ CURATED[6] = {
     ],
     "MP": [
         {
-            "text": "Mensskydd är inte ett val — det är en biologisk realitet. "
+            "text": "Mensskydd är inte ett val – det är en biologisk realitet. "
                     "EU:s medlemsstater fattade 2016 beslut om att momsen på "
                     "tamponger och bindor kan sänkas till noll. Vi vill att "
                     "Sverige tar bort den momsen. För en kvinna som "
@@ -731,10 +731,10 @@ CURATED[6] = {
         },
         {
             "text": "Skatten på egenproducerad el och andelsägande av "
-                    "solenergi bör sänkas — och slopas helt för hushåll. "
+                    "solenergi bör sänkas – och slopas helt för hushåll. "
                     "Vindkraften är redan Sveriges billigaste energikälla; "
                     "solcellerna på villatak gör hushållen mindre beroende. "
-                    "Skattesystemet ska underlätta — inte hämma — den gröna "
+                    "Skattesystemet ska underlätta – inte hämma – den gröna "
                     "omställningen.",
             "source": "HA01SkU14, HA01SkU11",
         },
@@ -743,14 +743,14 @@ CURATED[6] = {
         {
             "text": "Ju fler människor som jobbar, desto bättre fungerar den "
                     "offentliga ekonomin. Sänkt skatt skapar bättre "
-                    "förutsättningar för jobb och företagande — och därmed "
+                    "förutsättningar för jobb och företagande – och därmed "
                     "långsiktigt mer resurser till välfärden. Sänkta "
                     "arbetsgivaravgifter är en viktig del för att skapa "
                     "utrymme för företag att anställa fler.",
             "source": "HA01SkU13",
         },
         {
-            "text": "Skattesystemet ska vara enkelt och transparent — både "
+            "text": "Skattesystemet ska vara enkelt och transparent – både "
                     "företag och privatpersoner ska tydligt se vilka skatter "
                     "som betalats. Arbetsgivaravgiften bör synliggöras genom "
                     "att den allmänna löneavgiften separeras. Då blir det "
@@ -771,7 +771,7 @@ CURATED[6] = {
         {
             "text": "Sverige stärker det internationella ramverket mot "
                     "skatteflykt. Tilläggsskatten genomför EU:s "
-                    "minimibeskattningsdirektiv — vinster i stora "
+                    "minimibeskattningsdirektiv – vinster i stora "
                     "multinationella koncerner ska beskattas med minst 15 "
                     "procent. Det här handlar om att täppa till hål som "
                     "underminerar svenska företags konkurrens.",
@@ -791,7 +791,7 @@ CURATED[6] = {
         {
             "text": "Sverige stärker det internationella ramverket mot "
                     "skatteflykt. Tilläggsskatten genomför EU:s "
-                    "minimibeskattningsdirektiv — vinster i stora "
+                    "minimibeskattningsdirektiv – vinster i stora "
                     "multinationella koncerner ska beskattas med minst 15 "
                     "procent. Det här handlar om att täppa till hål som "
                     "underminerar svenska företags konkurrens.",
@@ -811,7 +811,7 @@ CURATED[6] = {
         {
             "text": "Sverige stärker det internationella ramverket mot "
                     "skatteflykt. Tilläggsskatten genomför EU:s "
-                    "minimibeskattningsdirektiv — vinster i stora "
+                    "minimibeskattningsdirektiv – vinster i stora "
                     "multinationella koncerner ska beskattas med minst 15 "
                     "procent. Det här handlar om att täppa till hål som "
                     "underminerar svenska företags konkurrens.",
@@ -823,14 +823,14 @@ CURATED[6] = {
             "text": "De flesta skattebetalare saknar tillräcklig kunskap om "
                     "vilka skatter de betalar, hur höga de är och hur de tas "
                     "ut. Det är ett demokratiskt underskott. Vi vill ha ökad "
-                    "transparens — månatliga lönebesked ska visa sociala "
+                    "transparens – månatliga lönebesked ska visa sociala "
                     "avgifter, och det årliga slutskattebeskedet ska "
                     "pedagogiskt sammanställa allt i diagramform.",
             "source": "HB01SkU15",
         },
         {
             "text": "Sverige står för drygt en promille av världens "
-                    "växthusgasutsläpp — ungefär vår andel av befolkningen. "
+                    "växthusgasutsläpp – ungefär vår andel av befolkningen. "
                     "Det är inte rimligt att Sverige utan vidare ska ta på "
                     "sig betydligt större utsläppsminskningar än andra länder. "
                     "Vår förhandlingsposition i EU och globalt ska vara att "
@@ -842,12 +842,12 @@ CURATED[6] = {
 
 
 # ============================================================================
-# Topic 23 — Hälso- och sjukvård
+# Topic 23 – Hälso- och sjukvård
 # ============================================================================
 CURATED[23] = {
     "V": [
         {
-            "text": "Primärvården är allvarligt underfinansierad — dess andel "
+            "text": "Primärvården är allvarligt underfinansierad – dess andel "
                     "av den totala sjukvårdsbudgeten är för liten. Regeringen "
                     "bör återkomma med en nationell primärvårdsreform som "
                     "garanterar långsiktig finansiering, och statens krav på "
@@ -859,7 +859,7 @@ CURATED[23] = {
             "text": "Grunden för att öka antalet vårdplatser är ökad "
                     "personaltäthet. För att anställa fler och behålla de som "
                     "redan jobbar krävs inte bara mer pengar utan en reformerad "
-                    "personalpolitik. Tid är det vården behöver mest av — och "
+                    "personalpolitik. Tid är det vården behöver mest av – och "
                     "det är det den får minst av.",
             "source": "HA01SoU8, HA01SoU3",
         },
@@ -868,7 +868,7 @@ CURATED[23] = {
         {
             "text": "Primärvårdsreformen går för långsamt. Mycket arbete har "
                     "bedrivits på strategisk nivå utan synliga effekter i "
-                    "verksamheten. Regeringen bör öka takten — och inrätta ett "
+                    "verksamheten. Regeringen bör öka takten – och inrätta ett "
                     "kansli vid Socialstyrelsen som följer och driver på "
                     "omställningen löpande.",
             "source": "HB01SoU14",
@@ -878,7 +878,7 @@ CURATED[23] = {
                     "Den förra regeringen gav Socialstyrelsen 923 miljoner "
                     "kronor att fördela för att anställa fler sjuksköterskor "
                     "och förbättra arbetsmiljön. Den typen av statligt stöd "
-                    "bör permanentas — vården kan inte längre planera långsiktigt "
+                    "bör permanentas – vården kan inte längre planera långsiktigt "
                     "på engångsanslag.",
             "source": "HA01SoU3",
         },
@@ -887,7 +887,7 @@ CURATED[23] = {
         {
             "text": "Primärvården har svårt att klara sitt uppdrag och driva "
                     "omställningen till god och nära vård. Statens krav på "
-                    "regionerna måste följas av tillräckliga resurser — annars "
+                    "regionerna måste följas av tillräckliga resurser – annars "
                     "blir reformen ord på papper. Personaltätheten är "
                     "grunden för fler vårdplatser.",
             "source": "HB01SoU14, HA01SoU8",
@@ -896,7 +896,7 @@ CURATED[23] = {
             "text": "Alla regioner ska redovisa hur jämställd vården är, och "
                     "säkerställa att det finns könsuppdelad statistik. "
                     "Likarättsarbetet i vården behöver stärkas. Kvinnor söker "
-                    "vård för andra symtom än män och får ofta sämre diagnos — "
+                    "vård för andra symtom än män och får ofta sämre diagnos – "
                     "det är ett vårdkvalitetsproblem.",
             "source": "HA01SoU12",
         },
@@ -905,8 +905,8 @@ CURATED[23] = {
         {
             "text": "Arbetet med att korta vårdköerna måste bedrivas strukturerat, "
                     "metodiskt och systematiskt. Regeringen bör identifiera "
-                    "och avskaffa hinder för att samtliga vårdgivare — oavsett "
-                    "driftsform — kan bidra till att kapa köerna. Ett "
+                    "och avskaffa hinder för att samtliga vårdgivare – oavsett "
+                    "driftsform – kan bidra till att kapa köerna. Ett "
                     "övergripande mål för fler vårdplatser och nationell plan "
                     "för att nå det behövs.",
             "source": "HA01SoU3",
@@ -926,13 +926,13 @@ CURATED[23] = {
                     "lika villkor för hela befolkningen, med respekt för alla "
                     "människors lika värde. Den med störst behov ska ges "
                     "företräde. Vi noterar att privata sjukvårdsförsäkringar "
-                    "ökat — symptom på att vården behöver utvecklas, inte att "
+                    "ökat – symptom på att vården behöver utvecklas, inte att "
                     "den ska privatiseras.",
             "source": "HA01SoU5",
         },
         {
             "text": "Glesbygdens primärvård behöver stärkas inom ramen för "
-                    "överenskommelsen God och nära vård 2024 — nya arbetssätt, "
+                    "överenskommelsen God och nära vård 2024 – nya arbetssätt, "
                     "digitala lösningar och samverkan. Företagshälsovårdens "
                     "kompetensförsörjning är en angelägen fråga som "
                     "Myndigheten för arbetsmiljökunskap har fått ett särskilt "
@@ -946,13 +946,13 @@ CURATED[23] = {
                     "lika villkor för hela befolkningen, med respekt för alla "
                     "människors lika värde. Den med störst behov ska ges "
                     "företräde. Vi noterar att privata sjukvårdsförsäkringar "
-                    "ökat — symptom på att vården behöver utvecklas, inte att "
+                    "ökat – symptom på att vården behöver utvecklas, inte att "
                     "den ska privatiseras.",
             "source": "HA01SoU5",
         },
         {
             "text": "Glesbygdens primärvård behöver stärkas inom ramen för "
-                    "överenskommelsen God och nära vård 2024 — nya arbetssätt, "
+                    "överenskommelsen God och nära vård 2024 – nya arbetssätt, "
                     "digitala lösningar och samverkan. Företagshälsovårdens "
                     "kompetensförsörjning är en angelägen fråga som "
                     "Myndigheten för arbetsmiljökunskap har fått ett särskilt "
@@ -966,13 +966,13 @@ CURATED[23] = {
                     "lika villkor för hela befolkningen, med respekt för alla "
                     "människors lika värde. Den med störst behov ska ges "
                     "företräde. Vi noterar att privata sjukvårdsförsäkringar "
-                    "ökat — symptom på att vården behöver utvecklas, inte att "
+                    "ökat – symptom på att vården behöver utvecklas, inte att "
                     "den ska privatiseras.",
             "source": "HA01SoU5",
         },
         {
             "text": "Glesbygdens primärvård behöver stärkas inom ramen för "
-                    "överenskommelsen God och nära vård 2024 — nya arbetssätt, "
+                    "överenskommelsen God och nära vård 2024 – nya arbetssätt, "
                     "digitala lösningar och samverkan. Företagshälsovårdens "
                     "kompetensförsörjning är en angelägen fråga som "
                     "Myndigheten för arbetsmiljökunskap har fått ett särskilt "
@@ -985,7 +985,7 @@ CURATED[23] = {
             "text": "Ett robust totalförsvar förutsätter att hälso- och "
                     "sjukvården är förberedd för kris och krig. Vi vill ha en "
                     "tydlig definition och struktur för särskilda "
-                    "beredskapssjukhus — vilka som ska räknas, hur de ska "
+                    "beredskapssjukhus – vilka som ska räknas, hur de ska "
                     "skyddas i fråga om planering, bemanning och långsiktiga "
                     "investeringar.",
             "source": "HD01SoU6",
@@ -1004,14 +1004,14 @@ CURATED[23] = {
 
 
 # ============================================================================
-# Topic 15 — Nato och utrikespolitik
+# Topic 15 – Nato och utrikespolitik
 # ============================================================================
 CURATED[15] = {
     "V": [
         {
             "text": "Vi var emot att Sverige gick med i Nato, men medlemskapet "
                     "är nu en verklighet. Sveriges egen försvarsförmåga ska "
-                    "fortfarande stå i centrum — och vi ska vara en aktiv "
+                    "fortfarande stå i centrum – och vi ska vara en aktiv "
                     "samarbetspartner i Norden och Östersjöområdet. Inte "
                     "operationer långt borta, utan vårt eget närområde.",
             "source": "HC01UFöU2",
@@ -1039,7 +1039,7 @@ CURATED[15] = {
             "text": "Det nordiska försvars- och säkerhetspolitiska arbetet "
                     "behöver samordnas effektivt. Vi har redan krigsplanläggning "
                     "med Finland och tätt samarbete med övriga nordiska länder "
-                    "— nu bör en nordisk försvars- och säkerhetspolitisk "
+                    "– nu bör en nordisk försvars- och säkerhetspolitisk "
                     "kommission tillsättas, med förankring i samtliga nordiska "
                     "parlament.",
             "source": "HB01UU4, HD01UU4",
@@ -1050,7 +1050,7 @@ CURATED[15] = {
             "text": "Vi röstade emot Natoansökan men respekterar nu riksdagens "
                     "beslut. När Sverige väl är medlem är det viktigt att vi "
                     "driver en självständig utrikespolitik och står upp för "
-                    "demokrati och mänskliga rättigheter — både inom Nato och "
+                    "demokrati och mänskliga rättigheter – både inom Nato och "
                     "i förhållande till alliansens andra länder.",
             "source": "HC01UFöU1, HC01UU19",
         },
@@ -1058,7 +1058,7 @@ CURATED[15] = {
             "text": "Solidaritet med människor i hela världen är en av våra "
                     "grundstenar. Det är beklagligt att Sverige tar emot färre "
                     "asylsökande och skär ner biståndet. Vi har ett "
-                    "grundläggande medmänskligt ansvar att vara en fristad — "
+                    "grundläggande medmänskligt ansvar att vara en fristad – "
                     "särskilt för dem som förföljs av totalitära regimer för "
                     "sin kamp för fri- och rättigheter.",
             "source": "HC01UU14",
@@ -1067,7 +1067,7 @@ CURATED[15] = {
     "C": [
         {
             "text": "Sverige har under många år deltagit i internationella "
-                    "insatser under FN-, Nato- och EU-flagg — alltid med "
+                    "insatser under FN-, Nato- och EU-flagg – alltid med "
                     "FN-mandat. De insatser vi deltar i gör skillnad. Den "
                     "nationella försvarsplaneringen måste säkra att vi också "
                     "kan ta vårt internationella ansvar, inte minst efter "
@@ -1148,12 +1148,12 @@ CURATED[15] = {
                     "på bekostnad av självständiga nationalstater. Eftersom "
                     "våra nordiska länder delar både samhällssystem, "
                     "värderingar och landsgränser har vi mycket att vinna på "
-                    "att samordna oss — på EU-nivå och i lagstiftningsprocessen.",
+                    "att samordna oss – på EU-nivå och i lagstiftningsprocessen.",
             "source": "HA01UU5",
         },
         {
             "text": "Sverige ska vara en aktiv medlem i Nato och tydligt driva "
-                    "de intressen som ökar alliansens — och därmed Sveriges — "
+                    "de intressen som ökar alliansens – och därmed Sveriges – "
                     "säkerhet. Alla våra nordiska grannländer är nu Nato-"
                     "medlemmar. Det är en unik historisk möjlighet att "
                     "stärka vår säkerhet i samförstånd och driva offensiv "
@@ -1165,7 +1165,7 @@ CURATED[15] = {
 
 
 # ============================================================================
-# Topic 9 — Internationellt bistånd
+# Topic 9 – Internationellt bistånd
 # ============================================================================
 CURATED[9] = {
     "V": [
@@ -1173,8 +1173,8 @@ CURATED[9] = {
             "text": "I stället för att strypa biståndet bör Sverige öka stödet "
                     "till Palestina för att rädda liv. Regeringens beslut att "
                     "dra in stödet till rättighetsorganisationer i Palestina "
-                    "och Israel — inklusive det ekumeniska "
-                    "följeslagarprogrammet — motverkar en demokratisk och "
+                    "och Israel – inklusive det ekumeniska "
+                    "följeslagarprogrammet – motverkar en demokratisk och "
                     "fredlig utveckling. Civilsamhället ska stärkas, inte "
                     "försvagas.",
             "source": "HC01UU15",
@@ -1184,7 +1184,7 @@ CURATED[9] = {
                     "FN-organisationerna. Det är kärnstödet som ger FN möjlighet "
                     "att vara på plats där behoven är störst och snabbt "
                     "prioritera om i akuta lägen. Regeringens ökade öronmärkning "
-                    "underminerar arbetet — UN Women, UNFPA och UNAIDS har "
+                    "underminerar arbetet – UN Women, UNFPA och UNAIDS har "
                     "redan drabbats.",
             "source": "HC01UU11, HA01UU3",
         },
@@ -1203,7 +1203,7 @@ CURATED[9] = {
         {
             "text": "I kampen om en ny världsordning är det avgörande att "
                     "Sverige och EU verkar för demokrati, mänskliga "
-                    "rättigheter och hållbar utveckling — och samtidigt möter "
+                    "rättigheter och hållbar utveckling – och samtidigt möter "
                     "klimatutmaningen. Vi beklagar att regeringen valt att "
                     "dra sig undan från den globala scenen. Svensk "
                     "utrikespolitik har blivit passiv.",
@@ -1222,11 +1222,11 @@ CURATED[9] = {
         },
         {
             "text": "Regeringen har dragit ned stödet till flera viktiga "
-                    "FN-organ — strypt allt stöd till UNAIDS, minskat "
+                    "FN-organ – strypt allt stöd till UNAIDS, minskat "
                     "finansieringen av UN Women, FN:s fredsbyggande fond, "
                     "UNFPA och UNDP. Kärnstöd är nödvändigt för att snabbt "
                     "kunna agera mot akuta kriser. Sverige har historiskt "
-                    "varit ett av få länder som tagit ansvar — det är en "
+                    "varit ett av få länder som tagit ansvar – det är en "
                     "tradition vi inte ska överge.",
             "source": "HC01UU11",
         },
@@ -1256,7 +1256,7 @@ CURATED[9] = {
             "text": "Mot bakgrund av kriget i Europa ger regeringen närområdet "
                     "och stödet till Ukraina högsta prioritet i utrikes- och "
                     "säkerhetspolitiken. Den transatlantiska relationen är "
-                    "fortsatt av stor vikt för Sverige och Europa — också när "
+                    "fortsatt av stor vikt för Sverige och Europa – också när "
                     "den nya amerikanska administrationen skapar frågetecken "
                     "kring USA:s engagemang.",
             "source": "HC01UU7",
@@ -1275,7 +1275,7 @@ CURATED[9] = {
             "text": "Mot bakgrund av kriget i Europa ger regeringen närområdet "
                     "och stödet till Ukraina högsta prioritet i utrikes- och "
                     "säkerhetspolitiken. Den transatlantiska relationen är "
-                    "fortsatt av stor vikt för Sverige och Europa — också när "
+                    "fortsatt av stor vikt för Sverige och Europa – också när "
                     "den nya amerikanska administrationen skapar frågetecken "
                     "kring USA:s engagemang.",
             "source": "HC01UU7",
@@ -1294,7 +1294,7 @@ CURATED[9] = {
             "text": "Mot bakgrund av kriget i Europa ger regeringen närområdet "
                     "och stödet till Ukraina högsta prioritet i utrikes- och "
                     "säkerhetspolitiken. Den transatlantiska relationen är "
-                    "fortsatt av stor vikt för Sverige och Europa — också när "
+                    "fortsatt av stor vikt för Sverige och Europa – också när "
                     "den nya amerikanska administrationen skapar frågetecken "
                     "kring USA:s engagemang.",
             "source": "HC01UU7",
@@ -1333,7 +1333,7 @@ CURATED[9] = {
 
 
 # ============================================================================
-# Topic 11 — Läkemedel och tandvård
+# Topic 11 – Läkemedel och tandvård
 # ============================================================================
 CURATED[11] = {
     "V": [
@@ -1361,7 +1361,7 @@ CURATED[11] = {
                     "är att sänka de ekonomiska trösklarna. Den tidigare "
                     "regeringen tillsatte en tandvårdsutredning som föreslog "
                     "en modell för nytt högkostnadsskydd. Vi anser att de "
-                    "förslagen ska tas vidare — i stället för att se över "
+                    "förslagen ska tas vidare – i stället för att se över "
                     "tandvårdens skydd för att efterlikna övrig vård.",
             "source": "HD01SoU14, HA01SoU15",
         },
@@ -1369,7 +1369,7 @@ CURATED[11] = {
             "text": "Allas rätt till en jämlik och bra sjukvård är central. "
                     "Den grundläggande principen ska vara att vården ges "
                     "utifrån behov. För dyra läkemedel där få drabbas behöver "
-                    "staten ta större ansvar — annars blir tillgång till "
+                    "staten ta större ansvar – annars blir tillgång till "
                     "behandling beroende av vilken region man bor i.",
             "source": "HC01SoU14",
         },
@@ -1378,7 +1378,7 @@ CURATED[11] = {
         {
             "text": "Det svenska läkemedelssystemet är inte anpassat till den "
                     "snabba utvecklingen av nya behandlingar. Hittills "
-                    "gjorda utredningar har haft otillräckliga förutsättningar — "
+                    "gjorda utredningar har haft otillräckliga förutsättningar – "
                     "de har inte fått vara kostnadsdrivande. Det måste "
                     "ändras om vi vill att människor med sällsynta diagnoser "
                     "ska få den vård som existerar.",
@@ -1388,14 +1388,14 @@ CURATED[11] = {
             "text": "Allas rätt till en jämlik och bra sjukvård är viktig. "
                     "Vården ska ges utifrån behov. Staten bör ha ett särskilt "
                     "stöd till regionerna för behandlingsmetoder och "
-                    "mediciner som är extra kostsamma — så att människor med "
+                    "mediciner som är extra kostsamma – så att människor med "
                     "allvarlig sjukdom inte hamnar mellan stolarna.",
             "source": "HC01SoU14",
         },
     ],
     "C": [
         {
-            "text": "Utvecklingen av nya läkemedel går snabbare än någonsin — "
+            "text": "Utvecklingen av nya läkemedel går snabbare än någonsin – "
                     "men det räcker inte att de utvecklas, de måste också nå "
                     "patienterna. Det svenska systemet är inte anpassat till "
                     "en situation där det finns behandling mot tillstånd som "
@@ -1418,14 +1418,14 @@ CURATED[11] = {
                     "angelägen fråga. Läkemedelsverket har fått ett uppdrag "
                     "att se över hur rest- och bristsituationer kan "
                     "förebyggas, och kan numera besluta om sanktionsavgifter "
-                    "när företag inte uppfyller meddelandeplikten — det är "
+                    "när företag inte uppfyller meddelandeplikten – det är "
                     "verktyg vi redan har och som ska användas.",
             "source": "HB01SoU12",
         },
         {
             "text": "Frågan om läkares förskrivningsrätt utreds. Patientsäker"
                     "hetslagens bestämmelser om återkallelse av legitimation "
-                    "och begränsning av förskrivningsrätt finns redan — "
+                    "och begränsning av förskrivningsrätt finns redan – "
                     "regeringen utreder nu ytterligare frågor om "
                     "dokumentation, begränsningar och tillsyn av "
                     "läkemedelsförskrivning, vilket vi avvaktar.",
@@ -1438,14 +1438,14 @@ CURATED[11] = {
                     "angelägen fråga. Läkemedelsverket har fått ett uppdrag "
                     "att se över hur rest- och bristsituationer kan "
                     "förebyggas, och kan numera besluta om sanktionsavgifter "
-                    "när företag inte uppfyller meddelandeplikten — det är "
+                    "när företag inte uppfyller meddelandeplikten – det är "
                     "verktyg vi redan har och som ska användas.",
             "source": "HB01SoU12",
         },
         {
             "text": "Frågan om läkares förskrivningsrätt utreds. Patientsäker"
                     "hetslagens bestämmelser om återkallelse av legitimation "
-                    "och begränsning av förskrivningsrätt finns redan — "
+                    "och begränsning av förskrivningsrätt finns redan – "
                     "regeringen utreder nu ytterligare frågor om "
                     "dokumentation, begränsningar och tillsyn av "
                     "läkemedelsförskrivning, vilket vi avvaktar.",
@@ -1458,14 +1458,14 @@ CURATED[11] = {
                     "angelägen fråga. Läkemedelsverket har fått ett uppdrag "
                     "att se över hur rest- och bristsituationer kan "
                     "förebyggas, och kan numera besluta om sanktionsavgifter "
-                    "när företag inte uppfyller meddelandeplikten — det är "
+                    "när företag inte uppfyller meddelandeplikten – det är "
                     "verktyg vi redan har och som ska användas.",
             "source": "HB01SoU12",
         },
         {
             "text": "Frågan om läkares förskrivningsrätt utreds. Patientsäker"
                     "hetslagens bestämmelser om återkallelse av legitimation "
-                    "och begränsning av förskrivningsrätt finns redan — "
+                    "och begränsning av förskrivningsrätt finns redan – "
                     "regeringen utreder nu ytterligare frågor om "
                     "dokumentation, begränsningar och tillsyn av "
                     "läkemedelsförskrivning, vilket vi avvaktar.",
@@ -1485,7 +1485,7 @@ CURATED[11] = {
         {
             "text": "Förebyggande tandvård spelar en avgörande roll. "
                     "Regelbundna kontroller och munhälsoundervisning är inte "
-                    "tillräckligt utbredda — många söker vård först när "
+                    "tillräckligt utbredda – många söker vård först när "
                     "problemen blivit allvarliga, vilket gör behandlingen "
                     "dyrare och mer komplicerad. Allmänhetens kunskaper om "
                     "munhygien behöver stärkas.",
@@ -1496,7 +1496,7 @@ CURATED[11] = {
 
 
 # ============================================================================
-# Topic 21 — Bostadspolitik
+# Topic 21 – Bostadspolitik
 # ============================================================================
 CURATED[21] = {
     "V": [
@@ -1512,7 +1512,7 @@ CURATED[21] = {
         {
             "text": "Allmännyttan är en avgörande del av en social "
                     "bostadspolitik. Vid utgången av 2022 fanns 834 000 "
-                    "bostäder i det allmännyttiga beståndet — 41 procent av "
+                    "bostäder i det allmännyttiga beståndet – 41 procent av "
                     "hyresrättsbeståndet. När Allbolagen infördes 2011 "
                     "förändrades förutsättningarna; lagen behöver ses över "
                     "för att stärka allmännyttans samhällsuppdrag.",
@@ -1530,7 +1530,7 @@ CURATED[21] = {
             "source": "HA01CU10",
         },
         {
-            "text": "Byggandet av bostäder har tvärnitat — för "
+            "text": "Byggandet av bostäder har tvärnitat – för "
                     "träbyggnadsindustrin är läget akut. Staten måste "
                     "skyndsamt bidra med aktiva åtgärder. Vi har föreslagit "
                     "statlig byggstimulans och statliga byggkrediter, och "
@@ -1544,7 +1544,7 @@ CURATED[21] = {
             "text": "Bostadsförsörjningslagen bör göras tvingande så att "
                     "fler kommuner lever upp till lagens krav. Att inte kunna "
                     "flytta dit man vill begränsar möjligheten att forma sitt "
-                    "eget liv — och påverkar samhällsutvecklingen negativt om "
+                    "eget liv – och påverkar samhällsutvecklingen negativt om "
                     "människor inte kan flytta dit jobben eller utbildningen "
                     "finns.",
             "source": "HA01CU10",
@@ -1573,7 +1573,7 @@ CURATED[21] = {
                     "nyproduktion. Statliga kreditgarantier behövs, men "
                     "regelverket behöver tydligare riktas mot "
                     "landsbygdskommuner. Generella investeringsstöd "
-                    "snedvrider konkurrensen — i stället bör stöd för att "
+                    "snedvrider konkurrensen – i stället bör stöd för att "
                     "exempelvis få fram bostäder i hela landet utredas.",
             "source": "HD01CU18",
         },
@@ -1589,7 +1589,7 @@ CURATED[21] = {
         },
         {
             "text": "Planläggning av mark- och vattenområden är en kommunal "
-                    "angelägenhet — det är ett uttryck för den kommunala "
+                    "angelägenhet – det är ett uttryck för den kommunala "
                     "självstyrelsen som ska värnas. Samtidigt finns ett behov "
                     "av att reglerna inte i onödan försvårar planeringen. "
                     "Reformer i plan- och bygglagen ska underlätta effektiva "
@@ -1608,7 +1608,7 @@ CURATED[21] = {
         },
         {
             "text": "Planläggning av mark- och vattenområden är en kommunal "
-                    "angelägenhet — det är ett uttryck för den kommunala "
+                    "angelägenhet – det är ett uttryck för den kommunala "
                     "självstyrelsen som ska värnas. Samtidigt finns ett behov "
                     "av att reglerna inte i onödan försvårar planeringen. "
                     "Reformer i plan- och bygglagen ska underlätta effektiva "
@@ -1627,7 +1627,7 @@ CURATED[21] = {
         },
         {
             "text": "Planläggning av mark- och vattenområden är en kommunal "
-                    "angelägenhet — det är ett uttryck för den kommunala "
+                    "angelägenhet – det är ett uttryck för den kommunala "
                     "självstyrelsen som ska värnas. Samtidigt finns ett behov "
                     "av att reglerna inte i onödan försvårar planeringen. "
                     "Reformer i plan- och bygglagen ska underlätta effektiva "
@@ -1642,14 +1642,14 @@ CURATED[21] = {
                     "betydelse för polisens möjligheter att bedriva effektivt "
                     "arbete. Miljonprogramsområdena är utformade så att det "
                     "är svårt för polisen att närvara utan att samtidigt "
-                    "utsättas för risker — stadsplanering behöver skapa "
+                    "utsättas för risker – stadsplanering behöver skapa "
                     "säkrare närvaro.",
             "source": "HA01CU10",
         },
         {
             "text": "Fastighetsägare behöver utökade möjligheter att säga upp "
                     "hyresgäster som begår brott. Utredningen om tryggare "
-                    "bostadsområden överlämnade sitt betänkande hösten 2023 — "
+                    "bostadsområden överlämnade sitt betänkande hösten 2023 – "
                     "regeringen har gått vidare med lagrådsremiss, och de "
                     "skarpa lagförslagen behöver införas så snart som möjligt.",
             "source": "HB01CU17",
@@ -1659,7 +1659,7 @@ CURATED[21] = {
 
 
 # ============================================================================
-# Topic 24 — Funktionsnedsättning och äldreomsorg
+# Topic 24 – Funktionsnedsättning och äldreomsorg
 # ============================================================================
 CURATED[24] = {
     "V": [
@@ -1669,13 +1669,13 @@ CURATED[24] = {
                     "Många som har den identifierad saknar insatser eller "
                     "aktiviteter. Granskningen visar på en försämring över "
                     "tid. Att ha arbete och egen försörjning stärker "
-                    "individens makt — staten har här svikit.",
+                    "individens makt – staten har här svikit.",
             "source": "HD01AU6",
         },
         {
             "text": "Schablonbeloppet för assistansersättning har under lång tid "
                     "halkat efter kostnadsutvecklingen. Det innebär i praktiken "
-                    "att kommunerna får ta en allt större del av kostnaden — "
+                    "att kommunerna får ta en allt större del av kostnaden – "
                     "och att assistansberättigade riskerar att få sämre "
                     "assistans. Beloppet behöver räknas upp i takt med verklig "
                     "kostnadsutveckling.",
@@ -1684,8 +1684,8 @@ CURATED[24] = {
     ],
     "S": [
         {
-            "text": "Människor med svag ställning på arbetsmarknaden — inte "
-                    "minst personer med funktionsnedsättningar — behöver ett "
+            "text": "Människor med svag ställning på arbetsmarknaden – inte "
+                    "minst personer med funktionsnedsättningar – behöver ett "
                     "starkare och mer individanpassat stöd. Arbetsförmedlingen "
                     "ska ha sammanhållande roll, och samverkan med kommuner, "
                     "utbildningssamordnare, socialtjänst och sjukvård behöver "
@@ -1696,7 +1696,7 @@ CURATED[24] = {
             "text": "Hälso- och sjukvården inom äldreomsorgen behöver stärkas. "
                     "Med en åldrande befolkning ökar behoven av en samordnad "
                     "vård och omsorg. Staten behöver ta ett tydligare ansvar "
-                    "för att säkerställa likvärdig kvalitet i hela landet — "
+                    "för att säkerställa likvärdig kvalitet i hela landet – "
                     "och säkerställa att personalen har förutsättningar att "
                     "ge god vård.",
             "source": "HA01SoU22",
@@ -1704,7 +1704,7 @@ CURATED[24] = {
     ],
     "MP": [
         {
-            "text": "Tillgången till personlig assistans har försämrats — "
+            "text": "Tillgången till personlig assistans har försämrats – "
                     "regeringen behöver skyndsamt vidta åtgärder. Flyktingar "
                     "och skyddsbehövande ska inte diskrimineras när det gäller "
                     "möjligheten till personlig assistans. Det här är "
@@ -1715,7 +1715,7 @@ CURATED[24] = {
             "text": "Vid sjukhusvistelse förlorar assistansberättigade i "
                     "praktiken ofta sin ersättning, vilket kan leda till att "
                     "personliga assistenter sägs upp. Det är en orimlig effekt "
-                    "av regelverket — människor som redan är i en svår "
+                    "av regelverket – människor som redan är i en svår "
                     "situation drabbas ytterligare. Reglerna behöver ses över.",
             "source": "HC01SoU15",
         },
@@ -1742,7 +1742,7 @@ CURATED[24] = {
     "L": [
         {
             "text": "Sjukförsäkringens syfte är att ge ersättning för "
-                    "inkomstbortfall vid sjukdom — och stöd till individen "
+                    "inkomstbortfall vid sjukdom – och stöd till individen "
                     "för återgång i arbete. Försäkringen ska både skänka "
                     "trygghet till den som inte kan arbeta och bidra till "
                     "rehabilitering. Den balansen är central för "
@@ -1752,8 +1752,8 @@ CURATED[24] = {
         {
             "text": "Regeringen arbetar för att stärka funktionshinderspolitiken "
                     "och äldreomsorgen inom existerande budgetramar. "
-                    "Utgiftsområde 10 — ekonomisk trygghet vid sjukdom och "
-                    "funktionsnedsättning — uppgår till cirka 123 miljarder "
+                    "Utgiftsområde 10 – ekonomisk trygghet vid sjukdom och "
+                    "funktionsnedsättning – uppgår till cirka 123 miljarder "
                     "kronor. Nivåerna är avvägda mot Sveriges samlade "
                     "ekonomiska situation.",
             "source": "HC01SfU1",
@@ -1762,7 +1762,7 @@ CURATED[24] = {
     "KD": [
         {
             "text": "Sjukförsäkringens syfte är att ge ersättning för "
-                    "inkomstbortfall vid sjukdom — och stöd till individen "
+                    "inkomstbortfall vid sjukdom – och stöd till individen "
                     "för återgång i arbete. Försäkringen ska både skänka "
                     "trygghet till den som inte kan arbeta och bidra till "
                     "rehabilitering. Den balansen är central för "
@@ -1772,8 +1772,8 @@ CURATED[24] = {
         {
             "text": "Regeringen arbetar för att stärka funktionshinderspolitiken "
                     "och äldreomsorgen inom existerande budgetramar. "
-                    "Utgiftsområde 10 — ekonomisk trygghet vid sjukdom och "
-                    "funktionsnedsättning — uppgår till cirka 123 miljarder "
+                    "Utgiftsområde 10 – ekonomisk trygghet vid sjukdom och "
+                    "funktionsnedsättning – uppgår till cirka 123 miljarder "
                     "kronor. Nivåerna är avvägda mot Sveriges samlade "
                     "ekonomiska situation.",
             "source": "HC01SfU1",
@@ -1782,7 +1782,7 @@ CURATED[24] = {
     "M": [
         {
             "text": "Sjukförsäkringens syfte är att ge ersättning för "
-                    "inkomstbortfall vid sjukdom — och stöd till individen "
+                    "inkomstbortfall vid sjukdom – och stöd till individen "
                     "för återgång i arbete. Försäkringen ska både skänka "
                     "trygghet till den som inte kan arbeta och bidra till "
                     "rehabilitering. Den balansen är central för "
@@ -1792,8 +1792,8 @@ CURATED[24] = {
         {
             "text": "Regeringen arbetar för att stärka funktionshinderspolitiken "
                     "och äldreomsorgen inom existerande budgetramar. "
-                    "Utgiftsområde 10 — ekonomisk trygghet vid sjukdom och "
-                    "funktionsnedsättning — uppgår till cirka 123 miljarder "
+                    "Utgiftsområde 10 – ekonomisk trygghet vid sjukdom och "
+                    "funktionsnedsättning – uppgår till cirka 123 miljarder "
                     "kronor. Nivåerna är avvägda mot Sveriges samlade "
                     "ekonomiska situation.",
             "source": "HC01SfU1",
@@ -1802,7 +1802,7 @@ CURATED[24] = {
     "SD": [
         {
             "text": "Att assistansberättigade inte beviljas assistansersättning "
-                    "vid sjukhusvistelse kan få betydande konsekvenser — både "
+                    "vid sjukhusvistelse kan få betydande konsekvenser – både "
                     "för den enskilde och för arbetsgivaren som kan tvingas "
                     "säga upp assistenter. Vi vill att assistansersättning ska "
                     "kunna utgå även vid längre sjukhusvistelser, så att "
@@ -1814,7 +1814,7 @@ CURATED[24] = {
                     "funktionsnedsättning fungerar inte. Riksrevisionen har "
                     "visat på allvarliga effektivitetsbrister. För människor "
                     "med funktionsnedsättning krävs ett samlat, "
-                    "individanpassat stöd som faktiskt leder till arbete — "
+                    "individanpassat stöd som faktiskt leder till arbete – "
                     "inte den nuvarande situationen där många blir kvar i "
                     "väntrum.",
             "source": "HD01AU6",
@@ -1824,13 +1824,13 @@ CURATED[24] = {
 
 
 # ============================================================================
-# Topic 2 — Arbetsrätt och arbetslöshet
+# Topic 2 – Arbetsrätt och arbetslöshet
 # ============================================================================
 CURATED[2] = {
     "V": [
         {
-            "text": "De senaste årens förändringar inom Arbetsförmedlingen — "
-                    "digitaliseringen, nedskärningarna och reformeringen — "
+            "text": "De senaste årens förändringar inom Arbetsförmedlingen – "
+                    "digitaliseringen, nedskärningarna och reformeringen – "
                     "har påverkat arbetssökande med funktionsnedsättning "
                     "negativt. När den huvudsakliga kontaktvägen är digital "
                     "stängs människor som inte klarar den ute. "
@@ -1852,14 +1852,14 @@ CURATED[2] = {
             "text": "Arbetsförmedlingen är statens arbetsmarknadspolitiska "
                     "expertmyndighet och bör ges större handlingsfrihet att "
                     "välja individanpassade insatser. Den fysiska närvaron i "
-                    "hela landet är viktig — också för att den aktiva "
+                    "hela landet är viktig – också för att den aktiva "
                     "arbetsmarknadspolitiken ska finnas och fungera där "
                     "människor faktiskt bor och söker jobb.",
             "source": "HA01AU9",
         },
         {
-            "text": "Den svenska modellen — där arbetsmarknadens parter "
-                    "ansvarar för lönebildning och omställning — har gett "
+            "text": "Den svenska modellen – där arbetsmarknadens parter "
+                    "ansvarar för lönebildning och omställning – har gett "
                     "Sverige reallöneökningar och få konfliktdagar. Den ska "
                     "värnas. Det kräver att parterna ges utrymme att förhandla "
                     "fram lösningar, och att lagstiftaren inte tar över deras "
@@ -1893,7 +1893,7 @@ CURATED[2] = {
                     "arbetsmarknaden, motverka långtidsarbetslösheten och se "
                     "till att alla som kommer till Sverige verkligen kommer "
                     "in i samhället. Det kräver effektivt stöd och matchning. "
-                    "Arbetsförmedlingens reformering behöver fortsätta — "
+                    "Arbetsförmedlingens reformering behöver fortsätta – "
                     "myndigheten har inte klarat sitt ensamuppdrag.",
             "source": "HB01AU3",
         },
@@ -1902,7 +1902,7 @@ CURATED[2] = {
                     "och fler vägar in. Privata leverantörer, utbildnings"
                     "samordnare, socialtjänst och regionerna ska tillsammans "
                     "med Arbetsförmedlingen erbjuda individanpassade insatser. "
-                    "Det viktiga är att människor får jobb — inte vilken "
+                    "Det viktiga är att människor får jobb – inte vilken "
                     "huvudman som står för insatsen.",
             "source": "HA01AU9",
         },
@@ -1914,7 +1914,7 @@ CURATED[2] = {
                     "jämbördiga parter som samordnar lönebildning och "
                     "omställning. Parternas kompromissinriktade arbete har "
                     "gett Sverige både reallöneökningar och unikt få "
-                    "konfliktdagar — det är en modell som ska värnas.",
+                    "konfliktdagar – det är en modell som ska värnas.",
             "source": "HB01AU3",
         },
         {
@@ -1922,7 +1922,7 @@ CURATED[2] = {
                     "Myndigheten ska utvecklas mot en effektivare "
                     "matchningsroll, med fler privata leverantörer som "
                     "utför insatser. Riksdagen behöver inte gå in i detaljer "
-                    "om varje insatsform — det ska Arbetsförmedlingen kunna "
+                    "om varje insatsform – det ska Arbetsförmedlingen kunna "
                     "anpassa till behoven.",
             "source": "HB01AU8",
         },
@@ -1934,7 +1934,7 @@ CURATED[2] = {
                     "jämbördiga parter som samordnar lönebildning och "
                     "omställning. Parternas kompromissinriktade arbete har "
                     "gett Sverige både reallöneökningar och unikt få "
-                    "konfliktdagar — det är en modell som ska värnas.",
+                    "konfliktdagar – det är en modell som ska värnas.",
             "source": "HB01AU3",
         },
         {
@@ -1942,7 +1942,7 @@ CURATED[2] = {
                     "Myndigheten ska utvecklas mot en effektivare "
                     "matchningsroll, med fler privata leverantörer som "
                     "utför insatser. Riksdagen behöver inte gå in i detaljer "
-                    "om varje insatsform — det ska Arbetsförmedlingen kunna "
+                    "om varje insatsform – det ska Arbetsförmedlingen kunna "
                     "anpassa till behoven.",
             "source": "HB01AU8",
         },
@@ -1954,7 +1954,7 @@ CURATED[2] = {
                     "jämbördiga parter som samordnar lönebildning och "
                     "omställning. Parternas kompromissinriktade arbete har "
                     "gett Sverige både reallöneökningar och unikt få "
-                    "konfliktdagar — det är en modell som ska värnas.",
+                    "konfliktdagar – det är en modell som ska värnas.",
             "source": "HB01AU3",
         },
         {
@@ -1962,7 +1962,7 @@ CURATED[2] = {
                     "Myndigheten ska utvecklas mot en effektivare "
                     "matchningsroll, med fler privata leverantörer som "
                     "utför insatser. Riksdagen behöver inte gå in i detaljer "
-                    "om varje insatsform — det ska Arbetsförmedlingen kunna "
+                    "om varje insatsform – det ska Arbetsförmedlingen kunna "
                     "anpassa till behoven.",
             "source": "HB01AU8",
         },
@@ -1971,7 +1971,7 @@ CURATED[2] = {
         {
             "text": "I stället för subventionerade arbeten där individen "
                     "lämnar arbetsplatsen samma dag som subventionen upphör "
-                    "vill vi se fler arbetsplatsnära utbildningsplatser — "
+                    "vill vi se fler arbetsplatsnära utbildningsplatser – "
                     "användbar arbetslivserfarenhet kombinerat med teoretiska "
                     "studier. Parterna ska tillsammans utforma en svensk "
                     "modell för ett lärlingssystem.",
@@ -1979,7 +1979,7 @@ CURATED[2] = {
         },
         {
             "text": "Subventionerade anställningar ska leda till varaktiga "
-                    "jobb — inte till en svängdörr där människor slussas "
+                    "jobb – inte till en svängdörr där människor slussas "
                     "vidare så snart stödet upphör. Ett svenskt "
                     "lärlingssystem byggt på parternas överenskommelser "
                     "skulle kunna ge fler vägar in på arbetsmarknaden med "
