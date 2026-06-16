@@ -5,18 +5,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <BaseLayout
   title="The 2018-2022 mandate · Riksdag Revealed"
-  description="Sweden's 2018-2022 Riksdag mandate read with the same methodology as the 2022-2026 piece. The chamber before Tidö: red-green cabinet, Centerpartiet support, Sverigedemokraterna on its own arm."
+  description="Sweden's 2018-2022 Riksdag mandate read with the chamber record, the eight 2018 election manifestos and the parties' parliamentary reasoning. Three coalition arrangements, one four-year mandate."
 >
   <article class="container">
     <header class="article-hero">
       <p class="byline">Riksdag Revealed · The 2018-22 mandate</p>
-      <h1>The chamber before Tidö</h1>
+      <h1>Three coalitions, one mandate</h1>
       <p class="lede">
-        Sweden's 2018-2022 Riksdag mandate, read with the same data
-        sources and the same methodology used for the 2022-2026 piece.
-        The figures use unified topic identifiers so they are
-        directly comparable to the equivalents in the 2022-2026
-        article and in the longitudinal overview.
+        Sweden's 2018-2022 Riksdag mandate, read on its own terms.
+        The article uses chamber votes, written reservations, and the
+        eight 2018 election manifestos as evidence. Cross-mandate
+        comparisons sit on the
+        <a href={`${base}/`}>longitudinal overview</a>; this page is a
+        self-contained reading of the previous mandate.
       </p>
     </header>
 
@@ -37,10 +38,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <p>
       This was therefore not a single-government mandate, and the
-      bloc structure changed substantively during the four-year
-      window. The figures below average over the whole mandate
-      unless explicitly broken down by riksmöte. Where year-by-year
-      structure matters, it is shown separately.
+      cabinet support structure changed substantively during the
+      four-year window. The figures below average over the whole
+      mandate unless explicitly broken down by riksmöte. Where
+      year-by-year structure matters, it is shown separately.
     </p>
 
     <h2>The chamber map</h2>
@@ -52,25 +53,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </p>
 
     <figure>
-      <img src={`${base}/figures/54_per_mandate_centroid_maps.png`} alt="Side-by-side per-mandate centroid maps" loading="lazy" />
+      <img src={`${base}/figures/60_chamber_map_18_22.png`} alt="The 2018-22 chamber map" loading="lazy" />
       <figcaption>
-        Left: the 2018-22 chamber map. Right: 2022-26 for comparison.
-        In 2018-22, Sverigedemokraterna sits on its own arm at PC2
-        near +15, far from any other party. M and KD are together on
-        the bottom-left. C and L cluster in the middle. S, V and MP
-        cluster on the top-right.
+        PCA on the 2018-22 vote matrix. Each dot is a Member of
+        Parliament; the labelled circles are party centroids. PC1
+        and PC2 capture the two largest axes of variance in MP
+        voting behaviour over the four-year mandate.
       </figcaption>
     </figure>
 
     <p>
-      Three patterns are visible in the 2018-22 panel that do not
-      appear in the 2022-26 panel. First, Sverigedemokraterna is its
-      own arm rather than part of a four-party cluster on the right.
-      Second, Moderaterna and Kristdemokraterna are below the
-      origin on PC2, separated from L and C which sit closer to the
-      middle of PC2. Third, the red-green grouping (S, V, MP) is
-      tighter than the equivalent grouping in 2022-26, because S and
-      MP shared a cabinet for most of the mandate.
+      Three structural features stand out. Sverigedemokraterna sits
+      on its own arm of PC2 near +15, far from any other party on
+      the second axis. Moderaterna and Kristdemokraterna are below
+      the origin on PC2 and to the left on PC1, in the bottom-left
+      quadrant; Liberalerna and Centerpartiet sit close together
+      between them and the origin. The red-green grouping (S, V,
+      MP) clusters tightly on the upper-right of PC1, consistent
+      with S and MP sharing a cabinet for most of the mandate.
     </p>
 
     <h2>The January Agreement in the chamber data</h2>
@@ -95,8 +95,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       agreement was signed) to +0.08 in 2019-20 and +0.17 in
       2020-21 (the two full years of the agreement). The same
       pattern applies to the MP-C correlation. Centerpartiet's
-      votes became measurably more aligned with the cabinet's
-      votes during the years the agreement was in effect.
+      votes became measurably more aligned with the cabinet's votes
+      during the years the agreement was in effect.
     </p>
 
     <p>
@@ -116,10 +116,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       the first three riksmöten of the mandate (Socialdemokraterna
       and Miljöpartiet shared a cabinet, so they voted as one),
       fell to 0.63 in 2021-22 after Miljöpartiet left in November
-      2021. This is one of the few mandate transitions in the
-      chamber data of this period and shows that the cabinet
-      change registered immediately in the parties' voting
-      alignment.
+      2021. This is one of the few cabinet transitions in the
+      chamber data of this period and shows that the change in
+      government composition registered immediately in the
+      parties' voting alignment.
     </p>
 
     <h2>Where parties disagree most, 2018-22</h2>
@@ -128,31 +128,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <img src={`${base}/figures/56_per_topic_stance_18_22.png`} alt="Per-topic vote stance, 2018-22, top 20 polarising topics" loading="lazy" />
       <figcaption>
         Mean vote stance per (party, unified topic), top 20 topics
-        by cross-party variance. Most cells sit in the yellow-green
-        band: the chamber passes the majority of contested votes,
-        and most parties vote Yes most of the time. The 2022-26
-        equivalent figure (on the 2022-2026 page) shows substantially
-        more red.
+        by cross-party variance. +1 means the party consistently
+        voted Yes on points classified into that topic, -1
+        consistently No, 0 mixed. Topics sorted left-to-right by
+        cross-party variance.
       </figcaption>
     </figure>
 
     <p>
-      The 2018-22 chamber was less polarised than the 2022-26
-      chamber by this measurement. Most party-topic cells sit in
-      positive territory (Yes-leaning), with the main exceptions on
-      Sverigedemokraterna's distinctive positions on rights and
-      disability questions. The cluster pattern that defines the
-      2022-26 chamber (V, MP and C on one side; M, KD, L, SD on the
-      other) does not yet appear in 2018-22, because the L and C
-      positions sit closer to the cabinet on most contested topics
-      and SD is its own pole.
+      Most party-topic cells sit in positive territory: the
+      majority of contested chamber votes in 2018-22 passed, and
+      most parties voted Yes most of the time on those points. The
+      main exceptions are Sverigedemokraterna's distinctive
+      positions on rights and disability questions, where SD's mean
+      stance is markedly more negative than the other parties'. On
+      most other topics the parties cluster broadly into a
+      red-green grouping (S, V, MP) close to the cabinet, an
+      Alliance-leaning group (M, KD), the two centre parties (L,
+      C) in the middle, and Sverigedemokraterna at the edge.
     </p>
 
     <h2>Vote versus reasoning</h2>
 
     <p>
-      For every party pair we measured a vote-stance similarity from
-      the chamber record and a reasoning similarity from
+      For every party pair we measured a vote-stance similarity
+      from the chamber record and a reasoning similarity from
       topic-centred cosine between reservation reasoning vectors.
       In 2018-22 the reservation coverage is full (every party has
       reservation material in at least 26 of 28 topics), so no
@@ -162,11 +162,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <figure>
       <img src={`${base}/figures/58_vote_vs_reasoning_18_22.png`} alt="Vote-versus-reasoning scatter, 2018-22" loading="lazy" />
       <figcaption>
-        Each point is one party pair. Highlighted pairs: S-MP (the
-        Löfven cabinet partners, top right, vote and reason alike);
-        KD-M (Alliance partners, above-trend, vote and reason alike);
-        M-SD (vote alike at 0.92 and reasoning at moderate positive
-        similarity).
+        Each point is one party pair. The dashed line is the
+        cross-pair trend. Highlighted pairs: S-MP (the Löfven
+        cabinet partners); KD-M (Alliance partners); M-SD (vote
+        alike at 0.92 and reasoning at moderate similarity).
       </figcaption>
     </figure>
 
@@ -174,218 +173,187 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       Three pairs are worth naming. S-MP sit at the highest vote
       similarity (0.94) and the highest reasoning similarity (0.60)
       of any pair, consistent with their cabinet partnership through
-      most of the mandate. KD-M sit at 0.95 vote and 0.37 reasoning,
-      consistent with their Alliance partnership and shared
-      opposition vocabulary. M-SD vote at 0.92 with reasoning at
-      0.31, which is above the cross-pair trend line and indicates
-      that the M-SD reasoning convergence was already underway
-      during the previous mandate, even though the two parties did
-      not yet form a bloc on the vote record.
+      most of the mandate. KD-M sit at 0.95 vote and 0.37
+      reasoning, consistent with their Alliance partnership and
+      shared opposition vocabulary. M-SD vote at 0.92 with
+      reasoning at 0.31, above the cross-pair trend, indicating
+      that the two parties' parliamentary reasoning vocabularies
+      sat closer together than their vote pattern alone would
+      predict.
     </p>
 
     <p>
       The most below-trend pairs in 2018-22 are S-L, V-M, MP-L,
       MP-KD and V-KD. These are pairs where the parties voted
       together on a substantial share of contested votes (typically
-      because both supported the cabinet's legislation) but their
-      reservation reasoning texts diverge sharply. None of these
-      pairs survived into 2022-26 as named pairs in the 2022-26
-      article; the coalition structure that produced them no longer
-      exists.
+      because both supported or both opposed the cabinet's
+      legislation) but their reservation reasoning texts diverge
+      sharply.
     </p>
 
     <h2>Top behavioural defectors</h2>
 
     <figure>
-      <img src={`${base}/figures/52_defectors_comparison.png`} alt="Top 12 behavioural defectors per mandate, side by side" loading="lazy" />
+      <img src={`${base}/figures/61_defectors_18_22.png`} alt="Top 12 behavioural defectors, 2018-22" loading="lazy" />
       <figcaption>
-        The left panel shows the 2018-22 top 12. Most defectors are
-        Vänsterpartiet members (Gudrun Nordborg, Jonas Sjöstedt,
-        Hillevi Larsson and others) and Socialdemokrat MPs whose
-        voting records sit closer to Miljöpartiet than to S.
-        Liberalerna does not appear prominently.
+        The 12 Members of Parliament with the highest
+        distance-to-own-party-centroid relative to
+        distance-to-nearest-other-party. Each label gives the MP's
+        modal party and the nearest-other-party in parentheses. A
+        ratio above 1 means the MP voted closer to another party
+        than to their own.
       </figcaption>
     </figure>
 
     <p>
-      The 2018-22 defector pattern is not the L-defectors pattern of
-      2022-26. The two Vänsterpartiet outliers (Gudrun Nordborg
-      voting closer to "no party", reflecting independent positions;
-      Jonas Sjöstedt with a longer parliamentary record) are
-      individual cases rather than a caucus-level drift. The S-MP
-      defectors are six MPs whose voting records sit closer to MP
-      than to S, consistent with the cabinet partnership and the
-      shared red-green agenda. The C-L pairs (Abir Al-Sahlani and
-      Hanna Wagenius) are members of Centerpartiet whose votes look
-      more like Liberalerna, consistent with the C-L closeness on
-      the chamber map.
+      The 2018-22 list is dominated by Vänsterpartiet members
+      (Gudrun Nordborg, Jonas Sjöstedt, Hillevi Larsson) and a
+      group of Socialdemokrat MPs whose voting records sit closer
+      to Miljöpartiet than to S. The S-MP defectors are six MPs
+      (Ida Karkiainen, Patrik Engström, Anna-Caren Sätherberg,
+      Helene Hellmark Knutsson, Ingemar Nilsson and others) whose
+      vote patterns reflect the shared red-green agenda of the
+      cabinet partnership.
     </p>
 
     <p>
-      None of the 2022-26 L-defectors (Gulan Avci, Lina Nordquist,
-      Malin Danielsson, Martin Melin, Mauricio Rojas, Jakob
-      Olofsgård, Helena Gellerman) appear on the 2018-22 list. The
-      L-defectors phenomenon described in the 2022-2026 article is a
-      property of the 2022-26 mandate specifically.
+      Two Centerpartiet MPs (Abir Al-Sahlani and Hanna Wagenius)
+      sit closer to Liberalerna than to their own party, which is
+      consistent with the C-L closeness already visible on the
+      chamber map. The pattern is one of within-party variation
+      across what was a centre-positioned group, not a
+      caucus-wide drift toward a single other party.
     </p>
 
     <h2>The 2018 manifestos</h2>
 
     <p>
       Re-classifying the eight 2018 election manifestos with the
-      same keyword pools the 2022-26 article used for 2022 gives
-      the per-party register shares of the previous cycle. The
-      numbers are not directly comparable to the 2022 figures
-      because manifestos are written by different people in
-      different contexts, and the keyword pools were calibrated on
-      the 2022 documents. They are useful as a baseline against
-      which to read the 2018 to 2022 drift documented in the
-      longitudinal overview.
+      same three-element keyword pools (diagnosis, end state,
+      mechanism) gives the per-party register shares of the
+      mandate's electoral material. The numbers below describe
+      the manifestos as documents in their own right.
     </p>
 
     <p>
-      Vänsterpartiet and Moderaterna were the two most
-      diagnosis-heavy manifestos in 2018, at 10.3 and 10.1 percent
-      of substantive sentences. Centerpartiet was third at 9.6
-      percent. The diagnosis-heavy parties in 2018 were therefore
-      distributed across the political spectrum, not concentrated
-      on any one side. By 2022 the diagnosis-heavy parties are
-      Sverigedemokraterna (12.8 percent) and Kristdemokraterna
-      (10.9 percent), with Vänsterpartiet still high (9.9 percent).
-      Moderaterna and Centerpartiet have shifted out of the
-      diagnosis-heavy group between cycles.
+      Three parties were notably diagnosis-heavy in 2018:
+      Vänsterpartiet at 10.3 percent of substantive sentences,
+      Moderaterna at 10.1 percent, and Centerpartiet at 9.6
+      percent. These were the three parties whose manifestos
+      spent the most space describing what was wrong with
+      Sweden as they saw it. The least diagnosis-heavy was
+      Miljöpartiet at 3.3 percent.
     </p>
 
     <p>
-      Miljöpartiet and Socialdemokraterna were the two most
-      end-state-heavy manifestos in 2018, at 13.7 and 12.2
-      percent. Both parties were in the cabinet at the time and
-      both wrote vision-heavy manifestos to lead with. By 2022
-      Miljöpartiet remains the most vision-heavy at 17.0 percent,
-      but Socialdemokraterna fell to 7.5 percent. The shift is
-      consistent with S leaving the cabinet for opposition:
-      opposition manifestos tend to be more diagnostic and less
-      aspirational.
+      Miljöpartiet and Socialdemokraterna were the most
+      end-state-heavy manifestos at 13.7 and 12.2 percent. Both
+      parties were in the cabinet at the time and both wrote
+      vision-heavy documents that led with what Sweden should be.
+      The least end-state-heavy in 2018 was Moderaterna at 6.0
+      percent.
     </p>
 
     <p>
       The most mechanism-heavy 2018 manifestos were Miljöpartiet
       (18.4 percent), Sverigedemokraterna (18.2 percent), and
-      Socialdemokraterna (18.0 percent). These were the three
-      parties with the most explicit policy-instrument language at
-      the time. By 2022 the most mechanism-heavy is Moderaterna at
-      20.5 percent, a 12-point jump from 8.2 percent in 2018.
-      Centerpartiet rose to 14.6 percent from 11.3 percent in 2018;
-      Liberalerna remained around 11 percent across both cycles.
+      Socialdemokraterna (18.0 percent). These three parties had
+      the largest share of policy-instrument language (verbs like
+      <em>höja</em>, <em>skärpa</em>, <em>reformera</em>,
+      <em>införa</em>) of the eight. Vänsterpartiet, with 6.8
+      percent mechanism, sat at the other end: more diagnostic,
+      less instrumental.
     </p>
 
     <p>
-      Two parties are essentially stable across the cycle.
-      Vänsterpartiet sits at 10.3 percent diagnosis in 2018 and
-      9.9 percent in 2022, with end-state at 8.6 and 7.9 and
-      mechanism at 6.8 and 7.4. Liberalerna sits at 5.7 and 6.0
-      percent diagnosis, 8.4 and 10.4 percent end-state, and 11.4
-      and 11.1 percent mechanism. The other six parties have
-      meaningful drift on at least one of the three dimensions.
+      Length varied substantially: Kristdemokraterna's manifesto
+      was the shortest of the eight at around 1,750 substantive
+      words, while Sverigedemokraterna's was the longest at
+      13,400 words. Direct cross-party comparisons of the
+      register shares should account for the fact that a 1,700-word
+      manifesto and a 13,000-word manifesto are different
+      documents, and the keyword pools may capture different
+      proportions of substance from each.
     </p>
 
     <h2>Stated and revealed, 2018-22</h2>
 
     <p>
-      Using the same topic-matched methodology as the 2022-26
-      article, we embedded each 2018 manifesto sentence into the
-      same vector space as the 2018-22 reservation reasoning,
+      Using the same topic-matched methodology applied throughout
+      the project, we embedded each 2018 manifesto sentence into
+      the same vector space as the 2018-22 reservation reasoning,
       assigned each sentence to its nearest unified topic, and
-      compared within-(party, topic) cells. The headline pattern by
-      party:
+      computed the within-(party, topic) cosine between manifesto
+      mean and reservation mean. Per-party mean across covered
+      topics:
     </p>
 
     <ul>
       <li><strong>SD: 0.70 mean across 15 topics.</strong> The
-      highest topic-matched similarity in 2018-22. SD's 2018
-      manifesto and its 2018-22 reservations describe policy in
-      compatible language across the broadest range of topics.</li>
-      <li><strong>M: 0.68 across 13 topics.</strong> Consistent
-      across cycles; M's 2022 gap is also in this range.</li>
-      <li><strong>V: 0.68 across 10 topics.</strong> Higher than
-      V's 2022-26 gap of 0.61; the V manifesto in 2018 sat closer
-      to V's reservation register than the 2022 manifesto does to
-      V's 2022-26 register.</li>
-      <li><strong>M: 0.68; MP: 0.65; KD: 0.66; L: 0.66; C: 0.63;
-      S: 0.63.</strong> The remaining parties fall in a tight
+      highest topic-matched similarity in the 2018-22 set.
+      Sverigedemokraterna's 2018 manifesto and its 2018-22
+      reservations describe policy in compatible language across
+      the broadest range of topics.</li>
+      <li><strong>M: 0.68 across 13 topics.</strong> Moderaterna's
+      2018 manifesto and reservation reasoning sit in a similar
+      register on the topics where both have substantive
+      coverage.</li>
+      <li><strong>V: 0.68 across 10 topics.</strong>
+      Vänsterpartiet's 2018 manifesto and its 2018-22
+      reservations describe their topics in close to the same
+      vocabulary.</li>
+      <li><strong>MP: 0.65, KD: 0.66, L: 0.66, C: 0.63,
+      S: 0.63.</strong> The remaining parties fall in a narrow
       0.63 to 0.66 band.</li>
     </ul>
 
     <p>
-      The 2018-22 spread between parties is 0.063 (0.628 to 0.698).
-      The 2022-26 spread is 0.150 (0.61 to 0.76). The eight parties'
-      manifestos describe their parliamentary records more uniformly
-      well in 2018-22 than in 2022-26, with the wider 2022-26 spread
-      driven by L's rise to 0.76 (in cabinet, comparing manifesto
-      against majority opinions) and V's fall to 0.61 (in
-      opposition, comparing aspirational manifesto against
-      technical reservations).
+      The spread between parties is small. From 0.63 to 0.70 is
+      a 7-percentage-point range; the eight parties' manifestos
+      describe their parliamentary records relatively uniformly
+      well in this mandate. Sverigedemokraterna's place at the
+      top of the ranking reflects both a long, technical manifesto
+      and a long record of detailed reservation work in a
+      compatible register.
     </p>
 
     <h2>Reservations as a structural signal</h2>
 
     <p>
       Reservations are dissenting opinions filed by opposition
-      parties on committee reports. Their count per (party, year) is
-      a direct indicator of the party's role in the chamber that
-      year. The longitudinal piece shows the trajectory; the
-      mandate-specific story is that all four of M, KD, L and SD
-      filed several hundred reservations per year in 2018-22,
-      consistent with their opposition role. V also filed several
-      hundred per year. C's count rose with the January Agreement
-      arrangement. S and MP filed under 300 per year during the
-      Löfven II cabinet, rising in 2021-22 as the cabinet
-      composition changed.
+      parties on committee reports. Their count per (party, year)
+      is a direct indicator of the party's role in the chamber
+      that year. In 2018-22 all four of Moderaterna,
+      Kristdemokraterna, Liberalerna and Sverigedemokraterna
+      filed several hundred reservations per year, consistent
+      with their opposition role. Vänsterpartiet also filed
+      several hundred per year despite being a sometime
+      negotiating partner of the cabinet. Centerpartiet's count
+      rose during the January Agreement period as the party
+      took a more active reservation-filing role.
+      Socialdemokraterna and Miljöpartiet filed under 300 per
+      year during the Löfven II cabinet, rising in 2021-22 as
+      the cabinet composition changed.
     </p>
 
-    <h2>What changed in 2022</h2>
-
     <p>
-      The bloc transition between this mandate and the next is the
-      subject of the longitudinal overview at
-      <a href={`${base}/`}>the overview page</a>. The four short
-      observations that anchor the comparison:
-    </p>
-
-    <ul>
-      <li>The four Tidö parties (M, KD, L, SD) voted together on
-      16 to 30 percent of contested chamber votes in 2018-22. The
-      figure rose to 67 percent in 2022-23 and 98 percent in
-      2025-26.</li>
-      <li>L-M and L-KD per-year vote correlations were essentially
-      zero throughout 2018-22 and jumped to 0.99+ at the start of
-      2022-26.</li>
-      <li>The L caucus's behavioural defectors (eight of the top
-      twelve in 2022-26) did not exist as a measurable group in
-      2018-22.</li>
-      <li>Sverigedemokraterna's reservation count fell from 1,093
-      in 2021-22 to 17 in 2025-26; the formal opposition register
-      of Sverigedemokraterna in 2018-22 was abandoned during
-      2022-26.</li>
-    </ul>
-
-    <p>
-      The 2022-2026 article describes the chamber that resulted from
-      these changes; this article describes the chamber that
-      preceded them. For a 2026 voter the two should be read
-      together, because the parties on the September 2026 ballot
-      are the same parties that produced both chambers.
+      Sverigedemokraterna was the heaviest reservation-filer of
+      the eight in 2018-22, with between 697 and 1,093
+      reservations per year (peaking in 2021-22). The party's
+      output on the formal opposition record of this mandate was
+      among the largest of any party in any single mandate in
+      the dataset.
     </p>
 
     <hr />
 
     <p class="method-note">
       Source data and methodology are documented on the
-      <a href={`${base}/method`}>method page</a>. The unified
-      topic clustering used throughout is documented at the
-      <a href="https://github.com/freol35241/ps-sverige">project
-      repository</a>. The 2018 manifestos are from the SND "Vi
-      vill" archive; the chamber data is from
+      <a href={`${base}/method`}>method page</a>. Cross-mandate
+      comparisons sit on the
+      <a href={`${base}/`}>longitudinal overview</a>. The 2018
+      manifestos are from the SND "Vi vill" archive; the chamber
+      data is from
       <a href="https://data.riksdagen.se">data.riksdagen.se</a>.
     </p>
   </article>
