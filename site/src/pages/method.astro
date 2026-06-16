@@ -57,8 +57,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <h2>Topic clustering</h2>
     <p>
-      All 2,480 contested decision points are embedded with a Swedish
-      language model
+      Contested decision points are embedded with a Swedish language
+      model
       (<a href="https://huggingface.co/KBLab/sentence-bert-swedish-cased">KBLab/sentence-bert-swedish-cased</a>,
       a 768-dim model trained on Swedish text by the National Library's
       KB Lab). We use each committee report's title plus the point's
@@ -66,12 +66,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       dominated by procedural formulae.
     </p>
     <p>
-      KMeans clustering into 28 groups yields a topic structure that
-      tracks committee jurisdictions reasonably well. Migration,
-      climate, schools and health care are among the cleanest. Manual
-      inspection of top terms per cluster confirms the grouping is
-      meaningful. The same 28 topics are used downstream for reasoning
-      vectors and for stated-vs-revealed matching.
+      For the longitudinal analysis (both mandates in the same topic
+      structure), KMeans is fitted on the union of 5,677 decision
+      points across 2018-22 and 2022-26. The mandate-specific
+      single-mandate clustering for 2022-26 (used by the published
+      main article in its original form) is preserved separately for
+      backward compatibility, but all longitudinal figures use the
+      unified clustering.
+    </p>
+    <p>
+      The choice of K=28 was confirmed by a sweep across K in
+      {16, 20, 24, 28, 32, 36}. Silhouette scores on the union sit
+      between 0.092 and 0.102 across the range; K=32 is fractionally
+      higher than K=28 (0.0015) but introduces small clusters
+      (minimum size 43) that fragment further when 2014-18 is added.
+      K=28 keeps the minimum cluster size at 81, and the labels are
+      coherent and committee-aligned by manual inspection.
+    </p>
+    <p>
+      Per-mandate balance at K=28 is healthy: every cluster has
+      between 0.36 and 0.69 share of decision points from 2018-22,
+      with no mandate-specific topic. The most 2022-26-leaning
+      cluster is international aid (0.36 share_18_22); the most
+      2018-22-leaning is the budget cluster (0.69 share_18_22, driven
+      by pandemic-era extra-ändringsbudget volume in 2020-21).
     </p>
 
     <h2>Manifesto element classification</h2>
