@@ -5,69 +5,74 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <BaseLayout
   title="Eight parties, five behaviours · Riksdag Revealed"
-  description="The 2022-26 Riksdag mandate read by behaviour. Eight parties on the ballot resolve to five behavioural entities in the chamber record, with the four-party Tidö bloc forming during the mandate. Roll-call votes, reservations, speeches and manifestos as evidence."
+  description="The 2022-26 Riksdag mandate read by behaviour. On the chamber record, the eight parties on the 2026 ballot resolve into five behavioural clusters, with the four-party Tidö bloc forming during the mandate itself. Roll-call votes, reservations, speeches and manifestos as evidence."
 >
   <article class="container">
     <header class="article-hero">
       <p class="byline">Riksdag Revealed · The 2022-26 mandate</p>
       <h1>Eight parties, five behaviours</h1>
       <p class="lede">
-        Sweden has eight parties on the 2026 ballot. The chamber record
-        of 2022-26 shows five behavioural entities. One of them &mdash;
-        the four-party Tidö bloc, voting and reasoning as one &mdash;
-        formed during this mandate. This is the evidence.
+        Sweden has eight parties on the 2026 ballot. On the chamber
+        record of the 2022-26 mandate they group into five behavioural
+        clusters, one of which, the four-party Tidö bloc, took shape
+        during the mandate itself.
       </p>
     </header>
 
     <p>
-      When voters compare parties they reach for the same shortcuts: a
-      left-right slider, an alliance label, a coalition map. Each assumes
-      the eight parties on the 2026 ballot still mean what they
-      meant when they were elected. The 2022-26 parliamentary record
-      suggests they don't.
+      When voters compare parties they reach for familiar shortcuts: a
+      left-right slider, an alliance label, a coalition map. Each of
+      these assumes that the eight parties on the 2026 ballot still
+      mean what they meant in 2022. The parliamentary record of the
+      mandate gives reason to question that assumption.
     </p>
 
     <p>
-      One claim, in evidence. The 2026 ballot lists eight parties. On
-      the chamber record of the mandate, those eight resolve to five
-      behavioural entities:
+      The central claim of this article can be stated in one sentence.
+      On the chamber record of the 2022-26 mandate, the eight parties
+      on the 2026 ballot resolve into five behavioural clusters:
     </p>
 
     <ul class="entity-list">
       <li><strong>The Tidö bloc.</strong> M, KD, L and SD, voting and
-      reasoning together as one. The fusion happened during the
-      mandate, asymmetrically &mdash; SD moved toward the cabinet, M's
-      vocabulary moved toward SD.</li>
-      <li><strong>Socialdemokraterna.</strong> Alone, behaviourally as
-      well as politically, occupying its own arm of the chamber map.</li>
+      reasoning together as one. The fusion took place during the
+      mandate, and it was asymmetric: SD moved toward the cabinet,
+      and M's vocabulary moved toward SD.</li>
+      <li><strong>Socialdemokraterna.</strong> Separate in voting
+      behaviour from the other opposition parties as well as from the
+      cabinet, occupying its own arm of the chamber map.</li>
       <li><strong>V and MP together.</strong> The only opposition pair
-      that both votes and reasons alike. A genuine bloc, not a
-      coalition of convenience.</li>
+      that is close on both vote-stance similarity and
+      reservation-reasoning similarity, indicating a genuine bloc
+      rather than a coalition of arithmetic.</li>
       <li><strong>Centerpartiet, behaviourally on the opposition
       side.</strong> Nominally at the centre of Swedish politics, but
-      voting with S on 91 % of chamber votes and clustering with V and
-      MP on the chamber map.</li>
+      voting with Socialdemokraterna on 91 % of chamber votes during
+      the mandate and clustering with V and MP on the chamber map.</li>
       <li><strong>The Liberalerna defectors.</strong> Eight of the
-      twelve top behavioural defectors in the Riksdag are L members
-      whose voting record sits closer to KD or M than to L. The L
-      caucus is structurally inside the KD and M clusters.</li>
+      twelve MPs with the highest defection ratio in the Riksdag are
+      members of Liberalerna whose voting records sit closer to KD or
+      M than to L. The L caucus is, in voting behaviour, substantially
+      inside the KD and M clusters.</li>
     </ul>
 
     <p>
-      The article walks the five at party-mean level, then asks how
-      the Tidö entity formed during the mandate, then turns to the
-      eight 2022 manifestos to see where the parties still differ on
-      paper, then holds the two layers against each other. The data:
-      two and a half thousand chamber votes, eleven thousand written
-      reservations, fifty thousand speeches, and the eight 2022
-      manifestos &mdash; read as evidence rather than rhetoric.
+      The article first walks through the five clusters at party-mean
+      level, then turns to how the Tidö cluster formed during the
+      mandate, then reads the eight 2022 manifestos to see where the
+      parties still differ on paper, and finally holds the two layers
+      against each other. The underlying data consists of some two and
+      a half thousand chamber votes, eleven thousand written
+      reservations, fifty thousand chamber speeches, and the eight
+      2022 manifestos.
     </p>
 
     <h2>The chamber map</h2>
 
     <p>
-      Every chamber vote in the mandate, member by member, projected
-      into two dimensions by PCA on the 424-by-2,501 vote matrix.
+      The behavioural map is built by projecting every chamber vote of
+      the mandate, member by member, into two dimensions through PCA
+      on the 424-by-2,501 vote matrix.
     </p>
 
     <figure>
@@ -84,44 +89,47 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      Four of the five entities are visible at party-mean level on this
-      map:
+      Four of the five clusters are visible at party-mean level on
+      this map:
     </p>
 
     <ul>
-      <li><strong>Tidö</strong> &mdash; M, KD, L and SD packed tightly
-      on the right of PC1.</li>
-      <li><strong>S</strong> &mdash; alone on the upper left, in its
-      own arm of PC2.</li>
-      <li><strong>V and MP</strong> &mdash; together on the lower
-      diagonal, V furthest from the centre on the bloc axis.</li>
-      <li><strong>C</strong> &mdash; at the geographic centre of PC1
-      but well down PC2, sitting with V and MP rather than between
-      cabinet and opposition.</li>
+      <li><strong>Tidö</strong>: M, KD, L and SD, packed tightly on
+      the right of PC1.</li>
+      <li><strong>S</strong>: alone on the upper left, in its own arm
+      of PC2.</li>
+      <li><strong>V and MP</strong>: together on the lower diagonal,
+      with V furthest from the centre on the bloc axis.</li>
+      <li><strong>C</strong>: at the centre of PC1 but well down PC2,
+      sitting with V and MP rather than between cabinet and
+      opposition.</li>
     </ul>
 
     <p>
-      What is worth noting is what is <em>not</em> on the map: no
-      coalition cutting across the cabinet/opposition line, no
-      realignment from Centerpartiet onto the cabinet side. The
-      within-opposition split on PC2 is real &mdash; S sits clearly
-      apart from V/MP/C, which is what makes the second axis worth
-      13 % of variance &mdash; but it stays on the opposition side of
-      the bloc line.
+      Equally informative is what is not on the map. No coalition cuts
+      across the cabinet and opposition line, and there is no
+      realignment of Centerpartiet onto the cabinet side. The
+      within-opposition split on PC2 is real, in the sense that
+      Socialdemokraterna sits clearly apart from V, MP and C, and that
+      separation is what makes the second axis worth 13 % of variance.
+      The split nevertheless stays on the opposition side of the bloc
+      line.
     </p>
 
     <p>
-      The practical reading is about Centerpartiet. C sits at the
-      centre of PC1 but in the V/MP arm on PC2; across the mandate, C
-      voted with S on 91 % of chamber votes. A vote for C is a vote
-      on the opposition side of the bloc line, not in the centre of it.
+      For Centerpartiet voters the practical implication is that the
+      party's behavioural position lies on the opposition side of the
+      bloc line rather than in the centre of it. C sits at the centre
+      of PC1 but in the V and MP arm of PC2, and across the mandate
+      voted with Socialdemokraterna on 91 % of chamber votes.
     </p>
 
     <h3>The same pattern, per topic</h3>
 
     <p>
-      The cluster pattern is not an artefact of a single PCA. It
-      repeats across substantively different policy topics:
+      The cluster pattern is not an artefact of a single PCA. The
+      same alignment recurs across substantively different policy
+      topics, as the next figure shows.
     </p>
 
     <figure>
@@ -135,22 +143,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      Migration is the single most differentiating topic by some
-      distance, followed by international aid, pharmaceuticals and
-      dental care, climate, and schools. The same alignment recurs in
-      each: V, MP and C on one side; M, KD, L, SD on the other; S in
-      between.
+      Migration is the most differentiating topic by a clear margin,
+      followed by international aid, pharmaceuticals and dental care,
+      climate, and schools. In each of these the alignment recurs:
+      V, MP and C on one side, M, KD, L and SD on the other, with
+      Socialdemokraterna in between.
     </p>
 
     <h3>Vote and reasoning</h3>
 
     <p>
-      Voting together is not the same as reasoning together. For every
-      party pair, we have a vote-stance similarity from the chamber
-      record and a reasoning similarity from the topic-centred cosine
-      between reservation reasoning vectors. The two correlate at
-      roughly r = 0.55, but the residuals are where the interesting
-      pairs live.
+      Voting together is not the same as reasoning together. For
+      every party pair we measure two similarities: a vote-stance
+      similarity from the chamber record, and a reasoning similarity
+      taken as the topic-centred cosine between reservation
+      reasoning vectors. The two correlate at roughly r = 0.55, and
+      the off-trend pairs are the most informative.
     </p>
 
     <figure>
@@ -167,46 +175,51 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      Three pairs are worth naming, each one confirming or qualifying
-      one of the five entities:
+      Three pairs are worth examining. Each one confirms or qualifies
+      one of the five clusters identified above.
     </p>
 
     <ul>
       <li>
-        <strong>V and MP: vote alike and argue alike.</strong> The only
-        above-trend pair in the opposition. V and MP are a genuine bloc
-        on both vote and reasoning evidence &mdash; the third entity,
-        confirmed at the reasoning layer.
+        <strong>V and MP: vote alike and argue alike.</strong> The
+        only opposition pair that sits above the cross-pair trend on
+        reasoning similarity, which confirms the V and MP cluster at
+        the reasoning layer as well as on the vote record.
       </li>
       <li>
         <strong>M and SD: vote alike and argue alike.</strong> Vote
-        similarity 0.83, reasoning similarity above the trend line. Not
-        just SD voting with the cabinet but M's reasoning register
-        having shifted toward SD's. The Tidö entity at the reasoning
-        layer, not just the vote layer.
+        similarity 0.83, and reasoning similarity above the trend
+        line. The convergence is not only Sverigedemokraterna voting
+        with the cabinet, but also Moderaterna's reasoning register
+        having shifted in the direction of SD's. The Tidö cluster
+        therefore appears at the reasoning layer as well as at the
+        vote layer.
       </li>
       <li>
-        <strong>S and C: vote alike, argue apart.</strong> S and C vote
-        together 91 % of the time, more than any other non-cabinet pair,
-        but they sit substantially below the reasoning trend. They
-        share opposition arithmetic without sharing the underlying
-        values vocabulary. A marriage of convenience, not a sixth
-        entity.
+        <strong>S and C: vote alike, argue apart.</strong>
+        Socialdemokraterna and Centerpartiet vote together 91 % of
+        the time, more than any other non-cabinet pair, but they sit
+        substantially below the reasoning trend. They share
+        opposition arithmetic without sharing the underlying values
+        vocabulary, which is why they do not form a sixth cluster.
       </li>
     </ul>
 
     <p>
-      Four of the five entities are now on the map at party-mean
-      level. The fifth &mdash; the Liberalerna defectors &mdash; only
-      appears once we go below party averages. We'll get to them after
-      the story of how the Tidö entity formed.
+      Four of the five clusters are now established at party-mean
+      level. The fifth, the Liberalerna defectors, only emerges once
+      the analysis moves below party averages. The next section
+      reaches that level of detail after first tracing how the Tidö
+      cluster formed during the mandate.
     </p>
 
     <h2>How four parties became one</h2>
 
     <p>
-      The party positions above are averages across the whole mandate.
-      The story is how they got there.
+      The party positions shown on the chamber map are mean positions
+      across the whole mandate. The way those mean positions came
+      about, in particular for the four parties that make up the Tidö
+      bloc, is the subject of this section.
     </p>
 
     <figure>
@@ -221,10 +234,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      The cabinet trio has always voted as a unit by definition. The
-      collapse is therefore SD moving toward the cabinet, not the
-      cabinet moving toward SD. And the movement accelerated as the
-      election approached.
+      Since the cabinet trio has by definition voted as a unit, the
+      collapse must reflect Sverigedemokraterna moving toward the
+      cabinet's positions rather than the cabinet adjusting toward
+      SD. The movement also accelerated as the election approached.
     </p>
 
     <figure>
@@ -241,14 +254,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      Of the 687 chamber votes in 2025/26, SD deviated from the cabinet
-      in eleven.
+      Of the 687 chamber votes held in 2025/26, Sverigedemokraterna
+      deviated from the cabinet's position on eleven.
     </p>
 
     <p class="pullquote">
-      SD's filed reservations fell from 574 in 2024/25 to 17 in 2025/26.
-      The party of opposition stopped opposing on the record, one year
-      before the election.
+      SD's filed reservations fell from 574 in 2024/25 to 17 in
+      2025/26. In the election year, Sverigedemokraterna effectively
+      ceased to file the kind of dissenting parliamentary documents
+      that characterise an opposition party.
     </p>
 
     <figure>
@@ -261,12 +275,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </figcaption>
     </figure>
 
-    <h3>Votes without signatures</h3>
+    <h3>Vote alignment without joint authorship</h3>
 
     <p>
       The vote convergence preceded the reservation collapse. For most
-      of the mandate SD voted alongside the cabinet without co-signing
-      the cabinet's alternative proposals.
+      of the mandate, Sverigedemokraterna voted alongside the cabinet
+      without co-signing the cabinet's alternative proposals.
     </p>
 
     <figure>
@@ -286,41 +300,46 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      Across the entire mandate SD has co-signed exactly three
-      reservations with a cabinet party (all KD-SD), out of nearly
-      eleven thousand reservations filed. They vote with the cabinet on
-      78 % of chamber votes across the mandate, rising to 98 % in the
-      election year, but they do not put their name to joint
-      alternative proposals until the election is six months away. SD
-      votes alongside; for three years, it does not co-author.
+      Across the entire mandate, SD has co-signed exactly three
+      reservations with a cabinet party (all of them with KD), out of
+      nearly eleven thousand reservations filed in total. SD has voted
+      with the cabinet on 78 % of chamber votes across the mandate,
+      rising to 98 % in the election year, but the joint signing of
+      alternative proposals only began in the last six months before
+      the election. For three years, SD voted alongside the cabinet
+      without co-authoring its dissenting documents.
     </p>
 
     <p>
-      What this implies at the ballot box depends on which register one
-      weights. Counted in votes, SD has been a cabinet party throughout
-      the mandate. Counted in signatures on joint reservations, SD
-      spent three years standing apart from the cabinet, then aligned
-      only as the election approached.
+      The implication for a voter depends on which register matters
+      more. Measured in votes, SD has functioned as a cabinet party
+      throughout the mandate. Measured in joint authorship of
+      dissenting proposals, SD was separate from the cabinet for
+      three years and aligned only in the final stretch before the
+      election.
     </p>
 
-    <h3>M and SD: shared vocabulary, not just shared votes</h3>
+    <h3>M and SD: shared vocabulary, not only shared votes</h3>
 
     <p>
-      M and SD voted alike during the mandate, and M's reservation
-      register drifted measurably toward SD's. The boundary between
-      cabinet and support party has thinned from both sides: SD moving
-      into the cabinet's positions, M moving into SD's vocabulary. By
-      the election year they are, on the parliamentary record, one
-      entity.
+      M and SD voted alike during the mandate, and Moderaterna's
+      reservation register drifted measurably toward
+      Sverigedemokraterna's. The boundary between cabinet party and
+      support party thinned from both sides: SD moved into the
+      cabinet's positions on votes, while M moved into SD's vocabulary
+      in its reasoning. By the election year the two parties appear,
+      on the parliamentary record, as a single entity.
     </p>
 
-    <h3>The fifth entity: the L defectors</h3>
+    <h3>The fifth cluster: the L defectors</h3>
 
     <p>
-      Party averages can hide individual behaviour. Compute, for each
-      MP, the ratio of their distance to their own party's centroid
-      against their distance to the nearest other party. A ratio above
-      1 means the MP votes more like another party than their own.
+      Party-mean positions can conceal substantial variation between
+      individual MPs. For each MP we compute the ratio of the
+      distance to that MP's own party centroid against the distance
+      to the nearest other party's centroid. A ratio above 1
+      indicates that the MP's voting record sits closer to another
+      party than to their own.
     </p>
 
     <figure>
@@ -335,13 +354,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      Eight of the top twelve are Liberalerna MPs whose voting record
-      sits closer to KD or M than to L. The collapse seen at
-      party-mean level is also a collapse at the MP level: the L
-      caucus is structurally inside the Christian-Democratic and
-      Moderate clusters. This is the fifth entity &mdash; an L caucus
-      that, on the floor, votes the cabinet's positions even when L is
-      the formal author of the vote.
+      Eight of the twelve MPs with the highest defection ratio are
+      members of Liberalerna whose voting records sit closer to KD or
+      M than to L. The collapse observed at party-mean level is
+      therefore also visible at the level of individual MPs: a
+      substantial share of the L caucus is, in voting behaviour, not
+      readily distinguishable from KD or M members. This is the fifth
+      cluster: an L caucus that votes the cabinet's positions on the
+      floor, even when Liberalerna is the formal author of the
+      proposal.
     </p>
 
     <figure>
@@ -356,18 +377,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      By 2026 the four Tidö parties on the ballot are, on the record
-      of this mandate, one option. A vote for any of the four is a
-      vote for the same package.
+      For a 2026 voter, the practical consequence is that the four
+      Tidö parties on the ballot are, on the parliamentary record of
+      this mandate, behaviourally not distinguishable from one
+      another. A vote cast for any of the four amounts to support
+      for the same set of outcomes.
     </p>
 
     <h2>The manifesto layer: where the eight are still eight</h2>
 
     <p>
-      Voted behaviour collapses the eight parties to five entities.
-      Manifestos do not. Read as text, the eight 2022 manifestos remain
-      eight separate documents &mdash; but the documents are not
-      symmetrical, and the asymmetry matters before any comparison.
+      Voted behaviour collapses the eight parties into five clusters;
+      manifesto text does not. Read as documents, the eight 2022
+      manifestos remain eight separate texts. They are, however, not
+      symmetrical in length, scope or coverage, and that asymmetry
+      matters before any cross-party comparison.
     </p>
 
     <figure>
@@ -385,42 +409,44 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <p>
       SD's 21,000-word manifesto registers meaningful content in 19 of
-      the 28 policy topics; KD's 1,600-word manifesto covers one. Any
-      cross-party manifesto comparison is sensitive to which topics
-      each party chose to write about. With that caveat in place, the
-      manifestos can be read along four dimensions: what is wrong
-      (diagnosis), what should be (end state), how to get there
-      (mechanism), and the values behind the answers.
+      the 28 policy topics, while KD's 1,600-word manifesto covers
+      one. Any cross-party manifesto comparison is therefore sensitive
+      to which topics each party chose to write about. With that
+      caveat in place, the manifestos can be read along four
+      dimensions: diagnosis (what is wrong), end state (what should
+      be), mechanism (how to get there), and the values behind the
+      answers.
     </p>
 
     <h3>Diagnosis: what is wrong with Sweden</h3>
 
     <p>
-      Two parties are notably diagnosis-heavy:
+      Two parties are notably diagnosis-heavy.
     </p>
 
     <ul>
       <li>
         <strong>Sverigedemokraterna.</strong> 12.8 % of substantive
-        sentences are problem statements, by some distance the largest
-        share of the eight. They diagnose crime, migration costs, and
-        cultural fragmentation.
+        sentences are problem statements, by some margin the largest
+        share of the eight. The diagnoses concern crime, migration
+        costs, and cultural fragmentation.
       </li>
       <li>
         <strong>Kristdemokraterna.</strong> 10.9 % of substantive
-        sentences are diagnostic, despite the shortest manifesto of
-        the eight (1.6k words total). Per word, KD is the most
-        concerned with What Is Wrong. They diagnose family fragility,
-        mental health, and weakened community.
+        sentences are diagnostic, despite the manifesto being the
+        shortest of the eight (1.6k words in total). Measured per
+        word, KD is the most concerned with what is wrong. The
+        diagnoses concern family fragility, mental health, and
+        weakened community.
       </li>
     </ul>
 
     <p>
-      At the other end, Centerpartiet is the most forward-looking
-      (4.7 % diagnosis): a manifesto light on critique, heavy on
-      policy detail. Vänsterpartiet diagnoses inequality and
-      exploitation (9.9 %); Moderaterna diagnoses weak state
-      institutions and the lack of consequences (7.5 %).
+      At the other end of the scale, Centerpartiet is the most
+      forward-looking (4.7 % diagnosis): a manifesto light on
+      critique and heavy on policy detail. Vänsterpartiet diagnoses
+      inequality and exploitation (9.9 %), and Moderaterna diagnoses
+      weak state institutions and the lack of consequences (7.5 %).
     </p>
 
     <figure>
@@ -437,10 +463,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      One pattern foreshadows the chamber story: SD and M describe
-      Sweden's problems in more similar language than M and L do, even
-      though M and L share a cabinet. The fusion was visible in the
-      diagnostic vocabulary before it was visible on the floor.
+      One pattern in the diagnosis matrix foreshadows the chamber
+      story. Sverigedemokraterna and Moderaterna describe Sweden's
+      problems in more similar language than M and L do, despite M
+      and L sharing a cabinet. The vote-and-reasoning fusion that
+      would later appear on the floor was already visible in the
+      diagnostic vocabulary of the 2022 manifestos.
     </p>
 
     <h3>End state: what should Sweden be</h3>
@@ -448,7 +476,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <p>
       End-state sentences are the aspirational core of a manifesto:
       "we want a Sweden where ...", "every child should ...", "a
-      society in which ...". The shares differ by almost a factor of
+      society in which ...". The share differs by almost a factor of
       six between the most and least vision-heavy manifestos.
     </p>
 
@@ -469,13 +497,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </table>
 
     <p>
-      Miljöpartiet is unusually structured around vision: nearly one in
-      five sentences describes a future to aspire to. KD is the
-      opposite, a short manifesto built almost entirely from critique
-      with very thin description of what they want instead. SD lands
-      near the bottom too, which fits the diagnosis-heavy reading: a
-      manifesto more invested in naming what has gone wrong than in
-      describing what should replace it.
+      Miljöpartiet is unusually structured around vision, with nearly
+      one in five sentences describing a future to aspire to.
+      Kristdemokraterna is the opposite, with a short manifesto built
+      almost entirely from critique and very thin description of
+      what should replace it. Sverigedemokraterna lands near the
+      bottom of the table as well, which is consistent with the
+      diagnosis-heavy reading: a manifesto more invested in naming
+      what has gone wrong than in describing what should replace it.
     </p>
 
     <figure>
@@ -490,21 +519,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      End-state similarity is a poor discriminator. If two manifestos
-      describe the future Sweden they want in similar words, that says
-      very little about whether they propose to get there in similar
-      ways. The differences live downstream.
+      End-state similarity is a poor discriminator between parties.
+      When two manifestos describe the future Sweden they want in
+      similar words, that says little about whether they propose to
+      arrive at that future in similar ways. The more substantive
+      differences sit in the diagnosis and mechanism layers rather
+      than in the end state.
     </p>
 
     <h3>Mechanism: by what means</h3>
 
     <p>
-      Mechanism is the most concrete and most differentiated question.
-      Moderaterna's manifesto is the most mechanism-heavy of the eight
-      (20.5 % of substantive sentences): a fifth of its content is
-      proposals using verbs like <em>höja</em>, <em>skärpa</em>,
-      <em>reformera</em>, <em>införa</em>. The cabinet's policy
-      register is built into the manifesto.
+      Mechanism is the most concrete and the most differentiated of
+      the four dimensions. Moderaterna's manifesto is the most
+      mechanism-heavy of the eight, with 20.5 % of substantive
+      sentences in that register. A fifth of its content takes the
+      form of proposals using verbs such as <em>höja</em>,
+      <em>skärpa</em>, <em>reformera</em>, <em>införa</em>. The
+      cabinet's policy register is built into the manifesto.
     </p>
 
     <figure>
@@ -520,21 +552,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <p>
       The cabinet trio and SD vote identically but describe their
-      mechanisms in different vocabulary. M, KD and L use
-      administrative-procedural language (<em>reformera</em>,
-      <em>tilldela</em>, <em>tillsyn</em>). SD uses outcome language
-      (<em>Sverige måste</em>, <em>det räcker nu</em>, <em>vi ska vända
-      utvecklingen</em>). Their proposals do the same thing. Their
-      manifestos describe them differently.
+      mechanisms using different vocabulary. M, KD and L employ
+      administrative and procedural language (<em>reformera</em>,
+      <em>tilldela</em>, <em>tillsyn</em>), while SD uses
+      outcome-oriented language (<em>Sverige måste</em>,
+      <em>det räcker nu</em>, <em>vi ska vända utvecklingen</em>).
+      The proposals frequently coincide in substance even where the
+      manifestos describe them in dissimilar terms.
     </p>
 
     <p>
-      Mechanism preferences also drift inside parliament. Four
-      mechanism dimensions, each with a short curated word list:
-      market versus regulation, prevention versus punishment, central
-      state versus local, universal versus targeted welfare. Each
-      chamber speech is scored on each axis from the relative
-      frequency of the two vocabularies.
+      Mechanism preferences also drift inside parliament. We score
+      each chamber speech on four mechanism axes, each defined by a
+      short curated word list: market versus regulation, prevention
+      versus punishment, central state versus local, and universal
+      versus targeted welfare. The score on each axis is the
+      relative frequency of the two vocabularies.
     </p>
 
     <figure>
@@ -547,7 +580,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      Two patterns stand out:
+      Two patterns stand out.
     </p>
 
     <ul>
@@ -556,34 +589,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         Centerpartiet and Miljöpartiet both moved 0.28 to 0.30 units
         toward punishment vocabulary across the mandate. These are
         the two parties one might least expect to shift in this
-        direction. The Tidö parties, who already used more punishment
-        vocabulary at the start, moved much less. The opposition
-        adopted the framing.
+        direction. The Tidö parties, which already used more
+        punishment vocabulary at the start, moved less. The
+        opposition adopted the framing.
       </li>
       <li>
         <strong>Moderaterna's market vocabulary grew (+0.16) while
         Liberalerna's shrank (-0.11).</strong> The cabinet's two
         ostensibly market-friendly parties moved in opposite
-        directions on the market-regulation axis. M's market register
-        rose; L's fell as L's chamber speech took on more
-        administrative vocabulary.
+        directions on the market-regulation axis. M's market
+        register rose, while L's fell as Liberalerna's chamber
+        speech took on a more administrative vocabulary.
       </li>
     </ul>
 
     <p>
-      Read as a forecast, the drift is the point. The C and MP that
-      voters chose in 2022 used less punishment vocabulary than the C
-      and MP on the 2026 ballot. Vocabulary shifts are not policy
-      commitments, but they are early signals of where each party's
-      centre of gravity is moving.
+      Considered as a forecast, the directional drift matters more
+      than the absolute positions. The C and MP that voters chose in
+      2022 used less punishment vocabulary than the C and MP that
+      appear on the 2026 ballot. Vocabulary shifts do not constitute
+      policy commitments, but they are early indicators of where
+      each party's centre of gravity is moving.
     </p>
 
     <h3>Values: signature vocabularies</h3>
 
     <p>
       Each manifesto invokes a recognisable set of values. Some are
-      widely shared (frihet, demokrati). Others belong distinctively
-      to one or two parties.
+      widely shared (frihet, demokrati), while others belong
+      distinctively to one or two parties.
     </p>
 
     <figure>
@@ -611,42 +645,44 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         (+1.8 σ), individens (+1.6 σ). Liberal in the European sense,
         wholly different from KD despite sitting in the same camp.</li>
       <li><strong>MP</strong> · rättvisa (+2.0 σ), klimat (+1.9 σ),
-        solidaritet (+1.2 σ). MP and V share a value vocabulary; on
-        climate, MP stands alone.</li>
+        solidaritet (+1.2 σ). MP and V share a value vocabulary, and
+        on climate MP stands alone.</li>
       <li><strong>L</strong> · frihet (+1.7 σ), valfrihet (+1.7 σ),
-        demokrati (+1.6 σ). Classical liberal, value-vocabulary closer
-        to C than to KD even though L sits in the cabinet with KD.</li>
+        demokrati (+1.6 σ). Classical liberal, with a value vocabulary
+        closer to C than to KD even though L sits in the cabinet
+        with KD.</li>
       <li><strong>SD</strong> · nationell identitet (+1.8 σ),
         tradition (+1.4 σ), staten (+1.2 σ). The most predictable
         profile in the table.</li>
-      <li><strong>V</strong> · jämlikhet (+1.7 σ), solidaritet (+1.6 σ),
-        kollektivets (+1.5 σ). Class-based vocabulary, also
-        predictable.</li>
+      <li><strong>V</strong> · jämlikhet (+1.7 σ), solidaritet
+        (+1.6 σ), kollektivets (+1.5 σ). Class-based vocabulary,
+        also predictable.</li>
       <li><strong>S</strong> · tradition (+1.8 σ), öppenhet (+1.6 σ),
         kollektivets (+1.6 σ). The surprise of the table.
-        Socialdemokraterna invoke "tradition" more frequently per word
-        than SD does. The vocabulary of the folkhem reads as
-        traditional when measured.</li>
+        Socialdemokraterna invoke "tradition" more frequently per
+        word than Sverigedemokraterna do. The vocabulary of the
+        folkhem reads as traditional when measured.</li>
     </ul>
 
     <p>
-      The pairings make sense. V and S share the kollektivets register.
-      C and L share the marknaden / valfrihet register. SD and KD share
-      the trygghet / staten / tradition register. MP stands alone on
-      klimat. The hardest party to summarise in a single value is M,
-      whose value vocabulary is sparse compared to the others. Its
-      manifesto reads as mechanism-first, value-second.
+      The pairings are coherent. V and S share the kollektivets
+      register; C and L share the marknaden and valfrihet register;
+      SD and KD share the trygghet, staten and tradition register.
+      Miljöpartiet stands alone on klimat. The hardest party to
+      summarise in a single value is Moderaterna, whose value
+      vocabulary is sparse compared to the others, and whose
+      manifesto reads as mechanism-first and value-second.
     </p>
 
     <h3>Coherence: do the four layers fit together?</h3>
 
     <p>
       Diagnosis, end state, mechanism and values are separable as
-      questions. They need not be coherent inside a given manifesto.
-      For each party, embed every diagnosis sentence, every end-state
-      sentence and every mechanism sentence into the same SBERT vector
-      space, average per element, and compute cosine similarity
-      between each pair.
+      analytical dimensions. Whether they are coherent inside a
+      given manifesto is an empirical question. For each party we
+      compute the mean SBERT embedding of all diagnosis sentences,
+      all end-state sentences and all mechanism sentences, and then
+      take cosine similarity between each pair of mean embeddings.
     </p>
 
     <figure>
@@ -661,50 +697,54 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      Two patterns appear in this otherwise tight figure.
+      Two patterns are visible within an otherwise narrow range of
+      values.
     </p>
 
     <ul>
       <li>
         <strong>End-state and mechanism are always closer to each
         other than either is to diagnosis.</strong> For every party,
-        the green bar is taller than the orange. The language of "what
-        we want" and the language of "what we will do" share
-        vocabulary in a way that the language of "what is wrong" does
-        not. This is a structural fact about Swedish political
-        writing, not about any one party.
+        the green bar is taller than the orange bar. The language of
+        "what we want" and the language of "what we will do" share
+        vocabulary in a way that the language of "what is wrong"
+        does not. This is a structural pattern of Swedish political
+        writing rather than a feature of any particular party.
       </li>
       <li>
-        <strong>SD has the highest internal coherence (mean 0.86); MP
-        has the lowest (0.78).</strong> SD's long, technical manifesto
-        reads as one document about one thing. MP's manifesto sits
-        across more vocabularies (climate language, rights language,
-        mechanism language) that overlap less. The cross-party spread
-        is small but consistent: parties with longer, single-author
-        manifestos read as more internally coherent than those that
-        read like compilations.
+        <strong>SD has the highest internal coherence (mean 0.86)
+        and MP has the lowest (0.78).</strong> SD's long, technical
+        manifesto reads as one document about one subject. MP's
+        manifesto sits across more vocabularies (climate language,
+        rights language, mechanism language) that overlap less. The
+        cross-party spread is small but consistent, in the sense
+        that parties with longer, single-author manifestos read as
+        more internally coherent than those that read like
+        compilations.
       </li>
     </ul>
 
     <h2>The gap: stated and revealed</h2>
 
     <p>
-      Two layers, two readings of the same eight parties. The voted
-      record collapses them to five entities; the manifestos keep them
-      at eight. The most useful question is therefore: how well does
-      each party's manifesto still describe its parliamentary work?
+      The two layers offer two readings of the same eight parties.
+      The voted record collapses them into five clusters, while the
+      manifestos keep them at eight. The natural follow-up question
+      is therefore how well each party's 2022 manifesto still
+      describes its 2022-26 parliamentary work.
     </p>
 
     <p>
-      To measure this, we embedded each manifesto sentence into the
+      To measure this, we embed each manifesto sentence into the
       same vector space as the party's reservation reasoning during
-      the mandate, assigned each sentence to one of 28 policy topics
-      via cosine similarity, and compared within-topic-within-party
-      cells (≥5 manifesto sentences per cell). Without the topic
-      restriction the comparison would mostly measure register
-      differences (cabinet parties write polished committee
-      formulations; opposition parties write technical reservations).
-      The topic restriction removes most of that confound.
+      the mandate, assign each sentence to one of 28 policy topics
+      via cosine similarity, and compare within-topic-within-party
+      cells (those with at least five manifesto sentences). Without
+      the topic restriction the comparison would mainly measure
+      register differences, since cabinet parties write polished
+      committee formulations while opposition parties write
+      technical reservations. The topic restriction removes most of
+      that confound.
     </p>
 
     <figure>
@@ -721,24 +761,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      The headline pattern, with the small-sample parties set aside:
+      The headline pattern, with the small-sample parties set aside,
+      is as follows.
     </p>
 
     <ul>
-      <li><strong>L is the most consistent</strong> (0.76 mean across 9
-        topics). Their manifesto language and their reservation
-        language describe policy in the same register &mdash; though
-        the L defectors story above adds a caveat: the manifesto and
-        the committee work line up, but the floor vote sits closer to
-        KD and M.</li>
+      <li><strong>L is the most consistent</strong> (0.76 mean
+        across 9 topics). Liberalerna's manifesto language and its
+        reservation language describe policy in the same register.
+        The L defectors finding above adds a caveat, however: the
+        manifesto and the committee work line up, while the floor
+        vote of much of the L caucus sits closer to KD and M.</li>
       <li><strong>V has the largest gap</strong> (0.61 across 11
-        topics). Their manifesto is aspirational and rhetorical; their
-        reservations are technical legal critiques. The within-topic
-        gap is real and structural, not a sample artefact.</li>
-      <li><strong>SD is unexpectedly consistent</strong> (0.71 across
-        19 topics). A long, technical manifesto and a long track
+        topics). Vänsterpartiet's manifesto is aspirational and
+        rhetorical, while its reservations are technical legal
+        critiques. The within-topic gap is real and structural
+        rather than a sample artefact.</li>
+      <li><strong>SD is unexpectedly consistent</strong> (0.71
+        across 19 topics). A long, technical manifesto and a long
         record of detailed reservation work, written in compatible
-        registers, until the election year.</li>
+        registers up until the election year.</li>
     </ul>
 
     <figure>
@@ -753,25 +795,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <p>
       The topics that diverge most across parties are civil emergency
-      preparedness, industrial policy and health care. The pattern is
-      the same in each case: manifestos describe these as questions of
-      resilience, growth and dignity, while reservations describe them
-      as specific clauses, allocations and amendments. The topics
-      where the gap is smallest are the ones where manifestos already
-      wrote in policy-instrument language: tax (where manifestos
-      already state specific rates), defence (where everyone uses Nato
-      procurement vocabulary), and migration.
+      preparedness, industrial policy and health care. The pattern
+      is similar in each case: the manifestos describe these as
+      questions of resilience, growth and dignity, while the
+      reservations describe them as specific clauses, allocations
+      and amendments. The topics where the gap is smallest are
+      those where the manifestos already wrote in policy-instrument
+      language: tax (where manifestos state specific rates),
+      defence (where all parties use Nato procurement vocabulary),
+      and migration.
     </p>
 
     <h3>Inside parliament, two registers</h3>
 
     <p>
-      Manifesto is one register. Parliament has two of its own: the
-      chamber speech, oral and often delivered without notes, and the
-      written reservation, drafted by party staff and polished. If a
-      party speaks the same way in both, its parliamentary register is
-      internally consistent. If the two diverge, the chamber persona
-      and the committee persona differ.
+      The manifesto is one register. Parliament has two of its own:
+      the chamber speech, oral and often delivered without notes,
+      and the written reservation, drafted by party staff and
+      polished. If a party speaks the same way in both, its
+      parliamentary register is internally consistent. If the two
+      diverge, the chamber persona and the committee persona differ.
     </p>
 
     <figure>
@@ -785,131 +828,148 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      The four opposition parties and Sverigedemokraterna all land in
-      a tight 0.87 to 0.89 band. Inside parliament, each of these five
-      parties speaks the same way regardless of register. The cabinet
-      bars are hatched because the cabinet writes almost no
-      reservations: L has reservation material in only 8 topic cells,
-      KD in 11, M in 8. The bars are technically computable but the
-      sample is too small to read as a finding.
+      The four opposition parties and Sverigedemokraterna all land
+      in a tight 0.87 to 0.89 band. Inside parliament, each of these
+      five parties speaks the same way regardless of register. The
+      cabinet bars are hatched because the cabinet writes almost no
+      reservations: L has reservation material in only 8 topic
+      cells, KD in 11, M in 8. The bars are technically computable
+      but the sample is too small to treat as a finding.
     </p>
 
     <p>
-      The opposition's internal consistency matters for one
-      interpretation. The largest manifesto-versus-reservation gap is
-      V's, not because V is register-inconsistent inside parliament
-      &mdash; V's speech and writing track each other &mdash; but
-      because V's manifesto reads in a different register than its
-      parliamentary work. The drift is between manifesto and
-      parliament, not within parliament.
+      The opposition's internal consistency matters for the
+      interpretation of an earlier result. The largest
+      manifesto-versus-reservation gap is Vänsterpartiet's, but
+      this is not because V is register-inconsistent inside
+      parliament. V's chamber speech and its written reservations
+      track each other closely. The gap is therefore between V's
+      manifesto and its parliamentary work as a whole, and not
+      between two registers of parliamentary work.
     </p>
 
     <h2>For a 2026 voter</h2>
 
     <p>
-      The article describes the Riksdag. It does not score parties
-      against each other and it does not tell you who to vote for.
-      What it can do is route you by issue, by trust register, and by
+      This article describes the Riksdag. It does not score parties
+      against each other, and it does not recommend a vote. What it
+      can offer a voter is a way to route by issue, a structured
+      question about which document to trust, and an account of
       what the data cannot answer.
     </p>
 
     <h3>Where does your priority issue live?</h3>
 
     <p>
-      Topics differ enormously in how much they separate parties. The
-      per-topic figure above routes a voter by issue:
+      Topics differ enormously in how much they separate parties.
+      The per-topic figure earlier in the article allows a voter to
+      route by issue.
     </p>
 
     <ul>
       <li>
-        <strong>Migration.</strong> The sharpest split in the chamber.
-        V, MP and C on one side; M, KD, L and SD on the other; S in
-        between. If migration is decisive, the side of the bloc line
-        determines the outcome; within-side party choice changes
-        little.
+        <strong>Migration.</strong> The sharpest split in the
+        chamber. V, MP and C on one side, M, KD, L and SD on the
+        other, with Socialdemokraterna in between. If migration is
+        the decisive issue for a voter, the side of the bloc line
+        determines the outcome, while within-side party choice
+        changes little.
       </li>
       <li>
-        <strong>International aid (bistånd).</strong> The same 4-vs-4
-        alignment as migration, with no within-bloc nuance. The
-        opposition defends the budget; the cabinet plus SD cuts it.
+        <strong>International aid (bistånd).</strong> The same
+        4-vs-4 alignment as migration, with no within-bloc nuance.
+        The opposition defends the budget, while the cabinet and
+        SD cut it.
       </li>
       <li>
         <strong>Climate.</strong> V and MP are the distinctive
-        pro-climate voices (klimat is MP's signature value); SD is the
-        distinctive outlier on the other side. The cabinet trio is
-        mixed. For climate as a decisive issue, V or MP carries the
-        most distinctive vote.
+        pro-climate voices (klimat is MP's signature value), and
+        SD is the distinctive outlier on the other side. The
+        cabinet trio is mixed. For climate as the decisive issue,
+        V or MP carries the most distinctive vote.
       </li>
       <li>
         <strong>Schools, pharmaceuticals, dental care.</strong>
-        Welfare-expansion topics. Opposition for, cabinet plus SD
-        against. The cluster pattern matches migration.
+        Welfare-expansion topics. The opposition is in favour and
+        the cabinet plus SD against. The cluster pattern matches
+        migration.
       </li>
       <li>
-        <strong>Anything else.</strong> Cross-party variance drops
-        sharply outside the top five most polarising topics. If your
-        decisive issue is not on the polarising list above, the
-        four-year record suggests party choice will affect that issue
-        less than your other criteria might.
+        <strong>Other topics.</strong> Cross-party variance drops
+        sharply outside the top five most polarising topics. If a
+        voter's decisive issue is not on that polarising list, the
+        four-year record suggests that party choice will affect
+        that issue less than other criteria might.
       </li>
     </ul>
 
     <h3>Which document do you trust?</h3>
 
     <p>
-      A manifesto is what a party writes when it does not have to act.
-      The parliamentary record is what it does when it does. The two
-      do not agree about every party. Vänsterpartiet's manifesto is
-      the most aspirational; its reservations are the most technical
-      &mdash; if you weight aspiration heavily, the manifesto sets
-      your expectation, but the record will keep undershooting it.
-      Liberalerna's manifesto matches its committee work closely; but
-      the L caucus's floor votes sit nearer to KD and M than to the L
-      manifesto. The four Tidö manifestos each promise something
-      distinctive; the chamber record collapses those promises into
-      one. Each of these mismatches is worth knowing before you
-      weight one document over the other.
+      A manifesto is a document a party writes ahead of an
+      election, with no immediate obligation to act on its content.
+      The parliamentary record is the document of what the party
+      actually does once elected. For several parties in this
+      dataset the two diverge in different ways. Vänsterpartiet's
+      manifesto is the most aspirational of the eight, while its
+      reservations are the most technical; a voter who weights
+      aspirational language heavily will find the V manifesto
+      setting an expectation that the V record then undershoots.
+      Liberalerna's manifesto and committee work line up closely,
+      while the floor votes of a substantial share of the L caucus
+      sit nearer to Kristdemokraterna and Moderaterna than to the
+      L manifesto. The four Tidö manifestos each promise something
+      distinctive in 2022, while the chamber record of the mandate
+      collapses those distinct promises into a single voting bloc.
+      Each of these mismatches is worth knowing before weighting
+      one document above the other.
     </p>
 
     <h3>Does silence in a manifesto count against a party?</h3>
 
     <p>
       Kristdemokraterna's 1,600-word manifesto registers meaningful
-      content in 1 of 28 policy topics; Sverigedemokraterna's
+      content in 1 of 28 policy topics, while Sverigedemokraterna's
       21,000-word manifesto covers 19. When a party does not write
-      about an issue you care about, that may mean they accept the
-      consensus, they have not formed a position, or they would
-      rather be evaluated on something else. The analysis cannot tell
-      you which; only you can decide which interpretation matters
-      more for your own choice.
+      about an issue that a voter cares about, that may indicate
+      that they accept the prevailing consensus, that they have
+      not formed a position, or that they would prefer to be
+      evaluated on something else. The analysis cannot distinguish
+      between these interpretations; that distinction is the
+      voter's to draw.
     </p>
 
     <h3>What the data cannot answer</h3>
 
     <p>
       Two questions sit outside the chamber record entirely. The
-      first: whether the Tidö fusion is responsible coalition support
-      or the absorption of a fourth party into a three-party cabinet
-      without the public accountability of a cabinet seat. The data
-      tells you the fusion is real, structural and asymmetric &mdash;
-      SD moved toward the cabinet, not the other way around &mdash;
-      but the interpretation is yours. The second: whether the
-      pattern of this mandate will continue, reverse, or splinter.
-      All this analysis is about a closed four-year period. Behaviour
-      in the next mandate is for the next voters to read.
+      first is whether the Tidö fusion should be read as
+      responsible coalition support or as the absorption of a
+      fourth party into a three-party cabinet without the public
+      accountability of a cabinet seat. The data establishes that
+      the fusion is real, structural and asymmetric, in the sense
+      that Sverigedemokraterna moved toward the cabinet rather
+      than the cabinet adjusting toward SD; how that movement is
+      interpreted is a question for the reader. The second is
+      whether the pattern of this mandate will continue, reverse
+      or splinter in the years after the 2026 election. This
+      article is based on the closed four-year period of the
+      2022-26 mandate, and behaviour in the next mandate must be
+      read from data that is not yet available.
     </p>
 
     <hr />
 
     <p class="method-note">
-      All analysis is based on reproducible methods over public data
-      from <a href="https://data.riksdagen.se">data.riksdagen.se</a>
+      All analysis is based on reproducible methods over public
+      data from <a href="https://data.riksdagen.se">data.riksdagen.se</a>
       and the eight 2022 party manifestos from the SND "Vi vill"
-      archive. Source code and full method write-up at
-      <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
-      No interviews, no surveys, no subjective judgements beyond
-      those needed to define keyword pools, topic clusters and
-      vocabulary lists, which are openly documented in the code.
+      archive. The source code and full method write-up are
+      available at <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
+      The analysis uses no interviews and no survey data, and the
+      subjective judgements required are limited to defining keyword
+      pools, topic clusters and vocabulary lists, which are
+      documented openly in the code.
     </p>
   </article>
 </BaseLayout>
