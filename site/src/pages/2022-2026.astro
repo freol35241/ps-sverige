@@ -757,9 +757,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         language across covered topics, with the number of comparable
         topics in parentheses. Higher = the party speaks more
         similarly in its manifesto as in its parliamentary work.
-        KD (n=1) and MP (n=3) have too few topics with sufficient
-        manifesto material to interpret reliably; their bars are
-        shown but should be read with caution.
+        Unified topic IDs; speech-based reasoning is used as fallback
+        for cabinet cells (M, KD, L) where reservation coverage is
+        sparse. KD (n=1) has too few topics with sufficient manifesto
+        material to interpret reliably; its bar is shown but should
+        be read with caution.
       </figcaption>
     </figure>
 
@@ -769,19 +771,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </p>
 
     <ul>
-      <li><strong>L is the most consistent</strong> (0.76 mean
-        across 9 topics). Liberalerna's manifesto language and its
-        reservation language describe policy in the same register.
-        The L defectors finding above adds a caveat, however: the
-        manifesto and the committee work line up, while the floor
-        vote of much of the L caucus sits closer to KD and M.</li>
-      <li><strong>V has the largest gap</strong> (0.61 across 11
-        topics). Vänsterpartiet's manifesto is aspirational and
-        rhetorical, while its reservations are technical legal
-        critiques. The within-topic gap is real and structural
-        rather than a sample artefact.</li>
-      <li><strong>SD is unexpectedly consistent</strong> (0.71
-        across 19 topics). A long, technical manifesto and a long
+      <li><strong>L is among the most consistent</strong> (0.74 mean
+        across 10 topics). Liberalerna's manifesto language and its
+        reservation and majority-opinion language describe policy
+        in the same register. The L defectors finding above adds a
+        caveat, however: the manifesto and the committee work line
+        up, while the floor vote of much of the L caucus sits
+        closer to KD and M.</li>
+      <li><strong>M is also at 0.74</strong> (across 15 topics),
+        tied with L. The cabinet's manifesto register and its
+        majority-opinion register describe the same policies in
+        compatible language. Speech-based fallback is used for
+        cells where M has no reservation data.</li>
+      <li><strong>V has the lowest gap of the eight</strong> (0.66
+        across 8 topics). Vänsterpartiet's manifesto is
+        aspirational and rhetorical, while its reservations are
+        technical legal critiques. The within-topic gap is real
+        and structural rather than a sample artefact.</li>
+      <li><strong>SD is unexpectedly consistent</strong> (0.70
+        across 20 topics). A long, technical manifesto and a long
         record of detailed reservation work, written in compatible
         registers up until the election year.</li>
     </ul>
@@ -797,10 +805,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </figure>
 
     <p>
-      The topics that diverge most across parties are civil emergency
-      preparedness, industrial policy and health care. The pattern
-      is similar in each case: the manifestos describe these as
-      questions of resilience, growth and dignity, while the
+      Under the unified topic clustering the topics that diverge
+      most across parties are military and defence, industrial
+      policy, disability, European policy and Nato. The pattern is
+      similar in each case: the manifestos describe these as
+      questions of capability, growth and dignity, while the
       reservations describe them as specific clauses, allocations
       and amendments. The topics where the gap is smallest are
       those where the manifestos already wrote in policy-instrument
@@ -1081,10 +1090,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <p>
       The main article measured each party's stated-vs-revealed gap
       as the mean cosine similarity between manifesto and reservation
-      language across topics covered in both. Liberalerna was the
-      most consistent party in that comparison, at 0.76 across nine
-      covered topics. Applying the same method to the 2026 manifesto
-      gives 0.69 across 13 covered topics.
+      language across topics covered in both. Liberalerna sits at
+      0.74 across 10 covered topics in 2022, tied with Moderaterna
+      for the highest topic-matched cosine. Applying the same method
+      to the 2026 manifesto gives 0.69 across 13 covered topics.
     </p>
 
     <figure>
@@ -1125,16 +1134,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       the absolute level of similarity is lower in 2026 than in 2022
       across every party comparison. L 2026 sits between 0.64 and
       0.69 against the eight parties, while L 2022 sat between 0.70
-      and 0.76. The drop is roughly uniform at about 0.07 across all
-      eight parties, including L's own chamber work. The 0.76-to-0.69
-      figure above is therefore not a directional drift of L's
-      manifesto away from L's chamber record; it is the same uniform
-      register shift, restricted to the L row of the matrix. The
-      2026 manifesto is written in a register that is less aligned
+      and 0.76 on the same per-party comparison. The drop is roughly
+      uniform at about 0.07 across all eight parties, including L's
+      own chamber work. The drop is therefore not a directional drift
+      of L's manifesto away from L's chamber record; it is the same
+      uniform register shift, restricted to the L row of the matrix.
+      The 2026 manifesto is written in a register that is less aligned
       with parliamentary reasoning of any party than the 2022
-      manifesto was, which is consistent with the life-journey
-      framing of "För din frihet" (eight sections organised around
-      school, work, family, security, healthcare and freedom).
+      manifesto was, which is consistent with the life-journey framing
+      of "För din frihet" (eight sections organised around school,
+      work, family, security, healthcare and freedom).
     </p>
 
     <p>
