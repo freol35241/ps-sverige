@@ -972,6 +972,200 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       documented openly in the code.
     </p>
   </article>
+
+  <article class="container companion-article">
+    <header class="article-hero">
+      <p class="byline">Companion analysis · The first 2026 manifesto</p>
+      <h1>Liberalerna 2022 to 2026: a three-layer comparison</h1>
+      <p class="lede">
+        Of the eight parties on the 2026 ballot, only Liberalerna has
+        so far published a finalised election manifesto. This
+        companion piece runs the three-layer comparison (2022
+        manifesto, 2022-26 chamber record, 2026 manifesto) for the
+        one party where all three documents currently exist.
+      </p>
+    </header>
+
+    <p>
+      The main article analysed the eight parties at the level of
+      their 2022 manifestos and their 2022-26 chamber record. With
+      the September 2026 election three months away, the natural
+      next question is what each party now says about its own record
+      in its 2026 manifesto. A scoping pass of party-website material
+      in mid-June found only Liberalerna with a finalised 2026
+      valmanifest ("För din frihet", 40 pages, presented 2 June 2026
+      by Simona Mohamsson). Vänsterpartiet has a preliminary congress
+      platform of around four pages; Socialdemokraterna has a
+      three-pillar "Plan för Sverige"; Centerpartiet has a short
+      valplan; Miljöpartiet has a draft on the party website that is
+      currently password-locked; and Moderaterna, Kristdemokraterna
+      and Sverigedemokraterna have nothing publishable beyond
+      signalling documents. The full eight-party analysis will
+      therefore have to wait for the September manifesto wave,
+      typically released four to eight weeks before election day.
+      In the meantime, Liberalerna is also the most analytically
+      charged single case in the main article: the L-defectors
+      finding identified the Liberalerna caucus as the fifth
+      behavioural cluster, voting on the floor closer to KD and M
+      than to its own party. The 2026 manifesto offers a test of
+      how L now writes about that record.
+    </p>
+
+    <h2>The manifesto grew, the register shape held</h2>
+
+    <p>
+      Liberalerna's 2026 manifesto is the longer of the two by
+      roughly 28 percent: 9,452 words against 7,375 in 2022, and 673
+      substantive sentences against 469. The proportional share of
+      each register moved less than the word count. Diagnosis dropped
+      from 6.0 to 4.0 percent of substantive sentences, end-state
+      share rose fractionally from 10.4 to 10.8 percent, and
+      mechanism share fell from 11.1 to 9.7 percent. L is still a
+      manifesto written more in policy detail than in critique or
+      vision, and that basic balance survived four years in cabinet.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/40_l_element_shares.png`} alt="Element shares in L's 2022 and 2026 manifestos" loading="lazy" />
+      <figcaption>
+        Share of substantive sentences classified into each register
+        using the same keyword classifier as the main article.
+        Diagnosis, end state and mechanism are the three measurable
+        elements; the remainder are classified as "other".
+      </figcaption>
+    </figure>
+
+    <h2>The value vocabulary shifted toward the title</h2>
+
+    <p>
+      More movement is visible in the value vocabulary than in the
+      register shares. The most striking change is in the value that
+      the manifesto's title invokes: mentions of frihet rose from
+      2.4 to 6.2 per 1,000 words, more than doubling, and frihet
+      becomes the second-most-frequent value in the document.
+      Trygghet rose from 2.1 to 3.7 per 1,000 words, tillväxt from
+      2.3 to 3.5, and ansvar from 1.3 to 2.4. In the opposite
+      direction, klimat fell from 4.0 to 2.3 per 1,000 words and
+      demokrati from 2.7 to 1.0. The directional pattern is a shift
+      toward a classical-liberal core (frihet, individens, valfrihet)
+      reinforced by values previously more strongly associated with
+      the cabinet partners (trygghet, ansvar, tillväxt).
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/41_l_signature_values.png`} alt="L's value vocabulary, 2022 vs 2026" loading="lazy" />
+      <figcaption>
+        Per-1,000-word frequency for each value, using the same value
+        vocabulary as the main article. Union of the top 10 values
+        in each manifesto, sorted left-to-right by 2022 frequency.
+      </figcaption>
+    </figure>
+
+    <p>
+      A caveat on the largest bar in the figure. The
+      nationell_identitet pattern matches every occurrence of
+      "Sverige", "svensk", "nationell" or "identitet", not only
+      identity-coded usage. The drop from 15.6 to 11.2 per 1,000
+      words is therefore partly a measure of how often the manifesto
+      says "Sverige" per word, which a longer and more discursive
+      document will mechanically reduce. The frihet, trygghet, klimat
+      and demokrati changes use narrower patterns and are more
+      interpretable as actual shifts in value emphasis.
+    </p>
+
+    <h2>The 2026 manifesto matches the chamber record less closely than the 2022 one</h2>
+
+    <p>
+      The main article measured each party's stated-vs-revealed gap
+      as the mean cosine similarity between manifesto and reservation
+      language across topics covered in both. Liberalerna was the
+      most consistent party in that comparison, at 0.76 across nine
+      covered topics. Applying the same method to the 2026 manifesto
+      gives 0.69 across 13 covered topics.
+    </p>
+
+    <figure>
+      <img src={`${base}/figures/42_l_topic_gap_2022_vs_2026.png`} alt="L manifesto vs L chamber, 2022 and 2026" loading="lazy" />
+      <figcaption>
+        Mean topic-matched cosine between L's manifesto and L's
+        reservation reasoning vectors, across covered topics.
+        Higher = the two languages describe policy in more similar
+        terms.
+      </figcaption>
+    </figure>
+
+    <p>
+      The two figures are suggestive rather than strictly comparable,
+      because the topic sets differ. The 2026 manifesto covers more
+      topics than the 2022 one (13 against 9), and some of those
+      topics have weaker chamber-record material from L. The drop
+      is therefore in part a topic-mix effect. A cleaner test
+      follows by comparing the 2026 manifesto to every party's
+      chamber reasoning, not only to L's own.
+    </p>
+
+    <h2>In 2026 as in 2022, L's manifesto is barely more L than M or S</h2>
+
+    <figure>
+      <img src={`${base}/figures/43_l_2026_vs_party_reservations.png`} alt="L's 2026 manifesto cosine against every party's chamber reasoning, with the 2022 comparison" loading="lazy" />
+      <figcaption>
+        For each party, the mean topic-matched cosine between L's
+        manifesto and that party's reservation and speech vectors,
+        across the topics covered by L's manifesto. Light bars: L
+        2022. Dark bars: L 2026. The bordered bar marks the party
+        with the highest similarity to L 2026.
+      </figcaption>
+    </figure>
+
+    <p>
+      Two patterns in the figure deserve attention separately. First,
+      the absolute level of similarity is lower in 2026 than in 2022
+      across every party comparison. L 2026 sits between 0.64 and
+      0.69 against the eight parties, while L 2022 sat between 0.70
+      and 0.76. The drop is roughly uniform at about 0.07 across all
+      eight parties, including L's own chamber work. The 0.76-to-0.69
+      figure above is therefore not a directional drift of L's
+      manifesto away from L's chamber record; it is the same uniform
+      register shift, restricted to the L row of the matrix. The
+      2026 manifesto is written in a register that is less aligned
+      with parliamentary reasoning of any party than the 2022
+      manifesto was, which is consistent with the life-journey
+      framing of "För din frihet" (eight sections organised around
+      school, work, family, security, healthcare and freedom).
+    </p>
+
+    <p>
+      Second, the within-2026 spread between parties is narrow. L
+      2026 against L sits at 0.69, against M at 0.68, against S at
+      0.68. The same property held in 2022, where L sat at 0.76, M
+      at 0.76 and KD at 0.74. Liberalerna writes its election
+      material in a register that does not strongly distinguish it
+      from its cabinet partners' parliamentary work, and that
+      property held across the mandate. For the L-defectors finding
+      in the main article, the manifesto layer was always going to
+      be a poor place to look for the gap. The gap is between the
+      manifesto register and the floor-vote behaviour of the L
+      caucus, not between the L manifesto and the M committee
+      register, which already overlap closely.
+    </p>
+
+    <h2>What this article cannot yet test</h2>
+
+    <p>
+      A single-party three-layer comparison is the maximum the
+      current public corpus allows. The questions that the main
+      article opens up for 2026 mostly need other parties' new
+      manifestos. Whether the four Tidö manifestos still keep M,
+      KD, L and SD as four separate documents in 2026, or whether
+      the chamber-record fusion has bled into the written documents,
+      requires all four. Whether the opposition parties' manifestos
+      reflect the punishment-vocabulary drift in C and MP that the
+      main article documented requires those parties' 2026
+      documents. Both questions are scheduled for the September
+      manifesto wave, when most of the remaining parties are
+      expected to release their election material.
+    </p>
+  </article>
 </BaseLayout>
 
 <style>
@@ -1018,5 +1212,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .method-note {
     font-size: 0.92rem;
     color: var(--ink-muted, #555);
+  }
+  .companion-article {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 4px double #d0d0d0;
+  }
+  .companion-article .byline {
+    color: var(--brand, #0c5a8e);
+    font-weight: 600;
   }
 </style>
