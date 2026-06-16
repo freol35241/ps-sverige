@@ -30,7 +30,8 @@ BG = "#FAFAFA"
 GRID = "#DDD"
 
 
-def per_mandate(tag: str, vec_file: str, named_pairs: dict, title: str, out_name: str):
+def per_mandate(tag: str, vec_file: str, named_pairs: dict, title: str,
+                out_name: str, fallback_speech_file: str | None = None):
     stats = pd.read_parquet(IN / f"per_topic_stats_{tag}.parquet")
     pivot = stats.pivot(index="party", columns="topic_id_unified",
                         values="mean_stance").reindex(PARTIES)
@@ -43,7 +44,16 @@ def per_mandate(tag: str, vec_file: str, named_pairs: dict, title: str, out_name
             vote[i, j] = 1 - np.nanmean(diff) / 2.0
 
     rv = np.load(IN / vec_file, allow_pickle=True)
-    V, N = rv["V"], rv["N"]
+    V, N = rv["V"].copy(), rv["N"].copy()
+    if fallback_speech_file is not None:
+        sp = np.load(IN / fallback_speech_file, allow_pickle=True)
+        sp_V, sp_N = sp["V"], sp["N"]
+        # Use reservation if available, otherwise speech-based vector
+        for i in range(V.shape[0]):
+            for t in range(V.shape[1]):
+                if N[i, t] == 0 and sp_N[i, t] > 0:
+                    V[i, t] = sp_V[i, t]
+                    N[i, t] = sp_N[i, t]
     V_c = V.copy()
     for t in range(V.shape[1]):
         present = N[:, t] > 0
@@ -133,8 +143,10 @@ def per_mandate(tag: str, vec_file: str, named_pairs: dict, title: str, out_name
 
 NAMED_22 = {
     ("S", "C"):  ("vote alike, argue apart", "below"),
-    ("M", "SD"): ("vote and reason alike", "above"),
+    ("M", "SD"): ("vote alike, argue apart", "below"),
     ("V", "MP"): ("vote and reason alike", "above"),
+    ("L", "SD"): ("vote alike, argue apart", "below"),
+    ("KD", "SD"): ("vote alike, argue apart", "below"),
 }
 NAMED_18 = {
     ("M", "KD"):  ("Alliance partners", "above"),
@@ -144,17 +156,20 @@ NAMED_18 = {
 
 
 def main() -> None:
-    # 2022-26 is not regenerated here because the cabinet parties (M, KD, L)
-    # have only 6-8 reservation cells covered. The published figure 34 uses
-    # speech-based reasoning as fallback, which we have not yet rebuilt
-    # against unified topic IDs. The 2018-22 mandate has full reservation
-    # coverage (≥26 cells per party) so it can be computed cleanly here.
-    print("== 2018-22 ==")
+    print("== 2022-26 (with speech fallback) ==")
+    per_mandate(
+        "22_26", "reservation_vectors_22_26_unified.npz", NAMED_22,
+        "Vote vs reasoning, 2022-26 mandate (unified topic IDs)\n"
+        "Reservation vectors for opposition parties; speech-based fallback "
+        "for cabinet cells with no reservation coverage.",
+        "34_vote_vs_reasoning.png",
+        fallback_speech_file="reasoning_vectors_22_26_unified.npz")
+    print("\n== 2018-22 ==")
     per_mandate(
         "18_22", "reservation_vectors_18_22.npz", NAMED_18,
         "Vote vs reasoning, 2018-22 mandate (unified topic IDs)\n"
-        "Same metric as the published 2022-26 figure (34). Highlighted pairs "
-        "show the coalition structure of the time.",
+        "Reservation-only metric. In this mandate every party has ≥26 "
+        "reservation cells covered, so no speech fallback is needed.",
         "58_vote_vs_reasoning_18_22.png")
 
 
