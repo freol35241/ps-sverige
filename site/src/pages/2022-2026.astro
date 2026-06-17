@@ -15,7 +15,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         Sweden has eight parties on the 2026 ballot. On the chamber
         record of the 2022-26 mandate they group into five behavioural
         clusters, one of which, the four-party Tidö bloc, took shape
-        during the mandate itself.
+        during the mandate itself. This page is a self-contained
+        reading of the 2022-26 mandate; cross-mandate comparisons sit
+        on the <a href={`${base}/`}>longitudinal overview</a>.
       </p>
     </header>
 
@@ -23,8 +25,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       When voters compare parties they reach for familiar shortcuts: a
       left-right slider, an alliance label, a coalition map. Each of
       these assumes that the eight parties on the 2026 ballot still
-      mean what they meant in 2022. The parliamentary record of the
-      mandate gives reason to question that assumption.
+      mean what they meant in 2022. The 2022-26 parliamentary record
+      gives reason to question that assumption.
     </p>
 
     <p>
@@ -973,11 +975,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <hr />
 
     <p class="method-note">
-      All analysis is based on reproducible methods over public
-      data from <a href="https://data.riksdagen.se">data.riksdagen.se</a>
+      All analysis is based on reproducible methods over public data
+      from <a href="https://data.riksdagen.se">data.riksdagen.se</a>
       and the eight 2022 party manifestos from the SND "Vi vill"
-      archive. The source code and full method write-up are
-      available at <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
+      archive. Cross-mandate comparisons sit on the
+      <a href={`${base}/`}>longitudinal overview</a>. The source code
+      and full method write-up are available at
+      <a href="https://github.com/freol35241/ps-sverige">GitHub</a>.
       The analysis uses no interviews and no survey data, and the
       subjective judgements required are limited to defining keyword
       pools, topic clusters and vocabulary lists, which are
@@ -999,9 +1003,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </header>
 
     <p>
-      The main article analysed the eight parties at the level of
-      their 2022 manifestos and their 2022-26 chamber record. With
-      the September 2026 election three months away, the natural
+      The analysis above on this page covers the eight parties at the
+      level of their 2022 manifestos and their 2022-26 chamber record.
+      With the September 2026 election three months away, the natural
       next question is what each party now says about its own record
       in its 2026 manifesto. A scoping pass of party-website material
       in mid-June found only Liberalerna with a finalised 2026
@@ -1016,11 +1020,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       therefore have to wait for the September manifesto wave,
       typically released four to eight weeks before election day.
       In the meantime, Liberalerna is also the most analytically
-      charged single case in the main article: the L-defectors
-      finding identified the Liberalerna caucus as the fifth
-      behavioural cluster, voting on the floor closer to KD and M
-      than to its own party. The 2026 manifesto offers a test of
-      how L now writes about that record.
+      charged single case in the 2022-26 analysis above: the
+      L-defectors finding identified the Liberalerna caucus as the
+      fifth behavioural cluster, voting on the floor closer to KD
+      and M than to its own party. The 2026 manifesto offers a test
+      of how L now writes about that record.
     </p>
 
     <h2>The manifesto grew, the register shape held</h2>
@@ -1041,9 +1045,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <img src={`${base}/figures/40_l_element_shares.png`} alt="Element shares in L's 2022 and 2026 manifestos" loading="lazy" />
       <figcaption>
         Share of substantive sentences classified into each register
-        using the same keyword classifier as the main article.
-        Diagnosis, end state and mechanism are the three measurable
-        elements; the remainder are classified as "other".
+        using the same keyword classifier as the 2022-26 analysis
+        above. Diagnosis, end state and mechanism are the three
+        measurable elements; the remainder are classified as "other".
       </figcaption>
     </figure>
 
@@ -1068,8 +1072,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <img src={`${base}/figures/41_l_signature_values.png`} alt="L's value vocabulary, 2022 vs 2026" loading="lazy" />
       <figcaption>
         Per-1,000-word frequency for each value, using the same value
-        vocabulary as the main article. Union of the top 10 values
-        in each manifesto, sorted left-to-right by 2022 frequency.
+        vocabulary as the 2022-26 analysis above. Union of the top
+        10 values in each manifesto, sorted left-to-right by 2022
+        frequency.
       </figcaption>
     </figure>
 
@@ -1088,8 +1093,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <h2>The 2026 manifesto matches the chamber record less closely than the 2022 one</h2>
 
     <p>
-      The main article measured each party's stated-vs-revealed gap
-      as the mean cosine similarity between manifesto and reservation
+      The 2022-26 analysis above measured each party's stated-vs-
+      revealed gap as the mean cosine similarity between manifesto
+      and reservation
       language across topics covered in both. Liberalerna sits at
       0.74 across 10 covered topics in 2022, tied with Moderaterna
       for the highest topic-matched cosine. Applying the same method
@@ -1154,28 +1160,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       material in a register that does not strongly distinguish it
       from its cabinet partners' parliamentary work, and that
       property held across the mandate. For the L-defectors finding
-      in the main article, the manifesto layer was always going to
-      be a poor place to look for the gap. The gap is between the
-      manifesto register and the floor-vote behaviour of the L
-      caucus, not between the L manifesto and the M committee
-      register, which already overlap closely.
+      in the 2022-26 analysis above, the manifesto layer was always
+      going to be a poor place to look for the gap. The gap is
+      between the manifesto register and the floor-vote behaviour
+      of the L caucus, not between the L manifesto and the M
+      committee register, which already overlap closely.
     </p>
 
-    <h2>What this article cannot yet test</h2>
+    <h2>What this companion analysis cannot yet test</h2>
 
     <p>
       A single-party three-layer comparison is the maximum the
-      current public corpus allows. The questions that the main
-      article opens up for 2026 mostly need other parties' new
-      manifestos. Whether the four Tidö manifestos still keep M,
-      KD, L and SD as four separate documents in 2026, or whether
-      the chamber-record fusion has bled into the written documents,
-      requires all four. Whether the opposition parties' manifestos
-      reflect the punishment-vocabulary drift in C and MP that the
-      main article documented requires those parties' 2026
-      documents. Both questions are scheduled for the September
-      manifesto wave, when most of the remaining parties are
-      expected to release their election material.
+      current public corpus allows. The questions that the 2022-26
+      analysis above opens up for 2026 mostly need other parties'
+      new manifestos. Whether the four Tidö manifestos still keep
+      M, KD, L and SD as four separate documents in 2026, or
+      whether the chamber-record fusion has bled into the written
+      documents, requires all four. Whether the opposition parties'
+      manifestos reflect the punishment-vocabulary drift in C and
+      MP that the 2022-26 analysis documented requires those
+      parties' 2026 documents. Both questions are scheduled for
+      the September manifesto wave, when most of the remaining
+      parties are expected to release their election material.
     </p>
   </article>
 </BaseLayout>
